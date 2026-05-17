@@ -1,0 +1,53 @@
+{
+  "slug": "pair-sum-target",
+  "title": "Cặp số có tổng bằng K",
+  "module": "learning",
+  "difficulty": 3,
+  "maxStars": 5.0,
+  "tags": ["two-pointers", "hashing", "array"],
+  "source": "ChuyenTin / Two pointers",
+  "statement": "Cho mảng $a_1, \\ldots, a_n$ và một số nguyên $K$. Đếm số cặp chỉ số $(i, j)$ thoả mãn $i < j$ và $a_i + a_j = K$.\n\n## Input\n- Dòng 1: $n$ và $K$ ($1 \\le n \\le 2 \\cdot 10^5$, $|K| \\le 2 \\cdot 10^9$).\n- Dòng 2: $n$ số nguyên có giá trị tuyệt đối $\\le 10^9$.\n\n## Output\nMột số nguyên là số cặp tìm được.\n\n## Lưu ý\nMột phần tử có thể xuất hiện nhiều lần với giá trị giống nhau — đếm cả các cặp như vậy.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n \\le 1000$",
+      "hint": { "id": "h1", "content": "Brute force: duyệt hai vòng $i < j$, đếm cặp có $a_i + a_j = K$. $O(N^2)$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 40,
+      "constraint": "$n \\le 10^5$",
+      "hint": { "id": "h2", "content": "Sort mảng. Dùng two pointers $l, r$: nếu $a_l + a_r = K$ → tìm thấy; nhỏ hơn → $l$++; lớn hơn → $r$--. Cẩn thận khi có phần tử trùng (tổ hợp).", "starCost": 0.5 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$n \\le 2 \\cdot 10^5$, có thể có nhiều phần tử trùng",
+      "hint": { "id": "h3", "content": "Cách khác: dùng `unordered_map<long long,int>` đếm số lần xuất hiện. Với mỗi $a_i$, cộng số lần $K - a_i$ đã xuất hiện trước, rồi cập nhật map.", "starCost": 0.5 }
+    }
+  ],
+  "samples": [
+    { "input": "5 6\n1 2 3 4 5\n", "output": "2\n", "explanation": "(1,5) và (2,4)." },
+    { "input": "4 4\n2 2 2 2\n", "output": "6\n", "explanation": "Tất cả 6 cặp đều có tổng 4." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "5 6\n1 2 3 4 5\n", "output": "2\n" },
+    { "id": 2, "subtaskId": "st1", "input": "4 4\n2 2 2 2\n", "output": "6\n" },
+    { "id": 3, "subtaskId": "st2", "input": "6 0\n-3 -1 0 1 2 3\n", "output": "3\n" },
+    { "id": 4, "subtaskId": "st2", "input": "1 5\n5\n", "output": "0\n" },
+    { "id": 5, "subtaskId": "st3", "input": "8 10\n1 9 2 8 3 7 4 6\n", "output": "4\n" }
+  ],
+  "expectedAlgorithm": "Hashing đếm cặp",
+  "expectedComplexity": "O(N)",
+  "whyThisAlgorithm": "Khi cần đếm cặp tổng đích, hashing đếm trước–sau là gọn và đúng cho mọi trường hợp trùng lặp.",
+  "bruteForceSubtask": "Subtask 1.",
+  "optimizedSubtask": "Subtask 3 (hashing).",
+  "editorial": "Sort + two pointers cần xử lý kỹ trùng. Cách hash đơn giản hơn: với mỗi `x`, cộng `cnt[K-x]` rồi tăng `cnt[x]`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int n; long long K; cin >> n >> K;\n    unordered_map<long long,long long> cnt;\n    long long ans = 0;\n    for (int i = 0; i < n; i++){\n        long long x; cin >> x;\n        ans += cnt[K - x];\n        cnt[x]++;\n    }\n    cout << ans << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

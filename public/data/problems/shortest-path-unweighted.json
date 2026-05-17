@@ -1,0 +1,54 @@
+{
+  "slug": "shortest-path-unweighted",
+  "title": "Đường đi ngắn nhất (BFS)",
+  "module": "contest",
+  "contestId": "danang-hsg-2024-12",
+  "difficulty": 4,
+  "maxStars": 5.0,
+  "tags": ["bfs", "graph"],
+  "source": "ChuyenTin / Graph",
+  "statement": "Cho đồ thị vô hướng đơn giản $n$ đỉnh, $m$ cạnh. Tìm độ dài đường đi ngắn nhất (số cạnh) từ đỉnh $1$ tới đỉnh $n$. Nếu không có đường đi, in $-1$.\n\n## Input\n- Dòng 1: $n\\ m$ ($2 \\le n \\le 10^5$, $0 \\le m \\le 2 \\cdot 10^5$).\n- $m$ dòng tiếp: $u_i\\ v_i$ ($1 \\le u_i, v_i \\le n$, $u_i \\ne v_i$).\n\n## Output\nĐộ dài hoặc $-1$.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n, m \\le 100$",
+      "hint": { "id": "h1", "content": "BFS từ đỉnh 1, lưu mảng `dist[]` khởi tạo $-1$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 40,
+      "constraint": "$n \\le 10^4, m \\le 5 \\cdot 10^4$",
+      "hint": { "id": "h2", "content": "Dùng `vector<vector<int>>` cho danh sách kề + `queue<int>`.", "starCost": 0.3 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$n \\le 10^5, m \\le 2 \\cdot 10^5$",
+      "hint": { "id": "h3", "content": "Đánh dấu `dist[v] = dist[u] + 1` ngay khi push để tránh duplicate.", "starCost": 0.3 }
+    }
+  ],
+  "samples": [
+    { "input": "4 4\n1 2\n2 3\n3 4\n1 4\n", "output": "1\n" },
+    { "input": "4 2\n1 2\n3 4\n", "output": "-1\n" }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "4 4\n1 2\n2 3\n3 4\n1 4\n", "output": "1\n" },
+    { "id": 2, "subtaskId": "st1", "input": "4 2\n1 2\n3 4\n", "output": "-1\n" },
+    { "id": 3, "subtaskId": "st2", "input": "2 1\n1 2\n", "output": "1\n" },
+    { "id": 4, "subtaskId": "st2", "input": "5 5\n1 2\n2 3\n3 4\n4 5\n1 5\n", "output": "1\n" },
+    { "id": 5, "subtaskId": "st3", "input": "6 6\n1 2\n2 3\n3 6\n1 4\n4 5\n5 6\n", "output": "3\n" }
+  ],
+  "expectedAlgorithm": "BFS",
+  "expectedComplexity": "O(V + E)",
+  "whyThisAlgorithm": "Trên đồ thị không trọng, BFS cho đường đi ngắn nhất theo số cạnh.",
+  "bruteForceSubtask": "—",
+  "optimizedSubtask": "Tất cả subtasks.",
+  "editorial": "Khởi tạo `dist[1] = 0`, push 1. Mỗi lần pop, duyệt cạnh kề.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n + 1);\n    for (int i = 0; i < m; i++){\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n    vector<int> dist(n + 1, -1);\n    queue<int> q; q.push(1); dist[1] = 0;\n    while (!q.empty()){\n        int u = q.front(); q.pop();\n        for (int v : g[u]) if (dist[v] == -1){\n            dist[v] = dist[u] + 1;\n            q.push(v);\n        }\n    }\n    cout << dist[n] << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

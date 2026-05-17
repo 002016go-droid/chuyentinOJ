@@ -1,0 +1,57 @@
+[
+  {
+    "id": "nbk-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — NBK 2024",
+    "school": "Chuyên Nguyễn Bỉnh Khiêm",
+    "province": "Đà Nẵng",
+    "year": 2024,
+    "type": "primary-target",
+    "problems": ["sum-array", "max-subarray-sum", "activity-selection", "count-components"],
+    "duration": 150,
+    "difficultyLabel": "Khó"
+  },
+  {
+    "id": "nbk-2023",
+    "title": "Tuyển sinh 10 Chuyên Tin — NBK 2023",
+    "school": "Chuyên Nguyễn Bỉnh Khiêm",
+    "province": "Đà Nẵng",
+    "year": 2023,
+    "type": "primary-target",
+    "problems": ["pair-sum-target", "partial-sort-3", "valid-brackets", "house-robber"],
+    "duration": 150,
+    "difficultyLabel": "Vừa-Khó"
+  },
+  {
+    "id": "nbk-2022",
+    "title": "Tuyển sinh 10 Chuyên Tin — NBK 2022",
+    "school": "Chuyên Nguyễn Bỉnh Khiêm",
+    "province": "Đà Nẵng",
+    "year": 2022,
+    "type": "primary-target",
+    "problems": ["sum-array", "permutations", "shortest-path-unweighted"],
+    "duration": 150,
+    "difficultyLabel": "Vừa"
+  },
+  {
+    "id": "quangnam-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — Quảng Nam 2024",
+    "school": "Chuyên Quảng Nam",
+    "province": "Quảng Nam",
+    "year": 2024,
+    "type": "secondary-target",
+    "problems": ["sum-array", "pair-sum-target", "max-subarray-sum", "lis-classic"],
+    "duration": 150,
+    "difficultyLabel": "Vừa-Khó"
+  },
+  {
+    "id": "quangnam-2023",
+    "title": "Tuyển sinh 10 Chuyên Tin — Quảng Nam 2023",
+    "school": "Chuyên Quảng Nam",
+    "province": "Quảng Nam",
+    "year": 2023,
+    "type": "secondary-target",
+    "problems": ["valid-brackets", "partial-sort-3", "knapsack-01"],
+    "duration": 150,
+    "difficultyLabel": "Vừa"
+  }
+]

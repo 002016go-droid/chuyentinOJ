@@ -1,0 +1,54 @@
+{
+  "slug": "lis-classic",
+  "title": "Dãy con tăng dài nhất",
+  "module": "contest",
+  "contestId": "danang-hsg-2023-12",
+  "difficulty": 5,
+  "maxStars": 5.0,
+  "tags": ["dp", "binary-search", "lis"],
+  "source": "ChuyenTin / Classic",
+  "statement": "Cho dãy $n$ số nguyên $a_1, \\ldots, a_n$. Tìm độ dài dãy con tăng nghiêm ngặt dài nhất (không cần liên tiếp).\n\n## Input\n- Dòng 1: $n$ ($1 \\le n \\le 10^5$).\n- Dòng 2: $n$ số nguyên $|a_i| \\le 10^9$.\n\n## Output\nMột số nguyên là độ dài LIS.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n \\le 100$",
+      "hint": { "id": "h1", "content": "DP $O(N^2)$: $dp[i] = 1 + \\max_{j < i, a_j < a_i} dp[j]$.", "starCost": 0.4 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 30,
+      "constraint": "$n \\le 5000$",
+      "hint": { "id": "h2", "content": "Vẫn $O(N^2)$ — ổn cho $5 \\cdot 10^3$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 40,
+      "constraint": "$n \\le 10^5$",
+      "hint": { "id": "h3", "content": "Dùng patience sort: với mỗi $x$, `lower_bound` trên `tail`. Nếu hết → push_back, nếu không → ghi đè vị trí đó. Đáp án là `tail.size()`.", "starCost": 0.5 }
+    }
+  ],
+  "samples": [
+    { "input": "6\n3 1 8 2 5 6\n", "output": "4\n", "explanation": "Một LIS là [1, 2, 5, 6]." },
+    { "input": "5\n5 5 5 5 5\n", "output": "1\n" }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "6\n3 1 8 2 5 6\n", "output": "4\n" },
+    { "id": 2, "subtaskId": "st1", "input": "5\n5 5 5 5 5\n", "output": "1\n" },
+    { "id": 3, "subtaskId": "st2", "input": "8\n10 9 8 7 6 5 4 3\n", "output": "1\n" },
+    { "id": 4, "subtaskId": "st2", "input": "8\n1 2 3 4 5 6 7 8\n", "output": "8\n" },
+    { "id": 5, "subtaskId": "st3", "input": "10\n5 1 4 2 3 7 6 8 0 9\n", "output": "5\n" }
+  ],
+  "expectedAlgorithm": "Patience sort + binary search",
+  "expectedComplexity": "O(N log N)",
+  "whyThisAlgorithm": "`tail[k]` = phần tử cuối nhỏ nhất của LIS độ dài $k+1$ → duy trì bằng `lower_bound`.",
+  "bruteForceSubtask": "Subtask 1, 2.",
+  "optimizedSubtask": "Subtask 3.",
+  "editorial": "Với LIS tăng nghiêm ngặt, dùng `lower_bound`. Nếu cho phép bằng → `upper_bound`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n; cin >> n;\n    vector<int> a(n);\n    for (auto &x : a) cin >> x;\n    vector<int> tail;\n    for (int x : a){\n        auto it = lower_bound(tail.begin(), tail.end(), x);\n        if (it == tail.end()) tail.push_back(x);\n        else *it = x;\n    }\n    cout << tail.size() << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

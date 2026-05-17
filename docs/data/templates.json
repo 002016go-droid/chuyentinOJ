@@ -1,0 +1,101 @@
+[
+  {
+    "slug": "io",
+    "name": "Fast I/O",
+    "whenToUse": "Mọi bài đọc > 1e5 số.",
+    "signs": "N lớn, đọc nhiều, TLE trên test cuối.",
+    "idea": "Tắt sync với stdio, untie cin, đọc bằng cin / scanf.",
+    "complexity": "O(N)",
+    "commonMistakes": "Quên endl → '\\n'; không untie khi vừa cin vừa cout.",
+    "code": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int n; cin >> n;\n    vector<int> a(n);\n    for (auto &x : a) cin >> x;\n    return 0;\n}",
+    "practiceProblems": ["sum-array"]
+  },
+  {
+    "slug": "prefix-sum",
+    "name": "Prefix Sum",
+    "whenToUse": "Cần tính tổng đoạn nhiều lần, hoặc dùng làm chìa khoá DP.",
+    "signs": "Truy vấn sum[l..r] hoặc max sum đoạn.",
+    "idea": "pref[i+1] = pref[i] + a[i]; sum(l,r) = pref[r+1] - pref[l].",
+    "complexity": "Tiền xử lý O(N), truy vấn O(1).",
+    "commonMistakes": "Lệch chỉ số (off-by-one); chọn sai kiểu (int vs long long).",
+    "code": "vector<long long> pref(n + 1, 0);\nfor (int i = 0; i < n; i++) pref[i + 1] = pref[i] + a[i];\nauto sum = [&](int l, int r) { return pref[r + 1] - pref[l]; };",
+    "practiceProblems": ["max-subarray-sum"]
+  },
+  {
+    "slug": "binary-search",
+    "name": "Binary Search",
+    "whenToUse": "Tìm phần tử / nghiệm trên hàm đơn điệu.",
+    "signs": "Dãy đã sort, hoặc 'tìm giá trị nhỏ nhất sao cho...'",
+    "idea": "lo=0; hi=N; while (lo < hi) m = (lo+hi)/2; check(m) → di chuyển.",
+    "complexity": "O(log N)",
+    "commonMistakes": "Quên cộng/trừ 1, vòng lặp vô hạn, ranh giới sai.",
+    "code": "int lo = 0, hi = n - 1, ans = -1;\nwhile (lo <= hi) {\n    int m = lo + (hi - lo) / 2;\n    if (check(m)) { ans = m; hi = m - 1; }\n    else lo = m + 1;\n}",
+    "practiceProblems": ["partial-sort-3"]
+  },
+  {
+    "slug": "two-pointers",
+    "name": "Two Pointers",
+    "whenToUse": "Đếm cặp / đoạn thoả điều kiện trên dãy đơn điệu.",
+    "signs": "Mảng sort, sum cố định, sliding window độ dài thay đổi.",
+    "idea": "Hai con trỏ, mỗi bước đẩy l/r dựa vào điều kiện.",
+    "complexity": "O(N)",
+    "commonMistakes": "Quên reset cur khi window vô hiệu.",
+    "code": "int l = 0;\nlong long cur = 0;\nfor (int r = 0; r < n; r++) {\n    cur += a[r];\n    while (cur > target) cur -= a[l++];\n    if (cur == target) { /* found */ }\n}",
+    "practiceProblems": ["pair-sum-target"]
+  },
+  {
+    "slug": "bfs",
+    "name": "BFS",
+    "whenToUse": "Đường đi ngắn nhất / cạnh trọng = 1.",
+    "signs": "Ma trận đường, ô trắng/đen, đếm bước đi tối thiểu.",
+    "idea": "Queue + dist[], thăm bằng vis[].",
+    "complexity": "O(V + E)",
+    "commonMistakes": "Quên đánh dấu trước khi push.",
+    "code": "queue<int> q; vector<int> dist(n + 1, -1);\ndist[src] = 0; q.push(src);\nwhile (!q.empty()) {\n    int u = q.front(); q.pop();\n    for (int v : adj[u]) if (dist[v] == -1) {\n        dist[v] = dist[u] + 1;\n        q.push(v);\n    }\n}",
+    "practiceProblems": ["shortest-path-unweighted"]
+  },
+  {
+    "slug": "dfs",
+    "name": "DFS (iterative & recursive)",
+    "whenToUse": "Khám phá đồ thị / cây, đếm component, topo sort.",
+    "signs": "Yêu cầu duyệt sâu, kiểm tra liên thông.",
+    "idea": "Đệ quy hoặc dùng stack, mark vis[].",
+    "complexity": "O(V + E)",
+    "commonMistakes": "Stack overflow với cây sâu — đôi khi dùng iterative.",
+    "code": "vector<bool> vis(n + 1, false);\nfunction<void(int)> dfs = [&](int u) {\n    vis[u] = true;\n    for (int v : adj[u]) if (!vis[v]) dfs(v);\n};",
+    "practiceProblems": ["count-components"]
+  },
+  {
+    "slug": "dsu",
+    "name": "Union-Find (DSU)",
+    "whenToUse": "Hợp tập, đếm component động, MST Kruskal.",
+    "signs": "Truy vấn liên thông sau khi thêm cạnh.",
+    "idea": "find(x) với path compression, union by rank.",
+    "complexity": "α(N) ~ O(1).",
+    "commonMistakes": "Quên path compression → chậm.",
+    "code": "vector<int> par(n + 1), rk(n + 1, 0);\niota(par.begin(), par.end(), 0);\nfunction<int(int)> find = [&](int x) { return par[x] == x ? x : par[x] = find(par[x]); };\nauto uni = [&](int a, int b) {\n    a = find(a); b = find(b);\n    if (a == b) return false;\n    if (rk[a] < rk[b]) swap(a, b);\n    par[b] = a;\n    if (rk[a] == rk[b]) rk[a]++;\n    return true;\n};",
+    "practiceProblems": ["dsu-friends"]
+  },
+  {
+    "slug": "kadane",
+    "name": "Kadane (Max Subarray)",
+    "whenToUse": "Tìm subarray có tổng lớn nhất.",
+    "signs": "'Đoạn liên tiếp tổng tối đa'.",
+    "idea": "cur = max(a[i], cur + a[i]); best = max(best, cur).",
+    "complexity": "O(N)",
+    "commonMistakes": "Khởi tạo best = 0 → sai khi tất cả âm.",
+    "code": "long long best = a[0], cur = a[0];\nfor (int i = 1; i < n; i++) {\n    cur = max((long long)a[i], cur + a[i]);\n    best = max(best, cur);\n}",
+    "practiceProblems": ["max-subarray-sum"]
+  },
+  {
+    "slug": "knapsack-01",
+    "name": "Knapsack 0/1",
+    "whenToUse": "Chọn vật, tối đa giá trị / chính xác tổng.",
+    "signs": "Capacity W, mỗi vật chọn 0/1.",
+    "idea": "dp[j] tối đa với capacity j; duyệt j giảm để không dùng lại.",
+    "complexity": "O(N × W)",
+    "commonMistakes": "Duyệt j tăng → cho phép dùng lại (unbounded).",
+    "code": "vector<int> dp(W + 1, 0);\nfor (int i = 0; i < n; i++)\n    for (int j = W; j >= w[i]; j--)\n        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);",
+    "practiceProblems": ["knapsack-01"]
+  }
+]

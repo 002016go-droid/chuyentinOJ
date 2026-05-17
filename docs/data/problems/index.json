@@ -1,0 +1,21 @@
+[
+  "sum-array",
+  "pair-sum-target",
+  "max-subarray-sum",
+  "partial-sort-3",
+  "valid-brackets",
+  "activity-selection",
+  "coin-change-greedy",
+  "permutations",
+  "house-robber",
+  "knapsack-01",
+  "coin-change-ways",
+  "lis-classic",
+  "lcs-classic",
+  "shortest-path-unweighted",
+  "count-components",
+  "dijkstra-classic",
+  "dsu-friends",
+  "segtree-range-sum",
+  "palindrome-check"
+]

@@ -1,0 +1,54 @@
+{
+  "slug": "count-components",
+  "title": "Đếm thành phần liên thông",
+  "module": "entrance",
+  "contestId": "nbk-2024",
+  "difficulty": 3,
+  "maxStars": 5.0,
+  "tags": ["dfs", "bfs", "graph"],
+  "source": "Tuyển sinh 10 Chuyên Tin",
+  "statement": "Cho đồ thị vô hướng đơn giản $n$ đỉnh, $m$ cạnh. Hãy đếm số thành phần liên thông.\n\n## Input\n- Dòng 1: $n\\ m$ ($1 \\le n \\le 10^5$, $0 \\le m \\le 2 \\cdot 10^5$).\n- $m$ dòng tiếp: $u_i\\ v_i$.\n\n## Output\nMột số nguyên.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n \\le 100$",
+      "hint": { "id": "h1", "content": "DFS từ mọi đỉnh chưa thăm — đếm số lần khởi động DFS.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 40,
+      "constraint": "$n \\le 10^4$",
+      "hint": { "id": "h2", "content": "Cẩn thận stack với DFS đệ quy — có thể chuyển sang iterative.", "starCost": 0.4 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$n \\le 10^5$",
+      "hint": { "id": "h3", "content": "Hoặc dùng DSU: ban đầu n component, mỗi cạnh `unite` giảm 1.", "starCost": 0.4 }
+    }
+  ],
+  "samples": [
+    { "input": "5 3\n1 2\n2 3\n4 5\n", "output": "2\n" },
+    { "input": "4 0\n", "output": "4\n" }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "5 3\n1 2\n2 3\n4 5\n", "output": "2\n" },
+    { "id": 2, "subtaskId": "st1", "input": "4 0\n", "output": "4\n" },
+    { "id": 3, "subtaskId": "st2", "input": "6 5\n1 2\n2 3\n3 1\n4 5\n5 6\n", "output": "2\n" },
+    { "id": 4, "subtaskId": "st2", "input": "1 0\n", "output": "1\n" },
+    { "id": 5, "subtaskId": "st3", "input": "7 4\n1 2\n3 4\n5 6\n6 7\n", "output": "4\n" }
+  ],
+  "expectedAlgorithm": "DFS / DSU",
+  "expectedComplexity": "O(N + M)",
+  "whyThisAlgorithm": "Bài kinh điển cho DFS — học cách quản lý mảng `vis[]`.",
+  "bruteForceSubtask": "—",
+  "optimizedSubtask": "Tất cả.",
+  "editorial": "Loop $i = 1..n$: nếu chưa thăm thì DFS rồi tăng `cnt`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n, m; cin >> n >> m;\n    vector<vector<int>> g(n + 1);\n    for (int i = 0; i < m; i++){\n        int u, v; cin >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n    vector<bool> vis(n + 1, false);\n    function<void(int)> dfs = [&](int u){\n        vis[u] = true;\n        for (int v : g[u]) if (!vis[v]) dfs(v);\n    };\n    int cnt = 0;\n    for (int i = 1; i <= n; i++) if (!vis[i]) { dfs(i); cnt++; }\n    cout << cnt << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "danang-hsg-2024-12",
+    "title": "HSG Tin học Đà Nẵng 2024 — Lớp 12",
+    "province": "Đà Nẵng",
+    "flag": "🏙",
+    "year": 2024,
+    "grade": 12,
+    "type": "hsg-city",
+    "problems": ["sum-array", "max-subarray-sum", "shortest-path-unweighted", "knapsack-01"],
+    "duration": 180
+  },
+  {
+    "id": "danang-hsg-2023-12",
+    "title": "HSG Tin học Đà Nẵng 2023 — Lớp 12",
+    "province": "Đà Nẵng",
+    "flag": "🏙",
+    "year": 2023,
+    "grade": 12,
+    "type": "hsg-city",
+    "problems": ["partial-sort-3", "lis-classic", "count-components", "coin-change-ways"],
+    "duration": 180
+  },
+  {
+    "id": "danang-hsg-2024-11",
+    "title": "HSG Tin học Đà Nẵng 2024 — Lớp 11",
+    "province": "Đà Nẵng",
+    "flag": "🏙",
+    "year": 2024,
+    "grade": 11,
+    "type": "hsg-city",
+    "problems": ["valid-brackets", "pair-sum-target", "activity-selection", "house-robber"],
+    "duration": 150
+  },
+  {
+    "id": "danang-hsg-2023-11",
+    "title": "HSG Tin học Đà Nẵng 2023 — Lớp 11",
+    "province": "Đà Nẵng",
+    "flag": "🏙",
+    "year": 2023,
+    "grade": 11,
+    "type": "hsg-city",
+    "problems": ["permutations", "lcs-classic", "dsu-friends"],
+    "duration": 150
+  },
+  {
+    "id": "danang-hsg-2024-10",
+    "title": "HSG Tin học Đà Nẵng 2024 — Lớp 10",
+    "province": "Đà Nẵng",
+    "flag": "🏙",
+    "year": 2024,
+    "grade": 10,
+    "type": "hsg-city",
+    "problems": ["sum-array", "pair-sum-target", "valid-brackets"],
+    "duration": 120
+  },
+  {
+    "id": "quangnam-hsg-2024-12",
+    "title": "HSG Tin học Quảng Nam 2024 — Lớp 12",
+    "province": "Quảng Nam",
+    "flag": "🏞",
+    "year": 2024,
+    "grade": 12,
+    "type": "hsg-province",
+    "problems": ["max-subarray-sum", "dijkstra-classic", "segtree-range-sum", "palindrome-check"],
+    "duration": 180
+  },
+  {
+    "id": "quangnam-hsg-2023-11",
+    "title": "HSG Tin học Quảng Nam 2023 — Lớp 11",
+    "province": "Quảng Nam",
+    "flag": "🏞",
+    "year": 2023,
+    "grade": 11,
+    "type": "hsg-province",
+    "problems": ["activity-selection", "lis-classic", "dsu-friends"],
+    "duration": 150
+  },
+  {
+    "id": "quangnam-hsg-2024-10",
+    "title": "HSG Tin học Quảng Nam 2024 — Lớp 10",
+    "province": "Quảng Nam",
+    "flag": "🏞",
+    "year": 2024,
+    "grade": 10,
+    "type": "hsg-province",
+    "problems": ["sum-array", "partial-sort-3", "pair-sum-target"],
+    "duration": 120
+  },
+  {
+    "id": "gym-fortifications",
+    "title": "Codeforces Gym — Algorithm Practice",
+    "province": "External",
+    "flag": "🌐",
+    "year": 2024,
+    "type": "gym",
+    "problems": [],
+    "duration": 0,
+    "external": {
+      "url": "https://codeforces.com/gyms",
+      "platform": "Codeforces"
+    }
+  }
+]

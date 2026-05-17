@@ -1,0 +1,52 @@
+{
+  "slug": "coin-change-ways",
+  "title": "Đếm cách đổi tiền",
+  "module": "learning",
+  "difficulty": 5,
+  "maxStars": 5.0,
+  "tags": ["dp", "counting", "classic"],
+  "source": "ChuyenTin / DP đếm",
+  "statement": "Cho $n$ mệnh giá đồng tiền (giá trị nguyên dương, không trùng) và một số tiền $S$. Mỗi mệnh giá có thể dùng không giới hạn lần. Đếm số cách đổi đúng $S$ (hai cách khác nhau nếu số lượng đồng dùng của một mệnh giá nào đó khác nhau). Kết quả mod $10^9 + 7$.\n\n## Input\n- Dòng 1: $n$ và $S$ ($1 \\le n \\le 100$, $1 \\le S \\le 10^4$).\n- Dòng 2: $n$ số nguyên dương phân biệt, mỗi số $\\le S$.\n\n## Output\nSố cách đổi modulo $10^9 + 7$.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n \\le 5, S \\le 100$",
+      "hint": { "id": "h1", "content": "DP cơ bản: $dp[s]$ = số cách lập tổng $s$.", "starCost": 0.4 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 40,
+      "constraint": "$n \\le 20, S \\le 1000$",
+      "hint": { "id": "h2", "content": "Để tránh đếm lặp tổ hợp khác hoán vị: vòng ngoài là tiền, vòng trong là $s$.", "starCost": 0.5 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$n \\le 100, S \\le 10^4$",
+      "hint": { "id": "h3", "content": "`dp[0] = 1; for c in coins: for s = c..S: dp[s] = (dp[s] + dp[s-c]) % MOD`.", "starCost": 0.4 }
+    }
+  ],
+  "samples": [
+    { "input": "3 5\n1 2 5\n", "output": "4\n", "explanation": "5=5, 5=2+2+1, 5=2+1+1+1, 5=1+1+1+1+1." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "3 5\n1 2 5\n", "output": "4\n" },
+    { "id": 2, "subtaskId": "st1", "input": "1 10\n3\n", "output": "0\n" },
+    { "id": 3, "subtaskId": "st2", "input": "2 100\n1 5\n", "output": "21\n" },
+    { "id": 4, "subtaskId": "st2", "input": "4 10\n1 2 3 4\n", "output": "23\n" },
+    { "id": 5, "subtaskId": "st3", "input": "5 50\n1 2 5 10 20\n", "output": "451\n" }
+  ],
+  "expectedAlgorithm": "DP đếm",
+  "expectedComplexity": "O(N × S)",
+  "whyThisAlgorithm": "Vòng ngoài là loại tiền giúp đếm tổ hợp (không phân biệt thứ tự).",
+  "bruteForceSubtask": "Subtask 1.",
+  "optimizedSubtask": "Subtask 3.",
+  "editorial": "Phải đặt vòng ngoài là `for c in coins` rồi `for s = c..S`. Đảo ngược sẽ đếm hoán vị.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    const long long MOD = 1000000007;\n    int n, S; cin >> n >> S;\n    vector<int> c(n);\n    for (auto &x : c) cin >> x;\n    vector<long long> dp(S + 1, 0);\n    dp[0] = 1;\n    for (int x : c) for (int s = x; s <= S; s++) dp[s] = (dp[s] + dp[s - x]) % MOD;\n    cout << dp[S] << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

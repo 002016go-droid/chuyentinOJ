@@ -1,0 +1,54 @@
+{
+  "slug": "dijkstra-classic",
+  "title": "Đường đi ngắn nhất có trọng số",
+  "module": "contest",
+  "contestId": "quangnam-hsg-2024-12",
+  "difficulty": 6,
+  "maxStars": 5.0,
+  "tags": ["dijkstra", "graph", "priority-queue"],
+  "source": "ChuyenTin / Graph",
+  "statement": "Cho đồ thị có hướng có trọng dương $n$ đỉnh, $m$ cung. Tìm đường đi ngắn nhất từ đỉnh $1$ tới đỉnh $n$. Nếu không có, in $-1$.\n\n## Input\n- Dòng 1: $n\\ m$ ($2 \\le n \\le 10^5$, $1 \\le m \\le 2 \\cdot 10^5$).\n- $m$ dòng tiếp: $u\\ v\\ w$ ($1 \\le w \\le 10^9$).\n\n## Output\nMột số nguyên (`long long`).",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n, m \\le 500$",
+      "hint": { "id": "h1", "content": "Dijkstra cơ bản: ma trận kề + mảng đánh dấu — $O(n^2)$.", "starCost": 0.4 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 30,
+      "constraint": "$n, m \\le 5 \\cdot 10^3$",
+      "hint": { "id": "h2", "content": "Vẫn chấp nhận $O(n^2)$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 40,
+      "constraint": "$n \\le 10^5, m \\le 2 \\cdot 10^5$",
+      "hint": { "id": "h3", "content": "Dijkstra với `priority_queue<pair<long long,int>, ..., greater<>>`. Bỏ qua entry cũ khi `d > dist[u]`.", "starCost": 0.5 }
+    }
+  ],
+  "samples": [
+    { "input": "4 5\n1 2 1\n1 3 4\n2 3 2\n2 4 5\n3 4 1\n", "output": "4\n", "explanation": "1→2→3→4 với tổng 1+2+1 = 4." },
+    { "input": "2 1\n1 2 10\n", "output": "10\n" }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "4 5\n1 2 1\n1 3 4\n2 3 2\n2 4 5\n3 4 1\n", "output": "4\n" },
+    { "id": 2, "subtaskId": "st1", "input": "2 1\n1 2 10\n", "output": "10\n" },
+    { "id": 3, "subtaskId": "st2", "input": "3 2\n1 2 1\n2 3 1\n", "output": "2\n" },
+    { "id": 4, "subtaskId": "st2", "input": "3 1\n1 2 5\n", "output": "-1\n" },
+    { "id": 5, "subtaskId": "st3", "input": "5 6\n1 2 2\n1 3 4\n2 3 1\n2 4 7\n3 5 3\n4 5 1\n", "output": "6\n" }
+  ],
+  "expectedAlgorithm": "Dijkstra với priority queue",
+  "expectedComplexity": "O((V + E) log V)",
+  "whyThisAlgorithm": "Đồ thị trọng dương → Dijkstra. PQ giúp lấy đỉnh có khoảng cách nhỏ nhất nhanh.",
+  "bruteForceSubtask": "Subtask 1, 2.",
+  "optimizedSubtask": "Subtask 3.",
+  "editorial": "Dùng `priority_queue<pair<long long,int>>` (đảo dấu) hoặc `greater<>`. Đừng quên kiểm tra dist cũ.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n, m; cin >> n >> m;\n    vector<vector<pair<int,long long>>> g(n + 1);\n    for (int i = 0; i < m; i++){\n        int u, v; long long w;\n        cin >> u >> v >> w;\n        g[u].push_back({v, w});\n    }\n    vector<long long> dist(n + 1, LLONG_MAX);\n    priority_queue<pair<long long,int>, vector<pair<long long,int>>, greater<>> pq;\n    dist[1] = 0; pq.push({0, 1});\n    while (!pq.empty()){\n        auto [d, u] = pq.top(); pq.pop();\n        if (d > dist[u]) continue;\n        for (auto [v, w] : g[u]) if (dist[u] + w < dist[v]) {\n            dist[v] = dist[u] + w;\n            pq.push({dist[v], v});\n        }\n    }\n    cout << (dist[n] == LLONG_MAX ? -1 : dist[n]) << '\\n';\n}",
+  "timeLimitMs": 1500,
+  "memoryLimitKB": 262144
+}

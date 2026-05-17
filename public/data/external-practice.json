@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "vnoj-prime1",
+    "sourceName": "VNOJ",
+    "sourceUrl": "https://oj.vnoi.info/problem/prime1",
+    "title": "PRIME1 — Sàng nguyên tố",
+    "topic": "Number Theory",
+    "difficulty": 3,
+    "note": "Sàng Eratosthenes trong khoảng [m,n]."
+  },
+  {
+    "slug": "atcoder-dpd",
+    "sourceName": "AtCoder DP",
+    "sourceUrl": "https://atcoder.jp/contests/dp/tasks/dp_d",
+    "title": "Knapsack 1 — bài cổ điển",
+    "topic": "DP / Knapsack",
+    "difficulty": 4,
+    "note": "Khởi đầu cho DP knapsack 0/1."
+  },
+  {
+    "slug": "atcoder-dps",
+    "sourceName": "AtCoder DP",
+    "sourceUrl": "https://atcoder.jp/contests/dp/tasks/dp_s",
+    "title": "Digit Sum — DP digit",
+    "topic": "DP Digit",
+    "difficulty": 7,
+    "note": "Cần DP theo từng chữ số."
+  },
+  {
+    "slug": "vnoj-xaucon",
+    "sourceName": "VNOJ",
+    "sourceUrl": "https://oj.vnoi.info/problem/xaucon",
+    "title": "XAUCON — xâu con",
+    "topic": "String",
+    "difficulty": 5,
+    "note": "Xử lý xâu, có thể giải bằng hashing."
+  },
+  {
+    "slug": "vnoj-palinx",
+    "sourceName": "VNOJ",
+    "sourceUrl": "https://oj.vnoi.info/problem/palinx",
+    "title": "PALINX — Manacher",
+    "topic": "String / Palindrome",
+    "difficulty": 7,
+    "note": "Cần Manacher để qua test lớn."
+  },
+  {
+    "slug": "cf-edu-binsearch",
+    "sourceName": "Codeforces EDU",
+    "sourceUrl": "https://codeforces.com/edu/course/2/lesson/6",
+    "title": "Binary Search Step",
+    "topic": "Binary Search",
+    "difficulty": 4,
+    "note": "Bộ luyện tìm kiếm nhị phân từ Codeforces EDU."
+  }
+]

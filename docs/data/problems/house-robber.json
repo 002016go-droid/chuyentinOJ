@@ -1,0 +1,53 @@
+{
+  "slug": "house-robber",
+  "title": "Trộm nhà không liền kề",
+  "module": "learning",
+  "difficulty": 3,
+  "maxStars": 5.0,
+  "tags": ["dp", "dp-1d"],
+  "source": "ChuyenTin / DP cổ điển",
+  "statement": "Có $n$ căn nhà xếp thành hàng, căn thứ $i$ chứa $a_i$ đồng. Bạn không thể trộm 2 căn liền kề. Hỏi số tiền tối đa có thể trộm được.\n\n## Input\n- Dòng 1: $n$ ($1 \\le n \\le 10^5$).\n- Dòng 2: $n$ số nguyên không âm $a_i \\le 10^9$.\n\n## Output\nMột số nguyên là đáp án (dùng `long long`).",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n \\le 20$",
+      "hint": { "id": "h1", "content": "Brute force $2^n$ kiểm tra mọi tập con không liền kề.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 40,
+      "constraint": "$n \\le 1000$",
+      "hint": { "id": "h2", "content": "DP: $dp[i] = \\max(dp[i-1], dp[i-2] + a_i)$.", "starCost": 0.4 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$n \\le 10^5$",
+      "hint": { "id": "h3", "content": "Có thể tối ưu bộ nhớ chỉ dùng 2 biến cuối.", "starCost": 0.3 }
+    }
+  ],
+  "samples": [
+    { "input": "5\n2 7 9 3 1\n", "output": "12\n", "explanation": "Trộm nhà 1, 3, 5: 2+9+1 = 12." },
+    { "input": "1\n100\n", "output": "100\n" }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "5\n2 7 9 3 1\n", "output": "12\n" },
+    { "id": 2, "subtaskId": "st1", "input": "1\n100\n", "output": "100\n" },
+    { "id": 3, "subtaskId": "st2", "input": "4\n1 2 3 1\n", "output": "4\n" },
+    { "id": 4, "subtaskId": "st2", "input": "6\n10 1 1 10 1 1\n", "output": "21\n" },
+    { "id": 5, "subtaskId": "st3", "input": "8\n5 1 1 5 1 1 5 1\n", "output": "15\n" }
+  ],
+  "expectedAlgorithm": "DP 1D",
+  "expectedComplexity": "O(N)",
+  "whyThisAlgorithm": "Mỗi bước hai lựa chọn: trộm hay không trộm — lưu max của hai trạng thái trước.",
+  "bruteForceSubtask": "Subtask 1.",
+  "optimizedSubtask": "Subtask 3.",
+  "editorial": "$dp[i] = \\max(dp[i-1], dp[i-2] + a[i])$, base $dp[0] = a[0]$, $dp[1] = \\max(a[0], a[1])$.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n; cin >> n;\n    vector<long long> a(n);\n    for (auto &x : a) cin >> x;\n    if (n == 1) { cout << a[0] << '\\n'; return 0; }\n    long long p2 = a[0], p1 = max(a[0], a[1]);\n    for (int i = 2; i < n; i++){\n        long long cur = max(p1, p2 + a[i]);\n        p2 = p1; p1 = cur;\n    }\n    cout << p1 << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

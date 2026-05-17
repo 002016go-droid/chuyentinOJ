@@ -1,0 +1,54 @@
+{
+  "slug": "partial-sort-3",
+  "title": "3 phần tử nhỏ nhất",
+  "module": "contest",
+  "contestId": "danang-hsg-2023-12",
+  "difficulty": 2,
+  "maxStars": 5.0,
+  "tags": ["sorting", "array"],
+  "source": "HSG Đà Nẵng",
+  "statement": "Cho dãy $n$ số nguyên phân biệt. In ra ba số nhỏ nhất theo thứ tự tăng dần. Nếu $n < 3$, in ra tất cả các số có trong dãy theo thứ tự tăng dần.\n\n## Input\n- Dòng 1: $n$ ($1 \\le n \\le 10^5$).\n- Dòng 2: $n$ số nguyên phân biệt $|a_i| \\le 10^9$.\n\n## Output\nIn các số nhỏ nhất theo thứ tự tăng dần, mỗi số cách nhau bằng dấu cách trên một dòng.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 40,
+      "constraint": "$n \\le 100$",
+      "hint": { "id": "h1", "content": "Sort cả mảng, in ra 3 phần tử đầu tiên (hoặc $n$ nếu $n < 3$).", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 30,
+      "constraint": "$n \\le 10^4$",
+      "hint": { "id": "h2", "content": "`sort` $O(N \\log N)$ vẫn quá tốt cho $10^4$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$n \\le 10^5$",
+      "hint": { "id": "h3", "content": "Có thể dùng `nth_element` để chọn top-3 trong $O(N)$, nhưng không cần — `sort` đủ.", "starCost": 0.4 }
+    }
+  ],
+  "samples": [
+    { "input": "5\n5 2 8 1 9\n", "output": "1 2 5\n", "explanation": "3 số nhỏ nhất là 1, 2, 5." },
+    { "input": "2\n7 4\n", "output": "4 7\n", "explanation": "$n < 3$ nên in cả 2 số theo thứ tự tăng dần." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "5\n5 2 8 1 9\n", "output": "1 2 5\n" },
+    { "id": 2, "subtaskId": "st1", "input": "2\n7 4\n", "output": "4 7\n" },
+    { "id": 3, "subtaskId": "st1", "input": "1\n100\n", "output": "100\n" },
+    { "id": 4, "subtaskId": "st2", "input": "6\n-3 -1 -2 -4 -5 -6\n", "output": "-6 -5 -4\n" },
+    { "id": 5, "subtaskId": "st3", "input": "8\n1000000000 -1000000000 0 500 600 -500 -600 999\n", "output": "-1000000000 -600 -500\n" }
+  ],
+  "expectedAlgorithm": "Sort",
+  "expectedComplexity": "O(N log N)",
+  "whyThisAlgorithm": "Sort là cách trực tiếp và đủ nhanh.",
+  "bruteForceSubtask": "Tất cả subtasks.",
+  "optimizedSubtask": "—",
+  "editorial": "Đọc mảng, sort, in `min(n, 3)` phần tử đầu.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int n; cin >> n;\n    vector<long long> a(n);\n    for (auto &x : a) cin >> x;\n    sort(a.begin(), a.end());\n    int k = min(n, 3);\n    for (int i = 0; i < k; i++) cout << a[i] << (i + 1 == k ? '\\n' : ' ');\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

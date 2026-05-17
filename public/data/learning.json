@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "io-and-types",
+    "day": 1,
+    "block": "sáng",
+    "duration": "60 phút",
+    "title": "I/O nhanh & kiểu dữ liệu cơ bản",
+    "goal": "Nhập xuất hiệu quả, đọc nhiều test, phân biệt int / long long / double.",
+    "practiceProblems": ["sum-array"]
+  },
+  {
+    "slug": "arrays-and-sorting",
+    "day": 1,
+    "block": "sáng",
+    "duration": "90 phút",
+    "title": "Mảng & sắp xếp",
+    "goal": "Sort, lambda, sort theo nhiều khoá, ổn định/không ổn định.",
+    "practiceProblems": ["partial-sort-3"]
+  },
+  {
+    "slug": "two-pointers-prefix",
+    "day": 1,
+    "block": "chiều",
+    "duration": "90 phút",
+    "title": "Hai con trỏ + Tổng tiền tố",
+    "goal": "Áp dụng cho bài tổng đoạn, đếm cặp, dãy thoả điều kiện.",
+    "practiceProblems": ["max-subarray-sum", "pair-sum-target"]
+  },
+  {
+    "slug": "binary-search",
+    "day": 1,
+    "block": "chiều",
+    "duration": "60 phút",
+    "title": "Tìm kiếm nhị phân",
+    "goal": "lower_bound / upper_bound, BS trên nghiệm.",
+    "practiceProblems": ["partial-sort-3"]
+  },
+  {
+    "slug": "greedy",
+    "day": 1,
+    "block": "tối",
+    "duration": "60 phút",
+    "title": "Tham lam",
+    "goal": "Activity selection, đổi tiền tham lam.",
+    "practiceProblems": ["activity-selection", "coin-change-greedy"]
+  },
+  {
+    "slug": "dp-basic",
+    "day": 2,
+    "block": "sáng",
+    "duration": "120 phút",
+    "title": "DP 1D cơ bản & coin/knapsack",
+    "goal": "Robber, Kadane, đổi tiền, knapsack 0/1.",
+    "practiceProblems": ["house-robber", "knapsack-01", "coin-change-ways"]
+  },
+  {
+    "slug": "bfs-dfs",
+    "day": 2,
+    "block": "chiều",
+    "duration": "120 phút",
+    "title": "BFS / DFS — đếm thành phần, đường đi ngắn",
+    "goal": "Triển khai BFS/DFS, đếm component.",
+    "practiceProblems": ["count-components", "shortest-path-unweighted"]
+  },
+  {
+    "slug": "review-and-templates",
+    "day": 2,
+    "block": "tối",
+    "duration": "90 phút",
+    "title": "Ôn template — luyện đề thật",
+    "goal": "Bấm tay template I/O, sort, BFS, DSU. Làm 1 đề tuyển sinh ngắn.",
+    "practiceProblems": ["valid-brackets", "lis-classic"]
+  }
+]

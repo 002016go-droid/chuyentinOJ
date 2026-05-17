@@ -1,0 +1,55 @@
+{
+  "slug": "palindrome-check",
+  "title": "Kiểm tra palindrome",
+  "module": "contest",
+  "contestId": "quangnam-hsg-2024-12",
+  "difficulty": 2,
+  "maxStars": 5.0,
+  "tags": ["string", "basic"],
+  "source": "ChuyenTin / String",
+  "statement": "Một xâu được gọi là palindrome nếu nó đọc xuôi và ngược giống nhau. Cho xâu $s$ gồm chữ thường, kiểm tra xâu có là palindrome không.\n\n## Input\nMột dòng chứa $s$ ($1 \\le |s| \\le 10^6$).\n\n## Output\n`YES` hoặc `NO`.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 40,
+      "constraint": "$|s| \\le 1000$",
+      "hint": { "id": "h1", "content": "So sánh $s$ với $reverse(s)$.", "starCost": 0.2 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 30,
+      "constraint": "$|s| \\le 10^5$",
+      "hint": { "id": "h2", "content": "Hai con trỏ $l = 0$, $r = n - 1$, so sánh từng cặp.", "starCost": 0.3 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$|s| \\le 10^6$",
+      "hint": { "id": "h3", "content": "Sync I/O off + dừng sớm khi gặp khác biệt.", "starCost": 0.3 }
+    }
+  ],
+  "samples": [
+    { "input": "racecar\n", "output": "YES\n" },
+    { "input": "hello\n", "output": "NO\n" }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "racecar\n", "output": "YES\n" },
+    { "id": 2, "subtaskId": "st1", "input": "hello\n", "output": "NO\n" },
+    { "id": 3, "subtaskId": "st2", "input": "a\n", "output": "YES\n" },
+    { "id": 4, "subtaskId": "st2", "input": "ab\n", "output": "NO\n" },
+    { "id": 5, "subtaskId": "st3", "input": "abccba\n", "output": "YES\n" },
+    { "id": 6, "subtaskId": "st3", "input": "abcba\n", "output": "YES\n" }
+  ],
+  "expectedAlgorithm": "Hai con trỏ",
+  "expectedComplexity": "O(N)",
+  "whyThisAlgorithm": "Bài cơ bản, không cần gì hơn hai con trỏ.",
+  "bruteForceSubtask": "Tất cả.",
+  "optimizedSubtask": "—",
+  "editorial": "Loop $i = 0..n/2$, so sánh $s[i]$ với $s[n-1-i]$.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    string s; cin >> s;\n    int n = s.size();\n    for (int i = 0; i < n / 2; i++) if (s[i] != s[n-1-i]) { cout << \"NO\\n\"; return 0; }\n    cout << \"YES\\n\";\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}

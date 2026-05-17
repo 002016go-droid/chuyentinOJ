@@ -1,0 +1,54 @@
+{
+  "slug": "lcs-classic",
+  "title": "Dãy con chung dài nhất (LCS)",
+  "module": "contest",
+  "contestId": "danang-hsg-2023-11",
+  "difficulty": 5,
+  "maxStars": 5.0,
+  "tags": ["dp", "dp-2d", "string"],
+  "source": "ChuyenTin / Classic",
+  "statement": "Cho hai xâu $s$ và $t$. Tìm độ dài dãy con chung dài nhất của hai xâu.\n\n## Input\n- Dòng 1: xâu $s$ ($1 \\le |s| \\le 1000$).\n- Dòng 2: xâu $t$ ($1 \\le |t| \\le 1000$).\n\n## Output\nMột số nguyên là độ dài LCS.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$|s|, |t| \\le 15$",
+      "hint": { "id": "h1", "content": "Brute force bằng quay lui — thử mỗi vị trí lấy hoặc không.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 40,
+      "constraint": "$|s|, |t| \\le 200$",
+      "hint": { "id": "h2", "content": "DP 2D: $dp[i][j]$ = LCS của $s[1..i], t[1..j]$.", "starCost": 0.4 }
+    },
+    {
+      "id": "st3",
+      "label": "Subtask 3",
+      "points": 30,
+      "constraint": "$|s|, |t| \\le 1000$",
+      "hint": { "id": "h3", "content": "Nếu ký tự bằng → $dp[i-1][j-1] + 1$, ngược lại $\\max(dp[i-1][j], dp[i][j-1])$.", "starCost": 0.4 }
+    }
+  ],
+  "samples": [
+    { "input": "ABCBDAB\nBDCABA\n", "output": "4\n", "explanation": "LCS là BCBA hoặc BDAB." },
+    { "input": "AAA\nBBB\n", "output": "0\n" }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "ABCBDAB\nBDCABA\n", "output": "4\n" },
+    { "id": 2, "subtaskId": "st1", "input": "AAA\nBBB\n", "output": "0\n" },
+    { "id": 3, "subtaskId": "st2", "input": "abcde\nace\n", "output": "3\n" },
+    { "id": 4, "subtaskId": "st2", "input": "GAC\nAGCAT\n", "output": "2\n" },
+    { "id": 5, "subtaskId": "st3", "input": "ABCDEFG\nXBCDEFGY\n", "output": "6\n" }
+  ],
+  "expectedAlgorithm": "DP 2D",
+  "expectedComplexity": "O(|s| × |t|)",
+  "whyThisAlgorithm": "Bài LCS chuẩn — không có giải pháp tốt hơn $O(NM)$ trong trường hợp tổng quát.",
+  "bruteForceSubtask": "Subtask 1.",
+  "optimizedSubtask": "Subtask 3.",
+  "editorial": "Bảng `dp[i][j]` kích thước $(|s|+1) \\times (|t|+1)$, khởi tạo 0.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    string s, t; cin >> s >> t;\n    int n = s.size(), m = t.size();\n    vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++) {\n            if (s[i-1] == t[j-1]) dp[i][j] = dp[i-1][j-1] + 1;\n            else dp[i][j] = max(dp[i-1][j], dp[i][j-1]);\n        }\n    cout << dp[n][m] << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144
+}
