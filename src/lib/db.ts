@@ -61,6 +61,13 @@ export interface LearningProgress {
   updatedAt: Date
 }
 
+export interface TechniqueProgress {
+  id?: number
+  techniqueId: string
+  status: 'not_started' | 'reading' | 'practiced' | 'mastered'
+  updatedAt: Date
+}
+
 export class ChuyenTinDB extends Dexie {
   submissions!: Table<Submission, number>
   progress!: Table<UserProgress, number>
@@ -68,6 +75,7 @@ export class ChuyenTinDB extends Dexie {
   hintUsage!: Table<HintUsage, number>
   problemStars!: Table<ProblemStar, number>
   learning!: Table<LearningProgress, number>
+  techniqueProgress!: Table<TechniqueProgress, number>
 
   constructor() {
     super('ChuyenTinOJ')
@@ -85,6 +93,15 @@ export class ChuyenTinDB extends Dexie {
       hintUsage: '++id, problemSlug, hintId',
       problemStars: '++id, problemSlug',
       learning: '++id, itemSlug, status',
+    })
+    this.version(3).stores({
+      submissions: '++id, problemSlug, verdict, submittedAt',
+      progress: '++id, topicSlug, status',
+      savedCode: '++id, problemSlug',
+      hintUsage: '++id, problemSlug, hintId',
+      problemStars: '++id, problemSlug',
+      learning: '++id, itemSlug, status',
+      techniqueProgress: '++id, techniqueId, status',
     })
   }
 }
