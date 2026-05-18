@@ -414,7 +414,161 @@
           "url": "https://wiki.vnoi.info/algo/data-structures/prefix-sum-and-difference-array"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "arr1d-sum",
+          "title": "Tổng các phần tử",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "sum"
+          ]
+        },
+        {
+          "slug": "arr1d-avg",
+          "title": "Trung bình cộng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "average"
+          ]
+        },
+        {
+          "slug": "arr1d-kth-smallest",
+          "title": "Phần tử thứ K nhỏ nhất",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "sort",
+            "kth"
+          ]
+        },
+        {
+          "slug": "arr1d-reverse",
+          "title": "Đảo ngược dãy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "reverse"
+          ]
+        },
+        {
+          "slug": "arr1d-freq",
+          "title": "Tần số xuất hiện",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "count",
+            "map"
+          ]
+        },
+        {
+          "slug": "arr1d-rangesum",
+          "title": "Tổng đoạn liên tiếp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "arr1d-maxsubarr",
+          "title": "Tổng đoạn liên tiếp lớn nhất",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "kadane",
+            "dp"
+          ]
+        },
+        {
+          "slug": "arr1d-find",
+          "title": "Vị trí xuất hiện đầu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "linear-search"
+          ]
+        },
+        {
+          "slug": "arr1d-rotate",
+          "title": "Quay vòng dãy K bước",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "rotate"
+          ]
+        },
+        {
+          "slug": "arr1d-inversions-easy",
+          "title": "Đếm cặp nghịch thế (N nhỏ)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "inversions"
+          ]
+        }
+      ],
       "theory": "// Kadane — max subarray sum O(N)\nlong long best = LLONG_MIN, cur = 0;\nfor (int i = 0; i < n; i++) {\n    cur = max((long long)a[i], cur + a[i]);\n    best = max(best, cur);\n}\ncout << best << \"\\n\";",
       "theorySnippet": "// Kadane — max subarray sum O(N)\nlong long best = LLONG_MIN, cur = 0;\nfor (int i = 0; i < n; i++) {\n    cur = max((long long)a[i], cur + a[i]);\n    best = max(best, cur);\n}\ncout << best << \"\\n\";",
       "referenceProblem": [
