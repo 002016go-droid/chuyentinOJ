@@ -1,0 +1,214 @@
+{
+  "slug": "sim-clock",
+  "title": "Đồng hồ trường học",
+  "titleEn": "School clock",
+  "module": "roadmap",
+  "topicId": "simulation",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2",
+    "S4"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "simulation",
+    "time"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Đồng hồ ở trường THCS Nguyễn Văn Linh chỉ giờ:phút:giây. Cho thời điểm ban đầu HH:MM:SS và thời gian trôi qua S giây. Hỏi đồng hồ chỉ giờ bao nhiêu sau S giây? In định dạng HH:MM:SS (HH 00-23). Bài luyện thao tác chuyển đổi đơn vị thời gian + định dạng output.",
+  "vnPattern": "Bài về thời gian — hay xuất hiện trong đề lớp 7-9.",
+  "fileIO": {
+    "inputFile": "CLOCK.INP",
+    "outputFile": "CLOCK.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "0 ≤ S ≤ 3600 (1 giờ)"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "0 ≤ S ≤ 86400 (1 ngày)"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "0 ≤ S ≤ 10^18 (cần long long + mod)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "03:05:21\n521\n",
+      "output": "03:14:02\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "01:55:12\n1762\n",
+      "output": "02:24:34\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "03:05:21\n521\n",
+      "output": "03:14:02\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "01:55:12\n1762\n",
+      "output": "02:24:34\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "23:41:39\n1374\n",
+      "output": "00:04:33\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "03:15:05\n3351\n",
+      "output": "04:10:56\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "11:02:46\n2960\n",
+      "output": "11:52:06\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "05:26:21\n1146\n",
+      "output": "05:45:27\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "11:03:05\n548\n",
+      "output": "11:12:13\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "03:05:21\n12514\n",
+      "output": "06:33:55\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "01:55:12\n42285\n",
+      "output": "13:39:57\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "23:41:39\n32979\n",
+      "output": "08:51:18\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "03:15:05\n80415\n",
+      "output": "01:35:20\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "11:02:46\n71029\n",
+      "output": "06:46:35\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "05:26:21\n27515\n",
+      "output": "13:04:56\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "11:03:05\n13153\n",
+      "output": "14:42:18\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "03:05:21\n144840580626734\n",
+      "output": "05:37:35\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "01:55:12\n489412919082405\n",
+      "output": "08:21:57\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "23:41:39\n381708018041045\n",
+      "output": "11:05:44\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "03:15:05\n930724515743969\n",
+      "output": "21:54:34\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "11:02:46\n822096615945246\n",
+      "output": "10:56:52\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "05:26:21\n318467545980772\n",
+      "output": "14:19:13\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "11:03:05\n152234946316557\n",
+      "output": "18:59:02\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "Chuyển HH:MM:SS sang tổng giây = H·3600 + M·60 + S. Cộng dt. Mod 86400.",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Đọc HH:MM:SS dùng `scanf(\"%d:%d:%d\", &h, &m, &s)`.",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Khai báo long long cho S khi tới 10^18. In với `setfill('0') << setw(2)`.",
+      "starCost": 1,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "Tổng giây sau cộng và mod 86400. Tách lại HH:MM:SS bằng phép chia.",
+  "solutionSketch": "long long total = (h * 3600 + m * 60 + s + S) % 86400; printf(\"%02d:%02d:%02d\", total/3600, total%3600/60, total%60);",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

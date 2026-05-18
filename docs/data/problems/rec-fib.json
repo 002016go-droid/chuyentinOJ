@@ -1,0 +1,213 @@
+{
+  "slug": "rec-fib",
+  "title": "Fibonacci",
+  "titleEn": "Fibonacci",
+  "module": "roadmap",
+  "topicId": "recursion-backtracking",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S4"
+  ],
+  "difficulty": 3,
+  "maxStars": 3,
+  "tags": [
+    "recursion",
+    "dp"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Dãy Fibonacci: F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}. Tính F_n mod 10^9 + 7. Bài luyện đệ quy có memo: subtask 1 đệ quy thuần O(2^N) (cảnh báo!), subtask 2 đệ quy + memo O(N), subtask 3 ma trận lũy thừa O(log N).",
+  "vnPattern": "Fibonacci — đề HSG TP.",
+  "fileIO": {
+    "inputFile": "FIB.INP",
+    "outputFile": "FIB.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "0 ≤ N ≤ 30"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "0 ≤ N ≤ 10^5"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "0 ≤ N ≤ 10^9 (ma trận lũy thừa)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "9\n",
+      "output": "34\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "10\n",
+      "output": "55\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "9\n",
+      "output": "34\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "10\n",
+      "output": "55\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "4\n",
+      "output": "3\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "14\n",
+      "output": "377\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "7\n",
+      "output": "13\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "8\n",
+      "output": "21\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "1\n",
+      "output": "1\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "29482\n",
+      "output": "846946528\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "32770\n",
+      "output": "101448632\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "14096\n",
+      "output": "176090433\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "46084\n",
+      "output": "692956660\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "24622\n",
+      "output": "72662576\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "28606\n",
+      "output": "539763442\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "3844\n",
+      "output": "70311665\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "294679244\n",
+      "output": "138442218\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "327563924\n",
+      "output": "47837566\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "140793910\n",
+      "output": "849124299\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "460731731\n",
+      "output": "358320860\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "246074353\n",
+      "output": "453967644\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "285917304\n",
+      "output": "37719737\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "38254224\n",
+      "output": "433312607\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Subtask 1: 2 biến a, b duyệt n bước.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Subtask 2: như subtask 1, cũng O(N).",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Subtask 3: ma trận lũy thừa [[1,1],[1,0]]^N — kết quả F_n ở [0][1].",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Iterative O(N) hoặc matrix expo O(log N).",
+  "solutionSketch": "long long a = 0, b = 1; for (int i = 0; i < n; ++i) { long long t = (a + b) % MOD; a = b; b = t; } cout << a;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

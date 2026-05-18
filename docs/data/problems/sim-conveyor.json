@@ -1,0 +1,214 @@
+{
+  "slug": "sim-conveyor",
+  "title": "Băng chuyền nhà máy",
+  "titleEn": "Factory conveyor belt",
+  "module": "roadmap",
+  "topicId": "simulation",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2",
+    "S4"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "simulation",
+    "queue"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Nhà máy ở Quảng Nam có băng chuyền dài N ô từ trái sang phải. Cuối mỗi giờ, ô 1 nhận thêm 1 sản phẩm mới (đẩy mọi sản phẩm trên băng chuyền sang phải 1 ô), và sản phẩm ở ô N (nếu có) rơi xuống thùng chứa. Mô phỏng T giờ. Hỏi sau T giờ trên băng chuyền còn bao nhiêu sản phẩm, và đã rơi xuống thùng bao nhiêu? Bài luyện kỹ năng mô phỏng từng bước thời gian, có thể tối ưu bằng công thức nếu nhận ra pattern: sản phẩm rơi = max(0, T − N + 1).",
+  "vnPattern": "Mô phỏng theo thời gian — kết hợp tính toán công thức.",
+  "fileIO": {
+    "inputFile": "CONVEYOR.INP",
+    "outputFile": "CONVEYOR.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N, T ≤ 100"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N, T ≤ 10^6"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N, T ≤ 10^18 (cần công thức)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "63 65\n",
+      "output": "63 2\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "97 48\n",
+      "output": "48 0\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "63 65\n",
+      "output": "63 2\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "97 48\n",
+      "output": "48 0\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "91 97\n",
+      "output": "91 6\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "50 98\n",
+      "output": "50 48\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "86 77\n",
+      "output": "77 0\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "79 5\n",
+      "output": "5 0\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "73 40\n",
+      "output": "40 0\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "621560 642713\n",
+      "output": "621560 21153\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "969034 478956\n",
+      "output": "478956 0\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "905393 969404\n",
+      "output": "905393 64011\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "499185 973114\n",
+      "output": "499185 473929\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "854292 769177\n",
+      "output": "769177 0\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "786365 47207\n",
+      "output": "47207 0\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "724527 395659\n",
+      "output": "395659 0\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "621560642712095 407429395496716\n",
+      "output": "407429395496716 0\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "969034478955622 71118675469583\n",
+      "output": "71118675469583 0\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "905393969403945 98464936240227\n",
+      "output": "98464936240227 0\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "499185973113177 851005215495254\n",
+      "output": "499185973113177 351819242382077\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "854292769176421 499689426386041\n",
+      "output": "499689426386041 0\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "786365047206171 945902931131631\n",
+      "output": "786365047206171 159537883925460\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "724527395658998 703739981553154\n",
+      "output": "703739981553154 0\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "Mô phỏng từng giờ — đẩy mảng sang phải, thêm 1 ở đầu, xoá phần tử cuối.",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Pattern: sau T giờ, băng chuyền có min(N, T) sản phẩm.",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Số rơi = max(0, T − N). Subtask 3 N, T tới 10^18 → khai báo long long.",
+      "starCost": 1,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "Quan sát: tại bước T, sản phẩm thứ k (k ≤ N) ở ô N-k+1 nếu T ≥ k, đã rơi nếu T - k ≥ N. → Đếm: trên băng chuyền = min(N, T); rơi = max(0, T - N).",
+  "solutionSketch": "long long n, t; cin >> n >> t; cout << min(n, t) << \" \" << max(0LL, t - n);",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

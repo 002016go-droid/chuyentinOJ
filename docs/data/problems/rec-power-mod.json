@@ -1,0 +1,213 @@
+{
+  "slug": "rec-power-mod",
+  "title": "Lũy thừa modulo nhanh",
+  "titleEn": "Power mod",
+  "module": "roadmap",
+  "topicId": "recursion-backtracking",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S4"
+  ],
+  "difficulty": 3,
+  "maxStars": 3,
+  "tags": [
+    "recursion",
+    "fast-power"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho a, b, m (1 ≤ a, m ≤ 10^9; 0 ≤ b ≤ 10^18). Tính a^b mod m. Bài luyện đệ quy chia đôi (fast power). Quan sát: a^b = (a^{b/2})² · a^{b%2}. Đệ quy giảm độ sâu log(b).",
+  "vnPattern": "Fast power — đề chuyên Tin lớp 10-11.",
+  "fileIO": {
+    "inputFile": "MOD.INP",
+    "outputFile": "MOD.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ b ≤ 10^3; 1 ≤ a, m ≤ 10^9"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ b ≤ 10^9; 1 ≤ a, m ≤ 10^9"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "0 ≤ b ≤ 10^{18}"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "573353669 931 1189641\n",
+      "output": "587180\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "631458446 922 148259101\n",
+      "output": "78299675\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "573353669 931 1189641\n",
+      "output": "587180\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "631458446 922 148259101\n",
+      "output": "78299675\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "552313073 560 982213014\n",
+      "output": "116698471\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "369831114 147 772682820\n",
+      "output": "160719924\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "359024278 589 572527716\n",
+      "output": "543959188\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "91796554 582 923519023\n",
+      "output": "529024980\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "82447431 265 921552758\n",
+      "output": "678480659\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "573353669 930813635 1189641\n",
+      "output": "972005\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "631458446 921087178 148259101\n",
+      "output": "135856915\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "552313073 559855710 982213014\n",
+      "output": "123950965\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "369831114 147073562 772682820\n",
+      "output": "107050836\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "359024278 589176461 572527716\n",
+      "output": "68635600\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "91796554 582076270 923519023\n",
+      "output": "675731844\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "82447431 265024371 921552758\n",
+      "output": "544152755\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "573353669 930814001189640 323307621\n",
+      "output": "202920823\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "631458446 921088148259100 782849483\n",
+      "output": "689761073\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "552313073 559856982213013 75850199\n",
+      "output": "23018741\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "369831114 147073772682819 4016158\n",
+      "output": "1358632\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "359024278 589177572527715 303174833\n",
+      "output": "192982811\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "91796554 582076923519022 723245014\n",
+      "output": "660611820\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "82447431 265024921552757 342885497\n",
+      "output": "192401561\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Fast power: if (b & 1) res = res * a; a = a * a; b >>= 1.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Khai báo `unsigned long long` cho m·m có thể tới 10^{18} (gần overflow).",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Hoặc dùng `__int128`.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Fast power lặp hoặc đệ quy. O(log b).",
+  "solutionSketch": "long long pw(long long a, long long b, long long m) { long long r = 1; a %= m; while (b) { if (b & 1) r = (__int128)r * a % m; a = (__int128)a * a % m; b >>= 1; } return r; }",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

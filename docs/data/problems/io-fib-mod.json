@@ -1,0 +1,215 @@
+{
+  "slug": "io-fib-mod",
+  "title": "Số Fibonacci thứ N (mod 10^9 + 7)",
+  "titleEn": "Fibonacci N modulo 1e9+7",
+  "module": "roadmap",
+  "topicId": "io-complexity",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2"
+  ],
+  "difficulty": 1,
+  "maxStars": 2,
+  "tags": [
+    "io",
+    "dp",
+    "fibonacci",
+    "modular"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Định nghĩa dãy Fibonacci: F(1) = 1, F(2) = 1, F(n) = F(n-1) + F(n-2). Cho N, hãy in F(N) mod (10^9 + 7). Bài giới thiệu khái niệm mod operation và quản lý overflow. Với N tới 10^7, vòng lặp O(N) đủ — phần lớn bài HSG TP chấp nhận. Trên thực tế N lên đến 10^18 cần lũy thừa ma trận (xem Day 27+) nhưng ở Day 1 ta chỉ tập trung vào vòng lặp đơn giản.",
+  "vnPattern": "Bài Fibonacci — quen thuộc, kết hợp ý thức về tràn số.",
+  "fileIO": {
+    "inputFile": "MOD.INP",
+    "outputFile": "MOD.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 30 (không cần mod)"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^6"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 10^7 (chú ý fast I/O)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "19\n",
+      "output": "4181\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "8\n",
+      "output": "21\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "19\n",
+      "output": "4181\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "8\n",
+      "output": "21\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "10\n",
+      "output": "55\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "26\n",
+      "output": "121393\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "17\n",
+      "output": "1597\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "2\n",
+      "output": "1\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "15\n",
+      "output": "610\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "605332\n",
+      "output": "69878597\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "263797\n",
+      "output": "205494329\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "316730\n",
+      "output": "303567485\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "848301\n",
+      "output": "495596842\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "552714\n",
+      "output": "366598000\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "38449\n",
+      "output": "993274669\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "497087\n",
+      "output": "722248926\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "6447636\n",
+      "output": "950782603\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "3373515\n",
+      "output": "325611634\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "3849960\n",
+      "output": "294838836\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "8634569\n",
+      "output": "650567246\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "5974019\n",
+      "output": "681657927\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "1345180\n",
+      "output": "375787300\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "5473327\n",
+      "output": "777908926\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "Vòng for tính F(i) = F(i-1) + F(i-2) bằng 2 biến a, b.",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Mod sau mỗi phép cộng: `b = (a + b) % MOD;`.",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Với N tới 10^7, dùng `long long` và fast I/O. Không nên đệ quy (TLE + tràn stack).",
+      "starCost": 1,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "O(N) iterative bottom-up. Subtask 1 không cần mod nên F(30) ≈ 832040 vẫn nằm trong int. Từ subtask 2 phải mod sau mỗi cộng.",
+  "solutionSketch": "long long a = 1, b = 1; for i = 3..n { long long c = (a + b) % MOD; a = b; b = c; } cout << b;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

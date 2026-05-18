@@ -1,0 +1,214 @@
+{
+  "slug": "mock-divisor-pair",
+  "title": "Cặp chia hết",
+  "titleEn": "Divisor pair count",
+  "module": "roadmap",
+  "topicId": "mock-exam",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "difficulty": 6,
+  "maxStars": 3,
+  "tags": [
+    "mock",
+    "number-theory"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho N. Đếm số cặp (i, j) với 1 ≤ i < j ≤ N sao cho j chia hết cho i. Subtask 1 brute force O(N²); subtask 3 dùng tổng harmonic O(N log N).",
+  "vnPattern": "Divisor pair — đề HSG lớp 9.",
+  "fileIO": {
+    "inputFile": "PAIR.INP",
+    "outputFile": "PAIR.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 1000"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 5000"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 20000"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "869\n",
+      "output": "5148\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "710\n",
+      "output": "4064\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "869\n",
+      "output": "5148\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "710\n",
+      "output": "4064\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "119\n",
+      "output": "467\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "449\n",
+      "output": "2362\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "73\n",
+      "output": "255\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "330\n",
+      "output": "1644\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "696\n",
+      "output": "3974\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "4475\n",
+      "output": "33835\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "3840\n",
+      "output": "28463\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "1475\n",
+      "output": "9515\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "2794\n",
+      "output": "19814\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "1291\n",
+      "output": "8158\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "2318\n",
+      "output": "16002\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "3784\n",
+      "output": "27999\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "18029\n",
+      "output": "161425\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "15650\n",
+      "output": "137917\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "6781\n",
+      "output": "54087\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "11726\n",
+      "output": "99962\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "6091\n",
+      "output": "47941\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "9944\n",
+      "output": "83127\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "15439\n",
+      "output": "135843\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "For i in 1..N, for j = 2i, 3i, ...",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Đếm bội khác chính nó.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Harmonic O(N log N).",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Divisor pair, brute or harmonic.",
+  "solutionSketch": "for i in 1..N: for k=2; k*i<=N; ++k: ++cnt;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}
