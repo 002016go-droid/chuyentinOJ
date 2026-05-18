@@ -4,6 +4,7 @@ import { LogOut, Search, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { getUsername, logout } from '../../lib/auth'
 import { classNames, deterministicAvatar } from '../../lib/utils'
+import { useJudgeStatus } from '../../hooks/useJudgeStatus'
 
 interface NavItem {
   to: string
@@ -39,6 +40,7 @@ export function Navbar({
   const username = getUsername()
   const navigate = useNavigate()
   const [spin, setSpin] = useState(false)
+  const judgeOnline = useJudgeStatus()
 
   useEffect(() => {
     if (!spin) return
@@ -48,7 +50,7 @@ export function Navbar({
 
   return (
     <nav className="sticky top-0 z-30 border-b border-[var(--border)] glass">
-      <div className="mx-auto flex max-w-[1400px] items-center gap-6 px-6 py-3">
+      <div className="mx-auto flex max-w-[1400px] items-center gap-4 px-6 py-3">
         <button
           className="flex items-center gap-2"
           onClick={() => {
@@ -61,12 +63,12 @@ export function Navbar({
           <motion.div
             animate={spin ? { rotate: 720 } : { rotate: 0 }}
             transition={{ duration: 0.7 }}
-            className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-[var(--accent-blue)] to-[var(--accent-coral)] font-display text-lg text-white shadow-glow"
+            className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-coral)] font-display text-base text-[#1a1a1a] shadow"
           >
             CT
           </motion.div>
           <div className="hidden md:flex flex-col items-start leading-none">
-            <span className="font-display text-base">
+            <span className="font-display text-base text-[var(--text-primary)]">
               ChuyenTinOJ
               {logoStarBadge && (
                 <Star
@@ -76,7 +78,9 @@ export function Navbar({
                 />
               )}
             </span>
-            <span className="text-[10px] font-mono text-[var(--text-muted)]">v0.1 · orbit</span>
+            <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-[var(--accent-glow)] px-1.5 py-[1px] text-[9px] font-mono uppercase tracking-wider text-[var(--accent-primary)]">
+              beta
+            </span>
           </div>
         </button>
 
@@ -118,7 +122,7 @@ export function Navbar({
 
         <button
           onClick={onOpenSearch}
-          className="flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--bg-surface)] px-3 py-1.5 text-sm text-[var(--text-muted)] hover:border-[var(--border-glow)]"
+          className="flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--bg-surface)] px-3 py-1.5 text-sm text-[var(--text-muted)] hover:border-[var(--border-strong)]"
         >
           <Search size={14} />
           <span className="hidden md:inline">Tìm bài...</span>
@@ -126,6 +130,31 @@ export function Navbar({
             Ctrl K
           </kbd>
         </button>
+
+        <div
+          className="hidden md:flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--bg-surface)] px-2.5 py-1.5 text-xs"
+          title={
+            judgeOnline === null
+              ? 'Judge: đang kiểm tra...'
+              : judgeOnline
+                ? 'Judge online (localhost:2358)'
+                : 'Judge offline — chạy: docker-compose up -d'
+          }
+        >
+          <span
+            className={classNames(
+              'status-dot',
+              judgeOnline === null
+                ? 'unknown'
+                : judgeOnline
+                  ? 'online'
+                  : 'offline',
+            )}
+          />
+          <span className="font-mono text-[var(--text-muted)]">
+            {judgeOnline === null ? 'Judge…' : judgeOnline ? 'Judge' : 'Judge offline'}
+          </span>
+        </div>
 
         <div className="flex items-center gap-2 border-l border-[var(--border)] pl-4">
           <img
