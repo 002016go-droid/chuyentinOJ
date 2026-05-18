@@ -25,7 +25,7 @@ import {
 } from '../lib/problemLoader'
 import type { Problem, TestCase } from '../lib/types'
 import { db, type Submission, type Verdict, type TestResult } from '../lib/db'
-import { runBatch, judgePing, runTest, JUDGE0_URL } from '../lib/judge0'
+import { runBatch, judgePing, runTest, getJudge0Config, getJudgeMode } from '../lib/judge0'
 import { useShortcut } from '../hooks/useKeyboardShortcuts'
 
 interface Props {
@@ -658,38 +658,7 @@ export function ProblemPage({ onThreeWA }: Props) {
       </Modal>
 
       {/* Judge down modal */}
-      <Modal
-        open={judgeDown}
-        onClose={() => setJudgeDown(false)}
-        title="⚠️ Judge chưa khởi động"
-        footer={
-          <div className="flex justify-end gap-2">
-            <button
-              className="btn btn-ghost"
-              onClick={() => {
-                navigator.clipboard.writeText('docker-compose up -d')
-                toast.success('Đã copy `docker-compose up -d`')
-              }}
-            >
-              Copy command
-            </button>
-            <button className="btn btn-primary" onClick={() => setJudgeDown(false)}>
-              Đã hiểu
-            </button>
-          </div>
-        }
-      >
-        <p className="text-sm">
-          Không kết nối được Judge0 tại <code>{JUDGE0_URL}</code>. Chạy lệnh sau ở thư mục dự án
-          rồi thử lại:
-        </p>
-        <pre className="mt-2 rounded-md border border-[var(--border)] bg-[var(--bg-void)] p-3 text-xs">
-          <code className="font-mono">docker-compose up -d</code>
-        </pre>
-        <p className="mt-2 text-xs text-[var(--text-muted)]">
-          Xem chi tiết tại <code>JUDGE_SETUP.md</code> ở repo.
-        </p>
-      </Modal>
+      <JudgeDownModal open={judgeDown} onClose={() => setJudgeDown(false)} navigate={navigate} />
     </PageTransition>
   )
 }
@@ -704,5 +673,109 @@ function PreBlock({ title, content }: { title: string; content: string }) {
         <code className="font-mono whitespace-pre-wrap">{content}</code>
       </pre>
     </div>
+  )
+}
+
+interface JudgeDownModalProps {
+  open: boolean
+  onClose: () => void
+  navigate: (path: string) => void
+}
+
+function JudgeDownModal({ open, onClose, navigate }: JudgeDownModalProps) {
+  const cfg = getJudge0Config()
+  const mode = getJudgeMode(cfg)
+  const isRapid = mode === 'rapidapi'
+  const hasKey = !!cfg.apiKey
+  const title = isRapid
+    ? hasKey
+      ? '⚠️ Key RapidAPI không hợp lệ hoặc hết quota'
+      : '⚠️ Chưa cấu hình API Key'
+    : '⚠️ Judge0 local chưa khởi động'
+  return (
+    <Modal
+      open={open}
+      onClose={onClose}
+      title={title}
+      footer={
+        <div className="flex justify-end gap-2">
+          {!isRapid && (
+            <button
+              className="btn btn-ghost"
+              onClick={() => {
+                navigator.clipboard.writeText('docker-compose up -d')
+                toast.success('Đã copy `docker-compose up -d`')
+              }}
+            >
+              Copy command
+            </button>
+          )}
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              onClose()
+              navigate('/settings')
+            }}
+          >
+            Vào Cài đặt
+          </button>
+          <button className="btn btn-ghost" onClick={onClose}>
+            Đóng
+          </button>
+        </div>
+      }
+    >
+      {isRapid && !hasKey && (
+        <>
+          <p className="text-sm">
+            Chấm code qua RapidAPI Judge0-CE cần một API Key. Lấy key miễn phí (50
+            submissions/ngày) tại{' '}
+            <a
+              href="https://rapidapi.com/judge0-official/api/judge0-ce/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--accent-primary)] hover:underline"
+            >
+              rapidapi.com/judge0-official/api/judge0-ce
+            </a>
+            , sau đó dán key vào <strong>Cài đặt → Máy chấm</strong>.
+          </p>
+        </>
+      )}
+      {isRapid && hasKey && (
+        <>
+          <p className="text-sm">
+            RapidAPI trả về lỗi xác thực hoặc đã hết quota tháng. Kiểm tra dashboard tại{' '}
+            <a
+              href="https://rapidapi.com/judge0-official/api/judge0-ce/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--accent-primary)] hover:underline"
+            >
+              rapidapi.com
+            </a>{' '}
+            xem key còn hiệu lực không, hoặc nâng plan để có thêm submission.
+          </p>
+          <p className="mt-2 text-xs text-[var(--text-muted)]">
+            Có thể chuyển tạm sang Local Docker trong <strong>Cài đặt → Máy chấm</strong>.
+          </p>
+        </>
+      )}
+      {!isRapid && (
+        <>
+          <p className="text-sm">
+            Không kết nối được Judge0 tại <code>{cfg.url}</code>. Chạy lệnh sau ở thư mục dự
+            án rồi thử lại:
+          </p>
+          <pre className="mt-2 rounded-md border border-[var(--border)] bg-[var(--bg-void)] p-3 text-xs">
+            <code className="font-mono">docker-compose up -d</code>
+          </pre>
+          <p className="mt-2 text-xs text-[var(--text-muted)]">
+            Hoặc chuyển sang RapidAPI Judge0 trong <strong>Cài đặt → Máy chấm</strong> để
+            chấm trên cloud.
+          </p>
+        </>
+      )}
+    </Modal>
   )
 }
