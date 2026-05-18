@@ -3368,7 +3368,83 @@
           "url": "https://atcoder.jp/contests/dp/tasks"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "dp-fib-mod",
+          "title": "Fibonacci modulo",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "fibonacci"
+          ]
+        },
+        {
+          "slug": "dp-climb-stairs",
+          "title": "Bậc thang nhảy 1/2/3",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "stairs"
+          ]
+        },
+        {
+          "slug": "dp-house-robber",
+          "title": "Trộm nhà không kề",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "house-robber"
+          ]
+        },
+        {
+          "slug": "dp-max-subarray",
+          "title": "Dãy con tổng lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "kadane"
+          ]
+        },
+        {
+          "slug": "dp-coin-min",
+          "title": "Đổi tiền — số đồng ít nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "coin-change"
+          ]
+        }
+      ],
       "theory": "// Leo cầu thang — 1, 2, hoặc 3 nấc mỗi bước, mod 1e9+7\nconst int MOD = 1e9 + 7;\nvector<long long> dp(n + 1, 0);\ndp[0] = 1;\nfor (int i = 1; i <= n; i++) {\n    for (int k = 1; k <= 3 && i - k >= 0; k++)\n        dp[i] = (dp[i] + dp[i - k]) % MOD;\n}",
       "theorySnippet": "// Leo cầu thang — 1, 2, hoặc 3 nấc mỗi bước, mod 1e9+7\nconst int MOD = 1e9 + 7;\nvector<long long> dp(n + 1, 0);\ndp[0] = 1;\nfor (int i = 1; i <= n; i++) {\n    for (int k = 1; k <= 3 && i - k >= 0; k++)\n        dp[i] = (dp[i] + dp[i - k]) % MOD;\n}",
       "referenceProblem": [
@@ -3410,7 +3486,83 @@
           "url": "https://atcoder.jp/contests/dp/tasks/dp_d"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "knap-01",
+          "title": "Túi 0/1 cơ bản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "knapsack-01"
+          ]
+        },
+        {
+          "slug": "knap-unbounded",
+          "title": "Túi không giới hạn",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "knapsack-unbounded"
+          ]
+        },
+        {
+          "slug": "subset-sum-exist",
+          "title": "Tồn tại tập con tổng S",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "subset-sum"
+          ]
+        },
+        {
+          "slug": "subset-count-ways",
+          "title": "Đếm số tập con tổng S",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "subset-count"
+          ]
+        },
+        {
+          "slug": "partition-min-diff",
+          "title": "Chia 2 nhóm chênh nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "partition"
+          ]
+        }
+      ],
       "theory": "// Knapsack 0/1 — O(N*W)\nvector<long long> dp(W + 1, 0);\nfor (int i = 0; i < n; i++)\n    for (int w = W; w >= wt[i]; w--)\n        dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);\ncout << dp[W] << \"\\n\";",
       "theorySnippet": "// Knapsack 0/1 — O(N*W)\nvector<long long> dp(W + 1, 0);\nfor (int i = 0; i < n; i++)\n    for (int w = W; w >= wt[i]; w--)\n        dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);\ncout << dp[W] << \"\\n\";",
       "referenceProblem": [
@@ -3459,7 +3611,85 @@
           "url": "https://usaco.guide/CPH.pdf"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "lis-basic",
+          "title": "LIS cơ bản O(N²)",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lis"
+          ]
+        },
+        {
+          "slug": "lis-fast",
+          "title": "LIS O(N log N)",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lis",
+            "patience"
+          ]
+        },
+        {
+          "slug": "lcs-basic",
+          "title": "LCS hai chuỗi",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lcs"
+          ]
+        },
+        {
+          "slug": "edit-distance",
+          "title": "Khoảng cách chỉnh sửa",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "edit-distance"
+          ]
+        },
+        {
+          "slug": "lis-count",
+          "title": "Đếm số LIS độ dài tối đa",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lis",
+            "counting"
+          ]
+        }
+      ],
       "theory": "// LIS O(N log N)\nvector<int> tails;\nfor (int x : a) {\n    auto it = lower_bound(tails.begin(), tails.end(), x);\n    if (it == tails.end()) tails.push_back(x);\n    else *it = x;\n}\ncout << tails.size() << \"\\n\";",
       "theorySnippet": "// LIS O(N log N)\nvector<int> tails;\nfor (int x : a) {\n    auto it = lower_bound(tails.begin(), tails.end(), x);\n    if (it == tails.end()) tails.push_back(x);\n    else *it = x;\n}\ncout << tails.size() << \"\\n\";",
       "referenceProblem": [
