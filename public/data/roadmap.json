@@ -810,7 +810,158 @@
           "url": "https://cp-algorithms.com/string/string-hashing.html"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "str-len",
+          "title": "Đếm độ dài xâu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "basic"
+          ]
+        },
+        {
+          "slug": "str-reverse",
+          "title": "Đảo ngược xâu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "reverse"
+          ]
+        },
+        {
+          "slug": "str-palindrome",
+          "title": "Xâu đối xứng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "palindrome"
+          ]
+        },
+        {
+          "slug": "str-countchar",
+          "title": "Đếm ký tự",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "count"
+          ]
+        },
+        {
+          "slug": "str-tolower",
+          "title": "Chuyển chữ thường",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "tolower"
+          ]
+        },
+        {
+          "slug": "str-substr-count",
+          "title": "Đếm số lần xuất hiện xâu con (naive)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "substring"
+          ]
+        },
+        {
+          "slug": "str-anagram",
+          "title": "Kiểm tra anagram",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "anagram"
+          ]
+        },
+        {
+          "slug": "str-split-words",
+          "title": "Đếm từ trong câu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "parsing"
+          ]
+        },
+        {
+          "slug": "str-replace-char",
+          "title": "Thay thế ký tự",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "replace"
+          ]
+        },
+        {
+          "slug": "str-vowel-count",
+          "title": "Đếm nguyên âm",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "count"
+          ]
+        }
+      ],
       "theory": "// Đếm tần số + palindrome check\nint cnt[26] = {0};\nfor (char c : s) cnt[c - 'a']++;\nbool isPal = true;\nfor (int i = 0, j = s.size() - 1; i < j; i++, j--)\n    if (s[i] != s[j]) { isPal = false; break; }",
       "theorySnippet": "// Đếm tần số + palindrome check\nint cnt[26] = {0};\nfor (char c : s) cnt[c - 'a']++;\nbool isPal = true;\nfor (int i = 0, j = s.size() - 1; i < j; i++, j--)\n    if (s[i] != s[j]) { isPal = false; break; }",
       "referenceProblem": [
@@ -852,7 +1003,162 @@
           "url": "https://wiki.vnoi.info/algo/basic/sorting"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "sort-asc",
+          "title": "Sắp xếp tăng dần",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "basic"
+          ]
+        },
+        {
+          "slug": "sort-desc",
+          "title": "Sắp xếp giảm dần",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "comparator"
+          ]
+        },
+        {
+          "slug": "sort-stable-pair",
+          "title": "Sắp xếp ổn định theo cặp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "pair",
+            "stable"
+          ]
+        },
+        {
+          "slug": "sort-distinct-count",
+          "title": "Đếm số phần tử phân biệt",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "unique"
+          ]
+        },
+        {
+          "slug": "sort-median",
+          "title": "Trung vị",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "median"
+          ]
+        },
+        {
+          "slug": "sort-pairs-mate",
+          "title": "Ghép cặp tối thiểu chênh lệch",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "greedy"
+          ]
+        },
+        {
+          "slug": "sort-bytwo-keys",
+          "title": "Sắp xếp 2 khoá",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "comparator",
+            "multi-key"
+          ]
+        },
+        {
+          "slug": "sort-bucket-count",
+          "title": "Sắp xếp theo nhóm chữ số",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "bucket"
+          ]
+        },
+        {
+          "slug": "sort-mergetwo",
+          "title": "Hợp nhất 2 dãy đã sắp xếp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "merge",
+            "two-pointers"
+          ]
+        },
+        {
+          "slug": "sort-find-kth",
+          "title": "Phần tử thứ K sau sắp xếp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "nth-element",
+            "kth"
+          ]
+        }
+      ],
       "theory": "// Sort struct theo (khoá 1 tăng, khoá 2 giảm)\nstruct Item { int a, b; };\nsort(v.begin(), v.end(), [](const Item& x, const Item& y){\n    if (x.a != y.a) return x.a < y.a;\n    return x.b > y.b;\n});",
       "theorySnippet": "// Sort struct theo (khoá 1 tăng, khoá 2 giảm)\nstruct Item { int a, b; };\nsort(v.begin(), v.end(), [](const Item& x, const Item& y){\n    if (x.a != y.a) return x.a < y.a;\n    return x.b > y.b;\n});",
       "referenceProblem": [
