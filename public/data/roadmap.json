@@ -1235,7 +1235,158 @@
           "url": "https://vnoi.info/algo/greedy-new"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "greedy-coin",
+          "title": "Đổi tiền tham lam",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "coin"
+          ]
+        },
+        {
+          "slug": "greedy-activity",
+          "title": "Hoạt động không xung đột",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "interval"
+          ]
+        },
+        {
+          "slug": "greedy-min-platforms",
+          "title": "Số sân ga tối thiểu",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "sweep"
+          ]
+        },
+        {
+          "slug": "greedy-tasks-deadline",
+          "title": "Lịch trình deadline",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "deadline"
+          ]
+        },
+        {
+          "slug": "greedy-fuel-station",
+          "title": "Đổ xăng đường dài",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "fuel"
+          ]
+        },
+        {
+          "slug": "greedy-fractional-knapsack",
+          "title": "Túi đồ phân số",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "knapsack"
+          ]
+        },
+        {
+          "slug": "greedy-min-cost-cut",
+          "title": "Cắt thanh tre tốn ít nhất",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "huffman"
+          ]
+        },
+        {
+          "slug": "greedy-min-water",
+          "title": "Tưới cây tham lam",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "interval-cover"
+          ]
+        },
+        {
+          "slug": "greedy-ratio-jobs",
+          "title": "Lịch trình tỉ số",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "ratio"
+          ]
+        },
+        {
+          "slug": "greedy-station-supply",
+          "title": "Phân phối nước cứu trợ",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "sweep"
+          ]
+        }
+      ],
       "theory": "// Activity Selection — chọn nhiều job nhất\nsort(v.begin(), v.end(), [](auto& a, auto& b){ return a.second < b.second; });\nint cnt = 0, last = INT_MIN;\nfor (auto& [s, e] : v)\n    if (s >= last) { cnt++; last = e; }\ncout << cnt << \"\\n\";",
       "theorySnippet": "// Activity Selection — chọn nhiều job nhất\nsort(v.begin(), v.end(), [](auto& a, auto& b){ return a.second < b.second; });\nint cnt = 0, last = INT_MIN;\nfor (auto& [s, e] : v)\n    if (s >= last) { cnt++; last = e; }\ncout << cnt << \"\\n\";",
       "referenceProblem": [
@@ -1283,7 +1434,158 @@
           "url": "https://wiki.vnoi.info/algo/basic/two-pointers"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "tp-pair-sum",
+          "title": "Đếm cặp tổng K",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sort"
+          ]
+        },
+        {
+          "slug": "tp-longest-subarr",
+          "title": "Đoạn dài nhất với tổng ≤ S",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sliding-window"
+          ]
+        },
+        {
+          "slug": "tp-distinct-window",
+          "title": "Cửa sổ phân biệt nhiều nhất",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sliding-window"
+          ]
+        },
+        {
+          "slug": "tp-3sum-zero",
+          "title": "3-Sum bằng 0",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sort"
+          ]
+        },
+        {
+          "slug": "tp-container-water",
+          "title": "Bình chứa nước lớn nhất",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "geometry"
+          ]
+        },
+        {
+          "slug": "tp-window-min-len",
+          "title": "Cửa sổ ngắn nhất tổng ≥ S",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sliding-window"
+          ]
+        },
+        {
+          "slug": "tp-distinct-pair-bs",
+          "title": "Số cặp |a_i − a_j| ≤ K",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sort"
+          ]
+        },
+        {
+          "slug": "tp-zero-sum-segments",
+          "title": "Đoạn liên tiếp tổng 0",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "tp-shrink-twosum-sorted",
+          "title": "Đôi tổng K trong dãy đã sắp xếp",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sorted"
+          ]
+        },
+        {
+          "slug": "tp-stream-median-easy",
+          "title": "Trung vị 2 dãy",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "merge"
+          ]
+        }
+      ],
       "theory": "// Subarray sum K — đếm số đoạn tổng = K trên mảng dương\nint l = 0; long long sum = 0, ans = 0;\nfor (int r = 0; r < n; r++) {\n    sum += a[r];\n    while (sum > k && l <= r) sum -= a[l++];\n    if (sum == k) ans++;\n}",
       "theorySnippet": "// Subarray sum K — đếm số đoạn tổng = K trên mảng dương\nint l = 0; long long sum = 0, ans = 0;\nfor (int r = 0; r < n; r++) {\n    sum += a[r];\n    while (sum > k && l <= r) sum -= a[l++];\n    if (sum == k) ans++;\n}",
       "referenceProblem": [
@@ -1332,7 +1634,158 @@
           "url": "https://wiki.vnoi.info/algo/data-structures/prefix-sum-and-difference-array"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "ps-rangesum-1d",
+          "title": "Tổng đoạn 1D",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "ps-rangesum-2d",
+          "title": "Tổng đoạn 2D",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "2d"
+          ]
+        },
+        {
+          "slug": "ps-diff-arr",
+          "title": "Cập nhật đoạn bằng mảng hiệu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "diff-array"
+          ]
+        },
+        {
+          "slug": "ps-binary-prefix",
+          "title": "Đếm bit 1 tiền tố",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "string"
+          ]
+        },
+        {
+          "slug": "ps-max-subarr-allpos",
+          "title": "Tổng cực đại đoạn (≥ 0)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "max"
+          ]
+        },
+        {
+          "slug": "ps-divisible-k",
+          "title": "Đoạn tổng chia hết K",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "mod"
+          ]
+        },
+        {
+          "slug": "ps-xor-prefix",
+          "title": "Tổng XOR đoạn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "xor"
+          ]
+        },
+        {
+          "slug": "ps-update-pointwise",
+          "title": "Cập nhật điểm + truy vấn đoạn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "fenwick"
+          ]
+        },
+        {
+          "slug": "ps-diff-2d-update",
+          "title": "Cập nhật chữ nhật 2D",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "2d",
+            "diff"
+          ]
+        },
+        {
+          "slug": "ps-equilibrium",
+          "title": "Chỉ số cân bằng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "find"
+          ]
+        }
+      ],
       "theory": "// Difference array — Q range updates trong O(Q+N)\nvector<long long> d(n + 2, 0);\nfor (auto [l, r, x] : updates) { d[l] += x; d[r + 1] -= x; }\nvector<long long> a(n + 1, 0);\nfor (int i = 1; i <= n; i++) a[i] = a[i - 1] + d[i];",
       "theorySnippet": "// Difference array — Q range updates trong O(Q+N)\nvector<long long> d(n + 2, 0);\nfor (auto [l, r, x] : updates) { d[l] += x; d[r + 1] -= x; }\nvector<long long> a(n + 1, 0);\nfor (int i = 1; i <= n; i++) a[i] = a[i - 1] + d[i];",
       "referenceProblem": [
@@ -1374,7 +1827,157 @@
           "url": "https://wiki.vnoi.info/algo/basic/binary-search"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "bs-find-x",
+          "title": "Tìm kiếm nhị phân cơ bản",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search"
+          ]
+        },
+        {
+          "slug": "bs-lower-bound",
+          "title": "Tìm phần tử ≥ X đầu tiên",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "lower-bound"
+          ]
+        },
+        {
+          "slug": "bs-parametric-mindist",
+          "title": "Đặt N điểm tối đa khoảng cách",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-split-array-min-max",
+          "title": "Chia N phần tử thành K đoạn tổng min-max",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-rope-cut",
+          "title": "Cắt dây thành N đoạn dài K nhất",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-koko-bananas",
+          "title": "Khỉ ăn chuối",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-sqrt-int",
+          "title": "Căn bậc 2 nguyên",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "sqrt"
+          ]
+        },
+        {
+          "slug": "bs-painters-partition",
+          "title": "Phân công thợ sơn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-rotated",
+          "title": "Tìm trong dãy sort xoay",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "rotated"
+          ]
+        },
+        {
+          "slug": "bs-double-precision",
+          "title": "Bình phương đến độ chính xác",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "double"
+          ]
+        }
+      ],
       "theory": "// BS thủ công — tìm phần tử đầu tiên >= x\nint lo = 0, hi = n;\nwhile (lo < hi) {\n    int mid = (lo + hi) >> 1;\n    if (a[mid] < x) lo = mid + 1;\n    else hi = mid;\n}\nif (lo == n) cout << -1; else cout << lo;",
       "theorySnippet": "// BS thủ công — tìm phần tử đầu tiên >= x\nint lo = 0, hi = n;\nwhile (lo < hi) {\n    int mid = (lo + hi) >> 1;\n    if (a[mid] < x) lo = mid + 1;\n    else hi = mid;\n}\nif (lo == n) cout << -1; else cout << lo;",
       "referenceProblem": [

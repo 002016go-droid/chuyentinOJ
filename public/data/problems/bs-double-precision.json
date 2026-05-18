@@ -1,0 +1,213 @@
+{
+  "slug": "bs-double-precision",
+  "title": "Bình phương đến độ chính xác",
+  "titleEn": "Sqrt double",
+  "module": "roadmap",
+  "topicId": "binary-search",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S3"
+  ],
+  "difficulty": 3,
+  "maxStars": 3,
+  "tags": [
+    "binary-search",
+    "double"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho số thực x (1 ≤ x ≤ 10^9). Tính √x in với 4 chữ số sau dấu phẩy. Bài luyện binary search trên số thực — quan sát: lặp đủ số lần (~50) hoặc dừng khi hi - lo < epsilon.",
+  "vnPattern": "Sqrt double — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "PRECISIO.INP",
+    "outputFile": "PRECISIO.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ x ≤ 100"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ x ≤ 10^4"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ x ≤ 10^9"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "19\n",
+      "output": "4.3589\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "11\n",
+      "output": "3.3166\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "19\n",
+      "output": "4.3589\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "11\n",
+      "output": "3.3166\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "26\n",
+      "output": "5.0990\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "42\n",
+      "output": "6.4807\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "95\n",
+      "output": "9.7468\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "78\n",
+      "output": "8.8318\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "10\n",
+      "output": "3.1623\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "1870\n",
+      "output": "43.2435\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "1069\n",
+      "output": "32.6956\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "2593\n",
+      "output": "50.9215\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "4135\n",
+      "output": "64.3040\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "9499\n",
+      "output": "97.4628\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "7755\n",
+      "output": "88.0625\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "964\n",
+      "output": "31.0483\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "186911498\n",
+      "output": "13671.5580\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "106833986\n",
+      "output": "10336.0527\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "259283177\n",
+      "output": "16102.2724\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "413484833\n",
+      "output": "20334.3265\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "949836510\n",
+      "output": "30819.4177\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "775401429\n",
+      "output": "27846.0308\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "96335167\n",
+      "output": "9815.0480\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Binary search double: lo = 0, hi = x. Lặp ~100 lần.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "mid · mid ≤ x → lo = mid; else hi = mid.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "In `setprecision(4) << fixed << lo`.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Binary search trên số thực, O(log(1/eps)).",
+  "solutionSketch": "double lo = 0, hi = x; for (int i = 0; i < 100; ++i) { double mid = (lo + hi) / 2; if (mid * mid <= x) lo = mid; else hi = mid; } cout << fixed << setprecision(4) << lo;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}
