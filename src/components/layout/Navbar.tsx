@@ -18,6 +18,7 @@ const ITEMS: NavItem[] = [
   { to: '/entrance', label: 'Tuyển sinh' },
   { to: '/learning', label: '80% kiến thức' },
   { to: '/techniques', label: 'Kỹ thuật' },
+  { to: '/sources', label: 'Nguồn' },
   { to: '/ranking', label: 'Đánh giá' },
   { to: '/profile', label: 'Hồ sơ' },
 ]

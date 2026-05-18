@@ -23,6 +23,7 @@ import { AdminPage } from './pages/AdminPage'
 import { LearningPage } from './pages/LearningPage'
 import { TemplatesPage } from './pages/TemplatesPage'
 import { TechniquesPage } from './pages/TechniquesPage'
+import { SourcesPage } from './pages/SourcesPage'
 import { HiddenPage } from './pages/HiddenPage'
 
 function AnimatedRoutes(props: ReturnType<typeof useEasterEggs>['api']) {
@@ -132,6 +133,14 @@ function AnimatedRoutes(props: ReturnType<typeof useEasterEggs>['api']) {
           element={
             <RequireAuth>
               <TechniquesPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/sources"
+          element={
+            <RequireAuth>
+              <SourcesPage />
             </RequireAuth>
           }
         />
