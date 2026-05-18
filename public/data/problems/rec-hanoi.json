@@ -1,0 +1,213 @@
+{
+  "slug": "rec-hanoi",
+  "title": "Tháp Hà Nội",
+  "titleEn": "Tower of Hanoi",
+  "module": "roadmap",
+  "topicId": "recursion-backtracking",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S4"
+  ],
+  "difficulty": 3,
+  "maxStars": 3,
+  "tags": [
+    "recursion",
+    "classic"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Trong trò chơi Tháp Hà Nội cổ điển: 3 cọc A, B, C; N đĩa trên cọc A (đĩa to nhất ở dưới). Mỗi bước: chuyển 1 đĩa trên cùng từ 1 cọc sang cọc khác, không được đặt đĩa to lên đĩa nhỏ. Đếm số bước tối thiểu chuyển N đĩa từ A sang C. Đáp án 2^N - 1 — bài luyện đệ quy.",
+  "vnPattern": "Tháp Hà Nội — đề HSG TP lớp 9.",
+  "fileIO": {
+    "inputFile": "HANOI.INP",
+    "outputFile": "HANOI.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 30"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 60 (cần long long)"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 100; mod 10^9+7"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "7\n",
+      "output": "127\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "9\n",
+      "output": "511\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "7\n",
+      "output": "127\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "9\n",
+      "output": "511\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "15\n",
+      "output": "32767\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "1\n",
+      "output": "1\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "13\n",
+      "output": "8191\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "15\n",
+      "output": "32767\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "23\n",
+      "output": "8388607\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "36\n",
+      "output": "68719476735\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "38\n",
+      "output": "274877906943\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "44\n",
+      "output": "17592186044415\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "30\n",
+      "output": "1073741823\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "42\n",
+      "output": "4398046511103\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "45\n",
+      "output": "35184372088831\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "52\n",
+      "output": "4503599627370495\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "68\n",
+      "output": "317504064\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "71\n",
+      "output": "540032505\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "79\n",
+      "output": "248320569\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "60\n",
+      "output": "536396503\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "76\n",
+      "output": "281040072\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "80\n",
+      "output": "496641139\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "90\n",
+      "output": "560523803\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Đệ quy: chuyển N-1 đĩa từ A → B (qua C), chuyển đĩa thứ N từ A → C, chuyển N-1 đĩa từ B → C (qua A).",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Tổng số bước f(N) = 2·f(N-1) + 1 = 2^N - 1.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Subtask 3: fast power, mod.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Công thức 2^N - 1, fast power cho N lớn.",
+  "solutionSketch": "long long ans = pw(2, N, MOD) - 1; if (ans < 0) ans += MOD; cout << ans;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

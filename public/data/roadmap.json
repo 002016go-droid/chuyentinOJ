@@ -2024,7 +2024,95 @@
           "url": "https://usaco.guide/silver/binary-search"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "param-cow-stalls",
+          "title": "Đặt bò vào chuồng (Aggressive Cows)",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric",
+            "binary-search"
+          ]
+        },
+        {
+          "slug": "param-min-max-truck",
+          "title": "Tải hàng N xe min-max",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric",
+            "split"
+          ]
+        },
+        {
+          "slug": "param-station-radio",
+          "title": "Bán kính sóng tối thiểu",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric",
+            "cover"
+          ]
+        },
+        {
+          "slug": "param-magnet-strength",
+          "title": "Sức mạnh nam châm",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric"
+          ]
+        },
+        {
+          "slug": "param-card-deal",
+          "title": "Chia bài đều",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric"
+          ]
+        },
+        {
+          "slug": "param-pizza-share",
+          "title": "Chia bánh pizza",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric"
+          ]
+        }
+      ],
       "theory": "// Aggressive Cows — max distance min\nauto check = [&](long long d) {\n    int cnt = 1; long long last = a[0];\n    for (int i = 1; i < n; i++)\n        if (a[i] - last >= d) { cnt++; last = a[i]; }\n    return cnt >= k;\n};\nlong long lo = 1, hi = a.back() - a[0];\nwhile (lo < hi) {\n    long long mid = (lo + hi + 1) >> 1;\n    if (check(mid)) lo = mid; else hi = mid - 1;\n}",
       "theorySnippet": "// Aggressive Cows — max distance min\nauto check = [&](long long d) {\n    int cnt = 1; long long last = a[0];\n    for (int i = 1; i < n; i++)\n        if (a[i] - last >= d) { cnt++; last = a[i]; }\n    return cnt >= k;\n};\nlong long lo = 1, hi = a.back() - a[0];\nwhile (lo < hi) {\n    long long mid = (lo + hi + 1) >> 1;\n    if (check(mid)) lo = mid; else hi = mid - 1;\n}",
       "referenceProblem": [
@@ -2066,7 +2154,157 @@
           "url": "https://cp-algorithms.com/"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "rec-factorial",
+          "title": "Giai thừa đệ quy",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion"
+          ]
+        },
+        {
+          "slug": "rec-fib",
+          "title": "Fibonacci",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "dp"
+          ]
+        },
+        {
+          "slug": "rec-subset-sum",
+          "title": "Tổng tập con",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-permutation",
+          "title": "Sinh hoán vị",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-nqueen",
+          "title": "N quân hậu",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-sudoku-3x3",
+          "title": "Sudoku 3×3",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-power-mod",
+          "title": "Lũy thừa modulo nhanh",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "fast-power"
+          ]
+        },
+        {
+          "slug": "rec-combinations",
+          "title": "Tổ hợp K trong N",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "combinatorics"
+          ]
+        },
+        {
+          "slug": "rec-hanoi",
+          "title": "Tháp Hà Nội",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "classic"
+          ]
+        },
+        {
+          "slug": "rec-gen-bracket",
+          "title": "Sinh dãy ngoặc đúng",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        }
+      ],
       "theory": "// Sinh tổ hợp k phần tử từ n\nvoid gen(int start, vector<int>& cur, int n, int k) {\n    if ((int)cur.size() == k) { /* in cur */ return; }\n    for (int i = start; i < n; i++) {\n        cur.push_back(i);\n        gen(i + 1, cur, n, k);\n        cur.pop_back();\n    }\n}",
       "theorySnippet": "// Sinh tổ hợp k phần tử từ n\nvoid gen(int start, vector<int>& cur, int n, int k) {\n    if ((int)cur.size() == k) { /* in cur */ return; }\n    for (int i = start; i < n; i++) {\n        cur.push_back(i);\n        gen(i + 1, cur, n, k);\n        cur.pop_back();\n    }\n}",
       "referenceProblem": [
@@ -2109,7 +2347,95 @@
           "url": "https://cp-algorithms.com/various/meet_in_the_middle.html"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "mitm-subset-sum",
+          "title": "Tổng tập con (meet in middle)",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm"
+          ]
+        },
+        {
+          "slug": "mitm-pair-zero",
+          "title": "4 số tổng 0",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm"
+          ]
+        },
+        {
+          "slug": "mitm-knap",
+          "title": "Knapsack value MITM",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm",
+            "knapsack"
+          ]
+        },
+        {
+          "slug": "mitm-twosum-pos",
+          "title": "Cặp vị trí tổng S (MITM 2 lần)",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm"
+          ]
+        },
+        {
+          "slug": "mitm-bitmask-cover",
+          "title": "Phủ bit MITM",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm",
+            "bitmask"
+          ]
+        },
+        {
+          "slug": "mitm-mod-pair",
+          "title": "Cặp tổng ≡ 0 (mod M)",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm",
+            "mod"
+          ]
+        }
+      ],
       "theory": "// MITM — Sum of subset = T\nvector<long long> L, R;\nint half = n / 2;\nfor (int m = 0; m < (1 << half); m++) {\n    long long s = 0;\n    for (int i = 0; i < half; i++) if (m & (1 << i)) s += a[i];\n    L.push_back(s);\n}\nsort(R.begin(), R.end());\nlong long ans = 0;\nfor (auto s : L) ans += upper_bound(R.begin(), R.end(), T - s) - lower_bound(R.begin(), R.end(), T - s);",
       "theorySnippet": "// MITM — Sum of subset = T\nvector<long long> L, R;\nint half = n / 2;\nfor (int m = 0; m < (1 << half); m++) {\n    long long s = 0;\n    for (int i = 0; i < half; i++) if (m & (1 << i)) s += a[i];\n    L.push_back(s);\n}\nsort(R.begin(), R.end());\nlong long ans = 0;\nfor (auto s : L) ans += upper_bound(R.begin(), R.end(), T - s) - lower_bound(R.begin(), R.end(), T - s);",
       "referenceProblem": [
@@ -2150,7 +2476,150 @@
           "url": "https://en.cppreference.com/w/cpp/container"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "stl-vector-rotate",
+          "title": "Xoay vector",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "vector"
+          ]
+        },
+        {
+          "slug": "stl-set-distinct",
+          "title": "Đếm phần tử khác nhau",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "set"
+          ]
+        },
+        {
+          "slug": "stl-map-freq",
+          "title": "Đếm tần số (map)",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "map"
+          ]
+        },
+        {
+          "slug": "stl-pq-merge",
+          "title": "Trộn K dãy đã sort",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "priority_queue",
+            "heap"
+          ]
+        },
+        {
+          "slug": "stl-deque-rolling-avg",
+          "title": "Trung bình trượt",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "deque"
+          ]
+        },
+        {
+          "slug": "stl-multiset-median",
+          "title": "Median trượt (multiset)",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "multiset"
+          ]
+        },
+        {
+          "slug": "stl-pair-sort",
+          "title": "Sắp xếp cặp",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "pair",
+            "sort"
+          ]
+        },
+        {
+          "slug": "stl-stack-reverse-stk",
+          "title": "Đảo dãy bằng stack",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "stack"
+          ]
+        },
+        {
+          "slug": "stl-queue-sim",
+          "title": "Mô phỏng hàng đợi",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "queue"
+          ]
+        },
+        {
+          "slug": "stl-priority-task",
+          "title": "Lập lịch ưu tiên",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "priority_queue"
+          ]
+        }
+      ],
       "theory": "// min-heap với priority_queue + lambda\nauto cmp = [](int a, int b){ return a > b; };\npriority_queue<int, vector<int>, decltype(cmp)> pq(cmp);\nset<int> s; s.insert(5); auto it = s.lower_bound(3);\nif (it != s.end()) cout << *it; // phần tử nhỏ nhất >= 3",
       "theorySnippet": "// min-heap với priority_queue + lambda\nauto cmp = [](int a, int b){ return a > b; };\npriority_queue<int, vector<int>, decltype(cmp)> pq(cmp);\nset<int> s; s.insert(5); auto it = s.lower_bound(3);\nif (it != s.end()) cout << *it; // phần tử nhỏ nhất >= 3",
       "referenceProblem": [
