@@ -1,0 +1,782 @@
+{
+  "topics": [
+    {
+      "id": "a01-max-flow",
+      "group": "A",
+      "groupName": "A. Đồ thị nâng cao",
+      "title": "Max Flow — Dinic",
+      "titleVi": "Luồng cực đại — thuật toán Dinic",
+      "tier": "T4",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "Bài toán luồng cực đại tìm flow lớn nhất chảy từ source s đến sink t trên đồ thị có hướng với mỗi cạnh có capacity. Dinic là thuật toán O(V²·E) tổng quát, O(E·√V) trên đồ thị nhị phân. Ý tưởng: lặp lại 2 bước — BFS để tính level (đường ngắn nhất theo số cạnh), sau đó DFS tìm blocking flow theo level graph. Một block phase tăng độ dài đường augment ít nhất 1 → có tối đa V phase. Tối ưu hoá: current-edge trick (mỗi DFS không lặp lại edge đã saturated), scaling.",
+      "codeExample": "// Dinic — pseudo\nstruct Edge { int to, rev; long long cap; };\nvector<vector<Edge>> g(n);\nvoid addEdge(int u, int v, long long c) {\n    g[u].push_back({v, (int)g[v].size(), c});\n    g[v].push_back({u, (int)g[u].size() - 1, 0});\n}\n// BFS level + DFS blocking flow — code đầy đủ ở CP-Algorithms.",
+      "complexity": "O(V²·E) tổng quát, O(E·√V) bipartite",
+      "prerequisites": [
+        "BFS",
+        "DFS",
+        "Adjacency list"
+      ],
+      "vnPattern": "Bài \"vận chuyển hàng\" giữa nhà máy và kho — rất hiếm ở HSG TP, có ở chuyên Tin nâng cao và QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Dinic",
+          "url": "https://cp-algorithms.com/graph/dinic.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOI — Max Flow",
+          "url": "https://wiki.vnoi.info/algo/graph-theory/max-flow",
+          "source": "VNOI",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "a02-min-cost-flow",
+      "group": "A",
+      "groupName": "A. Đồ thị nâng cao",
+      "title": "Min-Cost Max-Flow",
+      "titleVi": "Luồng cực đại chi phí cực tiểu",
+      "tier": "T4",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "Mỗi cạnh có cả capacity và cost. Tìm flow value cực đại sao cho tổng cost · flow nhỏ nhất. Thuật toán cơ bản: SPFA (Bellman-Ford queue) tìm đường rẻ nhất, augment. Khi đồ thị có cạnh âm dùng SPFA hoặc thay thế bằng Johnson + Dijkstra trên reduced cost. Bài: bipartite matching trọng số tổng nhỏ nhất, transportation problem.",
+      "codeExample": "// MCMF — pseudo (SPFA shortest path)\n// Mỗi vòng: tìm path rẻ nhất s -> t bằng SPFA trên residual graph với cost (cạnh ngược âm cost), augment, cộng cost · flow.",
+      "complexity": "O(V·E·F) với F là max flow",
+      "prerequisites": [
+        "Max Flow",
+        "Dijkstra",
+        "Bellman-Ford"
+      ],
+      "vnPattern": "Hiếm; xuất hiện ở đề thi đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — MCMF",
+          "url": "https://cp-algorithms.com/graph/min_cost_flow.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "a03-bipartite-matching",
+      "group": "A",
+      "groupName": "A. Đồ thị nâng cao",
+      "title": "Bipartite Matching — Hopcroft-Karp",
+      "titleVi": "Ghép cặp đồ thị 2 phía — Hopcroft-Karp",
+      "tier": "T3",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "Đồ thị có 2 tập đỉnh L, R; cạnh nối L-R. Tìm matching cực đại = số cặp lớn nhất không chia sẻ đỉnh. Hungarian O(V³) cho trọng số. Bipartite không trọng số: dùng Hopcroft-Karp O(E·√V) — kết hợp BFS để tìm shortest augmenting path, DFS để augment đồng thời nhiều path.",
+      "codeExample": "// Hopcroft-Karp pseudo: lặp { BFS từ L unmatched theo level; DFS augment nhiều path; } đến khi không còn augmenting path.",
+      "complexity": "O(E·√V) — Hopcroft-Karp; O(V·E) — Kuhn cơ bản",
+      "prerequisites": [
+        "BFS",
+        "DFS",
+        "Max Flow"
+      ],
+      "vnPattern": "Bài \"ghép sinh viên với lớp\" — hiếm ở HSG TP, có ở chuyên Tin nâng cao.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Hopcroft-Karp",
+          "url": "https://cp-algorithms.com/graph/kuhn_maximum_bipartite_matching.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "a04-2sat",
+      "group": "A",
+      "groupName": "A. Đồ thị nâng cao",
+      "title": "2-SAT",
+      "titleVi": "2-SAT (2-satisfiability)",
+      "tier": "T4",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "Cho hệ điều kiện kiểu (x_i ∨ x_j) và lượng (¬x_i ∨ x_k), kiểm tra có gán True/False cho mỗi biến để mọi điều kiện đều thoả không. Implication graph: (a ∨ b) tương đương (¬a → b) và (¬b → a). Tìm SCC trên implication graph; biến và phủ định cùng SCC → không thoả; ngược lại gán theo thứ tự topo của SCC.",
+      "codeExample": "// 2-SAT: build implication graph (2N đỉnh), tìm SCC (Tarjan/Kosaraju). Nếu var i và ¬i cùng SCC -> false. Else: gán True cho var có SCC lớn hơn trong topo order.",
+      "complexity": "O(N + M) với N biến, M clause",
+      "prerequisites": [
+        "SCC Tarjan",
+        "Topological sort"
+      ],
+      "vnPattern": "Hiếm; có ở đề chuyên Tin nâng cao.",
+      "references": [
+        {
+          "label": "CP-Algorithms — 2-SAT",
+          "url": "https://cp-algorithms.com/graph/2SAT.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "a05-tarjan-bridges",
+      "group": "A",
+      "groupName": "A. Đồ thị nâng cao",
+      "title": "Bridges + Articulation Points",
+      "titleVi": "Cầu + Khớp trong đồ thị vô hướng",
+      "tier": "T3",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "Cầu = cạnh u-v sao cho xoá nó đồ thị mất kết nối. Khớp = đỉnh sao cho xoá nó đồ thị mất kết nối. Tarjan: 1 DFS, dùng `disc[v]` (thời điểm DFS vào v), `low[v]` (thời điểm DFS sớm nhất có thể đến từ subtree v qua back-edge). Cầu: u-v là cầu khi `low[v] > disc[u]`. Khớp: u là khớp khi có con v thoả `low[v] ≥ disc[u]` (hoặc u là root có ≥ 2 con).",
+      "codeExample": "int disc[N], low[N], timer = 0;\nvoid dfs(int u, int p) {\n    disc[u] = low[u] = ++timer;\n    for (int v : adj[u]) {\n        if (!disc[v]) { dfs(v, u); low[u] = min(low[u], low[v]); if (low[v] > disc[u]) bridges.push_back({u, v}); }\n        else if (v != p) low[u] = min(low[u], disc[v]);\n    }\n}",
+      "complexity": "O(V + E)",
+      "prerequisites": [
+        "DFS",
+        "Adjacency list"
+      ],
+      "vnPattern": "Hiếm; có ở chuyên Tin nâng cao.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Bridges",
+          "url": "https://cp-algorithms.com/graph/bridge-searching.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "a06-euler-circuit",
+      "group": "A",
+      "groupName": "A. Đồ thị nâng cao",
+      "title": "Eulerian Path/Circuit",
+      "titleVi": "Đường/Chu trình Euler — Hierholzer",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "difficulty": "advanced",
+      "description": "Đường Euler đi qua mỗi cạnh đúng 1 lần. Điều kiện: vô hướng có Euler path khi có 0 hoặc 2 đỉnh bậc lẻ; có Euler circuit khi mọi đỉnh bậc chẵn (và đồ thị liên thông trừ đỉnh cô lập). Hierholzer dùng stack, mỗi bước nếu đỉnh đỉnh stack còn cạnh chưa đi thì đi cạnh đó push đỉnh kế, không thì pop và thêm vào path. Đảo path cuối.",
+      "codeExample": "stack<int> st; vector<int> path; st.push(start);\nwhile (!st.empty()) {\n    int u = st.top();\n    if (!adj[u].empty()) { int v = adj[u].back(); adj[u].pop_back(); /* xoá cạnh ngược nếu vô hướng */ st.push(v); }\n    else { path.push_back(u); st.pop(); }\n}\nreverse(path.begin(), path.end());",
+      "complexity": "O(V + E)",
+      "prerequisites": [
+        "Adjacency list",
+        "DFS"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Eulerian",
+          "url": "https://cp-algorithms.com/graph/euler_path.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "b01-hld",
+      "group": "B",
+      "groupName": "B. Cây nâng cao",
+      "title": "Heavy-Light Decomposition",
+      "titleVi": "Phân rã Heavy-Light",
+      "tier": "T3",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "Chia cây N đỉnh thành ≤ log N chuỗi \"nặng\" (heavy chains). Với mỗi đỉnh u (không phải lá), con \"heavy\" là con có subtree lớn nhất, các con khác là \"light\". Path từ u đến v đi qua ≤ log N \"light edges\". Map mỗi heavy chain thành đoạn liên tiếp trên euler tour → path query thành ≤ log N range query trên segment tree. Hỗ trợ subtree query bằng [tin[u], tout[u]].",
+      "codeExample": "// HLD: 2 DFS — dfs1 tính size subtree + heavy child; dfs2 gán head[u] + pos[u] (vị trí trong array).\n// path query u-v: lặp { nếu head[u] != head[v]: query segtree[pos[head[u]]..pos[u]]; u = par[head[u]]; }",
+      "complexity": "O(N log² N) cho mỗi truy vấn path",
+      "prerequisites": [
+        "Segment Tree",
+        "Tree DFS",
+        "LCA"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — HLD",
+          "url": "https://cp-algorithms.com/graph/hld.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOI — HLD",
+          "url": "https://wiki.vnoi.info/algo/graph-theory/hld",
+          "source": "VNOI",
+          "difficulty": "hard"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "b02-centroid-decomp",
+      "group": "B",
+      "groupName": "B. Cây nâng cao",
+      "title": "Centroid Decomposition",
+      "titleVi": "Phân rã trọng tâm",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "Centroid của cây là đỉnh sao cho khi xoá nó, mọi subtree con ≤ N/2. Centroid decomposition: tìm centroid, xoá, đệ quy cho từng subtree. Cây phân rã có chiều cao O(log N). Áp dụng: path queries — mọi path đi qua đúng 1 centroid trong từng level (≤ log N).",
+      "codeExample": "// Find centroid: dfs tính size; centroid là đỉnh có max(size con, N - size đỉnh đó) ≤ N/2.\n// Decompose: build centroid tree.",
+      "complexity": "Build O(N log N), mỗi query O(log² N) tuỳ bài",
+      "prerequisites": [
+        "Tree DFS",
+        "Tree size"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Centroid decomposition",
+          "url": "https://cp-algorithms.com/graph/centroid-decomposition.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "b03-lca-sparse",
+      "group": "B",
+      "groupName": "B. Cây nâng cao",
+      "title": "LCA — Sparse Table",
+      "titleVi": "Tổ tiên chung gần nhất bằng Sparse Table",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "difficulty": "intermediate",
+      "description": "LCA(u, v) = đỉnh sâu nhất trên cây mà là tổ tiên của cả u và v. Binary lifting: precompute up[k][v] = tổ tiên 2^k của v. up[0][v] = par[v]; up[k][v] = up[k-1][up[k-1][v]]. Query: nhảy u/v lên cùng depth, sau đó binary lifting cả 2 nhảy lên đến khi gặp (kết quả là up[0][u] = up[0][v]).",
+      "codeExample": "int LOG = ceil(log2(N));\nvector<vector<int>> up(LOG + 1, vector<int>(N, 0));\n// dfs: up[0][v] = par.\nfor (int k = 1; k <= LOG; k++) for (int v = 1; v <= N; v++) up[k][v] = up[k-1][up[k-1][v]];\nint lca(int u, int v) {\n    if (depth[u] < depth[v]) swap(u, v);\n    int d = depth[u] - depth[v];\n    for (int k = 0; k <= LOG; k++) if (d & (1 << k)) u = up[k][u];\n    if (u == v) return u;\n    for (int k = LOG; k >= 0; k--) if (up[k][u] != up[k][v]) { u = up[k][u]; v = up[k][v]; }\n    return up[0][u];\n}",
+      "complexity": "Build O(N log N), query O(log N)",
+      "prerequisites": [
+        "Tree DFS",
+        "Binary Lifting"
+      ],
+      "vnPattern": "Đề chuyên Tin tỉnh — bài \"tổ tiên chung\". Có ở chuyên Tin lớp 10.",
+      "references": [
+        {
+          "label": "CP-Algorithms — LCA",
+          "url": "https://cp-algorithms.com/graph/lca.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "b04-tree-diameter",
+      "group": "B",
+      "groupName": "B. Cây nâng cao",
+      "title": "Tree Diameter",
+      "titleVi": "Đường kính cây",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "intermediate",
+      "description": "Đường kính cây = path dài nhất giữa 2 đỉnh. 2 cách: (1) 2 BFS — từ đỉnh bất kỳ tìm xa nhất u, từ u tìm xa nhất v, uv là đường kính. (2) DP — duyệt DFS, với mỗi u tính dp[u] = max chiều sâu con từ u trở xuống. Đường kính = max(dp[u] + dp[v] + 1) với u, v cùng cha.",
+      "codeExample": "long long diam = 0;\nfunction<long long(int,int)> dfs = [&](int u, int p) -> long long {\n    long long m1 = 0, m2 = 0;\n    for (int v : adj[u]) if (v != p) {\n        long long d = dfs(v, u) + 1;\n        if (d > m1) { m2 = m1; m1 = d; } else if (d > m2) m2 = d;\n    }\n    diam = max(diam, m1 + m2);\n    return m1;\n};\ndfs(1, 0);",
+      "complexity": "O(N)",
+      "prerequisites": [
+        "Tree DFS",
+        "BFS"
+      ],
+      "vnPattern": "CSES Tree Diameter — chuẩn của chuyên Tin tỉnh.",
+      "references": [
+        {
+          "label": "CSES — Tree Diameter",
+          "url": "https://cses.fi/problemset/task/1131",
+          "source": "CSES",
+          "difficulty": "easy"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "b05-tree-dp",
+      "group": "B",
+      "groupName": "B. Cây nâng cao",
+      "title": "Tree DP — Independent Set",
+      "titleVi": "DP trên cây — tập độc lập cực đại",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "intermediate",
+      "description": "Tập độc lập trên cây = tập đỉnh không có 2 đỉnh kề. dp[u][0] = max khi không chọn u; dp[u][1] = w[u] + Σ dp[v][0] với v là con; dp[u][0] = Σ max(dp[v][0], dp[v][1]). Áp dụng cho bài \"không thuê 2 quản đốc cùng cấp\" CSES Employees.",
+      "codeExample": "function<void(int,int)> dfs = [&](int u, int p){\n    dp[u][0] = 0; dp[u][1] = w[u];\n    for (int v : adj[u]) if (v != p) { dfs(v, u); dp[u][0] += max(dp[v][0], dp[v][1]); dp[u][1] += dp[v][0]; }\n};",
+      "complexity": "O(N)",
+      "prerequisites": [
+        "Tree DFS",
+        "Recursion",
+        "DP"
+      ],
+      "vnPattern": "Đề chuyên Tin lớp 10 — bài \"công ty cấp bậc\".",
+      "references": [
+        {
+          "label": "CSES — Tree Matching",
+          "url": "https://cses.fi/problemset/task/1130",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "c01-bitmask-tsp",
+      "group": "C",
+      "groupName": "C. DP nâng cao",
+      "title": "Bitmask DP — TSP",
+      "titleVi": "DP bitmask — Bài toán người đưa thư (TSP)",
+      "tier": "T3",
+      "skills": [
+        "S3",
+        "S4"
+      ],
+      "difficulty": "advanced",
+      "description": "TSP: N thành phố, ma trận chi phí d[i][j]; tìm chu trình thăm mỗi thành phố đúng 1 lần, tổng cost nhỏ nhất. dp[mask][last] = min cost đi qua tập mask kết thúc ở last. dp[1<<0][0] = 0; transition: dp[mask | (1<<v)][v] = min(dp[mask | (1<<v)][v], dp[mask][u] + d[u][v]) với v không trong mask. O(2^N · N²).",
+      "codeExample": "vector<vector<long long>> dp(1 << n, vector<long long>(n, LLONG_MAX));\ndp[1][0] = 0;\nfor (int mask = 1; mask < (1 << n); mask++)\n    for (int u = 0; u < n; u++) if ((mask & (1 << u)) && dp[mask][u] != LLONG_MAX)\n        for (int v = 0; v < n; v++) if (!(mask & (1 << v)))\n            dp[mask | (1 << v)][v] = min(dp[mask | (1 << v)][v], dp[mask][u] + d[u][v]);",
+      "complexity": "O(2^N · N²); N ≤ 18-20",
+      "prerequisites": [
+        "Bitmask",
+        "DP 1D",
+        "Subset enumeration"
+      ],
+      "vnPattern": "CSES Hamiltonian Flights. Hiếm trong HSG TP.",
+      "references": [
+        {
+          "label": "CSES — Hamiltonian Flights",
+          "url": "https://cses.fi/problemset/task/1690",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "c02-digit-dp",
+      "group": "C",
+      "groupName": "C. DP nâng cao",
+      "title": "Digit DP",
+      "titleVi": "DP chữ số",
+      "tier": "T3",
+      "skills": [
+        "S4"
+      ],
+      "difficulty": "advanced",
+      "description": "Đếm các số trong [L, R] thoả tính chất nào đó (ví dụ tổng chữ số chia hết cho K, không có 3 số 1 liên tiếp). Tính F(R) - F(L-1) với F(X) đếm số ≤ X thoả. State: (pos, tight, các tham số). pos = vị trí chữ số đang xét; tight = còn ở biên trên không. Memo theo (pos, params) khi !tight.",
+      "codeExample": "// F(X) = sum số trong [0, X] thoả; phân tích X thành chữ số d[].\nfunction<long long(int,bool,int)> f = [&](int pos, bool tight, int sum) -> long long {\n    if (pos == (int)d.size()) return /* check thoả */;\n    if (!tight && memo[pos][sum] != -1) return memo[pos][sum];\n    int limit = tight ? d[pos] : 9;\n    long long res = 0;\n    for (int x = 0; x <= limit; x++) res += f(pos + 1, tight && x == limit, sum + x);\n    if (!tight) memo[pos][sum] = res;\n    return res;\n};",
+      "complexity": "O(K · log R · 10) tuỳ params",
+      "prerequisites": [
+        "DP 1D",
+        "Recursion",
+        "Memoization"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CSES — Counting Numbers",
+          "url": "https://cses.fi/problemset/task/2220",
+          "source": "CSES",
+          "difficulty": "hard"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "c03-cht",
+      "group": "C",
+      "groupName": "C. DP nâng cao",
+      "title": "Convex Hull Trick",
+      "titleVi": "CHT — Tối ưu DP đường thẳng",
+      "tier": "T4",
+      "skills": [
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "DP dạng dp[i] = min_j (a[j] · x[i] + b[j]) + ... Mỗi j tương ứng 1 đường thẳng y = a · x + b. Duy trì envelope dưới (lower hull) bằng deque/stack — đường nào không bao giờ \"ưu\" ở bất kỳ x nào đều xoá. Query O(log N) hoặc O(1) khi x sorted.",
+      "codeExample": "// CHT — duy trì deque các đường, mỗi lần thêm đường mới xoá những đường ở cuối không ưu (cross-product check).\n// Query x: binary search hoặc pointer move.",
+      "complexity": "O(N log N) thêm + query; O(N) khi cả slope và x đơn điệu",
+      "prerequisites": [
+        "Geometry — cross product",
+        "DP 1D"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — CHT",
+          "url": "https://cp-algorithms.com/geometry/convex_hull_trick.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "c04-knuth-opt",
+      "group": "C",
+      "groupName": "C. DP nâng cao",
+      "title": "Knuth Optimization",
+      "titleVi": "Knuth Optimization cho Interval DP",
+      "tier": "T4",
+      "skills": [
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "DP dạng dp[l][r] = min_{l < k < r}(dp[l][k] + dp[k][r] + cost(l, r)) với cost thoả Knuth inequality (opt[l][r-1] ≤ opt[l][r] ≤ opt[l+1][r]) → giảm O(N³) xuống O(N²).",
+      "codeExample": "// Lưu opt[l][r] khi tính dp[l][r] = best k.\n// Loop k chỉ trong [opt[l][r-1], opt[l+1][r]].",
+      "complexity": "O(N²)",
+      "prerequisites": [
+        "Interval DP"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Knuth optimization",
+          "url": "https://cp-algorithms.com/dynamic_programming/knuth-optimization.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "c05-sos-dp",
+      "group": "C",
+      "groupName": "C. DP nâng cao",
+      "title": "SOS DP — Sum over Subsets",
+      "titleVi": "Tổng trên các tập con",
+      "tier": "T3",
+      "skills": [
+        "S3",
+        "S4"
+      ],
+      "difficulty": "advanced",
+      "description": "Tính f(S) = Σ_{T ⊆ S} g(T) với mọi S ⊆ {0,1,...,N-1}. Cách trực tiếp O(3^N); SOS DP O(2^N · N). Loop i = 0..N-1: với mỗi mask có bit i bật, dp[mask] += dp[mask ^ (1<<i)]. Áp dụng đếm tập con thoả tính chất, FWHT.",
+      "codeExample": "for (int i = 0; i < N; i++)\n    for (int mask = 0; mask < (1 << N); mask++) if (mask & (1 << i))\n        dp[mask] += dp[mask ^ (1 << i)];",
+      "complexity": "O(2^N · N)",
+      "prerequisites": [
+        "Bitmask",
+        "DP"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CF — SOS DP",
+          "url": "https://codeforces.com/blog/entry/45223",
+          "source": "Codeforces",
+          "difficulty": "hard"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "d01-segtree-lazy",
+      "group": "D",
+      "groupName": "D. Cấu trúc dữ liệu nâng cao",
+      "title": "Segment Tree — Lazy Propagation",
+      "titleVi": "Segment Tree với lazy propagation",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "Range update + range query trong O(log N). Mỗi node giữ \"lazy\" — phép cần lan xuống con khi visit con. Khi gặp node: nếu lazy ≠ 0, áp dụng lazy lên node con + cộng lazy của con, reset lazy node hiện tại.",
+      "codeExample": "struct Seg { vector<long long> t, lz; int n;\n    void push(int v, int l, int r) { if (lz[v]) { t[v] += lz[v] * (r - l + 1); if (l != r) { lz[2*v] += lz[v]; lz[2*v+1] += lz[v]; } lz[v] = 0; } }\n    void upd(int v, int l, int r, int ql, int qr, long long x) { push(v, l, r); if (qr < l || r < ql) return; if (ql <= l && r <= qr) { lz[v] += x; push(v, l, r); return; } int m = (l + r) / 2; upd(2*v, l, m, ql, qr, x); upd(2*v+1, m+1, r, ql, qr, x); t[v] = t[2*v] + t[2*v+1]; }\n};",
+      "complexity": "O(N) build, O(log N) per op",
+      "prerequisites": [
+        "Segment Tree",
+        "Recursion"
+      ],
+      "vnPattern": "Đề chuyên Tin tỉnh — bài \"tăng đoạn, tổng đoạn\".",
+      "references": [
+        {
+          "label": "CSES — Range Update Sum Queries",
+          "url": "https://cses.fi/problemset/task/1735",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "d02-fenwick-2d",
+      "group": "D",
+      "groupName": "D. Cấu trúc dữ liệu nâng cao",
+      "title": "Fenwick Tree 2D",
+      "titleVi": "BIT 2D — point update, range sum query",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "difficulty": "advanced",
+      "description": "BIT 2D dùng cho mảng 2D: point update, prefix sum query 2D. update(i, j, v): for (i2 = i; i2 ≤ N; i2 += i2 & -i2) for (j2 = j; j2 ≤ M; j2 += j2 & -j2) bit[i2][j2] += v. Query (i, j) = prefix sum [1..i][1..j].",
+      "codeExample": "long long bit[N+1][M+1];\nvoid upd(int i, int j, long long v) { for (int x = i; x <= N; x += x & -x) for (int y = j; y <= M; y += y & -y) bit[x][y] += v; }\nlong long qry(int i, int j) { long long s = 0; for (int x = i; x > 0; x -= x & -x) for (int y = j; y > 0; y -= y & -y) s += bit[x][y]; return s; }",
+      "complexity": "O(log² N) per op",
+      "prerequisites": [
+        "Fenwick Tree",
+        "2D Prefix Sum"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "VNOI — Fenwick 2D",
+          "url": "https://wiki.vnoi.info/algo/data-structures/fenwick",
+          "source": "VNOI",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "d03-persistent-segtree",
+      "group": "D",
+      "groupName": "D. Cấu trúc dữ liệu nâng cao",
+      "title": "Persistent Segment Tree",
+      "titleVi": "Persistent Segment Tree",
+      "tier": "T4",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "Phiên bản segtree giữ lịch sử — mỗi update tạo O(log N) node mới, share node còn lại với version cũ. Query version k như segtree thường nhưng dùng root[k]. Áp dụng: K-th smallest in range, MEX, persistent set/map.",
+      "codeExample": "// Mỗi update: tạo node mới copy từ cũ, sửa đường từ root đến leaf.\n// roots[k] = root version k.",
+      "complexity": "O(N log N) memory, O(log N) per op",
+      "prerequisites": [
+        "Segment Tree",
+        "Pointer-based tree"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Persistent Segment Tree",
+          "url": "https://cp-algorithms.com/data_structures/segment_tree.html#persistent-data-structures",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "d04-treap",
+      "group": "D",
+      "groupName": "D. Cấu trúc dữ liệu nâng cao",
+      "title": "Treap — Implicit Treap",
+      "titleVi": "Treap — BST cân bằng ngẫu nhiên",
+      "tier": "T4",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "Treap = BST theo key + heap theo priority random. Insert/Delete/Split/Merge O(log N) amortized. Implicit Treap: dùng size làm key ngầm → hỗ trợ insert/delete tại vị trí bất kỳ, reverse đoạn, shift đoạn O(log N).",
+      "codeExample": "// Code Treap split/merge — code dài, xem CP-Algorithms.",
+      "complexity": "O(log N) amortized per op",
+      "prerequisites": [
+        "BST",
+        "Recursion",
+        "Random priority"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Treap",
+          "url": "https://cp-algorithms.com/data_structures/treap.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "e01-fft",
+      "group": "E",
+      "groupName": "E. Toán + Xâu nâng cao",
+      "title": "FFT/NTT",
+      "titleVi": "FFT/NTT — Nhân đa thức nhanh",
+      "tier": "T4",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "Nhân 2 đa thức bậc N trong O(N log N). FFT dùng số phức (double), NTT dùng mod prime + nth root of unity. Convolution: c[i] = Σ_j a[j] · b[i-j]. Áp dụng: tính số cách đạt tổng W, đếm tổ hợp đa biến.",
+      "codeExample": "// FFT: iterative bit-reverse + butterfly. Code dài, ~50 dòng.",
+      "complexity": "O(N log N)",
+      "prerequisites": [
+        "Complex number",
+        "Modular arithmetic"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG / IOI.",
+      "references": [
+        {
+          "label": "CP-Algorithms — FFT",
+          "url": "https://cp-algorithms.com/algebra/fft.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "e02-mobius",
+      "group": "E",
+      "groupName": "E. Toán + Xâu nâng cao",
+      "title": "Mobius Function",
+      "titleVi": "Hàm Mobius + Mobius Inversion",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "difficulty": "expert",
+      "description": "μ(n): 0 nếu n có thừa số bình phương, (-1)^k nếu n là tích k số nguyên tố phân biệt, μ(1) = 1. Linear sieve tính μ trong O(N). Mobius Inversion: f(n) = Σ_{d|n} g(d) ⟺ g(n) = Σ_{d|n} μ(n/d) f(d). Đếm cặp coprime: Σ μ(d) · ⌊N/d⌋².",
+      "codeExample": "// Linear sieve: với mỗi composite c = p · q (q là smallest prime), mu[c] = (p == q) ? 0 : -mu[q].",
+      "complexity": "O(N log log N) cho sieve; O(sqrt N) cho query",
+      "prerequisites": [
+        "Sieve",
+        "Number Theory"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Mobius",
+          "url": "https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html#mobius-function",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "e03-suffix-automaton",
+      "group": "E",
+      "groupName": "E. Toán + Xâu nâng cao",
+      "title": "Suffix Automaton (SAM)",
+      "titleVi": "Suffix Automaton (SAM)",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "difficulty": "expert",
+      "description": "DAG nhỏ nhất chấp nhận mọi suffix của s. Mỗi node = 1 lớp tương đương endpos. Số node ≤ 2N - 1. Hỗ trợ: số substring phân biệt, k-th substring, longest common substring 2 xâu.",
+      "codeExample": "// SAM extend(c): tạo cur node, link parent thông qua suffix link. Code chuẩn ~40 dòng.",
+      "complexity": "O(N) build, O(|t|) query",
+      "prerequisites": [
+        "String",
+        "Tree DFS",
+        "DP on tree"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG / IOI.",
+      "references": [
+        {
+          "label": "CP-Algorithms — SAM",
+          "url": "https://cp-algorithms.com/string/suffix-automaton.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    },
+    {
+      "id": "e04-aho-corasick",
+      "group": "E",
+      "groupName": "E. Toán + Xâu nâng cao",
+      "title": "Aho-Corasick",
+      "titleVi": "Aho-Corasick — Multi-pattern matching",
+      "tier": "T4",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "expert",
+      "description": "Trie + fail link như KMP. Khớp nhiều pattern lên text trong O(|text| + Σ|pattern| + matches). Mỗi fail[u] = node sâu nhất ≠ u là suffix của u. Build bằng BFS từ root.",
+      "codeExample": "// Build Trie. BFS gán fail[u] = fail[parent].go(u's char) nếu có, else 0.",
+      "complexity": "O(Σ|pattern| · alphabet + |text|)",
+      "prerequisites": [
+        "Trie",
+        "BFS",
+        "KMP"
+      ],
+      "vnPattern": "Hiếm; có ở đội tuyển QG / IOI.",
+      "references": [
+        {
+          "label": "CP-Algorithms — Aho-Corasick",
+          "url": "https://cp-algorithms.com/string/aho_corasick.html",
+          "source": "CP-Algorithms",
+          "difficulty": "medium"
+        }
+      ],
+      "problems": [],
+      "referenceProblem": []
+    }
+  ],
+  "groups": [
+    {
+      "id": "A",
+      "name": "A. Đồ thị nâng cao"
+    },
+    {
+      "id": "B",
+      "name": "B. Cây nâng cao"
+    },
+    {
+      "id": "C",
+      "name": "C. DP nâng cao"
+    },
+    {
+      "id": "D",
+      "name": "D. Cấu trúc dữ liệu nâng cao"
+    },
+    {
+      "id": "E",
+      "name": "E. Toán + Xâu nâng cao"
+    }
+  ]
+}

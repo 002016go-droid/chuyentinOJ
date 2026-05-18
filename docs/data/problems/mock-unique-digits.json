@@ -1,0 +1,214 @@
+{
+  "slug": "mock-unique-digits",
+  "title": "Số có chữ số phân biệt",
+  "titleEn": "Unique digit count",
+  "module": "roadmap",
+  "topicId": "mock-exam",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "difficulty": 6,
+  "maxStars": 3,
+  "tags": [
+    "mock",
+    "counting"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho N. Đếm số nguyên dương từ 1 đến N có các chữ số đôi một khác nhau. Subtask 1 brute force (N ≤ 10^4), subtask 3 cần kỹ thuật digit DP.",
+  "vnPattern": "Unique digits — đề HSG lớp 9.",
+  "fileIO": {
+    "inputFile": "DIGITS.INP",
+    "outputFile": "DIGITS.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 1000"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^4"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 10^5"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "894\n",
+      "output": "663\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "305\n",
+      "output": "238\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "894\n",
+      "output": "663\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "305\n",
+      "output": "238\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "531\n",
+      "output": "404\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "430\n",
+      "output": "331\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "514\n",
+      "output": "390\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "381\n",
+      "output": "292\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "468\n",
+      "output": "353\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "9038\n",
+      "output": "4791\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "3736\n",
+      "output": "2103\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "5774\n",
+      "output": "3132\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "4864\n",
+      "output": "2681\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "5620\n",
+      "output": "3049\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "4421\n",
+      "output": "2474\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "5206\n",
+      "output": "2870\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "90375\n",
+      "output": "29584\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "37366\n",
+      "output": "13464\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "57736\n",
+      "output": "19638\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "48640\n",
+      "output": "16932\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "56196\n",
+      "output": "19132\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "44209\n",
+      "output": "15690\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "52063\n",
+      "output": "18062\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Brute force: duyệt 1..N kiểm tra set chữ số.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "set.size == độ dài → unique.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Đếm.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Brute force, O(N · log N).",
+  "solutionSketch": "for x in 1..N: chars = digits(x); if all distinct: ++cnt;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

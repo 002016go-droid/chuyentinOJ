@@ -1,496 +1,4501 @@
 {
   "nodes": [
     {
-      "id": "io",
+      "id": "io-complexity",
+      "day": 1,
       "level": 0,
-      "label": "I/O",
-      "labelVi": "Nhập / Xuất nhanh",
+      "label": "I/O + Complexity",
+      "labelVi": "Nhập xuất nhanh, kiểu dữ liệu, độ phức tạp",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2"
+      ],
       "difficulty": "basic",
-      "description": "Đọc dữ liệu lớn hiệu quả với cin/scanf, in nhanh với cout/printf.\nLuôn dùng ios_base::sync_with_stdio(false) và cin.tie(NULL) khi N > 1e5.\nĐọc nguyên/đôi/chuỗi: cin >> x; getline(cin, s) — cẩn thận ký tự '\\n' còn lại trong buffer.",
-      "complexity": "O(N) đọc, O(1) thao tác",
+      "description": "Khởi đầu lộ trình: nắm chắc nhập xuất nhanh trong C++ (`ios_base::sync_with_stdio(false); cin.tie(nullptr);`) và đặc biệt là kỹ thuật `freopen(\"BAI.INP\",\"r\",stdin); freopen(\"BAI.OUT\",\"w\",stdout);` — chuẩn của mọi đề HSG VN. Hiểu rõ phạm vi của `int` (≈ 2·10⁹), `long long` (≈ 9·10¹⁸), khi nào phải chuyển sang `long long` để tránh tràn số. Học cách ước lượng thời gian chạy bằng quy tắc \"10⁸ phép cơ bản/giây\" để chọn thuật toán phù hợp với ràng buộc. Phân biệt Big-O với Big-Θ ở mức trực giác và biết các độ phức tạp quen thuộc: O(1), O(log N), O(N), O(N log N), O(N²), O(2^N), O(N!).",
+      "complexity": "O(N) hoặc O(1) cho hầu hết bài",
+      "vnPattern": "Hầu hết đề HSG TP/Tỉnh yêu cầu file I/O — sai tên file = 0 điểm.",
       "prerequisites": [],
       "resources": [
-        { "label": "VNOI Wiki – Fast I/O", "url": "https://wiki.vnoi.info/algo/basic/IO" }
+        {
+          "label": "VNOI Wiki — I/O optimization",
+          "url": "https://wiki.vnoi.info/algo/basic/io-optimization"
+        },
+        {
+          "label": "CP Handbook §1 — C++ basics",
+          "url": "https://usaco.guide/general/competitive-programming-resources"
+        }
       ],
-      "problems": ["sum-array"],
-      "theory": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main(){\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int n; cin >> n;\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) cin >> a[i];\n    long long s = 0;\n    for (int x : a) s += x;\n    cout << s << '\\n';\n    return 0;\n}"
+      "problems": [
+        {
+          "slug": "io-aplusb",
+          "title": "Tổng hai số (A + B)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "cơ-bản",
+            "long-long"
+          ]
+        },
+        {
+          "slug": "io-sum1ton",
+          "title": "Tổng từ 1 đến N",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "gauss",
+            "long-long",
+            "cơ-bản"
+          ]
+        },
+        {
+          "slug": "io-counteven",
+          "title": "Đếm số chẵn trong dãy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "array",
+            "count"
+          ]
+        },
+        {
+          "slug": "io-minmax",
+          "title": "Min và Max của dãy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "array",
+            "min-max"
+          ]
+        },
+        {
+          "slug": "io-primes-lr",
+          "title": "Đếm số nguyên tố trong [L, R]",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "prime",
+            "sqrt",
+            "complexity"
+          ]
+        },
+        {
+          "slug": "io-digitsum",
+          "title": "Tổng các chữ số",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "digit"
+          ]
+        },
+        {
+          "slug": "io-reversenum",
+          "title": "Đảo ngược số",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "digit"
+          ]
+        },
+        {
+          "slug": "io-fib-mod",
+          "title": "Số Fibonacci thứ N (mod 10^9 + 7)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "dp",
+            "fibonacci",
+            "modular"
+          ]
+        }
+      ],
+      "theory": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    long long n; cin >> n;\n    cout << n * (n + 1) / 2 << \"\\n\";\n    return 0;\n}",
+      "theorySnippet": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    long long n; cin >> n;\n    cout << n * (n + 1) / 2 << \"\\n\";\n    return 0;\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Weird Algorithm",
+          "url": "https://cses.fi/problemset/task/1068",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Missing Number",
+          "url": "https://cses.fi/problemset/task/1083",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "VNOJ — A+B",
+          "url": "https://oj.vnoi.info/problem/aplusb",
+          "source": "VNOJ",
+          "difficulty": "easy"
+        }
+      ]
     },
     {
-      "id": "complexity",
+      "id": "simulation",
+      "day": 2,
       "level": 0,
-      "label": "Complexity",
-      "labelVi": "Độ phức tạp",
-      "difficulty": "basic",
-      "description": "Hiểu Big-O: O(1), O(log N), O(N), O(N log N), O(N²), O(2^N).\nQuy tắc nhanh: máy tính làm ~1e8 phép/giây. Nếu N=1e5 → O(N log N) ổn, O(N²) sẽ TLE.",
-      "complexity": "—",
-      "prerequisites": [],
-      "resources": [
-        { "label": "CP-Algorithms – Complexity", "url": "https://cp-algorithms.com/" }
+      "label": "Simulation",
+      "labelVi": "Mô phỏng — đếm, di chuyển, ngày tháng",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S4"
       ],
-      "problems": [],
-      "theory": "// Ước lượng:\n// N <= 12      -> O(N!) ok\n// N <= 25      -> O(2^N) ok\n// N <= 5000    -> O(N^2) ok\n// N <= 2e5     -> O(N log N) ok\n// N <= 1e7     -> O(N) ok"
+      "difficulty": "basic",
+      "description": "Mô phỏng (simulation) là kỹ thuật làm theo đúng quy tắc đề cho — không cần \"thuật toán cao siêu\" mà cần code cẩn thận từng bước. Áp dụng cho: đếm số ngày, mô phỏng robot di chuyển trên lưới N×N, mô phỏng máy bán hàng tự động, đếm theo điều kiện rẽ nhánh. Bí quyết: đọc kỹ đề, viết comment các bước nhỏ trước khi code, dùng struct/pair để gom dữ liệu, luôn test các trường hợp biên (N=1, ngày 28/2 năm nhuận, robot đi ra biên).",
+      "complexity": "O(N) hoặc O(N · K)",
+      "vnPattern": "Bài 1 HSG TP/Tỉnh hay là mô phỏng — Cao Lãnh 2023 (CR7), Kon Tum 2025, BR-VT 2023.",
+      "prerequisites": [
+        "io-complexity"
+      ],
+      "resources": [
+        {
+          "label": "VNOI Wiki — adhoc",
+          "url": "https://wiki.vnoi.info/algo/basic/ad-hoc"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "sim-daylight",
+          "title": "Đèn đường Đà Nẵng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "array",
+            "sweep"
+          ]
+        },
+        {
+          "slug": "sim-conveyor",
+          "title": "Băng chuyền nhà máy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "queue"
+          ]
+        },
+        {
+          "slug": "sim-trafficlight",
+          "title": "Đèn giao thông cầu Rồng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "modulo"
+          ]
+        },
+        {
+          "slug": "sim-elevator",
+          "title": "Thang máy chung cư",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "queue"
+          ]
+        },
+        {
+          "slug": "sim-bank",
+          "title": "Hàng đợi ngân hàng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "queue"
+          ]
+        },
+        {
+          "slug": "sim-game-stone",
+          "title": "Trò chơi nhặt đá",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "game"
+          ]
+        },
+        {
+          "slug": "sim-card-shuffle",
+          "title": "Trộn bài",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "permutation"
+          ]
+        },
+        {
+          "slug": "sim-flood",
+          "title": "Mưa ngập đường",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "grid"
+          ]
+        },
+        {
+          "slug": "sim-clock",
+          "title": "Đồng hồ trường học",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "time"
+          ]
+        },
+        {
+          "slug": "sim-cricket",
+          "title": "Trận bóng đá học sinh",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "parsing"
+          ]
+        }
+      ],
+      "theory": "// Mô phỏng robot đi trên lưới M x N\nint dx[] = {0, 0, -1, 1};\nint dy[] = {1, -1, 0, 0};\nint x = 0, y = 0;\nfor (char c : moves) {\n    int d = string(\"RLUD\").find(c);\n    int nx = x + dx[d], ny = y + dy[d];\n    if (nx >= 0 && nx < m && ny >= 0 && ny < n) {\n        x = nx; y = ny;\n    }\n}\ncout << x << \" \" << y << \"\\n\";",
+      "theorySnippet": "// Mô phỏng robot đi trên lưới M x N\nint dx[] = {0, 0, -1, 1};\nint dy[] = {1, -1, 0, 0};\nint x = 0, y = 0;\nfor (char c : moves) {\n    int d = string(\"RLUD\").find(c);\n    int nx = x + dx[d], ny = y + dy[d];\n    if (nx >= 0 && nx < m && ny >= 0 && ny < n) {\n        x = nx; y = ny;\n    }\n}\ncout << x << \" \" << y << \"\\n\";",
+      "referenceProblem": [
+        {
+          "label": "CF 4A — Watermelon",
+          "url": "https://codeforces.com/problemset/problem/4/A",
+          "source": "Codeforces",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Number Spiral",
+          "url": "https://cses.fi/problemset/task/1071",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Permutations",
+          "url": "https://cses.fi/problemset/task/1070",
+          "source": "CSES",
+          "difficulty": "easy"
+        }
+      ]
     },
     {
-      "id": "array",
+      "id": "array-1d",
+      "day": 3,
       "level": 1,
-      "label": "Arrays",
-      "labelVi": "Mảng & vector",
-      "difficulty": "basic",
-      "description": "Mảng 1 chiều, vector động, truy cập O(1), thêm cuối O(1) amortized.",
-      "complexity": "Truy cập O(1)",
-      "prerequisites": ["io", "complexity"],
-      "resources": [
-        { "label": "VNOI – Array", "url": "https://wiki.vnoi.info/" }
+      "label": "Array 1D",
+      "labelVi": "Mảng 1D — duyệt, tích lũy, max/min đoạn",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
       ],
-      "problems": ["sum-array"],
-      "theory": "vector<int> a(n);\nfor (auto &x : a) cin >> x;\n// Tìm max/min\nint mx = *max_element(a.begin(), a.end());\nint mn = *min_element(a.begin(), a.end());"
+      "difficulty": "basic",
+      "description": "Mảng 1D là CTDL nền móng. Trên mảng cần thành thạo: duyệt một lần (O(N)), tìm max/min, tổng, đếm phần tử thoả điều kiện. Tích lũy (cumulative sum) cho phép trả lời truy vấn tổng đoạn O(1) sau khi precompute O(N). Bài kinh điển: Maximum Subarray Sum (Kadane O(N)), tổng các đoạn liên tiếp. Hiểu khi nào dùng `vector<int>` vs mảng cố định, khi nào dùng `long long` cho tổng tránh tràn.",
+      "complexity": "O(N) duyệt + O(1) truy vấn sau prefix",
+      "vnPattern": "Quảng Nam 2021 — bài tổng bằng 0 dùng prefix sum 1D. Long An 2024 — tổng nguyên tố.",
+      "prerequisites": [
+        "simulation"
+      ],
+      "resources": [
+        {
+          "label": "VNOI Wiki — prefix sum",
+          "url": "https://wiki.vnoi.info/algo/data-structures/prefix-sum-and-difference-array"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "arr1d-sum",
+          "title": "Tổng các phần tử",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "sum"
+          ]
+        },
+        {
+          "slug": "arr1d-avg",
+          "title": "Trung bình cộng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "average"
+          ]
+        },
+        {
+          "slug": "arr1d-kth-smallest",
+          "title": "Phần tử thứ K nhỏ nhất",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "sort",
+            "kth"
+          ]
+        },
+        {
+          "slug": "arr1d-reverse",
+          "title": "Đảo ngược dãy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "reverse"
+          ]
+        },
+        {
+          "slug": "arr1d-freq",
+          "title": "Tần số xuất hiện",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "count",
+            "map"
+          ]
+        },
+        {
+          "slug": "arr1d-rangesum",
+          "title": "Tổng đoạn liên tiếp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "arr1d-maxsubarr",
+          "title": "Tổng đoạn liên tiếp lớn nhất",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "kadane",
+            "dp"
+          ]
+        },
+        {
+          "slug": "arr1d-find",
+          "title": "Vị trí xuất hiện đầu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "linear-search"
+          ]
+        },
+        {
+          "slug": "arr1d-rotate",
+          "title": "Quay vòng dãy K bước",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "rotate"
+          ]
+        },
+        {
+          "slug": "arr1d-inversions-easy",
+          "title": "Đếm cặp nghịch thế (N nhỏ)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-1d",
+            "inversions"
+          ]
+        }
+      ],
+      "theory": "// Kadane — max subarray sum O(N)\nlong long best = LLONG_MIN, cur = 0;\nfor (int i = 0; i < n; i++) {\n    cur = max((long long)a[i], cur + a[i]);\n    best = max(best, cur);\n}\ncout << best << \"\\n\";",
+      "theorySnippet": "// Kadane — max subarray sum O(N)\nlong long best = LLONG_MIN, cur = 0;\nfor (int i = 0; i < n; i++) {\n    cur = max((long long)a[i], cur + a[i]);\n    best = max(best, cur);\n}\ncout << best << \"\\n\";",
+      "referenceProblem": [
+        {
+          "label": "CSES — Maximum Subarray Sum",
+          "url": "https://cses.fi/problemset/task/1643",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "VNOJ — MXBAG",
+          "url": "https://oj.vnoi.info/problem/mxbag",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Stick Lengths",
+          "url": "https://cses.fi/problemset/task/1074",
+          "source": "CSES",
+          "difficulty": "easy"
+        }
+      ]
     },
     {
-      "id": "sorting",
+      "id": "array-2d",
+      "day": 4,
       "level": 1,
-      "label": "Sorting",
-      "labelVi": "Sắp xếp",
+      "label": "Array 2D",
+      "labelVi": "Mảng 2D — duyệt theo dòng/cột/đường chéo",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S4"
+      ],
       "difficulty": "basic",
-      "description": "sort() chuẩn O(N log N) introsort. Sort với comparator để tuỳ biến.\nStable sort: stable_sort(). Sort theo key kết hợp pair/tuple.",
+      "description": "Mảng 2D xuất hiện trong các bài hình chữ nhật, đường chéo, đếm vùng. Cần thành thạo: duyệt từng dòng, duyệt cột, duyệt 4 hướng từ ô (i,j), duyệt theo 2 đường chéo chính/phụ. Prefix sum 2D `S[i][j] = S[i-1][j] + S[i][j-1] - S[i-1][j-1] + a[i][j]` cho phép tính tổng vùng chữ nhật `(r1,c1)→(r2,c2)` trong O(1). Luôn nhớ chỉ số chạy từ 1 để tránh out-of-bounds khi cộng/trừ prefix.",
+      "complexity": "O(M·N) precompute, O(1) truy vấn vùng",
+      "vnPattern": "KHTN 2025 có bài hình chữ nhật dùng prefix sum 2D.",
+      "prerequisites": [
+        "array-1d"
+      ],
+      "resources": [
+        {
+          "label": "CP-Algorithms — Prefix sums",
+          "url": "https://cp-algorithms.com/data_structures/sparse-table.html"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "arr2d-sumall",
+          "title": "Tổng các phần tử ma trận",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "sum"
+          ]
+        },
+        {
+          "slug": "arr2d-rowsum",
+          "title": "Tổng từng hàng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "sum"
+          ]
+        },
+        {
+          "slug": "arr2d-diagsum",
+          "title": "Tổng đường chéo chính + phụ",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "diagonal"
+          ]
+        },
+        {
+          "slug": "arr2d-transpose",
+          "title": "Chuyển vị ma trận",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "transpose"
+          ]
+        },
+        {
+          "slug": "arr2d-rotate90",
+          "title": "Xoay ma trận 90 độ",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "rotate"
+          ]
+        },
+        {
+          "slug": "arr2d-spiral",
+          "title": "In ma trận xoắn ốc",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "spiral"
+          ]
+        },
+        {
+          "slug": "arr2d-findpath",
+          "title": "Đường đi không bị chặn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "bfs",
+            "grid"
+          ]
+        },
+        {
+          "slug": "arr2d-maxsubrect",
+          "title": "Đếm ô có giá trị lớn hơn ngưỡng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "count"
+          ]
+        },
+        {
+          "slug": "arr2d-saddle",
+          "title": "Điểm yên ngựa",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "minmax"
+          ]
+        },
+        {
+          "slug": "arr2d-subgrid-sum",
+          "title": "Tổng tam giác con (góc trên trái)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "prefix-sum"
+          ]
+        }
+      ],
+      "theory": "// Prefix sum 2D — truy vấn tổng vùng chữ nhật O(1)\nvector<vector<long long>> S(n + 1, vector<long long>(m + 1, 0));\nfor (int i = 1; i <= n; i++)\n    for (int j = 1; j <= m; j++)\n        S[i][j] = S[i-1][j] + S[i][j-1] - S[i-1][j-1] + a[i][j];\nauto query = [&](int r1, int c1, int r2, int c2) {\n    return S[r2][c2] - S[r1-1][c2] - S[r2][c1-1] + S[r1-1][c1-1];\n};",
+      "theorySnippet": "// Prefix sum 2D — truy vấn tổng vùng chữ nhật O(1)\nvector<vector<long long>> S(n + 1, vector<long long>(m + 1, 0));\nfor (int i = 1; i <= n; i++)\n    for (int j = 1; j <= m; j++)\n        S[i][j] = S[i-1][j] + S[i][j-1] - S[i-1][j-1] + a[i][j];\nauto query = [&](int r1, int c1, int r2, int c2) {\n    return S[r2][c2] - S[r1-1][c2] - S[r2][c1-1] + S[r1-1][c1-1];\n};",
+      "referenceProblem": [
+        {
+          "label": "CSES — Forest Queries",
+          "url": "https://cses.fi/problemset/task/1652",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CF 1030B — Vasya and Cornfield",
+          "url": "https://codeforces.com/problemset/problem/1030/B",
+          "source": "Codeforces",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "string-basic",
+      "day": 5,
+      "level": 1,
+      "label": "String basic",
+      "labelVi": "Xâu cơ bản — đảo, đếm, so sánh, chuẩn hoá",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2"
+      ],
+      "difficulty": "basic",
+      "description": "Xâu (`std::string`) cần thành thạo: đọc bằng `getline`, đếm tần số ký tự, đảo ngược, kiểm tra palindrome, so sánh từ điển lex. Anagram check qua tần số. Chuẩn hoá (lowercase/uppercase) trước khi so sánh. Biết `substr`, `find`, `replace`, `s.size()` trả `size_t` (unsigned!). Khi xử lý nhiều xâu lớn, dùng `string_view` (C++17) tránh copy.",
+      "complexity": "O(N) duyệt, O(26·N) tần số",
+      "vnPattern": "Long An 2024, Quảng Nam 2021 — bài xâu con, anagram.",
+      "prerequisites": [
+        "array-1d"
+      ],
+      "resources": [
+        {
+          "label": "CP-Algorithms — Strings basic",
+          "url": "https://cp-algorithms.com/string/string-hashing.html"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "str-len",
+          "title": "Đếm độ dài xâu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "basic"
+          ]
+        },
+        {
+          "slug": "str-reverse",
+          "title": "Đảo ngược xâu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "reverse"
+          ]
+        },
+        {
+          "slug": "str-palindrome",
+          "title": "Xâu đối xứng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "palindrome"
+          ]
+        },
+        {
+          "slug": "str-countchar",
+          "title": "Đếm ký tự",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "count"
+          ]
+        },
+        {
+          "slug": "str-tolower",
+          "title": "Chuyển chữ thường",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "tolower"
+          ]
+        },
+        {
+          "slug": "str-substr-count",
+          "title": "Đếm số lần xuất hiện xâu con (naive)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "substring"
+          ]
+        },
+        {
+          "slug": "str-anagram",
+          "title": "Kiểm tra anagram",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "anagram"
+          ]
+        },
+        {
+          "slug": "str-split-words",
+          "title": "Đếm từ trong câu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "parsing"
+          ]
+        },
+        {
+          "slug": "str-replace-char",
+          "title": "Thay thế ký tự",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "replace"
+          ]
+        },
+        {
+          "slug": "str-vowel-count",
+          "title": "Đếm nguyên âm",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "string",
+            "count"
+          ]
+        }
+      ],
+      "theory": "// Đếm tần số + palindrome check\nint cnt[26] = {0};\nfor (char c : s) cnt[c - 'a']++;\nbool isPal = true;\nfor (int i = 0, j = s.size() - 1; i < j; i++, j--)\n    if (s[i] != s[j]) { isPal = false; break; }",
+      "theorySnippet": "// Đếm tần số + palindrome check\nint cnt[26] = {0};\nfor (char c : s) cnt[c - 'a']++;\nbool isPal = true;\nfor (int i = 0, j = s.size() - 1; i < j; i++, j--)\n    if (s[i] != s[j]) { isPal = false; break; }",
+      "referenceProblem": [
+        {
+          "label": "CSES — Repetitions",
+          "url": "https://cses.fi/problemset/task/1069",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "VNOJ — PSTRING",
+          "url": "https://oj.vnoi.info/problem/pstring",
+          "source": "VNOJ",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "sort",
+      "day": 6,
+      "level": 1,
+      "label": "Sort",
+      "labelVi": "Sắp xếp — std::sort, custom comparator",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "basic",
+      "description": "`std::sort` O(N log N) là vũ khí tối thượng. Cần biết: sort tăng/giảm (`greater<>()` hoặc lambda), sort theo nhiều khoá (`pair`/`tuple`/struct + comparator), `stable_sort` khi cần giữ thứ tự, `nth_element` O(N) tìm phần tử thứ k, `partial_sort` lấy K nhỏ nhất. Sau khi sort, các bài hay cần two-pointers hoặc binary search. **80% bài HSG bắt đầu bằng sort**.",
       "complexity": "O(N log N)",
-      "prerequisites": ["array"],
-      "resources": [
-        { "label": "VNOI – Sorting", "url": "https://wiki.vnoi.info/" }
+      "vnPattern": "Sort là bước đầu của 80% bài HSG; sau sort thường ghép two-pointer hoặc greedy.",
+      "prerequisites": [
+        "array-1d"
       ],
-      "problems": ["partial-sort-3"],
-      "theory": "sort(a.begin(), a.end());\nsort(a.begin(), a.end(), [](int x, int y){ return x > y; });\n// Sort pair theo first tăng, ties theo second giảm:\nsort(p.begin(), p.end(), [](auto &a, auto &b){\n    if (a.first != b.first) return a.first < b.first;\n    return a.second > b.second;\n});"
-    },
-    {
-      "id": "prefix-sum",
-      "level": 1,
-      "label": "Prefix Sum",
-      "labelVi": "Tổng tiền tố",
-      "difficulty": "basic",
-      "description": "Tiền tính tổng từ 0 đến i, truy vấn sum[l..r] = pref[r] - pref[l-1] trong O(1).\n2D prefix sum cho ma trận.",
-      "complexity": "Tiền xử lý O(N), truy vấn O(1)",
-      "prerequisites": ["array"],
-      "resources": [],
-      "problems": ["max-subarray-sum", "prefix-sum-range"],
-      "theory": "vector<long long> pref(n + 1, 0);\nfor (int i = 0; i < n; i++) pref[i+1] = pref[i] + a[i];\nauto sumRange = [&](int l, int r){ return pref[r+1] - pref[l]; };"
-    },
-    {
-      "id": "two-pointers",
-      "level": 1,
-      "label": "Two Pointers",
-      "labelVi": "Hai con trỏ",
-      "difficulty": "basic",
-      "description": "Dùng 2 con trỏ trên mảng (đã sort hoặc liên tiếp) để tìm cặp, đoạn thoả điều kiện. O(N) thay vì O(N²).",
-      "complexity": "O(N)",
-      "prerequisites": ["sorting"],
-      "resources": [],
-      "problems": ["pair-sum-target"],
-      "theory": "int l = 0, r = n - 1;\nwhile (l < r) {\n    int s = a[l] + a[r];\n    if (s == target) { /* ok */ break; }\n    else if (s < target) l++;\n    else r--;\n}"
-    },
-    {
-      "id": "binary-search",
-      "level": 2,
-      "label": "Binary Search",
-      "labelVi": "Tìm kiếm nhị phân",
-      "difficulty": "intermediate",
-      "description": "Tìm trên dãy đã sắp xếp. Mở rộng: tìm nghiệm trên hàm đơn điệu, parametric search.\nlower_bound / upper_bound trả về iterator.",
-      "complexity": "O(log N)",
-      "prerequisites": ["sorting"],
       "resources": [
-        { "label": "CP-Algorithms – Binary Search", "url": "https://cp-algorithms.com/num_methods/binary_search.html" }
+        {
+          "label": "VNOI Wiki — sort",
+          "url": "https://wiki.vnoi.info/algo/basic/sorting"
+        }
       ],
-      "problems": ["partial-sort-3"],
-      "theory": "int lo = 0, hi = n - 1, ans = -1;\nwhile (lo <= hi) {\n    int m = lo + (hi - lo) / 2;\n    if (a[m] >= target) { ans = m; hi = m - 1; }\n    else lo = m + 1;\n}"
+      "problems": [
+        {
+          "slug": "sort-asc",
+          "title": "Sắp xếp tăng dần",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "basic"
+          ]
+        },
+        {
+          "slug": "sort-desc",
+          "title": "Sắp xếp giảm dần",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "comparator"
+          ]
+        },
+        {
+          "slug": "sort-stable-pair",
+          "title": "Sắp xếp ổn định theo cặp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "pair",
+            "stable"
+          ]
+        },
+        {
+          "slug": "sort-distinct-count",
+          "title": "Đếm số phần tử phân biệt",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "unique"
+          ]
+        },
+        {
+          "slug": "sort-median",
+          "title": "Trung vị",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "median"
+          ]
+        },
+        {
+          "slug": "sort-pairs-mate",
+          "title": "Ghép cặp tối thiểu chênh lệch",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "greedy"
+          ]
+        },
+        {
+          "slug": "sort-bytwo-keys",
+          "title": "Sắp xếp 2 khoá",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "comparator",
+            "multi-key"
+          ]
+        },
+        {
+          "slug": "sort-bucket-count",
+          "title": "Sắp xếp theo nhóm chữ số",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "bucket"
+          ]
+        },
+        {
+          "slug": "sort-mergetwo",
+          "title": "Hợp nhất 2 dãy đã sắp xếp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "merge",
+            "two-pointers"
+          ]
+        },
+        {
+          "slug": "sort-find-kth",
+          "title": "Phần tử thứ K sau sắp xếp",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "sort",
+            "nth-element",
+            "kth"
+          ]
+        }
+      ],
+      "theory": "// Sort struct theo (khoá 1 tăng, khoá 2 giảm)\nstruct Item { int a, b; };\nsort(v.begin(), v.end(), [](const Item& x, const Item& y){\n    if (x.a != y.a) return x.a < y.a;\n    return x.b > y.b;\n});",
+      "theorySnippet": "// Sort struct theo (khoá 1 tăng, khoá 2 giảm)\nstruct Item { int a, b; };\nsort(v.begin(), v.end(), [](const Item& x, const Item& y){\n    if (x.a != y.a) return x.a < y.a;\n    return x.b > y.b;\n});",
+      "referenceProblem": [
+        {
+          "label": "CSES — Stick Lengths",
+          "url": "https://cses.fi/problemset/task/1074",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Ferris Wheel",
+          "url": "https://cses.fi/problemset/task/1090",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Apartments",
+          "url": "https://cses.fi/problemset/task/1084",
+          "source": "CSES",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "week1-review",
+      "day": 7,
+      "level": 1,
+      "label": "Week 1 Review",
+      "labelVi": "Ôn tuần 1 — Mock 90 phút 3 bài tổng hợp",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "difficulty": "basic",
+      "description": "Tổng kết tuần 1: I/O, simulation, array, string, sort. Làm mock trong 90 phút với 3 bài. Chiến lược thi: đọc cả 3 đề trong 10 phút trước, chọn bài dễ làm trước, luôn lấy được subtask 1 (brute force) cho mọi bài. Cách đọc đề VN: đọc chậm 3 lần, gạch dưới ràng buộc (N max, giá trị max), đối chiếu xem bộ nhớ và thời gian cho phép thuật toán nào.",
+      "complexity": "Tổng hợp",
+      "vnPattern": "Cấu trúc giống đề HSG TP thật: 1 bài mô phỏng + 1 bài mảng + 1 bài xâu.",
+      "prerequisites": [
+        "simulation",
+        "array-1d",
+        "array-2d",
+        "string-basic",
+        "sort"
+      ],
+      "resources": [],
+      "problems": [],
+      "theory": "// Template cho mỗi bài thi VN\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    freopen(\"BAI.INP\", \"r\", stdin);\n    freopen(\"BAI.OUT\", \"w\", stdout);\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // ... logic\n    return 0;\n}",
+      "theorySnippet": "// Template cho mỗi bài thi VN\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    freopen(\"BAI.INP\", \"r\", stdin);\n    freopen(\"BAI.OUT\", \"w\", stdout);\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // ... logic\n    return 0;\n}",
+      "referenceProblem": []
     },
     {
       "id": "greedy",
+      "day": 8,
       "level": 2,
       "label": "Greedy",
-      "labelVi": "Tham lam",
+      "labelVi": "Tham lam — exchange argument, scheduling",
+      "tier": "T1",
+      "skills": [
+        "S3"
+      ],
       "difficulty": "intermediate",
-      "description": "Chọn cục bộ tốt nhất → tối ưu toàn cục. Cần chứng minh tính đúng đắn (exchange argument, matroid).",
-      "complexity": "Thường O(N log N) sau sort",
-      "prerequisites": ["sorting"],
-      "resources": [],
-      "problems": ["activity-selection", "coin-change-greedy"],
-      "theory": "// Activity selection: sort theo thời gian kết thúc, chọn liên tiếp\nsort(act.begin(), act.end(), [](auto&a, auto&b){return a.end < b.end;});\nint cur = -1, cnt = 0;\nfor (auto &x : act) if (x.start >= cur) { cnt++; cur = x.end; }"
+      "description": "Tham lam = chọn cục bộ tốt nhất ở mỗi bước, hi vọng dẫn đến tối ưu toàn cục. Khó nhất là chứng minh đúng (exchange argument). Các dạng kinh điển: Activity Selection (sort theo finish time, chọn job kết thúc sớm), Movie Festival, Tasks and Deadlines (sort theo deadline tăng, chọn task có duration nhỏ trước nếu cùng deadline), Coin Change tham lam (chỉ đúng với hệ tiền VN). Khi nghi ngờ, viết thử brute force để compare với greedy trên test nhỏ.",
+      "complexity": "O(N log N) sau sort",
+      "vnPattern": "Bài 2-3 nhiều tỉnh dùng greedy sau khi sort.",
+      "prerequisites": [
+        "sort"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — greedy",
+          "url": "https://vnoi.info/algo/greedy-new"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "greedy-coin",
+          "title": "Đổi tiền tham lam",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "coin"
+          ]
+        },
+        {
+          "slug": "greedy-activity",
+          "title": "Hoạt động không xung đột",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "interval"
+          ]
+        },
+        {
+          "slug": "greedy-min-platforms",
+          "title": "Số sân ga tối thiểu",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "sweep"
+          ]
+        },
+        {
+          "slug": "greedy-tasks-deadline",
+          "title": "Lịch trình deadline",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "deadline"
+          ]
+        },
+        {
+          "slug": "greedy-fuel-station",
+          "title": "Đổ xăng đường dài",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "fuel"
+          ]
+        },
+        {
+          "slug": "greedy-fractional-knapsack",
+          "title": "Túi đồ phân số",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "knapsack"
+          ]
+        },
+        {
+          "slug": "greedy-min-cost-cut",
+          "title": "Cắt thanh tre tốn ít nhất",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "huffman"
+          ]
+        },
+        {
+          "slug": "greedy-min-water",
+          "title": "Tưới cây tham lam",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "interval-cover"
+          ]
+        },
+        {
+          "slug": "greedy-ratio-jobs",
+          "title": "Lịch trình tỉ số",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "ratio"
+          ]
+        },
+        {
+          "slug": "greedy-station-supply",
+          "title": "Phân phối nước cứu trợ",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "greedy",
+            "sweep"
+          ]
+        }
+      ],
+      "theory": "// Activity Selection — chọn nhiều job nhất\nsort(v.begin(), v.end(), [](auto& a, auto& b){ return a.second < b.second; });\nint cnt = 0, last = INT_MIN;\nfor (auto& [s, e] : v)\n    if (s >= last) { cnt++; last = e; }\ncout << cnt << \"\\n\";",
+      "theorySnippet": "// Activity Selection — chọn nhiều job nhất\nsort(v.begin(), v.end(), [](auto& a, auto& b){ return a.second < b.second; });\nint cnt = 0, last = INT_MIN;\nfor (auto& [s, e] : v)\n    if (s >= last) { cnt++; last = e; }\ncout << cnt << \"\\n\";",
+      "referenceProblem": [
+        {
+          "label": "CSES — Movie Festival",
+          "url": "https://cses.fi/problemset/task/1629",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Tasks and Deadlines",
+          "url": "https://cses.fi/problemset/task/1630",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — LHORSE",
+          "url": "https://oj.vnoi.info/problem/lhorse",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "recursion",
+      "id": "two-pointers",
+      "day": 9,
       "level": 2,
-      "label": "Recursion",
-      "labelVi": "Đệ quy & quay lui",
+      "label": "Two Pointers",
+      "labelVi": "Hai con trỏ + cửa sổ trượt",
+      "tier": "T1",
+      "skills": [
+        "S3",
+        "S4"
+      ],
       "difficulty": "intermediate",
-      "description": "Giải bằng case cơ sở + đệ quy. Backtracking: thử mọi nhánh, hủy khi không thoả.",
-      "complexity": "Tuỳ bài",
-      "prerequisites": ["array"],
-      "resources": [],
-      "problems": ["permutations", "gcd-recursion"],
-      "theory": "void rec(int idx, vector<int>&cur){\n    if (idx == n) { /* xử lý */ return; }\n    for (int x : choices) {\n        cur.push_back(x);\n        rec(idx + 1, cur);\n        cur.pop_back();\n    }\n}"
+      "description": "Two pointers / sliding window biến O(N²) thành O(N) trên mảng đơn điệu sau sort. 3 mẫu chính: (1) hai con trỏ chạy ngược nhau (Two Sum sau sort), (2) cửa sổ trượt giữ tổng/đếm và tăng/giảm hai biên (subarray sum K, longest substring without repeat), (3) merge hai mảng đã sắp. Bí quyết: phải khẳng định monotonic — khi tăng `r`, điều kiện luôn ổn hoặc xấu đi cùng chiều.",
+      "complexity": "O(N) sau sort O(N log N)",
+      "vnPattern": "Long An 2024 — merge 2 mảng đã sắp. Quảng Nam 2021 — đoạn con tổng bằng 0.",
+      "prerequisites": [
+        "sort"
+      ],
+      "resources": [
+        {
+          "label": "VNOI Wiki — two pointers",
+          "url": "https://wiki.vnoi.info/algo/basic/two-pointers"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "tp-pair-sum",
+          "title": "Đếm cặp tổng K",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sort"
+          ]
+        },
+        {
+          "slug": "tp-longest-subarr",
+          "title": "Đoạn dài nhất với tổng ≤ S",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sliding-window"
+          ]
+        },
+        {
+          "slug": "tp-distinct-window",
+          "title": "Cửa sổ phân biệt nhiều nhất",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sliding-window"
+          ]
+        },
+        {
+          "slug": "tp-3sum-zero",
+          "title": "3-Sum bằng 0",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sort"
+          ]
+        },
+        {
+          "slug": "tp-container-water",
+          "title": "Bình chứa nước lớn nhất",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "geometry"
+          ]
+        },
+        {
+          "slug": "tp-window-min-len",
+          "title": "Cửa sổ ngắn nhất tổng ≥ S",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sliding-window"
+          ]
+        },
+        {
+          "slug": "tp-distinct-pair-bs",
+          "title": "Số cặp |a_i − a_j| ≤ K",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sort"
+          ]
+        },
+        {
+          "slug": "tp-zero-sum-segments",
+          "title": "Đoạn liên tiếp tổng 0",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "tp-shrink-twosum-sorted",
+          "title": "Đôi tổng K trong dãy đã sắp xếp",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "sorted"
+          ]
+        },
+        {
+          "slug": "tp-stream-median-easy",
+          "title": "Trung vị 2 dãy",
+          "tier": "T1",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "two-pointers",
+            "merge"
+          ]
+        }
+      ],
+      "theory": "// Subarray sum K — đếm số đoạn tổng = K trên mảng dương\nint l = 0; long long sum = 0, ans = 0;\nfor (int r = 0; r < n; r++) {\n    sum += a[r];\n    while (sum > k && l <= r) sum -= a[l++];\n    if (sum == k) ans++;\n}",
+      "theorySnippet": "// Subarray sum K — đếm số đoạn tổng = K trên mảng dương\nint l = 0; long long sum = 0, ans = 0;\nfor (int r = 0; r < n; r++) {\n    sum += a[r];\n    while (sum > k && l <= r) sum -= a[l++];\n    if (sum == k) ans++;\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Subarray Sums I",
+          "url": "https://cses.fi/problemset/task/1660",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Subarray Sums II",
+          "url": "https://cses.fi/problemset/task/1661",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Playlist",
+          "url": "https://cses.fi/problemset/task/1141",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "stack",
+      "id": "prefix-sum",
+      "day": 10,
       "level": 2,
-      "label": "Stack/Queue",
-      "labelVi": "Ngăn xếp & hàng đợi",
+      "label": "Prefix Sum",
+      "labelVi": "Tổng tiền tố 1D/2D + mảng hiệu",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S4"
+      ],
       "difficulty": "intermediate",
-      "description": "stack LIFO, queue FIFO, deque hai đầu. Ứng dụng: kiểm tra ngoặc, monotonic stack, BFS.",
-      "complexity": "Mỗi thao tác O(1)",
-      "prerequisites": ["array"],
-      "resources": [],
-      "problems": ["valid-brackets"],
-      "theory": "stack<int> st;\nfor (char c : s) {\n    if (c == '(' || c == '[' || c == '{') st.push(c);\n    else {\n        if (st.empty()) return false;\n        char t = st.top(); st.pop();\n        // kiểm tra match...\n    }\n}"
+      "description": "Tổng tiền tố là kỹ thuật \"miễn phí\" cho mọi bài hỏi tổng đoạn. 1D: `P[i] = P[i-1] + a[i]`, query [l,r] = P[r]-P[l-1]. 2D: 4 thuật toán inclusion-exclusion. **Difference array**: dùng cho range update O(1), sau đó prefix lại để lấy giá trị cuối. Áp dụng: cộng x vào [l,r] nhiều lần, đếm số sự kiện diễn ra tại thời điểm t.",
+      "complexity": "O(N) precompute, O(1) query",
+      "vnPattern": "KHTN 2025, Quảng Nam — prefix sum xuất hiện dưới nhiều dạng.",
+      "prerequisites": [
+        "array-1d",
+        "array-2d"
+      ],
+      "resources": [
+        {
+          "label": "VNOI Wiki — prefix sum",
+          "url": "https://wiki.vnoi.info/algo/data-structures/prefix-sum-and-difference-array"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "ps-rangesum-1d",
+          "title": "Tổng đoạn 1D",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "ps-rangesum-2d",
+          "title": "Tổng đoạn 2D",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "2d"
+          ]
+        },
+        {
+          "slug": "ps-diff-arr",
+          "title": "Cập nhật đoạn bằng mảng hiệu",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "diff-array"
+          ]
+        },
+        {
+          "slug": "ps-binary-prefix",
+          "title": "Đếm bit 1 tiền tố",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "string"
+          ]
+        },
+        {
+          "slug": "ps-max-subarr-allpos",
+          "title": "Tổng cực đại đoạn (≥ 0)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "max"
+          ]
+        },
+        {
+          "slug": "ps-divisible-k",
+          "title": "Đoạn tổng chia hết K",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "mod"
+          ]
+        },
+        {
+          "slug": "ps-xor-prefix",
+          "title": "Tổng XOR đoạn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "xor"
+          ]
+        },
+        {
+          "slug": "ps-update-pointwise",
+          "title": "Cập nhật điểm + truy vấn đoạn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "fenwick"
+          ]
+        },
+        {
+          "slug": "ps-diff-2d-update",
+          "title": "Cập nhật chữ nhật 2D",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "2d",
+            "diff"
+          ]
+        },
+        {
+          "slug": "ps-equilibrium",
+          "title": "Chỉ số cân bằng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "prefix-sum",
+            "find"
+          ]
+        }
+      ],
+      "theory": "// Difference array — Q range updates trong O(Q+N)\nvector<long long> d(n + 2, 0);\nfor (auto [l, r, x] : updates) { d[l] += x; d[r + 1] -= x; }\nvector<long long> a(n + 1, 0);\nfor (int i = 1; i <= n; i++) a[i] = a[i - 1] + d[i];",
+      "theorySnippet": "// Difference array — Q range updates trong O(Q+N)\nvector<long long> d(n + 2, 0);\nfor (auto [l, r, x] : updates) { d[l] += x; d[r + 1] -= x; }\nvector<long long> a(n + 1, 0);\nfor (int i = 1; i <= n; i++) a[i] = a[i - 1] + d[i];",
+      "referenceProblem": [
+        {
+          "label": "CSES — Forest Queries",
+          "url": "https://cses.fi/problemset/task/1652",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Range Update Queries",
+          "url": "https://cses.fi/problemset/task/1651",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "hashing",
+      "id": "binary-search",
+      "day": 11,
       "level": 2,
-      "label": "Hashing",
-      "labelVi": "Bảng băm",
+      "label": "Binary Search",
+      "labelVi": "Tìm kiếm nhị phân trên mảng đã sắp",
+      "tier": "T1",
+      "skills": [
+        "S2",
+        "S3"
+      ],
       "difficulty": "intermediate",
-      "description": "unordered_map / unordered_set trung bình O(1). Cẩn thận anti-hash tests: dùng custom hash.",
-      "complexity": "Trung bình O(1) / phép",
-      "prerequisites": ["array"],
-      "resources": [],
-      "problems": ["pair-sum-target"],
-      "theory": "unordered_map<long long, int> mp;\nmp.reserve(1 << 17);\nmp.max_load_factor(0.25);\n// custom hash chống anti-hash:\nstruct H { size_t operator()(long long x) const { x ^= 0x9E3779B97F4A7C15ULL; return std::hash<long long>{}(x); } };"
+      "description": "Binary search O(log N) trên mảng đã sắp. STL: `lower_bound` (≥ x), `upper_bound` (> x), `binary_search` (có/không). Viết tay BS: chú ý invariant — luôn rõ \"ranh giới `lo`/`hi` đại diện cho cái gì\". Lỗi off-by-one phổ biến: dùng `< / <=`, cập nhật `mid+1 / mid-1`. Test biên cực: mảng 1 phần tử, x nhỏ hơn min, x lớn hơn max.",
+      "complexity": "O(log N) mỗi query",
+      "vnPattern": "Hay bẫy off-by-one — test biên kỹ trước khi nộp.",
+      "prerequisites": [
+        "sort"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — binary search",
+          "url": "https://wiki.vnoi.info/algo/basic/binary-search"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "bs-find-x",
+          "title": "Tìm kiếm nhị phân cơ bản",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search"
+          ]
+        },
+        {
+          "slug": "bs-lower-bound",
+          "title": "Tìm phần tử ≥ X đầu tiên",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "lower-bound"
+          ]
+        },
+        {
+          "slug": "bs-parametric-mindist",
+          "title": "Đặt N điểm tối đa khoảng cách",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-split-array-min-max",
+          "title": "Chia N phần tử thành K đoạn tổng min-max",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-rope-cut",
+          "title": "Cắt dây thành N đoạn dài K nhất",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-koko-bananas",
+          "title": "Khỉ ăn chuối",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-sqrt-int",
+          "title": "Căn bậc 2 nguyên",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "sqrt"
+          ]
+        },
+        {
+          "slug": "bs-painters-partition",
+          "title": "Phân công thợ sơn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "parametric"
+          ]
+        },
+        {
+          "slug": "bs-rotated",
+          "title": "Tìm trong dãy sort xoay",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "rotated"
+          ]
+        },
+        {
+          "slug": "bs-double-precision",
+          "title": "Bình phương đến độ chính xác",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "binary-search",
+            "double"
+          ]
+        }
+      ],
+      "theory": "// BS thủ công — tìm phần tử đầu tiên >= x\nint lo = 0, hi = n;\nwhile (lo < hi) {\n    int mid = (lo + hi) >> 1;\n    if (a[mid] < x) lo = mid + 1;\n    else hi = mid;\n}\nif (lo == n) cout << -1; else cout << lo;",
+      "theorySnippet": "// BS thủ công — tìm phần tử đầu tiên >= x\nint lo = 0, hi = n;\nwhile (lo < hi) {\n    int mid = (lo + hi) >> 1;\n    if (a[mid] < x) lo = mid + 1;\n    else hi = mid;\n}\nif (lo == n) cout << -1; else cout << lo;",
+      "referenceProblem": [
+        {
+          "label": "CSES — Apartments",
+          "url": "https://cses.fi/problemset/task/1084",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Ferris Wheel",
+          "url": "https://cses.fi/problemset/task/1090",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "VNOJ — NKBM",
+          "url": "https://oj.vnoi.info/problem/nkbm",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "dp-1d",
+      "id": "parametric-search",
+      "day": 12,
       "level": 3,
-      "label": "DP 1D",
-      "labelVi": "Quy hoạch động 1 chiều",
+      "label": "Parametric Search",
+      "labelVi": "Binary search trên đáp án",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "difficulty": "intermediate",
+      "description": "Parametric search (binary search trên đáp án) — nếu hàm `check(x)` đơn điệu (true với x nhỏ, false với x lớn hoặc ngược lại), ta BS trên giá trị đáp án. Bài chuẩn: Aggressive Cows (xếp K con bò vào N chuồng sao cho khoảng cách min lớn nhất), Book Allocation (chia N quyển cho K học sinh, max thời gian đọc nhỏ nhất), Painters Partition. Template: `lo = min, hi = max + 1; while(lo<hi){ if check(mid) lo=mid+1 else hi=mid; }`.",
+      "complexity": "O(N log V)",
+      "vnPattern": "Hà Tĩnh 2024 chuyên Tin có bài parametric search.",
+      "prerequisites": [
+        "binary-search"
+      ],
+      "resources": [
+        {
+          "label": "USACO Guide — Binary Search Answer",
+          "url": "https://usaco.guide/silver/binary-search"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "param-cow-stalls",
+          "title": "Đặt bò vào chuồng (Aggressive Cows)",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric",
+            "binary-search"
+          ]
+        },
+        {
+          "slug": "param-min-max-truck",
+          "title": "Tải hàng N xe min-max",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric",
+            "split"
+          ]
+        },
+        {
+          "slug": "param-station-radio",
+          "title": "Bán kính sóng tối thiểu",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric",
+            "cover"
+          ]
+        },
+        {
+          "slug": "param-magnet-strength",
+          "title": "Sức mạnh nam châm",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric"
+          ]
+        },
+        {
+          "slug": "param-card-deal",
+          "title": "Chia bài đều",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric"
+          ]
+        },
+        {
+          "slug": "param-pizza-share",
+          "title": "Chia bánh pizza",
+          "tier": "T2",
+          "skills": [
+            "S2",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "parametric"
+          ]
+        }
+      ],
+      "theory": "// Aggressive Cows — max distance min\nauto check = [&](long long d) {\n    int cnt = 1; long long last = a[0];\n    for (int i = 1; i < n; i++)\n        if (a[i] - last >= d) { cnt++; last = a[i]; }\n    return cnt >= k;\n};\nlong long lo = 1, hi = a.back() - a[0];\nwhile (lo < hi) {\n    long long mid = (lo + hi + 1) >> 1;\n    if (check(mid)) lo = mid; else hi = mid - 1;\n}",
+      "theorySnippet": "// Aggressive Cows — max distance min\nauto check = [&](long long d) {\n    int cnt = 1; long long last = a[0];\n    for (int i = 1; i < n; i++)\n        if (a[i] - last >= d) { cnt++; last = a[i]; }\n    return cnt >= k;\n};\nlong long lo = 1, hi = a.back() - a[0];\nwhile (lo < hi) {\n    long long mid = (lo + hi + 1) >> 1;\n    if (check(mid)) lo = mid; else hi = mid - 1;\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Array Division",
+          "url": "https://cses.fi/problemset/task/1085",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "USACO — Aggressive Cows",
+          "url": "https://www.spoj.com/problems/AGGRCOW/",
+          "source": "USACO",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "recursion-backtracking",
+      "day": 13,
+      "level": 3,
+      "label": "Recursion + Backtracking",
+      "labelVi": "Đệ quy + Sinh tập con + Quay lui",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S4"
+      ],
+      "difficulty": "intermediate",
+      "description": "Đệ quy là gốc rễ của mọi thuật DP, đồ thị DFS, backtracking. Hiểu rõ: base case, recursive case, call stack. Sinh tập con (2^N), sinh hoán vị (N!), sinh tổ hợp C(N,K). Backtracking + pruning: 8 hậu, Sudoku, N-Queens. Bí quyết: viết base case trước, dùng tham chiếu `vector<int>&` cho stack tạm, in kết quả khi đạt độ sâu N.",
+      "complexity": "O(2^N) sinh tập, O(N!) hoán vị",
+      "vnPattern": "Bài sinh hoán vị/tổ hợp hay ra ở đề nhỏ N ≤ 15-20.",
+      "prerequisites": [
+        "array-1d"
+      ],
+      "resources": [
+        {
+          "label": "CP-Algorithms — Recursion",
+          "url": "https://cp-algorithms.com/"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "rec-factorial",
+          "title": "Giai thừa đệ quy",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion"
+          ]
+        },
+        {
+          "slug": "rec-fib",
+          "title": "Fibonacci",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "dp"
+          ]
+        },
+        {
+          "slug": "rec-subset-sum",
+          "title": "Tổng tập con",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-permutation",
+          "title": "Sinh hoán vị",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-nqueen",
+          "title": "N quân hậu",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-sudoku-3x3",
+          "title": "Sudoku 3×3",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "rec-power-mod",
+          "title": "Lũy thừa modulo nhanh",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "fast-power"
+          ]
+        },
+        {
+          "slug": "rec-combinations",
+          "title": "Tổ hợp K trong N",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "combinatorics"
+          ]
+        },
+        {
+          "slug": "rec-hanoi",
+          "title": "Tháp Hà Nội",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "classic"
+          ]
+        },
+        {
+          "slug": "rec-gen-bracket",
+          "title": "Sinh dãy ngoặc đúng",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 3,
+          "maxStars": 3,
+          "tags": [
+            "recursion",
+            "backtracking"
+          ]
+        }
+      ],
+      "theory": "// Sinh tổ hợp k phần tử từ n\nvoid gen(int start, vector<int>& cur, int n, int k) {\n    if ((int)cur.size() == k) { /* in cur */ return; }\n    for (int i = start; i < n; i++) {\n        cur.push_back(i);\n        gen(i + 1, cur, n, k);\n        cur.pop_back();\n    }\n}",
+      "theorySnippet": "// Sinh tổ hợp k phần tử từ n\nvoid gen(int start, vector<int>& cur, int n, int k) {\n    if ((int)cur.size() == k) { /* in cur */ return; }\n    for (int i = start; i < n; i++) {\n        cur.push_back(i);\n        gen(i + 1, cur, n, k);\n        cur.pop_back();\n    }\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Chessboard and Queens",
+          "url": "https://cses.fi/problemset/task/1624",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Permutations",
+          "url": "https://cses.fi/problemset/task/1070",
+          "source": "CSES",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "meet-in-middle",
+      "day": 14,
+      "level": 3,
+      "label": "Meet in the Middle",
+      "labelVi": "Meet in the Middle — chia đôi tập",
+      "tier": "T2",
+      "skills": [
+        "S3",
+        "S4"
+      ],
       "difficulty": "advanced",
-      "description": "dp[i] phụ thuộc dp[i-1..i-k]. Ví dụ: leo cầu thang, robber, kadane.",
+      "description": "Khi N ≤ 40, 2^N quá lớn (~10¹²) nhưng 2^(N/2) ≈ 10⁶ vừa. Chia tập đôi, sinh hết tổng cho mỗi nửa, sort nửa thứ hai, với mỗi tổng s1 ở nửa 1 BS tìm tổng s2 = T - s1 ở nửa 2. Bài chuẩn: Sum of Two Values trên N=40, Apple Division (chia cân bằng), Meet in the Middle CSES.",
+      "complexity": "O(2^(N/2) · N)",
+      "vnPattern": "Hiếm gặp trong HSG TP, nhưng có ở chuyên Tin các tỉnh có thầy Hoàng dạy.",
+      "prerequisites": [
+        "recursion-backtracking",
+        "binary-search"
+      ],
+      "resources": [
+        {
+          "label": "CP-Algorithms — Meet in the middle",
+          "url": "https://cp-algorithms.com/various/meet_in_the_middle.html"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "mitm-subset-sum",
+          "title": "Tổng tập con (meet in middle)",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm"
+          ]
+        },
+        {
+          "slug": "mitm-pair-zero",
+          "title": "4 số tổng 0",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm"
+          ]
+        },
+        {
+          "slug": "mitm-knap",
+          "title": "Knapsack value MITM",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm",
+            "knapsack"
+          ]
+        },
+        {
+          "slug": "mitm-twosum-pos",
+          "title": "Cặp vị trí tổng S (MITM 2 lần)",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm"
+          ]
+        },
+        {
+          "slug": "mitm-bitmask-cover",
+          "title": "Phủ bit MITM",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm",
+            "bitmask"
+          ]
+        },
+        {
+          "slug": "mitm-mod-pair",
+          "title": "Cặp tổng ≡ 0 (mod M)",
+          "tier": "T2",
+          "skills": [
+            "S3",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "mitm",
+            "mod"
+          ]
+        }
+      ],
+      "theory": "// MITM — Sum of subset = T\nvector<long long> L, R;\nint half = n / 2;\nfor (int m = 0; m < (1 << half); m++) {\n    long long s = 0;\n    for (int i = 0; i < half; i++) if (m & (1 << i)) s += a[i];\n    L.push_back(s);\n}\nsort(R.begin(), R.end());\nlong long ans = 0;\nfor (auto s : L) ans += upper_bound(R.begin(), R.end(), T - s) - lower_bound(R.begin(), R.end(), T - s);",
+      "theorySnippet": "// MITM — Sum of subset = T\nvector<long long> L, R;\nint half = n / 2;\nfor (int m = 0; m < (1 << half); m++) {\n    long long s = 0;\n    for (int i = 0; i < half; i++) if (m & (1 << i)) s += a[i];\n    L.push_back(s);\n}\nsort(R.begin(), R.end());\nlong long ans = 0;\nfor (auto s : L) ans += upper_bound(R.begin(), R.end(), T - s) - lower_bound(R.begin(), R.end(), T - s);",
+      "referenceProblem": [
+        {
+          "label": "CSES — Meet in the Middle",
+          "url": "https://cses.fi/problemset/task/1628",
+          "source": "CSES",
+          "difficulty": "hard"
+        },
+        {
+          "label": "CSES — Apple Division",
+          "url": "https://cses.fi/problemset/task/1623",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "stl-overview",
+      "day": 15,
+      "level": 4,
+      "label": "STL Overview",
+      "labelVi": "STL toàn diện — vector, set, map, deque, priority_queue",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "difficulty": "intermediate",
+      "description": "STL containers tiết kiệm cả nửa tiếng code. `vector` (động + iter), `set/multiset` (sorted + log N op), `map<K,V>` (key-value sorted), `unordered_set/map` (hash O(1) trung bình, có thể worst-case TLE với anti-hash), `deque` (push/pop hai đầu O(1)), `priority_queue` (max-heap mặc định, dùng `greater<>` cho min-heap), `stack`, `queue`. Khi nào dùng `set` vs `unordered_set`: cần sorted hoặc cần lower_bound thì dùng `set`; chỉ cần check tồn tại nhanh thì `unordered_set` (nhưng cẩn thận anti-hash).",
+      "complexity": "set/map: O(log N); unordered: O(1) avg",
+      "vnPattern": "priority_queue cho Dijkstra, set cho \"tìm phần tử kế tiếp\", map cho đếm tần số.",
+      "prerequisites": [
+        "sort"
+      ],
+      "resources": [
+        {
+          "label": "C++ Reference — STL",
+          "url": "https://en.cppreference.com/w/cpp/container"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "stl-vector-rotate",
+          "title": "Xoay vector",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "vector"
+          ]
+        },
+        {
+          "slug": "stl-set-distinct",
+          "title": "Đếm phần tử khác nhau",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "set"
+          ]
+        },
+        {
+          "slug": "stl-map-freq",
+          "title": "Đếm tần số (map)",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "map"
+          ]
+        },
+        {
+          "slug": "stl-pq-merge",
+          "title": "Trộn K dãy đã sort",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "priority_queue",
+            "heap"
+          ]
+        },
+        {
+          "slug": "stl-deque-rolling-avg",
+          "title": "Trung bình trượt",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "deque"
+          ]
+        },
+        {
+          "slug": "stl-multiset-median",
+          "title": "Median trượt (multiset)",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "multiset"
+          ]
+        },
+        {
+          "slug": "stl-pair-sort",
+          "title": "Sắp xếp cặp",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "pair",
+            "sort"
+          ]
+        },
+        {
+          "slug": "stl-stack-reverse-stk",
+          "title": "Đảo dãy bằng stack",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "stack"
+          ]
+        },
+        {
+          "slug": "stl-queue-sim",
+          "title": "Mô phỏng hàng đợi",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "queue"
+          ]
+        },
+        {
+          "slug": "stl-priority-task",
+          "title": "Lập lịch ưu tiên",
+          "tier": "T1",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "stl",
+            "priority_queue"
+          ]
+        }
+      ],
+      "theory": "// min-heap với priority_queue + lambda\nauto cmp = [](int a, int b){ return a > b; };\npriority_queue<int, vector<int>, decltype(cmp)> pq(cmp);\nset<int> s; s.insert(5); auto it = s.lower_bound(3);\nif (it != s.end()) cout << *it; // phần tử nhỏ nhất >= 3",
+      "theorySnippet": "// min-heap với priority_queue + lambda\nauto cmp = [](int a, int b){ return a > b; };\npriority_queue<int, vector<int>, decltype(cmp)> pq(cmp);\nset<int> s; s.insert(5); auto it = s.lower_bound(3);\nif (it != s.end()) cout << *it; // phần tử nhỏ nhất >= 3",
+      "referenceProblem": [
+        {
+          "label": "CSES — Distinct Numbers",
+          "url": "https://cses.fi/problemset/task/1621",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Room Allocation",
+          "url": "https://cses.fi/problemset/task/1164",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "monotonic-stack",
+      "day": 16,
+      "level": 4,
+      "label": "Monotonic Stack",
+      "labelVi": "Ngăn xếp đơn điệu — NGE, Largest Rectangle",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "Monotonic stack giữ phần tử theo thứ tự đơn điệu (tăng/giảm). Áp dụng: Next Greater Element O(N), Largest Rectangle in Histogram (đỉnh cao mỗi cột mở rộng đến NGE-1 hai phía), Maximal Rectangle 2D = N lần histogram. Pattern: lặp từ phải qua trái (hoặc trái qua phải), pop khỏi stack khi top vi phạm monotonic, kết quả mỗi phần tử = top sau khi pop hoặc -1 nếu rỗng.",
       "complexity": "O(N)",
-      "prerequisites": ["recursion", "prefix-sum"],
-      "resources": [
-        { "label": "AtCoder DP Educational", "url": "https://atcoder.jp/contests/dp" }
+      "vnPattern": "Largest Rectangle hay ra trong chuyên Tin các tỉnh.",
+      "prerequisites": [
+        "stl-overview"
       ],
-      "problems": ["max-subarray-sum", "house-robber"],
-      "theory": "// Kadane O(N) — max subarray\nlong long best = a[0], cur = a[0];\nfor (int i = 1; i < n; i++) {\n    cur = max((long long)a[i], cur + a[i]);\n    best = max(best, cur);\n}"
-    },
-    {
-      "id": "dp-knapsack",
-      "level": 3,
-      "label": "Knapsack",
-      "labelVi": "Cái túi 0/1",
-      "difficulty": "advanced",
-      "description": "Mỗi vật chọn ≤1 lần. dp[j] = giá trị tối đa với capacity j.",
-      "complexity": "O(N × W)",
-      "prerequisites": ["dp-1d"],
-      "resources": [],
-      "problems": ["knapsack-01"],
-      "theory": "// 0/1 knapsack, duyệt j từ W về w[i] để tránh dùng lại\nvector<int> dp(W + 1, 0);\nfor (int i = 0; i < n; i++)\n    for (int j = W; j >= w[i]; j--)\n        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);"
-    },
-    {
-      "id": "dp-coin",
-      "level": 3,
-      "label": "Coin Change",
-      "labelVi": "Đổi tiền",
-      "difficulty": "advanced",
-      "description": "DP đếm cách / DP tối ưu số đồng để đổi đúng S.",
-      "complexity": "O(N × S)",
-      "prerequisites": ["dp-1d"],
-      "resources": [],
-      "problems": ["coin-change-ways"],
-      "theory": "vector<long long> dp(S + 1, 0);\ndp[0] = 1;\nfor (int c : coins)\n    for (int s = c; s <= S; s++) dp[s] += dp[s - c];"
-    },
-    {
-      "id": "lis",
-      "level": 3,
-      "label": "LIS",
-      "labelVi": "Dãy con tăng dài nhất",
-      "difficulty": "advanced",
-      "description": "O(N²) DP cơ bản, O(N log N) dùng patience sort + binary search.",
-      "complexity": "O(N log N)",
-      "prerequisites": ["binary-search", "dp-1d"],
       "resources": [
-        { "label": "VNOI – LIS", "url": "https://wiki.vnoi.info/" }
+        {
+          "label": "CP-Algorithms — Stack",
+          "url": "https://cp-algorithms.com/data_structures/stack_queue_modification.html"
+        }
       ],
-      "problems": ["lis-classic"],
-      "theory": "vector<int> tail;\nfor (int x : a) {\n    auto it = lower_bound(tail.begin(), tail.end(), x);\n    if (it == tail.end()) tail.push_back(x);\n    else *it = x;\n}\n// kết quả: tail.size()"
+      "problems": [
+        {
+          "slug": "mono-next-greater",
+          "title": "Phần tử lớn kế tiếp",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-largest-rect-hist",
+          "title": "Hình chữ nhật lớn nhất histogram",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-stock-span",
+          "title": "Stock span",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-trap-water",
+          "title": "Hứng nước mưa",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-max-area-rect-binary",
+          "title": "Hình chữ nhật max trong ma trận 0/1",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack",
+            "dp"
+          ]
+        }
+      ],
+      "theory": "// NGE — phần tử lớn hơn gần nhất bên phải\nstack<int> st;\nvector<int> nge(n, -1);\nfor (int i = n - 1; i >= 0; i--) {\n    while (!st.empty() && a[st.top()] <= a[i]) st.pop();\n    if (!st.empty()) nge[i] = st.top();\n    st.push(i);\n}",
+      "theorySnippet": "// NGE — phần tử lớn hơn gần nhất bên phải\nstack<int> st;\nvector<int> nge(n, -1);\nfor (int i = n - 1; i >= 0; i--) {\n    while (!st.empty() && a[st.top()] <= a[i]) st.pop();\n    if (!st.empty()) nge[i] = st.top();\n    st.push(i);\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Largest Rectangle",
+          "url": "https://cses.fi/problemset/task/2422",
+          "source": "CSES",
+          "difficulty": "hard"
+        },
+        {
+          "label": "VNOJ — KAGAIN",
+          "url": "https://oj.vnoi.info/problem/kagain",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "dp-2d",
+      "id": "monotonic-deque",
+      "day": 17,
       "level": 4,
-      "label": "DP 2D",
-      "labelVi": "QHĐ 2 chiều",
+      "label": "Monotonic Deque",
+      "labelVi": "Hàng đợi đơn điệu — Sliding Window Min/Max",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
       "difficulty": "advanced",
-      "description": "Edit distance, LCS, đếm đường đi.",
-      "complexity": "O(N × M)",
-      "prerequisites": ["dp-1d"],
-      "resources": [],
-      "problems": ["lcs-classic"],
-      "theory": "// LCS\nfor (int i = 1; i <= n; i++)\n    for (int j = 1; j <= m; j++) {\n        if (s[i-1] == t[j-1]) dp[i][j] = dp[i-1][j-1] + 1;\n        else dp[i][j] = max(dp[i-1][j], dp[i][j-1]);\n    }"
-    },
-    {
-      "id": "graph-basics",
-      "level": 4,
-      "label": "Graph Basics",
-      "labelVi": "Đồ thị cơ bản",
-      "difficulty": "intermediate",
-      "description": "Biểu diễn: ma trận kề, danh sách kề. Có hướng / vô hướng, có / không trọng.",
-      "complexity": "O(V + E) lưu trữ",
-      "prerequisites": ["array"],
-      "resources": [
-        { "label": "CP-Algo – Graphs", "url": "https://cp-algorithms.com/" }
+      "description": "Monotonic deque dùng cho Sliding Window Max/Min trong O(N). Giữ deque chứa chỉ số mà giá trị giảm dần (cho max). Khi thêm chỉ số mới r: pop hết back có giá trị ≤ a[r], pop front nếu chỉ số < r-k+1. Front của deque luôn là max của cửa sổ hiện tại. Áp dụng: Sliding Window Maximum, Shortest Subarray Sum K (DP + deque tối ưu).",
+      "complexity": "O(N)",
+      "vnPattern": "Bài đệ quy + sliding window xuất hiện trong đề chuyên có cây/đoạn.",
+      "prerequisites": [
+        "stl-overview",
+        "monotonic-stack"
       ],
-      "problems": ["graph-degree"],
-      "theory": "vector<vector<int>> adj(n + 1);\nfor (int i = 0; i < m; i++) {\n    int u, v; cin >> u >> v;\n    adj[u].push_back(v);\n    adj[v].push_back(u);\n}"
-    },
-    {
-      "id": "bfs",
-      "level": 4,
-      "label": "BFS",
-      "labelVi": "Tìm kiếm theo chiều rộng",
-      "difficulty": "intermediate",
-      "description": "Đường đi ngắn nhất trên đồ thị không trọng (hoặc trọng đồng nhất). Lưu khoảng cách trong mảng dist.",
-      "complexity": "O(V + E)",
-      "prerequisites": ["graph-basics", "stack"],
-      "resources": [],
-      "problems": ["shortest-path-unweighted"],
-      "theory": "queue<int> q; vector<int> dist(n + 1, -1);\ndist[s] = 0; q.push(s);\nwhile (!q.empty()) {\n    int u = q.front(); q.pop();\n    for (int v : adj[u]) if (dist[v] == -1) {\n        dist[v] = dist[u] + 1;\n        q.push(v);\n    }\n}"
-    },
-    {
-      "id": "dfs",
-      "level": 4,
-      "label": "DFS",
-      "labelVi": "Tìm kiếm theo chiều sâu",
-      "difficulty": "intermediate",
-      "description": "Khám phá đồ thị / cây bằng đệ quy. Ứng dụng: thành phần liên thông, topo sort, chu trình.",
-      "complexity": "O(V + E)",
-      "prerequisites": ["graph-basics", "recursion"],
-      "resources": [],
-      "problems": ["count-components"],
-      "theory": "vector<bool> vis(n + 1, false);\nfunction<void(int)> dfs = [&](int u){\n    vis[u] = true;\n    for (int v : adj[u]) if (!vis[v]) dfs(v);\n};"
-    },
-    {
-      "id": "dijkstra",
-      "level": 5,
-      "label": "Dijkstra",
-      "labelVi": "Dijkstra",
-      "difficulty": "advanced",
-      "description": "Đường đi ngắn nhất trên đồ thị trọng dương. Priority queue.",
-      "complexity": "O((V + E) log V)",
-      "prerequisites": ["bfs"],
       "resources": [
-        { "label": "CP-Algo – Dijkstra", "url": "https://cp-algorithms.com/graph/dijkstra.html" }
+        {
+          "label": "CP-Algorithms — Deque",
+          "url": "https://cp-algorithms.com/data_structures/stack_queue_modification.html"
+        }
       ],
-      "problems": ["dijkstra-classic"],
-      "theory": "priority_queue<pair<long long,int>, vector<pair<long long,int>>, greater<>> pq;\nvector<long long> dist(n + 1, LLONG_MAX);\ndist[s] = 0; pq.push({0, s});\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (d > dist[u]) continue;\n    for (auto [v, w] : adj[u]) if (dist[u] + w < dist[v]) {\n        dist[v] = dist[u] + w;\n        pq.push({dist[v], v});\n    }\n}"
+      "problems": [
+        {
+          "slug": "mdq-window-max",
+          "title": "Max trong cửa sổ trượt",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque"
+          ]
+        },
+        {
+          "slug": "mdq-window-min",
+          "title": "Min trong cửa sổ trượt",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque"
+          ]
+        },
+        {
+          "slug": "mdq-shortest-subarray-sum",
+          "title": "Đoạn ngắn nhất tổng ≥ S",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque",
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "mdq-dp-window",
+          "title": "DP với cửa sổ trượt",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque",
+            "dp"
+          ]
+        },
+        {
+          "slug": "mdq-max-sum-len-le-k",
+          "title": "Tổng đoạn lớn nhất độ dài ≤ K",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque",
+            "prefix-sum"
+          ]
+        }
+      ],
+      "theory": "// Sliding window max — cửa sổ K\ndeque<int> dq;\nfor (int r = 0; r < n; r++) {\n    while (!dq.empty() && a[dq.back()] <= a[r]) dq.pop_back();\n    dq.push_back(r);\n    if (dq.front() <= r - k) dq.pop_front();\n    if (r >= k - 1) cout << a[dq.front()] << \" \";\n}",
+      "theorySnippet": "// Sliding window max — cửa sổ K\ndeque<int> dq;\nfor (int r = 0; r < n; r++) {\n    while (!dq.empty() && a[dq.back()] <= a[r]) dq.pop_back();\n    dq.push_back(r);\n    if (dq.front() <= r - k) dq.pop_front();\n    if (r >= k - 1) cout << a[dq.front()] << \" \";\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Sliding Median",
+          "url": "https://cses.fi/problemset/task/1076",
+          "source": "CSES",
+          "difficulty": "hard"
+        },
+        {
+          "label": "VNOJ — SLMAX",
+          "url": "https://oj.vnoi.info/problem/slmax",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
       "id": "dsu",
-      "level": 5,
+      "day": 18,
+      "level": 4,
       "label": "DSU",
-      "labelVi": "Union-Find",
-      "difficulty": "advanced",
-      "description": "Disjoint Set Union với union by rank + path compression. ~α(N).",
-      "complexity": "Gần O(1)",
-      "prerequisites": ["graph-basics"],
-      "resources": [],
-      "problems": ["dsu-friends"],
-      "theory": "vector<int> par(n + 1), rk(n + 1, 0);\nfor (int i = 0; i <= n; i++) par[i] = i;\nfunction<int(int)> find = [&](int x){ return par[x] == x ? x : par[x] = find(par[x]); };\nauto uni = [&](int a, int b){\n    a = find(a); b = find(b);\n    if (a == b) return false;\n    if (rk[a] < rk[b]) swap(a, b);\n    par[b] = a;\n    if (rk[a] == rk[b]) rk[a]++;\n    return true;\n};"
-    },
-    {
-      "id": "mst",
-      "level": 5,
-      "label": "MST",
-      "labelVi": "Cây khung nhỏ nhất",
-      "difficulty": "advanced",
-      "description": "Kruskal (sort edges + DSU), Prim (priority queue).",
-      "complexity": "O(E log E)",
-      "prerequisites": ["dsu"],
-      "resources": [],
-      "problems": ["mst-kruskal"],
-      "theory": "// Kruskal\nsort(edges.begin(), edges.end());\nlong long total = 0;\nfor (auto &[w, u, v] : edges)\n    if (uni(u, v)) total += w;"
-    },
-    {
-      "id": "segtree",
-      "level": 6,
-      "label": "Segment Tree",
-      "labelVi": "Cây phân đoạn",
-      "difficulty": "expert",
-      "description": "Truy vấn / cập nhật trên đoạn O(log N). Lazy propagation cho cập nhật đoạn.",
-      "complexity": "Mỗi op O(log N)",
-      "prerequisites": ["prefix-sum", "recursion"],
-      "resources": [
-        { "label": "CP-Algo – Segment Tree", "url": "https://cp-algorithms.com/data_structures/segment_tree.html" }
+      "labelVi": "DSU — Union-Find với path compression",
+      "tier": "T2",
+      "skills": [
+        "S1"
       ],
-      "problems": ["segtree-range-sum"],
-      "theory": "vector<long long> seg(4 * n, 0);\nvoid update(int node, int l, int r, int pos, long long val) {\n    if (l == r) { seg[node] = val; return; }\n    int m = (l + r) / 2;\n    if (pos <= m) update(node*2, l, m, pos, val);\n    else update(node*2+1, m+1, r, pos, val);\n    seg[node] = seg[node*2] + seg[node*2+1];\n}"
+      "difficulty": "advanced",
+      "description": "DSU (Disjoint Set Union / Union-Find) quản lý tập hợp rời nhau với 2 thao tác: `find(x)` trả về đại diện tập chứa x, `union(a,b)` hợp 2 tập. Tối ưu: path compression (`par[x] = find(par[x])`) + union by rank (gắn cây thấp vào cây cao). Đạt gần O(α(N)) ≈ O(1). Ứng dụng: đếm thành phần liên thông offline, Kruskal MST, dynamic connectivity offline, undo (DSU rollback nâng cao).",
+      "complexity": "O(α(N)) ≈ O(1) per op",
+      "vnPattern": "KCOLLECT VNOJ, đề tuyển sinh KHTN có bài ghép cặp DSU.",
+      "prerequisites": [
+        "array-1d"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — DSU",
+          "url": "https://wiki.vnoi.info/algo/data-structures/disjoint-set"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "dsu-basic",
+          "title": "DSU cơ bản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu"
+          ]
+        },
+        {
+          "slug": "dsu-component-count",
+          "title": "Đếm thành phần liên thông",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "graph"
+          ]
+        },
+        {
+          "slug": "dsu-mst-kruskal",
+          "title": "MST Kruskal",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "mst"
+          ]
+        },
+        {
+          "slug": "dsu-friend-circle",
+          "title": "Vòng tròn bạn bè",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "count"
+          ]
+        },
+        {
+          "slug": "dsu-size-largest",
+          "title": "Nhóm bạn lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "size"
+          ]
+        }
+      ],
+      "theory": "vector<int> par(n + 1), rk(n + 1, 0);\niota(par.begin(), par.end(), 0);\nfunction<int(int)> find = [&](int x){ return par[x] == x ? x : par[x] = find(par[x]); };\nauto uni = [&](int a, int b){\n    a = find(a); b = find(b);\n    if (a == b) return false;\n    if (rk[a] < rk[b]) swap(a, b);\n    par[b] = a;\n    if (rk[a] == rk[b]) rk[a]++;\n    return true;\n};",
+      "theorySnippet": "vector<int> par(n + 1), rk(n + 1, 0);\niota(par.begin(), par.end(), 0);\nfunction<int(int)> find = [&](int x){ return par[x] == x ? x : par[x] = find(par[x]); };\nauto uni = [&](int a, int b){\n    a = find(a); b = find(b);\n    if (a == b) return false;\n    if (rk[a] < rk[b]) swap(a, b);\n    par[b] = a;\n    if (rk[a] == rk[b]) rk[a]++;\n    return true;\n};",
+      "referenceProblem": [
+        {
+          "label": "CSES — Building Roads",
+          "url": "https://cses.fi/problemset/task/1666",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Road Reparation",
+          "url": "https://cses.fi/problemset/task/1675",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — KCOLLECT",
+          "url": "https://oj.vnoi.info/problem/kcollect",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "bit",
-      "level": 6,
-      "label": "Fenwick (BIT)",
-      "labelVi": "Cây chỉ số nhị phân",
-      "difficulty": "expert",
-      "description": "Tổng tiền tố / point update O(log N). Code ngắn hơn segtree.",
-      "complexity": "O(log N)",
-      "prerequisites": ["segtree"],
+      "id": "graph-bfs",
+      "day": 19,
+      "level": 4,
+      "label": "Graph BFS",
+      "labelVi": "Đồ thị — biểu diễn + BFS ngắn nhất",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2"
+      ],
+      "difficulty": "intermediate",
+      "description": "BFS (Breadth-First Search) là thuật tìm đường ngắn nhất trên đồ thị không trọng số O(V+E). Hàng đợi FIFO, dùng `vis[]` để tránh thăm lại. Biểu diễn đồ thị: adjacency list `vector<vector<int>>` cho đa số bài, adjacency matrix `int g[N][N]` khi N nhỏ và mật độ dày. BFS trên grid: 4 hướng (hoặc 8), bỏ qua ô đã thăm hoặc tường. Có thể track đường đi qua `parent[]` rồi truy ngược.",
+      "complexity": "O(V + E)",
+      "vnPattern": "Nhiều đề HSG TP có bài mê cung / tìm đường trên lưới.",
+      "prerequisites": [
+        "stl-overview"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — graph basics",
+          "url": "https://wiki.vnoi.info/algo/graph-theory/breadth-first-search"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "bfs-distance",
+          "title": "Khoảng cách BFS",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "graph"
+          ]
+        },
+        {
+          "slug": "bfs-grid",
+          "title": "BFS trên lưới",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "grid"
+          ]
+        },
+        {
+          "slug": "bfs-multi-source",
+          "title": "BFS đa nguồn (đám cháy)",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "multi-source"
+          ]
+        },
+        {
+          "slug": "bfs-knight",
+          "title": "Quân mã đến đích",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "knight"
+          ]
+        },
+        {
+          "slug": "bfs-shortest-path-print",
+          "title": "In đường đi BFS",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "path-reconstruction"
+          ]
+        }
+      ],
+      "theory": "// BFS trên grid 4 hướng\nint dx[] = {0,0,-1,1}, dy[] = {1,-1,0,0};\nvector<vector<int>> dist(n, vector<int>(m, -1));\nqueue<pair<int,int>> q;\nq.push({sx, sy}); dist[sx][sy] = 0;\nwhile (!q.empty()) {\n    auto [x, y] = q.front(); q.pop();\n    for (int k = 0; k < 4; k++) {\n        int nx = x + dx[k], ny = y + dy[k];\n        if (nx>=0 && nx<n && ny>=0 && ny<m && dist[nx][ny] == -1 && g[nx][ny] != '#') {\n            dist[nx][ny] = dist[x][y] + 1;\n            q.push({nx, ny});\n        }\n    }\n}",
+      "theorySnippet": "// BFS trên grid 4 hướng\nint dx[] = {0,0,-1,1}, dy[] = {1,-1,0,0};\nvector<vector<int>> dist(n, vector<int>(m, -1));\nqueue<pair<int,int>> q;\nq.push({sx, sy}); dist[sx][sy] = 0;\nwhile (!q.empty()) {\n    auto [x, y] = q.front(); q.pop();\n    for (int k = 0; k < 4; k++) {\n        int nx = x + dx[k], ny = y + dy[k];\n        if (nx>=0 && nx<n && ny>=0 && ny<m && dist[nx][ny] == -1 && g[nx][ny] != '#') {\n            dist[nx][ny] = dist[x][y] + 1;\n            q.push({nx, ny});\n        }\n    }\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Counting Rooms",
+          "url": "https://cses.fi/problemset/task/1192",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Labyrinth",
+          "url": "https://cses.fi/problemset/task/1193",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — VMAZE",
+          "url": "https://oj.vnoi.info/problem/vmaze",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "graph-dfs",
+      "day": 20,
+      "level": 4,
+      "label": "Graph DFS",
+      "labelVi": "DFS — thành phần liên thông + bipartite",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S4"
+      ],
+      "difficulty": "intermediate",
+      "description": "DFS đệ quy đi sâu đến hết rồi quay lui. Stack đệ quy có thể tràn (limit ~10⁵ ở Linux), với N lớn cần `iterative DFS` hoặc tăng stack. Ứng dụng: đếm thành phần liên thông (chạy DFS từ mỗi đỉnh chưa thăm, tăng count), kiểm tra 2 phía (gán màu 0/1 xen kẽ, mâu thuẫn = không), phát hiện chu trình (DFS tree edges + back edges).",
+      "complexity": "O(V + E)",
+      "vnPattern": "Đếm số đảo, bài kiểm tra đồ thị hai phía xuất hiện trong đề chuyên.",
+      "prerequisites": [
+        "graph-bfs",
+        "recursion-backtracking"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — DFS",
+          "url": "https://wiki.vnoi.info/algo/graph-theory/depth-first-search"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "dfs-count-components",
+          "title": "Đếm thành phần liên thông (DFS)",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "components"
+          ]
+        },
+        {
+          "slug": "dfs-cycle-detect",
+          "title": "Phát hiện chu trình",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "cycle"
+          ]
+        },
+        {
+          "slug": "dfs-bipartite",
+          "title": "Đồ thị 2 phía",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "bipartite"
+          ]
+        },
+        {
+          "slug": "dfs-toposort",
+          "title": "Sắp xếp tô-pô",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "topo"
+          ]
+        },
+        {
+          "slug": "dfs-largest-component",
+          "title": "Thành phần lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "size"
+          ]
+        }
+      ],
+      "theory": "// Đếm thành phần liên thông + bipartite check\nvector<int> color(n + 1, -1);\nbool ok = true;\nfunction<void(int, int)> dfs = [&](int u, int c) {\n    color[u] = c;\n    for (int v : adj[u]) {\n        if (color[v] == -1) dfs(v, c ^ 1);\n        else if (color[v] == c) ok = false;\n    }\n};",
+      "theorySnippet": "// Đếm thành phần liên thông + bipartite check\nvector<int> color(n + 1, -1);\nbool ok = true;\nfunction<void(int, int)> dfs = [&](int u, int c) {\n    color[u] = c;\n    for (int v : adj[u]) {\n        if (color[v] == -1) dfs(v, c ^ 1);\n        else if (color[v] == c) ok = false;\n    }\n};",
+      "referenceProblem": [
+        {
+          "label": "CSES — Building Teams",
+          "url": "https://cses.fi/problemset/task/1668",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Round Trip",
+          "url": "https://cses.fi/problemset/task/1669",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — ISLANDS",
+          "url": "https://oj.vnoi.info/problem/islands",
+          "source": "VNOJ",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "shortest-path",
+      "day": 21,
+      "level": 5,
+      "label": "Shortest Path",
+      "labelVi": "Dijkstra + BFS 0-1 + Bellman-Ford",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "difficulty": "advanced",
+      "description": "Đường đi ngắn nhất: trọng số dương → Dijkstra O((V+E)logV) với priority_queue min-heap; cạnh chỉ 0 hoặc 1 → BFS 0-1 với deque O(V+E); cạnh âm có thể → Bellman-Ford O(V·E) phát hiện chu trình âm; mọi cặp → Floyd-Warshall O(V³). Pattern Dijkstra: lazy deletion — bỏ qua entries đã out-of-date trong heap (`if (d > dist[u]) continue;`).",
+      "complexity": "O((V+E) log V) Dijkstra",
+      "vnPattern": "Bài đường đi xuất hiện ở chuyên Tin các tỉnh có thầy Hoàng dạy.",
+      "prerequisites": [
+        "graph-bfs",
+        "stl-overview"
+      ],
+      "resources": [
+        {
+          "label": "CP-Algorithms — Dijkstra",
+          "url": "https://cp-algorithms.com/graph/dijkstra.html"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "sp-dijkstra-basic",
+          "title": "Dijkstra cơ bản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dijkstra",
+            "shortest-path"
+          ]
+        },
+        {
+          "slug": "sp-dijkstra-all",
+          "title": "Đường đi ngắn nhất tới mọi đỉnh",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dijkstra",
+            "sssp"
+          ]
+        },
+        {
+          "slug": "sp-grid-weighted",
+          "title": "Đường đi nhỏ nhất trên lưới",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dijkstra",
+            "grid"
+          ]
+        },
+        {
+          "slug": "sp-zero-one-bfs",
+          "title": "0-1 BFS",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "deque"
+          ]
+        },
+        {
+          "slug": "sp-floyd-warshall",
+          "title": "Đường đi ngắn nhất Floyd",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "floyd",
+            "apsp"
+          ]
+        }
+      ],
+      "theory": "priority_queue<pair<long long,int>, vector<pair<long long,int>>, greater<>> pq;\nvector<long long> dist(n + 1, LLONG_MAX);\ndist[s] = 0; pq.push({0, s});\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (d > dist[u]) continue;\n    for (auto [v, w] : adj[u]) if (dist[u] + w < dist[v]) {\n        dist[v] = dist[u] + w;\n        pq.push({dist[v], v});\n    }\n}",
+      "theorySnippet": "priority_queue<pair<long long,int>, vector<pair<long long,int>>, greater<>> pq;\nvector<long long> dist(n + 1, LLONG_MAX);\ndist[s] = 0; pq.push({0, s});\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (d > dist[u]) continue;\n    for (auto [v, w] : adj[u]) if (dist[u] + w < dist[v]) {\n        dist[v] = dist[u] + w;\n        pq.push({dist[v], v});\n    }\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Shortest Routes I",
+          "url": "https://cses.fi/problemset/task/1671",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Shortest Routes II",
+          "url": "https://cses.fi/problemset/task/1672",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — High Score",
+          "url": "https://cses.fi/problemset/task/1673",
+          "source": "CSES",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "id": "dp-intro",
+      "day": 22,
+      "level": 5,
+      "label": "DP Intro",
+      "labelVi": "QHĐ 1D — Fibonacci, leo bậc, Kadane đầy đủ",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "4 bước DP: (1) định nghĩa state, (2) viết transition, (3) base case, (4) thứ tự tính. So sánh top-down (memoization, đệ quy + map/array) vs bottom-up (iterative). Bài 1D điển hình: Fibonacci O(N), leo cầu thang (mỗi bước 1/2/3 nấc), Kadane với dấu (cả âm). Lưu ý: kiểm tra space O(N) hay có thể giảm xuống O(1) bằng \"rolling array\".",
+      "complexity": "O(N) hoặc O(N·K)",
+      "vnPattern": "Hầu hết bài DP trong đề HSG TP là 1D hoặc 2D đơn giản.",
+      "prerequisites": [
+        "recursion-backtracking",
+        "prefix-sum"
+      ],
+      "resources": [
+        {
+          "label": "AtCoder DP Educational",
+          "url": "https://atcoder.jp/contests/dp/tasks"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "dp-fib-mod",
+          "title": "Fibonacci modulo",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "fibonacci"
+          ]
+        },
+        {
+          "slug": "dp-climb-stairs",
+          "title": "Bậc thang nhảy 1/2/3",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "stairs"
+          ]
+        },
+        {
+          "slug": "dp-house-robber",
+          "title": "Trộm nhà không kề",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "house-robber"
+          ]
+        },
+        {
+          "slug": "dp-max-subarray",
+          "title": "Dãy con tổng lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "kadane"
+          ]
+        },
+        {
+          "slug": "dp-coin-min",
+          "title": "Đổi tiền — số đồng ít nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "coin-change"
+          ]
+        }
+      ],
+      "theory": "// Leo cầu thang — 1, 2, hoặc 3 nấc mỗi bước, mod 1e9+7\nconst int MOD = 1e9 + 7;\nvector<long long> dp(n + 1, 0);\ndp[0] = 1;\nfor (int i = 1; i <= n; i++) {\n    for (int k = 1; k <= 3 && i - k >= 0; k++)\n        dp[i] = (dp[i] + dp[i - k]) % MOD;\n}",
+      "theorySnippet": "// Leo cầu thang — 1, 2, hoặc 3 nấc mỗi bước, mod 1e9+7\nconst int MOD = 1e9 + 7;\nvector<long long> dp(n + 1, 0);\ndp[0] = 1;\nfor (int i = 1; i <= n; i++) {\n    for (int k = 1; k <= 3 && i - k >= 0; k++)\n        dp[i] = (dp[i] + dp[i - k]) % MOD;\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Dice Combinations",
+          "url": "https://cses.fi/problemset/task/1633",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Minimizing Coins",
+          "url": "https://cses.fi/problemset/task/1634",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "dp-knapsack",
+      "day": 23,
+      "level": 5,
+      "label": "DP Knapsack",
+      "labelVi": "Knapsack 0/1, vô hạn, đếm số cách",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "Knapsack 0/1: mỗi vật dùng 1 lần, `dp[w] = max(dp[w], dp[w-wi] + vi)`, vòng lặp i ngoài, w từ W → wi để tránh dùng lại. Knapsack vô hạn: w từ wi → W. Đếm số cách đạt đúng W: cộng thay max, mod 10⁹+7. Biến thể: thứ tự quan trọng / không quan trọng (Coin Combinations I vs II ở CSES). Quảng Nam 2019 \"Mua quà\" là knapsack điển hình.",
+      "complexity": "O(N·W)",
+      "vnPattern": "Quảng Nam 2019 — Bài Mua quà là knapsack điển hình.",
+      "prerequisites": [
+        "dp-intro"
+      ],
+      "resources": [
+        {
+          "label": "AtCoder DP D — Knapsack 1",
+          "url": "https://atcoder.jp/contests/dp/tasks/dp_d"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "knap-01",
+          "title": "Túi 0/1 cơ bản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "knapsack-01"
+          ]
+        },
+        {
+          "slug": "knap-unbounded",
+          "title": "Túi không giới hạn",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "knapsack-unbounded"
+          ]
+        },
+        {
+          "slug": "subset-sum-exist",
+          "title": "Tồn tại tập con tổng S",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "subset-sum"
+          ]
+        },
+        {
+          "slug": "subset-count-ways",
+          "title": "Đếm số tập con tổng S",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "subset-count"
+          ]
+        },
+        {
+          "slug": "partition-min-diff",
+          "title": "Chia 2 nhóm chênh nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "partition"
+          ]
+        }
+      ],
+      "theory": "// Knapsack 0/1 — O(N*W)\nvector<long long> dp(W + 1, 0);\nfor (int i = 0; i < n; i++)\n    for (int w = W; w >= wt[i]; w--)\n        dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);\ncout << dp[W] << \"\\n\";",
+      "theorySnippet": "// Knapsack 0/1 — O(N*W)\nvector<long long> dp(W + 1, 0);\nfor (int i = 0; i < n; i++)\n    for (int w = W; w >= wt[i]; w--)\n        dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);\ncout << dp[W] << \"\\n\";",
+      "referenceProblem": [
+        {
+          "label": "CSES — Coin Combinations I",
+          "url": "https://cses.fi/problemset/task/1635",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Coin Combinations II",
+          "url": "https://cses.fi/problemset/task/1636",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — KNAPACKS",
+          "url": "https://oj.vnoi.info/problem/knapacks",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "dp-lis-lcs",
+      "day": 24,
+      "level": 5,
+      "label": "DP LIS/LCS",
+      "labelVi": "LIS O(N log N), LCS, Edit Distance",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "advanced",
+      "description": "LIS (Longest Increasing Subsequence): brute O(N²) `dp[i] = max(dp[j]+1)` với j<i và a[j]<a[i]; tối ưu O(N log N) bằng \"patience sorting\" — duy trì `tails[len]` = giá trị nhỏ nhất kết thúc dãy tăng độ dài `len`, dùng `lower_bound`. LCS (Longest Common Subsequence) O(NM): `dp[i][j] = dp[i-1][j-1]+1` nếu khớp, else max. Edit Distance (Levenshtein) O(NM): insert/delete/replace.",
+      "complexity": "LIS O(N log N), LCS/Edit O(NM)",
+      "vnPattern": "LIS xuất hiện ở nhiều đề chuyên Tin.",
+      "prerequisites": [
+        "dp-intro",
+        "binary-search"
+      ],
+      "resources": [
+        {
+          "label": "CSES Pathway — DP",
+          "url": "https://usaco.guide/CPH.pdf"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "lis-basic",
+          "title": "LIS cơ bản O(N²)",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lis"
+          ]
+        },
+        {
+          "slug": "lis-fast",
+          "title": "LIS O(N log N)",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lis",
+            "patience"
+          ]
+        },
+        {
+          "slug": "lcs-basic",
+          "title": "LCS hai chuỗi",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lcs"
+          ]
+        },
+        {
+          "slug": "edit-distance",
+          "title": "Khoảng cách chỉnh sửa",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "edit-distance"
+          ]
+        },
+        {
+          "slug": "lis-count",
+          "title": "Đếm số LIS độ dài tối đa",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lis",
+            "counting"
+          ]
+        }
+      ],
+      "theory": "// LIS O(N log N)\nvector<int> tails;\nfor (int x : a) {\n    auto it = lower_bound(tails.begin(), tails.end(), x);\n    if (it == tails.end()) tails.push_back(x);\n    else *it = x;\n}\ncout << tails.size() << \"\\n\";",
+      "theorySnippet": "// LIS O(N log N)\nvector<int> tails;\nfor (int x : a) {\n    auto it = lower_bound(tails.begin(), tails.end(), x);\n    if (it == tails.end()) tails.push_back(x);\n    else *it = x;\n}\ncout << tails.size() << \"\\n\";",
+      "referenceProblem": [
+        {
+          "label": "CSES — Increasing Subsequence",
+          "url": "https://cses.fi/problemset/task/1145",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Edit Distance",
+          "url": "https://cses.fi/problemset/task/1639",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "dp-grid",
+      "day": 25,
+      "level": 5,
+      "label": "DP Grid + Interval",
+      "labelVi": "DP trên lưới + đếm đường đi + DP đoạn",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S4"
+      ],
+      "difficulty": "advanced",
+      "description": "DP trên lưới: số đường đi từ (0,0) → (n,m) đi xuống/phải, min cost path. Có chướng ngại: bỏ qua ô bị block. Interval DP (DP đoạn): `dp[l][r]` = đáp án cho đoạn [l..r], thường có vòng lặp `for (len = 2; len <= n; len++) for (l = 0; l + len <= n; l++) ...`. Bài kinh điển: Matrix Chain Multiplication, Burst Balloons, Optimal BST.",
+      "complexity": "O(NM) grid, O(N³) interval",
+      "vnPattern": "Grid path đếm là dạng quen trong đề HSG nâng cao.",
+      "prerequisites": [
+        "dp-intro"
+      ],
       "resources": [],
-      "problems": ["bit-range-sum"],
-      "theory": "vector<long long> bit(n + 1, 0);\nauto upd = [&](int i, long long v){ for (; i <= n; i += i & -i) bit[i] += v; };\nauto qry = [&](int i){ long long s = 0; for (; i > 0; i -= i & -i) s += bit[i]; return s; };"
+      "problems": [
+        {
+          "slug": "grid-path-count",
+          "title": "Đếm đường đi lưới",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid"
+          ]
+        },
+        {
+          "slug": "grid-min-sum-path",
+          "title": "Đường đi tổng nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "min"
+          ]
+        },
+        {
+          "slug": "grid-max-sum-path",
+          "title": "Đường đi tổng lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "max"
+          ]
+        },
+        {
+          "slug": "grid-path-obstacle",
+          "title": "Đường đi tránh vật cản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "obstacle"
+          ]
+        },
+        {
+          "slug": "grid-max-square",
+          "title": "Hình vuông toàn 1 lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "square"
+          ]
+        }
+      ],
+      "theory": "// Grid path counting — đếm số đường đi (i,j) → (n,m)\nvector<vector<long long>> dp(n + 1, vector<long long>(m + 1, 0));\ndp[0][0] = 1;\nfor (int i = 0; i <= n; i++)\n    for (int j = 0; j <= m; j++)\n        if (g[i][j] != '#') {\n            if (i) dp[i][j] = (dp[i][j] + dp[i-1][j]) % MOD;\n            if (j) dp[i][j] = (dp[i][j] + dp[i][j-1]) % MOD;\n        }",
+      "theorySnippet": "// Grid path counting — đếm số đường đi (i,j) → (n,m)\nvector<vector<long long>> dp(n + 1, vector<long long>(m + 1, 0));\ndp[0][0] = 1;\nfor (int i = 0; i <= n; i++)\n    for (int j = 0; j <= m; j++)\n        if (g[i][j] != '#') {\n            if (i) dp[i][j] = (dp[i][j] + dp[i-1][j]) % MOD;\n            if (j) dp[i][j] = (dp[i][j] + dp[i][j-1]) % MOD;\n        }",
+      "referenceProblem": [
+        {
+          "label": "CSES — Grid Paths",
+          "url": "https://cses.fi/problemset/task/1638",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Counting Paths",
+          "url": "https://cses.fi/problemset/task/1136",
+          "source": "CSES",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "number-theory",
+      "day": 26,
+      "level": 6,
+      "label": "Number Theory",
+      "labelVi": "GCD/LCM, Euclid mở rộng, modular arithmetic",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2"
+      ],
+      "difficulty": "intermediate",
+      "description": "GCD bằng Euclid `gcd(a,b) = gcd(b, a%b)`, O(log min(a,b)). LCM = `a/gcd(a,b)*b` (chia trước để tránh tràn). Modular arithmetic: `((a%m)*(b%m))%m`, lưu ý overflow khi m gần 10⁹ — dùng `__int128` hoặc `(unsigned long long)`. Đề VN thường mod 10⁹+7 hoặc 998244353 cho bài đếm. Pow nhanh O(log K) chia đôi.",
+      "complexity": "O(log) cho gcd, pow",
+      "vnPattern": "Quảng Nam 2019 — Bài Trực nhật dùng LCM. Mod xuất hiện trong nhiều bài đếm.",
+      "prerequisites": [
+        "array-1d"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — number theory",
+          "url": "https://wiki.vnoi.info/algo/math/cong_thuc_so_hoc"
+        }
+      ],
+      "problems": [
+        {
+          "slug": "nt-gcd",
+          "title": "Ước chung lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "gcd"
+          ]
+        },
+        {
+          "slug": "nt-lcm",
+          "title": "Bội chung nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "lcm"
+          ]
+        },
+        {
+          "slug": "nt-pow-mod",
+          "title": "Lũy thừa modulo",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "pow-mod"
+          ]
+        },
+        {
+          "slug": "nt-is-prime",
+          "title": "Kiểm tra số nguyên tố",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "prime"
+          ]
+        },
+        {
+          "slug": "nt-divisors",
+          "title": "Liệt kê ước",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "divisors"
+          ]
+        }
+      ],
+      "theory": "// fast power mod\nlong long pw(long long a, long long b, long long mod) {\n    long long res = 1;\n    a %= mod;\n    while (b) {\n        if (b & 1) res = res * a % mod;\n        a = a * a % mod;\n        b >>= 1;\n    }\n    return res;\n}",
+      "theorySnippet": "// fast power mod\nlong long pw(long long a, long long b, long long mod) {\n    long long res = 1;\n    a %= mod;\n    while (b) {\n        if (b & 1) res = res * a % mod;\n        a = a * a % mod;\n        b >>= 1;\n    }\n    return res;\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Counting Divisors",
+          "url": "https://cses.fi/problemset/task/1713",
+          "source": "CSES",
+          "difficulty": "easy"
+        },
+        {
+          "label": "CSES — Common Divisors",
+          "url": "https://cses.fi/problemset/task/1081",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — TNHTAN",
+          "url": "https://oj.vnoi.info/problem/tnhtan",
+          "source": "VNOJ",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "sieve-factorization",
+      "day": 27,
+      "level": 6,
+      "label": "Sieve",
+      "labelVi": "Sàng Eratosthenes + linear sieve + SPF",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "difficulty": "intermediate",
+      "description": "Sàng Eratosthenes O(N log log N) đánh dấu hợp số bằng cách lặp bội của mỗi nguyên tố. Linear sieve O(N) tính thêm SPF (smallest prime factor) cho mỗi số, giúp phân tích thừa số trong O(log N) thay vì O(√N). Sàng đoạn cho khoảng [L,R] khi L,R lớn (10¹²) nhưng R-L ≤ 10⁶: sàng nguyên tố ≤ √R rồi đánh dấu bội trong [L,R].",
+      "complexity": "O(N log log N) Eratosthenes",
+      "vnPattern": "Long An 2024 — bài tổng nguyên tố dùng sàng. Quảng Nam 2021 — số lượng bội.",
+      "prerequisites": [
+        "number-theory"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — sieve",
+          "url": "https://wiki.vnoi.info/algo/math/sieve"
+        }
+      ],
+      "problems": [],
+      "theory": "// Linear sieve + SPF\nvector<int> spf(N + 1, 0), primes;\nfor (int i = 2; i <= N; i++) {\n    if (!spf[i]) { spf[i] = i; primes.push_back(i); }\n    for (int p : primes) {\n        if (p > spf[i] || (long long)p * i > N) break;\n        spf[p * i] = p;\n    }\n}",
+      "theorySnippet": "// Linear sieve + SPF\nvector<int> spf(N + 1, 0), primes;\nfor (int i = 2; i <= N; i++) {\n    if (!spf[i]) { spf[i] = i; primes.push_back(i); }\n    for (int p : primes) {\n        if (p > spf[i] || (long long)p * i > N) break;\n        spf[p * i] = p;\n    }\n}",
+      "referenceProblem": [
+        {
+          "label": "CSES — Counting Primes",
+          "url": "https://cses.fi/problemset/task/2417",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CF 26A — Almost Prime",
+          "url": "https://codeforces.com/problemset/problem/26/A",
+          "source": "Codeforces",
+          "difficulty": "easy"
+        }
+      ]
     },
     {
       "id": "string-hash",
+      "day": 28,
       "level": 6,
-      "label": "String Hashing",
-      "labelVi": "Băm chuỗi",
+      "label": "String Hash",
+      "labelVi": "Hash xâu polynomial + so sánh xâu con O(1)",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
       "difficulty": "expert",
-      "description": "Polynomial rolling hash để so khớp chuỗi O(1).",
-      "complexity": "Hash O(N), so khớp O(1)",
-      "prerequisites": ["hashing", "prefix-sum"],
-      "resources": [],
-      "problems": ["palindrome-check"],
-      "theory": "const long long MOD = 1e9 + 7;\nconst long long BASE = 31;\nvector<long long> h(n + 1, 0), p(n + 1, 1);\nfor (int i = 0; i < n; i++) {\n    h[i+1] = (h[i] * BASE + s[i]) % MOD;\n    p[i+1] = (p[i] * BASE) % MOD;\n}"
+      "description": "Polynomial rolling hash: `h(s) = (s[0]·B^(n-1) + s[1]·B^(n-2) + ... + s[n-1]) mod M`. Precompute prefix hash + powers trong O(N), so sánh xâu con `s[l..r]` O(1) qua `hash(l..r) = (H[r+1] - H[l]·B^(r-l+1)) mod M`. Để tránh collision, dùng double hash (2 cặp B, M khác nhau). Đề test VN thường không anti-hack mạnh, single hash thường đủ qua.",
+      "complexity": "O(N) precompute, O(1) compare",
+      "vnPattern": "Test data VN thường không anti-hack, hash đơn thường đủ.",
+      "prerequisites": [
+        "string-basic",
+        "number-theory"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — string hash",
+          "url": "https://wiki.vnoi.info/algo/string/hashing"
+        }
+      ],
+      "problems": [],
+      "theory": "const long long MOD = 1e9 + 7, B = 31;\nvector<long long> H(n + 1, 0), P(n + 1, 1);\nfor (int i = 0; i < n; i++) {\n    H[i + 1] = (H[i] * B + (s[i] - 'a' + 1)) % MOD;\n    P[i + 1] = (P[i] * B) % MOD;\n}\nauto hsub = [&](int l, int r) { // [l, r]\n    return ((H[r + 1] - H[l] * P[r - l + 1]) % MOD + MOD) % MOD;\n};",
+      "theorySnippet": "const long long MOD = 1e9 + 7, B = 31;\nvector<long long> H(n + 1, 0), P(n + 1, 1);\nfor (int i = 0; i < n; i++) {\n    H[i + 1] = (H[i] * B + (s[i] - 'a' + 1)) % MOD;\n    P[i + 1] = (P[i] * B) % MOD;\n}\nauto hsub = [&](int l, int r) { // [l, r]\n    return ((H[r + 1] - H[l] * P[r - l + 1]) % MOD + MOD) % MOD;\n};",
+      "referenceProblem": [
+        {
+          "label": "CSES — Finding Periods",
+          "url": "https://cses.fi/problemset/task/1733",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — SUBSTR",
+          "url": "https://oj.vnoi.info/problem/substr",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "kmp",
-      "level": 6,
-      "label": "KMP",
-      "labelVi": "KMP",
-      "difficulty": "expert",
-      "description": "Tìm kiếm chuỗi con O(N + M). Hàm prefix-function pi[i].",
-      "complexity": "O(N + M)",
-      "prerequisites": ["string-hash"],
-      "resources": [],
-      "problems": ["kmp-substring"],
-      "theory": "vector<int> pi(n, 0);\nfor (int i = 1; i < n; i++) {\n    int j = pi[i-1];\n    while (j > 0 && s[i] != s[j]) j = pi[j-1];\n    if (s[i] == s[j]) j++;\n    pi[i] = j;\n}"
-    },
-    {
-      "id": "dp-bitmask",
-      "level": 7,
-      "label": "Bitmask DP",
-      "labelVi": "QHĐ bitmask",
-      "difficulty": "expert",
-      "description": "Trạng thái là tập con: dp[mask][...]. TSP, Hamilton path.",
-      "complexity": "O(2^N × N)",
-      "prerequisites": ["dp-2d"],
-      "resources": [],
-      "problems": ["bitmask-tsp"],
-      "theory": "// TSP với bitmask\nvector<vector<long long>> dp(1 << n, vector<long long>(n, LLONG_MAX));\ndp[1][0] = 0;\nfor (int mask = 1; mask < (1 << n); mask++)\n    for (int u = 0; u < n; u++) if (mask & (1 << u))\n        for (int v = 0; v < n; v++) if (!(mask & (1 << v)))\n            dp[mask | (1 << v)][v] = min(dp[mask | (1 << v)][v], dp[mask][u] + g[u][v]);"
-    },
-    {
-      "id": "dp-tree",
+      "id": "tree-dp-intro",
+      "day": 29,
       "level": 7,
       "label": "Tree DP",
-      "labelVi": "QHĐ trên cây",
+      "labelVi": "Cây — DFS + subtree size + DP trên cây",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S4"
+      ],
       "difficulty": "expert",
-      "description": "DFS từ gốc, kết hợp con. Rerooting cho trả lời từ mọi đỉnh.",
-      "complexity": "O(N)",
-      "prerequisites": ["dfs", "dp-2d"],
-      "resources": [],
-      "problems": ["tree-diameter"],
-      "theory": "vector<long long> dp(n + 1, 0);\nfunction<void(int,int)> dfs = [&](int u, int par){\n    for (int v : adj[u]) if (v != par) {\n        dfs(v, u);\n        dp[u] += max(dp[v], (long long)0);\n    }\n};"
+      "description": "Cây rooted vs unrooted, DFS từ root tính subtree size, depth, parent. Cây có N đỉnh có đúng N-1 cạnh. Tree DP: state thường `dp[u]` = đáp án cho subtree gốc u, tính từ con (post-order DFS). Bài kinh điển: đường kính cây (2 lần BFS hoặc DP), max subtree sum, đếm subtree thoả điều kiện. Topological sort (Kahn) cho DAG.",
+      "complexity": "O(N) DFS + tree DP",
+      "vnPattern": "Bài cây trong đề chuyên có thầy Hoàng dạy.",
+      "prerequisites": [
+        "graph-dfs",
+        "dp-intro"
+      ],
+      "resources": [
+        {
+          "label": "VNOI — tree DP",
+          "url": "https://wiki.vnoi.info/algo/graph-theory/topo-sort"
+        }
+      ],
+      "problems": [],
+      "theory": "// Đường kính cây bằng DP O(N)\nvector<int> dp(n + 1, 0);\nint diam = 0;\nfunction<void(int, int)> dfs = [&](int u, int par) {\n    for (int v : adj[u]) if (v != par) {\n        dfs(v, u);\n        diam = max(diam, dp[u] + dp[v] + 1);\n        dp[u] = max(dp[u], dp[v] + 1);\n    }\n};",
+      "theorySnippet": "// Đường kính cây bằng DP O(N)\nvector<int> dp(n + 1, 0);\nint diam = 0;\nfunction<void(int, int)> dfs = [&](int u, int par) {\n    for (int v : adj[u]) if (v != par) {\n        dfs(v, u);\n        diam = max(diam, dp[u] + dp[v] + 1);\n        dp[u] = max(dp[u], dp[v] + 1);\n    }\n};",
+      "referenceProblem": [
+        {
+          "label": "CSES — Tree Diameter",
+          "url": "https://cses.fi/problemset/task/1131",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "CSES — Tree Distances I",
+          "url": "https://cses.fi/problemset/task/1132",
+          "source": "CSES",
+          "difficulty": "medium"
+        },
+        {
+          "label": "VNOJ — QBMST",
+          "url": "https://oj.vnoi.info/problem/qbmst",
+          "source": "VNOJ",
+          "difficulty": "medium"
+        }
+      ]
     },
     {
-      "id": "lca",
+      "id": "mock-exam",
+      "day": 30,
       "level": 7,
-      "label": "LCA",
-      "labelVi": "Tổ tiên chung gần nhất",
+      "label": "Mock Exam",
+      "labelVi": "Thi thử HSG TP/Tỉnh — 3 bài 180 phút",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
       "difficulty": "expert",
-      "description": "Binary lifting: tổ tiên 2^k của mỗi đỉnh.",
-      "complexity": "O(log N) per query",
-      "prerequisites": ["dp-tree"],
+      "description": "Tổng kết 30 ngày. Mock 180 phút với 3 bài đầy đủ định dạng đề HSG TP. Chiến lược thi: 10 phút đầu đọc toàn bộ đề, gạch dưới N max + ràng buộc + format file. Ưu tiên bài dễ trước. Luôn cố ăn subtask 1 (brute force) cho mọi bài — nhiều khi đủ điểm pass vòng. Đặt tên file đúng convention (BAITEN.INP/.OUT), không in newline thừa, kiểm tra free() / cout flush trước khi nộp.",
+      "complexity": "Tổng hợp",
+      "vnPattern": "Đề chuẩn HSG TP — 3 bài 180 phút, file I/O, subtask scoring.",
+      "prerequisites": [
+        "dp-knapsack",
+        "graph-bfs",
+        "sort",
+        "greedy"
+      ],
       "resources": [],
-      "problems": [],
-      "theory": "int LOG = 0; while ((1 << LOG) <= n) LOG++;\nvector<vector<int>> up(LOG, vector<int>(n + 1, 0));\n// dfs(root, root); up[0][v] = parent[v]\nfor (int k = 1; k < LOG; k++)\n    for (int v = 1; v <= n; v++) up[k][v] = up[k-1][up[k-1][v]];"
-    },
-    {
-      "id": "scc",
-      "level": 8,
-      "label": "SCC (Tarjan)",
-      "labelVi": "Thành phần liên thông mạnh",
-      "difficulty": "expert",
-      "description": "Tarjan / Kosaraju tìm SCC trên đồ thị có hướng.",
-      "complexity": "O(V + E)",
-      "prerequisites": ["dfs"],
-      "resources": [],
-      "problems": [],
-      "theory": "// Tarjan: low[u] = min(low[u], idx[v]) khi v đang trên stack"
-    },
-    {
-      "id": "max-flow",
-      "level": 8,
-      "label": "Max Flow",
-      "labelVi": "Luồng cực đại",
-      "difficulty": "expert",
-      "description": "Dinic's algorithm O(V² × E) (nhanh hơn trên đồ thị dày).",
-      "complexity": "O(V² × E)",
-      "prerequisites": ["bfs", "dfs"],
-      "resources": [],
-      "problems": [],
-      "theory": "// Dinic: BFS chia tầng, DFS đẩy luồng theo blocking flow"
-    },
-    {
-      "id": "fft",
-      "level": 9,
-      "label": "FFT/NTT",
-      "labelVi": "FFT / NTT",
-      "difficulty": "ioi",
-      "description": "Nhân đa thức O(N log N). Áp dụng đếm cặp, convolution.",
-      "complexity": "O(N log N)",
-      "prerequisites": ["string-hash"],
-      "resources": [],
-      "problems": [],
-      "theory": "// Cooley-Tukey FFT: divide and conquer trên domain phức"
-    },
-    {
-      "id": "ho-treap",
-      "level": 9,
-      "label": "Heavy-Light",
-      "labelVi": "Heavy-Light decomposition",
-      "difficulty": "ioi",
-      "description": "Trả lời truy vấn trên cây trong O(log² N).",
-      "complexity": "O(log² N)",
-      "prerequisites": ["segtree", "lca"],
-      "resources": [],
-      "problems": [],
-      "theory": "// Chia cây thành các chain heavy, mỗi truy vấn nhảy O(log N) chain"
+      "problems": [
+        {
+          "slug": "mock-frog-jump",
+          "title": "Ếch nhảy bậc",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "dp"
+          ]
+        },
+        {
+          "slug": "mock-n-queens",
+          "title": "N quân hậu",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "mock-bracket-balance",
+          "title": "Dãy ngoặc cân đối",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "stack"
+          ]
+        },
+        {
+          "slug": "mock-xor-pair",
+          "title": "XOR cặp lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "xor",
+            "pair"
+          ]
+        },
+        {
+          "slug": "mock-unique-digits",
+          "title": "Số có chữ số phân biệt",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "counting"
+          ]
+        },
+        {
+          "slug": "mock-divisor-pair",
+          "title": "Cặp chia hết",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "number-theory"
+          ]
+        },
+        {
+          "slug": "mock-max-gcd-pair",
+          "title": "GCD cặp lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "gcd"
+          ]
+        },
+        {
+          "slug": "mock-streak",
+          "title": "Chuỗi 1 dài nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "streak"
+          ]
+        },
+        {
+          "slug": "mock-knapsack-choose",
+          "title": "Túi đa năng",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "knapsack",
+            "dp"
+          ]
+        },
+        {
+          "slug": "mock-sort-partial",
+          "title": "In K phần tử nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "sort",
+            "topk"
+          ]
+        }
+      ],
+      "theory": "// Bộ template cuối khoá\n#include <bits/stdc++.h>\nusing namespace std;\n#define FOR(i, a, b) for (int i = (a); i < (b); i++)\nint main() {\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    ios_base::sync_with_stdio(false); cin.tie(nullptr);\n    // ... logic\n    return 0;\n}",
+      "theorySnippet": "// Bộ template cuối khoá\n#include <bits/stdc++.h>\nusing namespace std;\n#define FOR(i, a, b) for (int i = (a); i < (b); i++)\nint main() {\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    ios_base::sync_with_stdio(false); cin.tie(nullptr);\n    // ... logic\n    return 0;\n}",
+      "referenceProblem": []
     }
   ],
   "edges": [
-    { "id": "e-io-arr", "source": "io", "target": "array" },
-    { "id": "e-comp-arr", "source": "complexity", "target": "array" },
-    { "id": "e-arr-sort", "source": "array", "target": "sorting" },
-    { "id": "e-arr-pref", "source": "array", "target": "prefix-sum" },
-    { "id": "e-sort-bs", "source": "sorting", "target": "binary-search" },
-    { "id": "e-sort-2p", "source": "sorting", "target": "two-pointers" },
-    { "id": "e-sort-greedy", "source": "sorting", "target": "greedy" },
-    { "id": "e-arr-rec", "source": "array", "target": "recursion" },
-    { "id": "e-arr-stack", "source": "array", "target": "stack" },
-    { "id": "e-arr-hash", "source": "array", "target": "hashing" },
-    { "id": "e-rec-dp1", "source": "recursion", "target": "dp-1d" },
-    { "id": "e-pref-dp1", "source": "prefix-sum", "target": "dp-1d" },
-    { "id": "e-dp1-knap", "source": "dp-1d", "target": "dp-knapsack" },
-    { "id": "e-dp1-coin", "source": "dp-1d", "target": "dp-coin" },
-    { "id": "e-dp1-lis", "source": "dp-1d", "target": "lis" },
-    { "id": "e-bs-lis", "source": "binary-search", "target": "lis" },
-    { "id": "e-dp1-dp2", "source": "dp-1d", "target": "dp-2d" },
-    { "id": "e-arr-graph", "source": "array", "target": "graph-basics" },
-    { "id": "e-graph-bfs", "source": "graph-basics", "target": "bfs" },
-    { "id": "e-stack-bfs", "source": "stack", "target": "bfs" },
-    { "id": "e-graph-dfs", "source": "graph-basics", "target": "dfs" },
-    { "id": "e-rec-dfs", "source": "recursion", "target": "dfs" },
-    { "id": "e-bfs-dij", "source": "bfs", "target": "dijkstra" },
-    { "id": "e-graph-dsu", "source": "graph-basics", "target": "dsu" },
-    { "id": "e-dsu-mst", "source": "dsu", "target": "mst" },
-    { "id": "e-pref-seg", "source": "prefix-sum", "target": "segtree" },
-    { "id": "e-rec-seg", "source": "recursion", "target": "segtree" },
-    { "id": "e-seg-bit", "source": "segtree", "target": "bit" },
-    { "id": "e-hash-shash", "source": "hashing", "target": "string-hash" },
-    { "id": "e-pref-shash", "source": "prefix-sum", "target": "string-hash" },
-    { "id": "e-shash-kmp", "source": "string-hash", "target": "kmp" },
-    { "id": "e-dp2-bit", "source": "dp-2d", "target": "dp-bitmask" },
-    { "id": "e-dfs-tree", "source": "dfs", "target": "dp-tree" },
-    { "id": "e-dp2-tree", "source": "dp-2d", "target": "dp-tree" },
-    { "id": "e-tree-lca", "source": "dp-tree", "target": "lca" },
-    { "id": "e-dfs-scc", "source": "dfs", "target": "scc" },
-    { "id": "e-bfs-flow", "source": "bfs", "target": "max-flow" },
-    { "id": "e-dfs-flow", "source": "dfs", "target": "max-flow" },
-    { "id": "e-shash-fft", "source": "string-hash", "target": "fft" },
-    { "id": "e-seg-hld", "source": "segtree", "target": "ho-treap" },
-    { "id": "e-lca-hld", "source": "lca", "target": "ho-treap" }
+    {
+      "id": "e-1-io-complexity-simulation",
+      "source": "io-complexity",
+      "target": "simulation"
+    },
+    {
+      "id": "e-2-simulation-array-1d",
+      "source": "simulation",
+      "target": "array-1d"
+    },
+    {
+      "id": "e-3-array-1d-array-2d",
+      "source": "array-1d",
+      "target": "array-2d"
+    },
+    {
+      "id": "e-4-array-1d-string-basic",
+      "source": "array-1d",
+      "target": "string-basic"
+    },
+    {
+      "id": "e-5-array-1d-sort",
+      "source": "array-1d",
+      "target": "sort"
+    },
+    {
+      "id": "e-6-simulation-string-basic",
+      "source": "simulation",
+      "target": "string-basic"
+    },
+    {
+      "id": "e-7-array-2d-week1-review",
+      "source": "array-2d",
+      "target": "week1-review"
+    },
+    {
+      "id": "e-8-string-basic-week1-review",
+      "source": "string-basic",
+      "target": "week1-review"
+    },
+    {
+      "id": "e-9-sort-week1-review",
+      "source": "sort",
+      "target": "week1-review"
+    },
+    {
+      "id": "e-10-sort-greedy",
+      "source": "sort",
+      "target": "greedy"
+    },
+    {
+      "id": "e-11-sort-two-pointers",
+      "source": "sort",
+      "target": "two-pointers"
+    },
+    {
+      "id": "e-12-array-2d-prefix-sum",
+      "source": "array-2d",
+      "target": "prefix-sum"
+    },
+    {
+      "id": "e-13-array-1d-prefix-sum",
+      "source": "array-1d",
+      "target": "prefix-sum"
+    },
+    {
+      "id": "e-14-sort-binary-search",
+      "source": "sort",
+      "target": "binary-search"
+    },
+    {
+      "id": "e-15-binary-search-parametric-search",
+      "source": "binary-search",
+      "target": "parametric-search"
+    },
+    {
+      "id": "e-16-array-1d-recursion-backtracking",
+      "source": "array-1d",
+      "target": "recursion-backtracking"
+    },
+    {
+      "id": "e-17-recursion-backtracking-meet-in-middle",
+      "source": "recursion-backtracking",
+      "target": "meet-in-middle"
+    },
+    {
+      "id": "e-18-binary-search-meet-in-middle",
+      "source": "binary-search",
+      "target": "meet-in-middle"
+    },
+    {
+      "id": "e-19-sort-stl-overview",
+      "source": "sort",
+      "target": "stl-overview"
+    },
+    {
+      "id": "e-20-stl-overview-monotonic-stack",
+      "source": "stl-overview",
+      "target": "monotonic-stack"
+    },
+    {
+      "id": "e-21-stl-overview-monotonic-deque",
+      "source": "stl-overview",
+      "target": "monotonic-deque"
+    },
+    {
+      "id": "e-22-monotonic-stack-monotonic-deque",
+      "source": "monotonic-stack",
+      "target": "monotonic-deque"
+    },
+    {
+      "id": "e-23-array-1d-dsu",
+      "source": "array-1d",
+      "target": "dsu"
+    },
+    {
+      "id": "e-24-stl-overview-graph-bfs",
+      "source": "stl-overview",
+      "target": "graph-bfs"
+    },
+    {
+      "id": "e-25-graph-bfs-graph-dfs",
+      "source": "graph-bfs",
+      "target": "graph-dfs"
+    },
+    {
+      "id": "e-26-recursion-backtracking-graph-dfs",
+      "source": "recursion-backtracking",
+      "target": "graph-dfs"
+    },
+    {
+      "id": "e-27-graph-bfs-shortest-path",
+      "source": "graph-bfs",
+      "target": "shortest-path"
+    },
+    {
+      "id": "e-28-stl-overview-shortest-path",
+      "source": "stl-overview",
+      "target": "shortest-path"
+    },
+    {
+      "id": "e-29-dsu-shortest-path",
+      "source": "dsu",
+      "target": "shortest-path"
+    },
+    {
+      "id": "e-30-recursion-backtracking-dp-intro",
+      "source": "recursion-backtracking",
+      "target": "dp-intro"
+    },
+    {
+      "id": "e-31-prefix-sum-dp-intro",
+      "source": "prefix-sum",
+      "target": "dp-intro"
+    },
+    {
+      "id": "e-32-dp-intro-dp-knapsack",
+      "source": "dp-intro",
+      "target": "dp-knapsack"
+    },
+    {
+      "id": "e-33-dp-intro-dp-lis-lcs",
+      "source": "dp-intro",
+      "target": "dp-lis-lcs"
+    },
+    {
+      "id": "e-34-binary-search-dp-lis-lcs",
+      "source": "binary-search",
+      "target": "dp-lis-lcs"
+    },
+    {
+      "id": "e-35-dp-intro-dp-grid",
+      "source": "dp-intro",
+      "target": "dp-grid"
+    },
+    {
+      "id": "e-36-array-1d-number-theory",
+      "source": "array-1d",
+      "target": "number-theory"
+    },
+    {
+      "id": "e-37-number-theory-sieve-factorization",
+      "source": "number-theory",
+      "target": "sieve-factorization"
+    },
+    {
+      "id": "e-38-string-basic-string-hash",
+      "source": "string-basic",
+      "target": "string-hash"
+    },
+    {
+      "id": "e-39-number-theory-string-hash",
+      "source": "number-theory",
+      "target": "string-hash"
+    },
+    {
+      "id": "e-40-graph-dfs-tree-dp-intro",
+      "source": "graph-dfs",
+      "target": "tree-dp-intro"
+    },
+    {
+      "id": "e-41-dp-intro-tree-dp-intro",
+      "source": "dp-intro",
+      "target": "tree-dp-intro"
+    },
+    {
+      "id": "e-42-dp-knapsack-mock-exam",
+      "source": "dp-knapsack",
+      "target": "mock-exam"
+    },
+    {
+      "id": "e-43-graph-bfs-mock-exam",
+      "source": "graph-bfs",
+      "target": "mock-exam"
+    },
+    {
+      "id": "e-44-greedy-mock-exam",
+      "source": "greedy",
+      "target": "mock-exam"
+    },
+    {
+      "id": "e-45-sort-mock-exam",
+      "source": "sort",
+      "target": "mock-exam"
+    }
   ]
 }

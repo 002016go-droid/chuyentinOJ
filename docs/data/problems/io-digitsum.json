@@ -1,0 +1,213 @@
+{
+  "slug": "io-digitsum",
+  "title": "Tổng các chữ số",
+  "titleEn": "Sum of digits",
+  "module": "roadmap",
+  "topicId": "io-complexity",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2"
+  ],
+  "difficulty": 1,
+  "maxStars": 2,
+  "tags": [
+    "io",
+    "digit"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho số tự nhiên N (có thể rất lớn — đến 10^18). Hãy tính tổng các chữ số của N. Ví dụ N = 1234 thì tổng = 1+2+3+4 = 10. Bài luyện thao tác phân rã số bằng vòng lặp `while (n > 0) { sum += n % 10; n /= 10; }`. Với N lên đến 10^18, kiểu `long long` đủ chứa, tổng chữ số tối đa = 18·9 = 162 nên dùng `int` cho sum là đủ.",
+  "vnPattern": "Bài về thao tác chữ số — xuất hiện trong đề HSG TP lớp 8-9.",
+  "fileIO": {
+    "inputFile": "DIGITSUM.INP",
+    "outputFile": "DIGITSUM.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^4"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^9"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 10^18 (cần long long)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "927\n",
+      "output": "18\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "9914\n",
+      "output": "23\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "927\n",
+      "output": "18\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "9914\n",
+      "output": "23\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "5237\n",
+      "output": "17\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "4609\n",
+      "output": "19\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "6267\n",
+      "output": "21\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "4153\n",
+      "output": "13\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "8553\n",
+      "output": "21\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "92602776\n",
+      "output": "39\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "991387606\n",
+      "output": "49\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "523631996\n",
+      "output": "44\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "460895372\n",
+      "output": "44\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "626682158\n",
+      "output": "44\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "415232502\n",
+      "output": "24\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "855249151\n",
+      "output": "40\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "92602754554864\n",
+      "output": "67\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "991388542970767\n",
+      "output": "85\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "523632902741847\n",
+      "output": "63\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "460895579925665\n",
+      "output": "86\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "626682113115456\n",
+      "output": "57\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "415232615030376\n",
+      "output": "48\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "855250131765487\n",
+      "output": "67\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "`while (n) { sum += n % 10; n /= 10; }`",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Khi N tới 10^18, khai báo `long long` cho n.",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Hoặc đọc N như chuỗi rồi cộng (char − '0') — đơn giản hơn cho N rất lớn.",
+      "starCost": 1,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "Thuật toán O(log N). Hai cách: (1) vòng while chia 10 cho long long; (2) đọc chuỗi và cộng từng ký tự.",
+  "solutionSketch": "string s; cin >> s; int sum = 0; for (char c : s) sum += c - '0'; cout << sum;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

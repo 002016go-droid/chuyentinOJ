@@ -1,0 +1,213 @@
+{
+  "slug": "edit-distance",
+  "title": "Khoảng cách chỉnh sửa",
+  "titleEn": "Edit distance",
+  "module": "roadmap",
+  "topicId": "dp-lis-lcs",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S3"
+  ],
+  "difficulty": 5,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "edit-distance"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho 2 chuỗi A, B. Tính số phép tối thiểu (chèn, xóa, thay) để biến A thành B. dp[i][j] = số phép biến A[1..i] thành B[1..j]; nếu A[i]=B[j] dp[i][j]=dp[i-1][j-1], ngược lại 1 + min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]).",
+  "vnPattern": "Edit distance — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "DISTANCE.INP",
+    "outputFile": "DISTANCE.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "|A|, |B| ≤ 50"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "|A|, |B| ≤ 300"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "|A|, |B| ≤ 1000"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "abddcedeadadccdadbbeeebdccdaedcbabcedbbea\nebecaecabadaacbcb\n",
+      "output": "29\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "dccec\ndeaedaae\n",
+      "output": "6\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "abddcedeadadccdadbbeeebdccdaedcbabcedbbea\nebecaecabadaacbcb\n",
+      "output": "29\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "dccec\ndeaedaae\n",
+      "output": "6\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "baaebabccdbeacc\nbaedcabbeeceaaecbebaceecdacdaacaebad\n",
+      "output": "25\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "dcedacc\neadceadecdeeaccceedeedbcddcca\n",
+      "output": "22\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "addabccbaababbae\neeeceecbdbdeddebdceadbdbbaed\n",
+      "output": "18\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "deeaeceebbcebcbbdedcaccdadadceeade\ncdbececbaddccdaaaeabadbeabee\n",
+      "output": "21\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "adccbabddbdbcdeecebdeeedecdbdc\neaaceababbadadbeebaecaabb\n",
+      "output": "19\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "acghfjgjbhbgffhagcciiidheegajgedbcfigdcjbjcjfaiebcahbaedfcibbdciideiidjbgcjbfcahbhhhicgchhfhbiecbaigcaaahcicbgdaejhgcacbhjeggaiigihbejcfdahcdgijcaadibcdbbabfihagfddccbghjeiicfhjcjibfheiajhbgfaghcjdfgiffhfbhhjdgjfigbijdejjcdhjajicfjheabahaccgbbhjbefje\nijchcgigdjgjifjbabjihadffijhgaifjaffcfcaaifbjdchiaddaajifgcghajifcagiabaadfeidhhdcabhbdcbgacbabjdaccacgbbjjificefbehdicfdjeaff\n",
+      "output": "180\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "gefjfhiaigbaiejdiaghijgjiadjhbcddhjihfchdfeaiajcdbehfjbgggddddb\nbgechdhdhcbichacajihibgchcfgbabebfcjcebafcehbcgcbeahcbffjfdfeehbcadeagaedifaiiee\n",
+      "output": "59\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "cabicadefgcibeecbjhebddjjeiaaiecidbfjifgafgabfbjdahcicbcbfhfiabbdfahcgehiahfgeaejehacgbgejdcjaabfcejfafhjgdhbbeihhhd\nijdjbdddiaeabicjedbeghjgcaheiabbbciahbfagfcdgeddcjdebjjdahhcdjfaiafhdgeaeedaifcjebiagghfabhdcgedgdbbhdcigddbahgijjahdigjgijgbjcihdifaghfgijbddbhafececfcieggjiejgefbdhaifdeicjjbhbajjgibfhfidehcjaadibddicbijidjejibecgjahifbbjgfj\n",
+      "output": "161\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "gfihafeibheiagifhijaeefijhjihcfhgeeaahahibdifhhadbfjhiajabajgaghbccaafebbaa\nichdbcbidgjjbcfhafbgbcbbdjegchcifjfgjicggjgbdehijhjeehhjaahgaccfdecidhbgjadjhfehegcabecigdbfgdabggaegfadceahejiaiajajfgbchhhcfcibbhbjeiiagfdgcjadbecabefchaggdcgcedfcghfedjcebheidjgifddfgjjh\n",
+      "output": "144\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "ahhadfedbacacdajijiejiechchjhgidhfjbhdhdcaihjjceaedffbcehihhbjhhghfhcgfbhabeabfeahhhhjcccdcgiiadegjbccgfbagdjgijbiiciajiffg\nedchhggcfcfbgihhabfhigejfjhcacddbebehgcdgacjjgbchijcjiibidcigefdcffjcjiijjfjieigafehgjefdiefjggbiggecdcjbbgdecaifajiefagefdcffifecehhcdhbceddcdchjjcgfjagcdciegbigibijiicieafgaheahcbei\n",
+      "output": "129\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "hjjajeijddejdecchiheaefgbhagfijahifhcifjfdbggeehbbbibcagcibdjibaeggbbicgjjdadebaidiafjgjcchceaccjjiegagcafhjcfheajbbgidjacafcehefcaghcgjcefeicibhgcfgijgjffgdfeaiidabfeicagbajhjddbbhcgjdaaagchcdgibcjjdcbahicegcdggeab\necbhhjiegceehdfhihheadaejafafbhcechfjfiadfjcagdcbadeejjdbjdgjahbdghfgfbgiegiadbgfjbicbbdbdgdibacihgggfdgaeffbjhgjafciiecceeiebcecijbfhjbhiihjgjagahchhgcfgjihibhejiihhbgeihfdegjadahjfh\n",
+      "output": "156\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "bhfedachhdgcfgjjfichjijgjegdgejbbeibcaccahagcjicajeaacdbjgfegjefibaejfjdihibjdghidhcheajcfcajdhcbiddjjbeceaicdchjiffbcifiheaichbifehfgjhdjadifhaedfciieiachaeaccajidbbadfjecfifgbeebjjbcaehigadhj\nifddgeajgahicdffdgddbajaahcffecdhbdhigfcdfehadddgbibjhbdjiegejbjbjaadgddegdejgajhbebegjdafihajfbhdhicahjidjecfjigagjbjfchaiaigfdheaabiaedhcjgcidhbbgdedjbigiejehjcdadjff\n",
+      "output": "139\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "agqtnzrzeufqposargfxvwjtklqayqkjdfnwqifzeyhzpaumefatdamkpgwdeihwvjlxwiyfqfzfphauftsswfrgstotexmhfbvshaabtgxgdrjcmytphahcszlrpavwqvtckzgpibthirvxhabjxcfkdebcpwuaqnjjhgcptzkwwhptyfywdotlvaztdqpaqthzjosxnnunfssyiqznwqdwyhkyygiszbywgoyulcectbhgrcetyemoylwxftgrwrixqzvozfaczvuaioovytqbvoycnohpgabvodyihuwaijbbyvnrhquayvnhasuaebciolwjutkfactdigdqcfdbezibhgafreeyzwnvhkoemuiwfnizkaooqbioonmyfcxtptxvnuosxzyefsvbjypvbftulktczukteixsjibhzcvlvukordrtgunyyvseiedvlojnxyugafchervcxyusdnsjblxbukplwkgelncphqxvyqjodhglsdvnkhxuaznjevnrevhlyvcaovhloenkgfkwpdrodzvqeyhntkzojadsoosconihpydlacgnlbcmlhbhtoswhfjxzfucmfwthynlhpjyflqqjmfucyoctvoxceaosphwvzaggrjbnrmdnbwgmgdrawzkkpbcmwgmzmjkkkcktxohtspgspszeyvwfimwxuwrwmcdkxgaegilcltronvkozncqtwncwvsndzvgbdffhweysfspwrfigatsdzmyvljhcyiemgkyccgauvmdceerafqdxfjwrgwcmxrjrshrkwnjcillaoozsskswljesswgxbtigtajezbbpcvphurdwksosmanabueuq\nqnpxgqiplgafzvkspazcyqefiamxsukapxmhdsprterqctfpybbosakcmbextzvanguzqryppahyvooqytrrcibcrcfhfkedwrcacapyjvledyedejhqmwglvffjthuvkyrdpaefkldworlzspplcwhsynzyzvjqlwnbhcgfmgtqgskyouhpcwgsdweptohlnuaxbmwmmbkkgspaaviqxykydeipknygarluhbeetynuluaryjlmyjsquereoxajndyiqfahoeotrvxrebbclxeayfsgysibcrbjxtrzrffvxdkrijfkxsfnmyjjhotaptontdiwvnvoupbvrxzznrnvzvmfylhkacsyntbfqeeatdbvchecxsytvybnotplgdurhgfjqxukfhdcyjfezwwckinzkrvzjkskrtjnhbviwonxwqoausfeohnbcfamihhlatocxvobvrzevssddcnvezrruywrvvjtihtrkvsxuhgnoopntqwmjyilfzlqv\n",
+      "output": "689\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "qlnyouwcvrdcwlyhvaqtvyrxwajytcgkjuxwtohujokcwcyfkeltpzdqpriiiideqkhtjuithdwfucgazwsvcqfthnpfbdkdofxgmccngluegphdmbsgeppzojommudhbimaqcmjxobwumlprbuazdomqabjdfythspdboxzireahqysrkezonlvavrhperirhzedbenpnmsmivvwzudxpbgsqzgcuytrlcniakzhqsdqzlwtmcvsyfovsxshprpawyvcjexciukktitvagktadwfzsnzmvlrkxzhdozegfauucxyctsyfurxmcgcqhtaikhhsllndsevnnm\niacwrvkodpucwazmetcrwtrctllykrpllqhxncxoxkuptrrtloymckbdvjqjpkemtvybbnyrkthkmikzzfxsgvzhequzwdcfrbinnhluaebhgexhghpwzpeqddexblfytztazbovmxibomlwrsnxbodasqigjxmqvfssnnvghqazbnozceqdxzdcofrmcimupldyfsfhllwfojnvjuzhneyipzvofngfmnqbdexcfcwpibyuyqukdbghjxexczywlrpkhtbuxyonygshwvgembcwpwkrtemtpywvpndmqiksjbmgdneithbgproyqmgmmldnglfqdyftbqgswvvodxbsjdfwacrtexhanfvxtwjibgdkhdztlrcpgrurkgdsji\n",
+      "output": "323\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "fafwhcjmopfwckmgcysmehiyykxabwmgujcpyupranqaenexjbthwgehdnsowbddipbthrkuwatormcmylscgrdrkykhybbenhlznaotzriteckwstujuzjxdhkjwakcexhykjdlquzsfbulvaecdhxaucnbqohkqmijgzikeyzibusgiynbxbpuiqmbmlibwnhzmexcrqtoacsigrlhpiddtigwqjjectrvyxaukwqyrvxrdxgwtjvpcsuoqvzdiiducomglhpfvmqrzwlzqlociucwpjmvgzyescbxxqvcotnwimsgzabkxeijwhdvzujxmzwdmfqxbsxpecyppzyzlzdtsxfqoauqhbdazpgzdjgsqhuszbimjplgxupqipjsqeplcihfjlkuaywcqoliqcnqceggiuculpdwybujxwdgslkmedxinlvxytexclgbwjvjelgkstkwqmerpvpkaorrmiquxrjst\nqyplqonptsbpuwheapigrbtxcucjnjhafsngnlvypsfkkmfgifvywzqwbtvxyplmozaxicubbikrctmphwewjynxwxklbkahozutpfnjyfesnjkkpbbsxxiducyxizrfeqeaecpoeryqozhbvtqedzfdkbyhwbbovrdzqfsozcgyumxtqdhbwffbpzbgbczspadowhdzkhkxbwijiptmvhcgnlklppcudditikvggfgwsoqzaidegydctpjfnprpjjkqoxfjfjhxcvigpetfpjagrcqatlhhtolfbpxvqzqhzvbunezsaadyztcltszizcgqdpgcjfniinvbslxzyikrqpmovzycrlgejegvqpkmelwfmzjipsryujvltkvzvwfbdihkplnzuxwjiibzilsmpncalsfdofevsmecosykehnfnsbycooswxzdazxzxkcnbapaipbpewjubsgiewiimfhpqclwamozwnhzeipiekbavdxbmsuezdplrapoafnlrfignmgzccutdbpsgmrtazzfrpkpcorzecogzyqgeiwwtcclukllhndogkbtdjdcrsdjxjauysbdabbsxygwsngupzdrbhydxwswkfpydzxnvptgqyvijkxngnconjtsszdwbibpohwftguqtuwcipxcvcrkqwrbqygbgapzoneizqsqhpxvwevgqbvhzkeulgdjgpzmdqikgfdmgeefeyenxzskprsuywlmyotstkknoevvjwrrtcnrvbncxxbhkkkpbrcyiluyjjjxyuxf\n",
+      "output": "637\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "qnwucnlweukvarupuuzckknwztzvshntqlmabuctwdivossaiepzuxczaeaypaqsehfcanmcebavfsidhdwjqxxdhoscocrcfeeiymrgsgwnyorxuhrryqejmtvzsyllutyaasrbhgojmhxjtcpybkzupltkqfcdmgwpkeppibdqqbmrncjhmaskywbvaybxordftutgogveetfxmxwbqnkrgxcidkhacknhtbrrjfphmjogptnlkxfmdskvjzqvojjopyztaoyfxdjochbdctjwxakusrinsmflpsfxpbihwawcradqadqbvjzgnpuuunvcwihjnuplsmskgyfsezpjzajjfuiboykqqdaycrcuojvjeypd\ncasntfumcaaxekfywexhxerotdgxcisbuqulmsqdofktzvzkblbchdptfcenagqhjglkhiaisajjlwociszyjdktixysxjeqifnuvvbycghzxlaovollgebbozytcquekxtxjgwfdpnqltrtdgifgjyhgvrrwhuuhylrvgpexyfwpiuxunfoagejnefdgjrvayvyrvqukdsejnhirqhjowirsrqzqjekyytxndphholnpxrktbvlzlplszneqbzyxnldmhgiqdgijhbryjxfpfasbhdinythbjxzaloqeutxhpbruheydxeorxnmiictcoqvwedjpjqwitrgnnlhbrwcpyixdzkftbikgswkdegifzcwacutpixucsmhighghnrqwjhbejvygcsfnefckialuladsrhcxydnurfahjjtzpgqvsacmnycdujdcziyexpvsjmwrlfbtpbqdxfspnozlotoefspzlnczqpryvyphlgkbdfhobqkkvsjloksgisfpbjxfygptmswgjrpbgmjmxkmvalvffqoyqjwzxehzfzgyodkppeiuunmpqobumrdgvetthnazahjlfepfdiitlsizzxhkqdhjuomfodystnfmastoqrnwditjhkmrvaxsdnihqfybpglbswpipmsrflhvzjzggwnvdlraljmdoojhw\n",
+      "output": "555\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "attckolkcbhafkbxwzvmzwlgtgtytrwkuozeukujhcvtzxhmalinndfmsvuudzssquntfqncubdmccolattutzfggifrwvajlrzcggqndarhzqvyewvfwcxxpnqkhhuursfnhodsvtsaeosurmyoythcgjidmcmtrhjqafxxrdhuvyhzvvdwjfxrlokgnoyhzwwyynzwlwranlsrzmnkwmpyrqdxqrkfihycdpjmgcvocywkpcrmnjhonwomflssgjtdfljjhiftyzfspzbqhihxmqdxrwfwywwfvmcppbumbtfdmvnsysghoolkdyacpzpbsmitugyairyksfpqugbkladmlnjpwydennnqspmpagisdmsqekidpscdepxnebfbthznvmiuvepdjojkyxurvztimylexyomwfkyrmhwalsinxxpbiivlwrzywpaitzqxddpjuxoehmqcrotczonlvgclywimjpntymmftbsjszzcwbbaswd\nxqmfkbjnuxnuwpvoektuznvrkrmupzibarziqhsgekelntegedkisbajfqnepakkqpexcjkbhckcihzaavazxmuictapudzphwdiwkjgttghxeghpssvxdwakfykgansfnjiupggmgvoexcttmvfbfwqjewnpfnlmmvljozxjxojwxyovgjhnxykgtgfwssxgrbfujqkcxnlvqqaeckzyunuknmotbmoabmpzaqnunqxbogqmwcxuzqqnvuberasmzcaqywguulhjbvtnltjdnuscsrfcjfollwiuyzjnrexwjmdeikpufgwjrdlhwrxhbtkxvueytilezoxiqxhmagbfffrvkscrhuaurvjvzzhskaunslvkdtfvyxvttpvxlbvljpqeeksrmnqgqlzibfjcticmbtbnfewavkjnibdjmnxbixxxrckejqazcarshvppxpwtqqqbiycutqrbhylpsvpsqkwazczedscgqckxsawljskzzkopzcvxnrlrncfnppeqaljuafwdtrotovdxlmubfqxkbedhmpthwutnfymwwebwtgbfyuijamodggijrqfspwlirvcvlttqurzxjnexhsxagqdbwpqdctjdsndhmctkgfyhwvgmiaifvludlhcmxvuqeqtltlzjnsmjhzeygpp\n",
+      "output": "558\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "uyzazmwxkjlyjmgftwumbknrduaqpxybsvouhwnxnieqskmueeewdfcqgweizvdbkprddwfrzykcilebwixaoyrygfthkbhhyyumraphaotxfotlbycerxjybfbogksmofbqsgrzgmomvfwfsrgpqvyryonrjpmavvkbcolwgcqdczuyjhdcsfrykbaaphuhipwffzzigeauwfmqgjrrlcflgdtsxwlrhlksjptxttkbicmxcnaocsgmgtoynvbjpxgcrjgfaimlyxieziqxatdirsopndqxlquajfspycvheekejqjwdbgvsqrrniqbkppeztrzapgwvmfgmlwkfhkgvxcnuzdtwxsyqxbrbthsurfprzvtweukzvwsudplutpklrxbkctxnusgecvwwutvrypqnozkijynqvpzadkwppcienqyxmwogalykinrlluoaesrofkhwdttgoodxvpdiopgvlqwmrxmezefcicfzdilpahrqvzdkqctgjtveffllritxcdwtwdroaloclahsqfflpmthdhbdpqkplbefbrcreoscxyssrkwiczrvxnfnheuqbwvywipsdgjfiuuskvtsjtpapoqcmablsopbzbtiavamecsczeufkgcsjebieebtpwokmapvpyxksaylzrdlhxlrnbyamlkeyragzmaljvwpaskwazhtdkyitgniuhhdlndierumuvpfchzbwmvcaiccozrtrgzqbrxxdoinxvlcwhejf\nlixivkdmblivkcoqhlknslnfwibtzlenpgwozvxeuootkoujzztkrgklwodftiejlkfjhbcatnmzfmqxzdjjxfajlrudoxpbxqfbgvbjxvuxzvuwgggovzbfuyyoxkzkhhtrbllsbrsilxbegrufsuxhwsbecheccnyhzakuehcnhdeggpwjizzaaycjsmznyujpfvghnssvsguxiahiiupbceszrzzgwvgbpukzpuvqsqwhznqbylivrdupsbwcpnoifwwhaijmcztdesvpznlpvsjiehmuyjvpevetxkllyfvdnoxgwaifwvxjfzqzgcpxvhqiwvbymfjygyemyzmayzmkzgyxezxzinqstvrtrwhlddfzkawtczbtazergbxrpysvkdagwbygrztqxlydbqqadgglkeuqdywdtypnevamnbukbifthmadvcqllgafiwvdkalfqcbbnjkvoqhzeumpsorucrsldkwujiqrxnmyikuatmipgfuehwqdhvfekfomfjndcnntkixygusrmkoeiikgdhaaiijbyarrqzbpddhnlxejbxqfqtyrnblmyaerpyzysnuehphopjhyalbjxmqfewkxeaiadbspjyopwlelxeshgtnmbbalgahroafczhisaxtmvxfwkoeyfsqakgta\n",
+      "output": "647\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "cuomicgttirhnqyzpwgtyvxrxmpjpkyfemvdfbgfasbpgzxgbzmbahkcyqpmqzlnvdbmzozjvtwczjqsujtgukaxhnfbyisheviiyyemfmcwgjhtzwnodhwnwukaxgudupkunqzsiyajwptcljogxwkxchtcmaghbywjedcknymgnvoqdkleyzdfbltuqaitywojjrmaypasvhiooipjjcazabugoomhiueiuwrnhjpltciijrfwcztdixxlqmzeydycciqhimrjlyrbyudldlqyjcowsczoeujtxfatzvixlgnyvsbrxezogubvavrnitkabdwclisgyrhwjtcfrjlhycvqwlzktyhjbkxoosromvuuuhnzqmutgtikndipxvrpppylcuqeqgljsexnvgxdejtpjdfppogrlhewbrbttaksdhfuabtmxgadpxkqtnrucaqeqhxcrikldalffipokdscqmtnzpycqnltgbzdbfjwpncqjcnsdshkfprayzqwsyykklhdutiiywipwpsrxgmjwrhsvomserqekkemlzazoqemvlignigprjrigkuadkfsedegzuelaxudozkgsburvgldgowjozdywnbqtdeteabshnxcpgkswjizszuxenpmdrkuqxmhyyabujfqcxwhafqcmnwihrqgnueqosiptcykqxaeaseb\naqzqygnnnxidlaxnebocwcqbdsezxbnqrfkqcngqjxwphzuvlwflmnolexueyyqzklhoaeykzxzpxxegxfybhijrdabspsunsibtxpqkgahgrtkufwfpwerbrbagtfvnsypznjifrmziixemzhklsapmieowosgrsimbrjpbcxhmkzhlncclnnuivfvnzhygavrtmhrdncfakwxnzlxatyltlshblurxgxoyvculaasyaftarrduthplmghxsxuldpoydbnhqmodduygkkwqjydinuwwrilrmgrtcffaavjtcnkackuqqjvyesdtklfeoffspdaiglguectqaitesypnyisgjncrzcvyqczetiwgbqnbajdpmmnscegybskksruyiyvcuyowuxatyrrxvtzqtkheqevihfpnijiqqmkbntbtmjukaogsbzywrkqbfqlfhtbcvokrlnkdzvlrjmlvpfiusplyvnangwbwyddwcwaoxrxuwaxmliwrktycumuhvotnqmxshgbvutalcftucbwislpuwtulejhvadpwhrnyprodhvwkkboydoziyzlognzvsxrjwahnokmqbhfcpqbgxhehoxejrdhkhyzdyjdebdgetl\n",
+      "output": "598\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "dp[i][0]=i, dp[0][j]=j.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "A[i]=B[j] → dp[i-1][j-1].",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Ngược lại 1 + min(3 ô trên/trái/chéo).",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Edit distance DP O(NM).",
+  "solutionSketch": "if A[i]==B[j]: dp[i][j] = dp[i-1][j-1]; else dp[i][j] = 1 + min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]);",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

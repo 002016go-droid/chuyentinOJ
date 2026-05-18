@@ -1,0 +1,213 @@
+{
+  "slug": "dp-climb-stairs",
+  "title": "Bậc thang nhảy 1/2/3",
+  "titleEn": "Tri-step stairs",
+  "module": "roadmap",
+  "topicId": "dp-intro",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S3"
+  ],
+  "difficulty": 4,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "stairs"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Có N bậc thang. Mỗi bước nhảy được 1, 2 hoặc 3 bậc. Hỏi có bao nhiêu cách lên đỉnh, in modulo 10^9+7. Đặt dp[i] = số cách lên bậc i; công thức dp[i] = dp[i-1] + dp[i-2] + dp[i-3] với dp[0]=1.",
+  "vnPattern": "DP bậc thang — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "STAIRS.INP",
+    "outputFile": "STAIRS.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 1000"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 50000"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 200000"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "969\n",
+      "output": "910115117\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "862\n",
+      "output": "525092262\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "969\n",
+      "output": "910115117\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "862\n",
+      "output": "525092262\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "788\n",
+      "output": "437155184\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "794\n",
+      "output": "822566370\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "802\n",
+      "output": "386530917\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "787\n",
+      "output": "862041716\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "817\n",
+      "output": "795356277\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "48463\n",
+      "output": "872173607\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "43191\n",
+      "output": "926632836\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "39597\n",
+      "output": "104783626\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "39902\n",
+      "output": "659048319\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "40264\n",
+      "output": "72501476\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "39561\n",
+      "output": "489713577\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "40988\n",
+      "output": "250791631\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "195295\n",
+      "output": "882806127\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "179154\n",
+      "output": "893190396\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "168152\n",
+      "output": "791153259\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "169088\n",
+      "output": "982378528\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "170194\n",
+      "output": "288647690\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "168042\n",
+      "output": "825786942\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "172413\n",
+      "output": "250771707\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "dp[0]=1, dp[1]=1, dp[2]=2.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "dp[i] = dp[i-1] + dp[i-2] + dp[i-3].",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Lấy modulo.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "DP O(N), 3 trạng thái trước.",
+  "solutionSketch": "for i in 3..n: dp[i] = (dp[i-1] + dp[i-2] + dp[i-3]) % MOD;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

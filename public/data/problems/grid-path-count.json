@@ -1,0 +1,213 @@
+{
+  "slug": "grid-path-count",
+  "title": "Đếm đường đi lưới",
+  "titleEn": "Count grid paths",
+  "module": "roadmap",
+  "topicId": "dp-grid",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S3"
+  ],
+  "difficulty": 4,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "grid"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Lưới R × C. Từ ô (1,1) tới ô (R,C), mỗi bước đi sang phải hoặc đi xuống. Đếm số đường đi modulo 10^9+7. dp[i][j] = dp[i-1][j] + dp[i][j-1] với dp[1][1]=1.",
+  "vnPattern": "Path count — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "COUNT.INP",
+    "outputFile": "COUNT.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ R, C ≤ 20"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ R, C ≤ 100"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ R, C ≤ 500"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "4 7\n",
+      "output": "84\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "15 12\n",
+      "output": "4457400\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "4 7\n",
+      "output": "84\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "15 12\n",
+      "output": "4457400\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "20 8\n",
+      "output": "657800\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "20 9\n",
+      "output": "2220075\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "15 5\n",
+      "output": "3060\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "10 8\n",
+      "output": "11440\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "4 13\n",
+      "output": "455\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "30 45\n",
+      "output": "326567767\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "75 63\n",
+      "output": "561793546\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "100 46\n",
+      "output": "148580249\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "99 50\n",
+      "output": "355138216\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "76 36\n",
+      "output": "71712050\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "54 45\n",
+      "output": "408392418\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "29 69\n",
+      "output": "659690626\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "154 225\n",
+      "output": "612236775\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "376 315\n",
+      "output": "716667064\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "500 232\n",
+      "output": "171693226\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "495 251\n",
+      "output": "35036397\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "381 182\n",
+      "output": "289192678\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "270 227\n",
+      "output": "96564528\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "147 344\n",
+      "output": "795623914\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "dp[i][j] tổng từ trên + trái.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Khởi tạo dp[0][0]=1.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Lấy modulo.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "DP đường đi lưới, O(RC).",
+  "solutionSketch": "dp[0][0]=1; for i, j: dp[i][j] = (i>0?dp[i-1][j]:0) + (j>0?dp[i][j-1]:0);",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

@@ -1,0 +1,212 @@
+{
+  "slug": "sieve-count-primes",
+  "title": "Đếm số nguyên tố ≤ N",
+  "titleEn": "Count primes ≤ N",
+  "module": "roadmap",
+  "topicId": "sieve",
+  "tier": "T2",
+  "skills": [
+    "S1"
+  ],
+  "difficulty": 4,
+  "maxStars": 3,
+  "tags": [
+    "sieve",
+    "prime"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho N. Đếm số lượng số nguyên tố ≤ N. Dùng sàng Eratosthenes: mảng isP[0..N], for i=2..sqrt(N): nếu isP[i] thì for j = i*i, i*i+i, ...: isP[j]=false. Cuối cùng đếm các vị trí còn true ≥ 2.",
+  "vnPattern": "Sieve count — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "PRIMES.INP",
+    "outputFile": "PRIMES.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^4"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^6"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 10^7"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "4198\n",
+      "output": "574\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "2383\n",
+      "output": "354\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "4198\n",
+      "output": "574\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "2383\n",
+      "output": "354\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "4519\n",
+      "output": "614\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "6753\n",
+      "output": "869\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "6231\n",
+      "output": "811\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "1366\n",
+      "output": "218\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "5279\n",
+      "output": "700\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "419841\n",
+      "output": "35381\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "238360\n",
+      "output": "21089\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "451933\n",
+      "output": "37869\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "675280\n",
+      "output": "54710\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "623091\n",
+      "output": "50841\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "136594\n",
+      "output": "12723\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "527859\n",
+      "output": "43666\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "4725825\n",
+      "output": "330647\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "3075999\n",
+      "output": "221880\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "5017572\n",
+      "output": "349633\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "7047994\n",
+      "output": "479740\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "6573552\n",
+      "output": "449455\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "2150861\n",
+      "output": "159306\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "5707811\n",
+      "output": "394105\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Sàng Eratosthenes.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Đánh dấu bội bắt đầu từ i*i.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "O(N log log N).",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Sieve, O(N log log N).",
+  "solutionSketch": "vector<char> isP(n+1, 1); for i=2..sqrt(n): if isP[i]: for j=i*i; j<=n; j+=i: isP[j]=0;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

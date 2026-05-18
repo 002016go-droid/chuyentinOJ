@@ -1,0 +1,212 @@
+{
+  "slug": "sieve-range-count",
+  "title": "Đếm nguyên tố trong [L, R]",
+  "titleEn": "Count primes in [L, R]",
+  "module": "roadmap",
+  "topicId": "sieve",
+  "tier": "T2",
+  "skills": [
+    "S1"
+  ],
+  "difficulty": 4,
+  "maxStars": 3,
+  "tags": [
+    "sieve",
+    "range"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho L ≤ R. Đếm số nguyên tố trong [L, R]. Sàng tới R, đếm các i thuộc [L, R] với isP[i]. Bài cài đặt sàng cộng đếm theo khoảng.",
+  "vnPattern": "Prime range — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "COUNT.INP",
+    "outputFile": "COUNT.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ L ≤ R ≤ 1000"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ L ≤ R ≤ 10^5"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ L ≤ R ≤ 10^6"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "676 708\n",
+      "output": "4\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "320 702\n",
+      "output": "60\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "676 708\n",
+      "output": "4\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "320 702\n",
+      "output": "60\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "413 794\n",
+      "output": "58\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "440 723\n",
+      "output": "43\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "573 832\n",
+      "output": "40\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "251 592\n",
+      "output": "54\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "695 766\n",
+      "output": "10\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "75016 76513\n",
+      "output": "132\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "35418 63487\n",
+      "output": "2592\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "45758 72111\n",
+      "output": "2400\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "48781 67922\n",
+      "output": "1748\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "63595 78712\n",
+      "output": "1348\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "27848 53861\n",
+      "output": "2446\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "77130 80356\n",
+      "output": "291\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "750826 765646\n",
+      "output": "1112\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "354499 634263\n",
+      "output": "21320\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "457991 720442\n",
+      "output": "19751\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "488250 678824\n",
+      "output": "14340\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "636514 786711\n",
+      "output": "11133\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "278724 538111\n",
+      "output": "20093\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "771990 803902\n",
+      "output": "2349\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Sàng tới R.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Đếm i trong [L, R] với isP[i].",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "L có thể nhỏ.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Sieve + count range, O(R log log R).",
+  "solutionSketch": "sieve(R); cnt=0; for i=max(2,L)..R: if isP[i]: ++cnt;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

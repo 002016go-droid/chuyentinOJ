@@ -3,7 +3,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { motion } from 'framer-motion'
 import JSZip from 'jszip'
 import toast from 'react-hot-toast'
-import { Download, Save, Upload } from 'lucide-react'
+import { Download, Save, Trophy, Upload } from 'lucide-react'
 import { PageTransition } from '../components/layout/PageTransition'
 import { Card } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge'
@@ -12,6 +12,13 @@ import { db } from '../lib/db'
 import { changePassword, getUsername, setUsername } from '../lib/auth'
 import { deterministicAvatar } from '../lib/utils'
 import { useAggregateStats } from '../hooks/useStats'
+import {
+  SKILL_NAMES,
+  SKILL_TONES,
+  TIER_NAMES,
+  TIER_TONES,
+  useSkillTierStats,
+} from '../hooks/useSkillTier'
 
 interface BadgeDef {
   id: string
@@ -38,6 +45,7 @@ export function ProfilePage() {
   const [oldPw, setOldPw] = useState('')
   const [newPw, setNewPw] = useState('')
   const stats = useAggregateStats()
+  const skillTier = useSkillTierStats()
   const subs = useLiveQuery(() => db.submissions.toArray(), []) ?? []
 
   async function exportAll() {
@@ -198,6 +206,74 @@ export function ProfilePage() {
         </Card>
 
         <div className="space-y-4">
+          <Card>
+            <h3 className="mb-3 font-display text-lg">
+              <Trophy size={16} className="mr-1 inline text-[var(--accent-amber)]" />
+              Kỹ năng (S1–S4)
+            </h3>
+            <p className="mb-3 text-xs text-[var(--text-muted)]">
+              Mỗi bài tập gắn 1-3 kỹ năng. Thanh tiến độ thể hiện số sao đạt được
+              trên tổng số sao tối đa của các bài cùng kỹ năng đó.
+            </p>
+            <div className="space-y-3">
+              {skillTier.skills.map((s) => {
+                const pct = s.maxStars > 0 ? Math.round((s.totalStars / s.maxStars) * 100) : 0
+                return (
+                  <div key={s.skill}>
+                    <div className="mb-1 flex items-center justify-between gap-2 text-xs">
+                      <div className="flex items-center gap-2">
+                        <Badge tone={SKILL_TONES[s.skill]}>{s.skill}</Badge>
+                        <span className="font-medium">{SKILL_NAMES[s.skill]}</span>
+                      </div>
+                      <span className="font-mono text-[var(--text-muted)]">
+                        {s.solved}/{s.totalProblems} bài · {s.totalStars}/{s.maxStars} ⭐ · {pct}%
+                      </span>
+                    </div>
+                    <div className="h-2 rounded-full bg-[var(--bg-elevated)]">
+                      <div
+                        className="h-2 rounded-full bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-coral)] transition-all"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </Card>
+
+          <Card>
+            <h3 className="mb-3 font-display text-lg">🎯 Tier mục tiêu (T1–T4)</h3>
+            <p className="mb-3 text-xs text-[var(--text-muted)]">
+              T1 = HSG TP/Tỉnh · T2 = Chuyên Tin · T3 = HSG Quốc gia · T4 = IOI nâng cao.
+            </p>
+            <div className="space-y-3">
+              {skillTier.tiers.map((t) => {
+                const pct = t.totalProblems > 0
+                  ? Math.round((t.solved / t.totalProblems) * 100)
+                  : 0
+                return (
+                  <div key={t.tier}>
+                    <div className="mb-1 flex items-center justify-between gap-2 text-xs">
+                      <div className="flex items-center gap-2">
+                        <Badge tone={TIER_TONES[t.tier]}>{t.tier}</Badge>
+                        <span className="font-medium">{TIER_NAMES[t.tier]}</span>
+                      </div>
+                      <span className="font-mono text-[var(--text-muted)]">
+                        {t.solved}/{t.totalProblems} bài AC · {pct}%
+                      </span>
+                    </div>
+                    <div className="h-2 rounded-full bg-[var(--bg-elevated)]">
+                      <div
+                        className="h-2 rounded-full bg-gradient-to-r from-[var(--accent-blue)] to-[var(--accent-purple)] transition-all"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </Card>
+
           <Card>
             <h3 className="mb-3 font-display text-lg">🏅 Huy hiệu</h3>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">

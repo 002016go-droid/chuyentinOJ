@@ -1,0 +1,213 @@
+{
+  "slug": "rec-sudoku-3x3",
+  "title": "Sudoku 3×3",
+  "titleEn": "Mini Sudoku 3x3",
+  "module": "roadmap",
+  "topicId": "recursion-backtracking",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S4"
+  ],
+  "difficulty": 3,
+  "maxStars": 3,
+  "tags": [
+    "recursion",
+    "backtracking"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho ma trận 3×3 chứa các số 1..9 hoặc 0 (ô trống). Hãy điền vào các ô 0 sao cho mỗi hàng và mỗi cột chứa các số 1..3 không trùng (giản lược, không có khối 3×3). Nếu có nhiều cách, in cách đầu tiên theo thứ tự duyệt từ trên xuống, trái sang. In \"IMPOSSIBLE\" nếu không có.",
+  "vnPattern": "Mini Sudoku — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "3X3.INP",
+    "outputFile": "3X3.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "Mọi đề (luôn có lời giải, ≤ 9 ô trống)"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "≤ 6 ô trống"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "Tổng quát"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "0 1 3\n0 0 1\n1 0 2\n",
+      "output": "2 1 3\n3 2 1\n1 3 2\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "0 0 3\n3 1 2\n0 0 1\n",
+      "output": "1 2 3\n3 1 2\n2 3 1\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "0 1 3\n0 0 1\n1 0 2\n",
+      "output": "2 1 3\n3 2 1\n1 3 2\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "0 0 3\n3 1 2\n0 0 1\n",
+      "output": "1 2 3\n3 1 2\n2 3 1\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "2 3 0\n3 0 2\n0 2 0\n",
+      "output": "2 3 1\n3 1 2\n1 2 3\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "2 0 0\n3 0 1\n0 3 2\n",
+      "output": "2 1 3\n3 2 1\n1 3 2\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "0 1 0\n1 0 3\n2 0 1\n",
+      "output": "3 1 2\n1 2 3\n2 3 1\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "3 0 0\n0 2 3\n2 0 1\n",
+      "output": "3 1 2\n1 2 3\n2 3 1\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "2 3 1\n0 0 0\n0 0 2\n",
+      "output": "2 3 1\n1 2 3\n3 1 2\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "0 3 2\n0 0 3\n3 0 1\n",
+      "output": "1 3 2\n2 1 3\n3 2 1\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "0 0 3\n2 3 1\n0 1 2\n",
+      "output": "1 2 3\n2 3 1\n3 1 2\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "2 1 0\n3 2 1\n0 3 0\n",
+      "output": "2 1 3\n3 2 1\n1 3 2\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "1 0 0\n2 0 3\n0 2 1\n",
+      "output": "1 3 2\n2 1 3\n3 2 1\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "2 1 3\n3 0 1\n1 0 2\n",
+      "output": "2 1 3\n3 2 1\n1 3 2\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "2 1 0\n0 2 1\n1 0 2\n",
+      "output": "2 1 3\n3 2 1\n1 3 2\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "2 1 3\n0 2 0\n0 0 2\n",
+      "output": "2 1 3\n3 2 1\n1 3 2\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "0 1 3\n1 0 2\n3 0 1\n",
+      "output": "2 1 3\n1 3 2\n3 2 1\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "0 2 3\n2 3 1\n3 1 2\n",
+      "output": "1 2 3\n2 3 1\n3 1 2\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "2 3 0\n3 1 2\n1 2 0\n",
+      "output": "2 3 1\n3 1 2\n1 2 3\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "2 1 0\n1 0 2\n0 2 1\n",
+      "output": "2 1 3\n1 3 2\n3 2 1\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "3 1 2\n2 3 1\n1 0 3\n",
+      "output": "3 1 2\n2 3 1\n1 2 3\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "3 1 0\n0 3 1\n1 0 3\n",
+      "output": "3 1 2\n2 3 1\n1 2 3\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "2 3 1\n0 1 0\n0 0 3\n",
+      "output": "2 3 1\n3 1 2\n1 2 3\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Đệ quy theo ô (i, j) (duyệt 3×3 = 9 ô).",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Tại ô trống, thử số 1..3 chưa dùng trong hàng/cột; hồi quy.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "In ngay khi giải xong.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Backtracking, độ sâu ≤ 9, O(3^k).",
+  "solutionSketch": "void dfs(int p) { if (p == 9) { print; exit; } if (g[p/3][p%3]) dfs(p+1); else for (int v = 1; v <= 3; ++v) if (canPlace(p, v)) { ...; dfs(p+1); ... } }",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

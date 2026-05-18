@@ -1,0 +1,2095 @@
+{
+  "techniques": [
+    {
+      "id": "b1-001",
+      "group": "B1",
+      "groupName": "C++ I/O + Cú pháp",
+      "title": "Fast I/O",
+      "titleVi": "Nhập xuất nhanh & freopen",
+      "tier": "T1",
+      "skills": [
+        "S2"
+      ],
+      "description": "Tắt sync với scanf bằng `ios_base::sync_with_stdio(false); cin.tie(nullptr);` để cin/cout nhanh gần bằng scanf/printf. `freopen(\"BAI.INP\",\"r\",stdin); freopen(\"BAI.OUT\",\"w\",stdout);` là chuẩn của đề HSG VN — sai tên file = 0 điểm. Khi không có file (chấm tay) thì kiểm tra `if (fopen(...))` trước khi freopen.",
+      "codeExample": "ios_base::sync_with_stdio(false); cin.tie(nullptr);\nif (fopen(\"BAI.INP\", \"r\")) {\n    freopen(\"BAI.INP\", \"r\", stdin);\n    freopen(\"BAI.OUT\", \"w\", stdout);\n}",
+      "vnRelevance": "Bắt buộc cho mọi bài HSG TP/Tỉnh.",
+      "references": [
+        {
+          "label": "VNOI — I/O optimization",
+          "url": "https://wiki.vnoi.info/algo/basic/io-optimization"
+        }
+      ]
+    },
+    {
+      "id": "b1-002",
+      "group": "B1",
+      "groupName": "C++ I/O + Cú pháp",
+      "title": "Integer Types",
+      "titleVi": "Kiểu số nguyên & tràn số",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "`int` chứa tối đa 2·10⁹ — vượt là tràn. `long long` đến 9·10¹⁸ đủ cho hầu hết bài. `unsigned long long` 1.8·10¹⁹. `__int128` (GCC) cho phép nhân 2 số long long mà không tràn — không có cin/cout sẵn, phải viết hàm in. Quy tắc: tổng/nhân vượt 10⁹ → dùng long long.",
+      "codeExample": "long long x = 1000000000LL * 1000000000LL; // ~10^18 OK\nunsigned long long u = (unsigned long long)a * b;\n__int128 big = (__int128)a * b * c; // chuyên Tin lớp 10+",
+      "vnRelevance": "Quảng Nam 2019 Bài Mua quà có giá trị lên 10⁹ → cần long long.",
+      "references": []
+    },
+    {
+      "id": "b1-003",
+      "group": "B1",
+      "groupName": "C++ I/O + Cú pháp",
+      "title": "Static Array vs vector",
+      "titleVi": "Mảng tĩnh vs std::vector",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "Mảng tĩnh `int a[N+5]` ở global thì khởi tạo 0 sẵn, truy cập nhanh hơn vector ~5-10%. `vector<int> a(n)` linh hoạt, có size(), an toàn nhưng chậm hơn. Bài có N tối đa cố định và ≤ 10⁶: dùng global array. Bài có N tới 10⁷+: vẫn dùng global vì stack vector lớn không nổi.",
+      "codeExample": "int a[1000005]; // global, init 0 sẵn\nvector<int> v(n + 1); // local, an toàn",
+      "vnRelevance": "Cách khai báo mảng chuẩn trong đề HSG VN.",
+      "references": []
+    },
+    {
+      "id": "b1-004",
+      "group": "B1",
+      "groupName": "C++ I/O + Cú pháp",
+      "title": "struct/pair/tuple",
+      "titleVi": "struct, pair, tuple để gom dữ liệu",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "`pair<int,int>` cho 2 trường, `tuple<int,int,int>` cho 3+, hoặc `struct` tự định nghĩa. `pair` có toán tử so sánh lexicographic sẵn. C++17 cho phép `auto [x, y] = p;` structured binding.",
+      "codeExample": "struct Item { int a, b; bool operator<(const Item& o) const { return a < o.a; } };\npair<int,int> p = {3, 5};\nauto [x, y] = p;",
+      "vnRelevance": "Dùng cho mọi bài cần sort theo nhiều khoá.",
+      "references": []
+    },
+    {
+      "id": "b1-005",
+      "group": "B1",
+      "groupName": "C++ I/O + Cú pháp",
+      "title": "Recursion basics",
+      "titleVi": "Hàm + tham trị/tham chiếu + đệ quy",
+      "tier": "T1",
+      "skills": [
+        "S2"
+      ],
+      "description": "Tham trị (`int x`) copy giá trị — chậm với struct lớn. Tham chiếu (`int& x`) dùng trực tiếp — fastest, có thể sửa. `const int&` an toàn cho input lớn. Đệ quy: luôn có base case, recursive case giảm dần đến base, hiểu call stack (default ~10⁵ frames).",
+      "codeExample": "long long fact(long long n) { return n <= 1 ? 1 : n * fact(n - 1); }\nvoid swap_in_place(int& a, int& b) { swap(a, b); }",
+      "vnRelevance": "Đệ quy là gốc rễ của DP, DFS, backtracking.",
+      "references": []
+    },
+    {
+      "id": "b1-006",
+      "group": "B1",
+      "groupName": "C++ I/O + Cú pháp",
+      "title": "Lambda + comparator",
+      "titleVi": "Lambda function + comparator cho sort",
+      "tier": "T1",
+      "skills": [
+        "S4"
+      ],
+      "description": "Lambda C++11: `[&](int a, int b) -> bool { return ...; }`. `[&]` capture by reference, `[=]` by value, `[a, &b]` mix. Dùng để viết comparator gọn cho `sort`, `priority_queue`, `nth_element`. Lambda đệ quy: dùng `function<int(int)> f = [&](int x){ ... f(...) };`.",
+      "codeExample": "sort(v.begin(), v.end(), [](const pair<int,int>& a, const pair<int,int>& b){\n    if (a.first != b.first) return a.first < b.first;\n    return a.second > b.second;\n});",
+      "vnRelevance": "Vũ khí gọn cho mọi bài cần sort phức tạp.",
+      "references": []
+    },
+    {
+      "id": "b2-001",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "std::sort",
+      "titleVi": "std::sort + custom comparator",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "O(N log N) introsort. Sort tăng mặc định, giảm với `greater<int>()` hoặc lambda. Sort struct phải có comparator. **80% bài HSG bắt đầu bằng sort**.",
+      "codeExample": "sort(v.begin(), v.end());\nsort(v.begin(), v.end(), greater<int>());\nsort(v.begin(), v.end(), [](Item a, Item b){ return a.x < b.x; });",
+      "vnRelevance": "Bước đầu của 80% bài HSG TP/Tỉnh.",
+      "references": [
+        {
+          "label": "VNOI — sort",
+          "url": "https://wiki.vnoi.info/algo/basic/sorting"
+        }
+      ]
+    },
+    {
+      "id": "b2-002",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "nth_element / partial_sort",
+      "titleVi": "Sắp xếp một phần — nth_element, partial_sort",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "`nth_element(b, b+k, e)` đặt phần tử thứ k tại vị trí k, các phần tử trước nó nhỏ hơn, sau nó lớn hơn — O(N) trung bình, nhanh hơn sort khi chỉ cần thứ k. `partial_sort(b, b+k, e)` sort K phần tử đầu, O(N log K).",
+      "codeExample": "nth_element(v.begin(), v.begin() + k, v.end()); // O(N)\npartial_sort(v.begin(), v.begin() + k, v.end()); // O(N log K)",
+      "vnRelevance": "Hiếm gặp, hữu ích cho \"top K\".",
+      "references": []
+    },
+    {
+      "id": "b2-003",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "lower_bound/upper_bound",
+      "titleVi": "Binary search STL — lower_bound, upper_bound",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2"
+      ],
+      "description": "Trên mảng đã sort tăng: `lower_bound(b,e,x)` trả iterator đầu tiên ≥ x; `upper_bound` đầu tiên > x. Đếm số phần tử = x: `upper_bound - lower_bound`. Trên `set`: `s.lower_bound(x)`. Số lần gọi: O(log N).",
+      "codeExample": "auto it = lower_bound(v.begin(), v.end(), x);\nint idx = it - v.begin(); // vị trí >= x đầu tiên\nint cnt = upper_bound(v.begin(), v.end(), x) - lower_bound(v.begin(), v.end(), x);",
+      "vnRelevance": "Hay bị bẫy off-by-one — test biên.",
+      "references": [
+        {
+          "label": "VNOI — binary search",
+          "url": "https://wiki.vnoi.info/algo/basic/binary-search"
+        }
+      ]
+    },
+    {
+      "id": "b2-004",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "Prefix sum 1D",
+      "titleVi": "Tổng tiền tố 1D",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "Precompute `P[i] = P[i-1] + a[i]` trong O(N), trả lời query \"tổng [l, r]\" trong O(1) bằng `P[r] - P[l-1]`. Khai báo `long long` cho P để tránh tràn.",
+      "codeExample": "vector<long long> P(n + 1, 0);\nfor (int i = 0; i < n; i++) P[i + 1] = P[i] + a[i];\nauto query = [&](int l, int r){ return P[r + 1] - P[l]; };",
+      "vnRelevance": "KHTN, Quảng Nam — xuất hiện dưới nhiều dạng.",
+      "references": [
+        {
+          "label": "VNOI — prefix sum",
+          "url": "https://wiki.vnoi.info/algo/data-structures/prefix-sum-and-difference-array"
+        }
+      ]
+    },
+    {
+      "id": "b2-005",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "Prefix sum 2D",
+      "titleVi": "Tổng tiền tố 2D + inclusion-exclusion",
+      "tier": "T1",
+      "skills": [
+        "S3"
+      ],
+      "description": "Precompute `S[i][j] = S[i-1][j] + S[i][j-1] - S[i-1][j-1] + a[i][j]`, query tổng vùng `(r1,c1)→(r2,c2)` = `S[r2][c2] - S[r1-1][c2] - S[r2][c1-1] + S[r1-1][c1-1]`. Khai báo từ index 1 để tránh out-of-bounds.",
+      "codeExample": "for (int i = 1; i <= n; i++)\n    for (int j = 1; j <= m; j++)\n        S[i][j] = S[i-1][j] + S[i][j-1] - S[i-1][j-1] + a[i][j];",
+      "vnRelevance": "KHTN 2025 có bài hình chữ nhật dùng prefix 2D.",
+      "references": []
+    },
+    {
+      "id": "b2-006",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "Difference array",
+      "titleVi": "Mảng hiệu cho range update",
+      "tier": "T1",
+      "skills": [
+        "S3"
+      ],
+      "description": "Cập nhật đoạn [l,r] += x trong O(1) bằng `d[l] += x; d[r+1] -= x;`. Sau khi xong tất cả Q update, prefix `d` lại để được mảng cuối. Tổng O(Q + N).",
+      "codeExample": "vector<long long> d(n + 2, 0);\nfor (auto& [l, r, x] : ups) { d[l] += x; d[r + 1] -= x; }\nfor (int i = 1; i <= n; i++) d[i] += d[i - 1];",
+      "vnRelevance": "Đề \"công cộng\" hay xuất hiện.",
+      "references": []
+    },
+    {
+      "id": "b2-007",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "Two pointers",
+      "titleVi": "Hai con trỏ + sliding window",
+      "tier": "T1",
+      "skills": [
+        "S3",
+        "S4"
+      ],
+      "description": "Sau khi sort hoặc trên mảng có tính monotonic, dùng 2 con trỏ chạy về cùng chiều hoặc ngược chiều để giảm O(N²) xuống O(N). 3 mẫu: hai con trỏ ngược nhau (Two Sum sau sort), cửa sổ trượt (subarray sum K trên mảng dương), merge 2 dãy.",
+      "codeExample": "// subarray sum = K trên mảng dương\nint l = 0; long long sum = 0, ans = 0;\nfor (int r = 0; r < n; r++) {\n    sum += a[r];\n    while (sum > k) sum -= a[l++];\n    if (sum == k) ans++;\n}",
+      "vnRelevance": "Long An 2024 — merge 2 mảng đã sắp.",
+      "references": [
+        {
+          "label": "VNOI — two pointers",
+          "url": "https://wiki.vnoi.info/algo/basic/two-pointers"
+        }
+      ]
+    },
+    {
+      "id": "b2-008",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "STL containers",
+      "titleVi": "STL containers tổng quan",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "vector (mảng động), deque (push/pop 2 đầu O(1)), set/multiset (sorted, log N), map (key→value, log N), unordered_set/map (hash O(1) avg), stack, queue, priority_queue (max-heap mặc định).",
+      "codeExample": "set<int> s; s.insert(5); auto it = s.lower_bound(3);\nmap<string, int> cnt; cnt[\"apple\"]++;\npriority_queue<int, vector<int>, greater<>> minH;",
+      "vnRelevance": "Vũ khí thường trực mọi bài.",
+      "references": []
+    },
+    {
+      "id": "b2-009",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "Monotonic stack",
+      "titleVi": "Ngăn xếp đơn điệu — NGE, Largest Rectangle",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "Stack giữ phần tử theo thứ tự đơn điệu (giảm/tăng). NGE: lặp từ phải qua, pop khỏi stack khi top ≤ a[i], top sau pop là kết quả. Largest Rectangle in Histogram cũng giải bằng monotonic stack trong O(N).",
+      "codeExample": "stack<int> st;\nvector<int> nge(n, -1);\nfor (int i = n - 1; i >= 0; i--) {\n    while (!st.empty() && a[st.top()] <= a[i]) st.pop();\n    if (!st.empty()) nge[i] = st.top();\n    st.push(i);\n}",
+      "vnRelevance": "Largest Rectangle hay ra ở chuyên Tin.",
+      "references": [
+        {
+          "label": "CPA — monotonic stack",
+          "url": "https://cp-algorithms.com/data_structures/stack_queue_modification.html"
+        }
+      ]
+    },
+    {
+      "id": "b2-010",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "Monotonic deque",
+      "titleVi": "Hàng đợi đơn điệu — Sliding Window Min/Max",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "Deque giữ chỉ số mà giá trị giảm (max) hoặc tăng (min). Khi thêm r: pop back các phần tử \"tệ hơn\"; khi cửa sổ trượt: pop front nếu out of window. Front luôn là min/max hiện tại. O(N).",
+      "codeExample": "deque<int> dq;\nfor (int r = 0; r < n; r++) {\n    while (!dq.empty() && a[dq.back()] <= a[r]) dq.pop_back();\n    dq.push_back(r);\n    if (dq.front() <= r - k) dq.pop_front();\n    if (r >= k - 1) cout << a[dq.front()] << \" \";\n}",
+      "vnRelevance": "Bài \"cửa sổ trượt K phần tử max\" ở đề chuyên.",
+      "references": []
+    },
+    {
+      "id": "b2-011",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "Greedy: exchange argument",
+      "titleVi": "Tham lam — exchange argument, scheduling",
+      "tier": "T1",
+      "skills": [
+        "S3"
+      ],
+      "description": "Greedy = chọn cục bộ tốt nhất hi vọng tối ưu toàn cục. Chứng minh đúng bằng exchange argument: giả sử có lời giải tốt hơn, ta đổi 2 phần tử sao cho vẫn ổn → mâu thuẫn. Activity Selection: sort theo finish time, chọn job kết thúc sớm.",
+      "codeExample": "sort(jobs.begin(), jobs.end(), [](auto& a, auto& b){ return a.finish < b.finish; });\nint cnt = 0, lastEnd = INT_MIN;\nfor (auto& [s, e] : jobs) if (s >= lastEnd) { cnt++; lastEnd = e; }",
+      "vnRelevance": "Bài 2-3 nhiều tỉnh là greedy sau sort.",
+      "references": [
+        {
+          "label": "VNOI greedy",
+          "url": "https://vnoi.info/algo/greedy-new"
+        }
+      ]
+    },
+    {
+      "id": "b2-012",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "iota + accumulate",
+      "titleVi": "iota + accumulate STL",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "`iota(b, e, x0)` điền x0, x0+1, ... vào dải. `accumulate(b, e, init)` tính tổng (hoặc reduce với operator).",
+      "codeExample": "vector<int> idx(n); iota(idx.begin(), idx.end(), 0);\nlong long sum = accumulate(v.begin(), v.end(), 0LL);",
+      "vnRelevance": "Hữu ích cho sort theo index.",
+      "references": []
+    },
+    {
+      "id": "b2-013",
+      "group": "B2",
+      "groupName": "Thuật toán + CTDL nền móng",
+      "title": "unique + erase",
+      "titleVi": "unique + erase trick",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "`unique` đẩy duplicate liên tiếp về cuối, trả iterator vị trí cuối duy nhất. Kết hợp `erase` để xoá thực sự. Phải sort trước.",
+      "codeExample": "sort(v.begin(), v.end());\nv.erase(unique(v.begin(), v.end()), v.end());",
+      "vnRelevance": "Coordinate compression.",
+      "references": []
+    },
+    {
+      "id": "b3-001",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "GCD/LCM",
+      "titleVi": "GCD/LCM bằng Euclid",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "`__gcd(a, b)` (GCC) hoặc `gcd` (C++17). Tự viết: `gcd(a,b) = b == 0 ? a : gcd(b, a%b)`, O(log min). LCM = `a / gcd(a,b) * b` (chia trước nhân để tránh tràn).",
+      "codeExample": "long long gcd(long long a, long long b) { return b ? gcd(b, a % b) : a; }\nlong long lcm(long long a, long long b) { return a / gcd(a, b) * b; }",
+      "vnRelevance": "Quảng Nam 2019 — Bài Trực nhật dùng LCM.",
+      "references": []
+    },
+    {
+      "id": "b3-002",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Count divisors",
+      "titleVi": "Đếm số ước nhanh O(√N)",
+      "tier": "T1",
+      "skills": [
+        "S2"
+      ],
+      "description": "Đi i từ 1 đến √N, nếu N % i == 0 thì có 2 ước: i và N/i (lưu ý i = N/i khi i² = N để không đếm trùng).",
+      "codeExample": "long long cnt = 0;\nfor (long long i = 1; i * i <= N; i++) if (N % i == 0)\n    cnt += (i * i == N) ? 1 : 2;",
+      "vnRelevance": "Bài \"tìm số ước\" hay xuất hiện.",
+      "references": []
+    },
+    {
+      "id": "b3-003",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Sieve of Eratosthenes",
+      "titleVi": "Sàng Eratosthenes O(N log log N)",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "Đánh dấu hợp số: cho mỗi i nguyên tố, đánh dấu i², i²+i, i²+2i, ..., ≤ N. Linear sieve O(N) thêm SPF (smallest prime factor) để phân tích thừa số O(log N).",
+      "codeExample": "vector<bool> isComp(N + 1, false);\nfor (long long i = 2; i <= N; i++) if (!isComp[i])\n    for (long long j = i * i; j <= N; j += i) isComp[j] = true;",
+      "vnRelevance": "Long An 2024 — bài tổng nguyên tố.",
+      "references": [
+        {
+          "label": "VNOI — sieve",
+          "url": "https://wiki.vnoi.info/algo/math/sieve"
+        }
+      ]
+    },
+    {
+      "id": "b3-004",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Modular arithmetic",
+      "titleVi": "Modular arithmetic + tránh tràn",
+      "tier": "T1",
+      "skills": [
+        "S2"
+      ],
+      "description": "Bài đếm hay mod 10⁹+7 hoặc 998244353. Cộng: `(a + b) % m`. Nhân: `(a * b) % m` — nếu a, b ≈ 10⁹ thì tràn long long, phải `(__int128)a*b%m` hoặc Mongomery.",
+      "codeExample": "const long long MOD = 1e9 + 7;\nlong long add(long long a, long long b) { return (a + b) % MOD; }\nlong long mul(long long a, long long b) { return a * b % MOD; }",
+      "vnRelevance": "Quy ước phổ biến trong đề đếm modular.",
+      "references": []
+    },
+    {
+      "id": "b3-005",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Fast power",
+      "titleVi": "Lũy thừa nhanh + Fermat inverse",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "a^b mod m bằng chia đôi: b chẵn → (a^(b/2))², b lẻ → a · a^(b-1). O(log b). Modular inverse khi m nguyên tố: a^(-1) = a^(m-2) mod m (Fermat).",
+      "codeExample": "long long pw(long long a, long long b, long long m) {\n    long long res = 1; a %= m;\n    while (b) { if (b & 1) res = res * a % m; a = a * a % m; b >>= 1; }\n    return res;\n}\nlong long inv(long long a, long long m) { return pw(a, m - 2, m); }",
+      "vnRelevance": "Bài đếm tổ hợp mod số nguyên tố.",
+      "references": []
+    },
+    {
+      "id": "b3-006",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Combinatorics",
+      "titleVi": "Tổ hợp + factorial inverse precompute",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "C(n, k) = n! / (k! (n-k)!). Mod p nguyên tố: precompute fact[i] = i! mod p, inv_fact[i] = (i!)^(-1) mod p trong O(N). Mỗi C(n,k) trả lời O(1).",
+      "codeExample": "vector<long long> fact(N + 1), invFact(N + 1);\nfact[0] = 1;\nfor (int i = 1; i <= N; i++) fact[i] = fact[i-1] * i % MOD;\ninvFact[N] = pw(fact[N], MOD - 2, MOD);\nfor (int i = N - 1; i >= 0; i--) invFact[i] = invFact[i+1] * (i+1) % MOD;\nauto C = [&](int n, int k){ return fact[n] * invFact[k] % MOD * invFact[n-k] % MOD; };",
+      "vnRelevance": "Bài đếm tổ hợp mod 10⁹+7.",
+      "references": []
+    },
+    {
+      "id": "b3-007",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Extended Euclid",
+      "titleVi": "Euclid mở rộng — tìm x, y cho ax+by=gcd",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Mở rộng Euclid trả về (g, x, y) sao cho a·x + b·y = gcd(a, b). Dùng cho linear Diophantine, modular inverse khi m không nguyên tố.",
+      "codeExample": "long long extgcd(long long a, long long b, long long& x, long long& y) {\n    if (!b) { x = 1; y = 0; return a; }\n    long long x1, y1;\n    long long g = extgcd(b, a % b, x1, y1);\n    x = y1; y = x1 - (a / b) * y1;\n    return g;\n}",
+      "vnRelevance": "Hiếm; ở mức HSG QG.",
+      "references": []
+    },
+    {
+      "id": "b3-008",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Inclusion-Exclusion",
+      "titleVi": "Bao hàm loại trừ",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Đếm |A ∪ B ∪ C| = ΣA - ΣAB + ΣABC. Mở rộng cho 4+ tập. Bài: đếm số ≤ N chia hết bởi ít nhất một trong p1, p2, ..., pk.",
+      "codeExample": "// Đếm số ≤ N chia hết bởi ít nhất 1 trong p[]\nlong long ans = 0;\nint k = p.size();\nfor (int m = 1; m < (1 << k); m++) {\n    long long L = 1; int bits = __builtin_popcount(m);\n    for (int i = 0; i < k; i++) if (m & (1 << i)) L = lcm(L, p[i]);\n    if (bits % 2) ans += N / L; else ans -= N / L;\n}",
+      "vnRelevance": "Hiếm trong HSG TP, có ở chuyên Tin.",
+      "references": [
+        {
+          "label": "VNOI PIE",
+          "url": "https://vnoi.info/algo/algebra/pie"
+        }
+      ]
+    },
+    {
+      "id": "b3-009",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "CRT",
+      "titleVi": "Thặng dư Trung Hoa (CRT)",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "Kết hợp n ≡ r_i (mod m_i) với m_i đôi một nguyên tố cùng nhau thành n ≡ R (mod M = ∏m_i) duy nhất. Dùng Extended Euclid.",
+      "codeExample": "// CRT cho 2 đồng dư\npair<long long,long long> crt(long long r1, long long m1, long long r2, long long m2) {\n    long long x, y, g = extgcd(m1, m2, x, y);\n    if ((r2 - r1) % g) return {-1, -1};\n    long long mod = m1 / g * m2;\n    long long ans = (r1 + m1 * (((r2 - r1) / g) % mod * (x % mod) % mod)) % mod;\n    return {(ans + mod) % mod, mod};\n}",
+      "vnRelevance": "Cực hiếm; dành cho QG.",
+      "references": []
+    },
+    {
+      "id": "b3-010",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Catalan/Stirling",
+      "titleVi": "Số Catalan, Stirling, Bell",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "Catalan C_n = C(2n, n)/(n+1) đếm cây nhị phân đầy đủ n+1 lá, ngoặc đúng n cặp, đường đi không vượt diagonal. Stirling 2 đếm số cách chia N phần thành K nhóm.",
+      "codeExample": "long long catalan(int n) { return C(2 * n, n) * pw(n + 1, MOD - 2, MOD) % MOD; }",
+      "vnRelevance": "Hầu như không ra HSG TP.",
+      "references": []
+    },
+    {
+      "id": "b3-011",
+      "group": "B3",
+      "groupName": "Số học cơ bản",
+      "title": "Coordinate compress",
+      "titleVi": "Coordinate compression",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Khi giá trị lớn nhưng số phần tử nhỏ (N ≤ 10⁵, giá trị ≤ 10⁹), thay mỗi giá trị bằng \"rank\" của nó trong mảng sort+unique để index BIT/segtree.",
+      "codeExample": "auto c = a; sort(c.begin(), c.end()); c.erase(unique(c.begin(), c.end()), c.end());\nfor (auto& x : a) x = lower_bound(c.begin(), c.end(), x) - c.begin();",
+      "vnRelevance": "Bài \"đếm cặp i<j, a[i]>a[j]\" Fenwick.",
+      "references": []
+    },
+    {
+      "id": "b4-001",
+      "group": "B4",
+      "groupName": "Đệ quy + Duyệt + Backtracking",
+      "title": "next_permutation",
+      "titleVi": "Sinh hoán vị bằng next_permutation",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "`next_permutation(b, e)` chuyển dãy sang hoán vị kế tiếp theo thứ tự từ điển; trả false khi đã là hoán vị cuối. Phải sort tăng trước khi bắt đầu để sinh đủ N!.",
+      "codeExample": "vector<int> v = {1, 2, 3};\ndo { /* xử lý v */ } while (next_permutation(v.begin(), v.end()));",
+      "vnRelevance": "N ≤ 8 — đề \"in tất cả cách xếp\" trong HSG TP.",
+      "references": []
+    },
+    {
+      "id": "b4-002",
+      "group": "B4",
+      "groupName": "Đệ quy + Duyệt + Backtracking",
+      "title": "Subset enumeration",
+      "titleVi": "Sinh tập con với bitmask",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S4"
+      ],
+      "description": "Với N ≤ 20, lặp bitmask m từ 0 đến 2^N - 1, bit i bật = chọn phần tử i. Đếm bit bật: `__builtin_popcount(m)`. Áp dụng: thử mọi tập con để brute force.",
+      "codeExample": "for (int m = 0; m < (1 << n); m++) {\n    int sum = 0;\n    for (int i = 0; i < n; i++) if (m & (1 << i)) sum += a[i];\n    /* xử lý sum */\n}",
+      "vnRelevance": "Brute force tập con khi N nhỏ.",
+      "references": []
+    },
+    {
+      "id": "b4-003",
+      "group": "B4",
+      "groupName": "Đệ quy + Duyệt + Backtracking",
+      "title": "Combinations",
+      "titleVi": "Sinh tổ hợp C(n, k) đệ quy",
+      "tier": "T1",
+      "skills": [
+        "S4"
+      ],
+      "description": "Đệ quy chọn/không chọn phần tử: gen(i, k) — nếu chọn phần tử i thì gen(i+1, k-1), không chọn thì gen(i+1, k). Base: k = 0 in cur.",
+      "codeExample": "void gen(int i, int k, vector<int>& cur) {\n    if ((int)cur.size() == K) { /* in */ return; }\n    if (i == N) return;\n    cur.push_back(a[i]); gen(i + 1, k, cur); cur.pop_back();\n    gen(i + 1, k, cur);\n}",
+      "vnRelevance": "Bài \"chọn k phần tử\" thường N nhỏ.",
+      "references": []
+    },
+    {
+      "id": "b4-004",
+      "group": "B4",
+      "groupName": "Đệ quy + Duyệt + Backtracking",
+      "title": "Backtracking + pruning",
+      "titleVi": "Quay lui + cắt nhánh",
+      "tier": "T1",
+      "skills": [
+        "S4"
+      ],
+      "description": "Đặt thử giá trị, gọi đệ quy; nếu fail thì undo. Pruning: dừng sớm khi state hiện tại đã chắc chắn không thể tối ưu. Bài: 8 hậu, Sudoku, N-Queens.",
+      "codeExample": "void solve(int row, vector<int>& col, vector<bool>& cu, vector<bool>& cl, vector<bool>& cr) {\n    if (row == N) { ans++; return; }\n    for (int c = 0; c < N; c++) {\n        if (cu[c] || cl[row-c+N] || cr[row+c]) continue;\n        cu[c] = cl[row-c+N] = cr[row+c] = true;\n        col[row] = c;\n        solve(row + 1, col, cu, cl, cr);\n        cu[c] = cl[row-c+N] = cr[row+c] = false;\n    }\n}",
+      "vnRelevance": "CSES Chessboard and Queens là chuẩn.",
+      "references": []
+    },
+    {
+      "id": "b4-005",
+      "group": "B4",
+      "groupName": "Đệ quy + Duyệt + Backtracking",
+      "title": "Meet in the Middle",
+      "titleVi": "Meet in the Middle — chia đôi tập",
+      "tier": "T2",
+      "skills": [
+        "S3",
+        "S4"
+      ],
+      "description": "N ≤ 40, 2^N quá lớn nhưng 2^(N/2) ≈ 10⁶ vừa. Chia tập đôi, sinh tổng cho mỗi nửa, sort nửa 2, với mỗi tổng nửa 1 binary search ở nửa 2.",
+      "codeExample": "vector<long long> L, R; int half = n / 2;\nfor (int m = 0; m < (1 << half); m++) { long long s = 0; for (int i = 0; i < half; i++) if (m & (1 << i)) s += a[i]; L.push_back(s); }\nfor (int m = 0; m < (1 << (n - half)); m++) { long long s = 0; for (int i = 0; i < n - half; i++) if (m & (1 << i)) s += a[half + i]; R.push_back(s); }\nsort(R.begin(), R.end());\nlong long ans = 0;\nfor (auto s : L) ans += upper_bound(R.begin(), R.end(), T - s) - lower_bound(R.begin(), R.end(), T - s);",
+      "vnRelevance": "CSES Sum of Two Values với N=40.",
+      "references": [
+        {
+          "label": "CPA — MITM",
+          "url": "https://cp-algorithms.com/various/meet_in_the_middle.html"
+        }
+      ]
+    },
+    {
+      "id": "b5-001",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "std::string basics",
+      "titleVi": "Xâu cơ bản — substr, find, replace",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "string s = \"hello\"; s.size(), s[i], s.substr(start, len), s.find(\"abc\") (trả npos nếu không thấy), s.replace(pos, len, \"xyz\"), to_string(123), stoi(\"123\").",
+      "codeExample": "string s; getline(cin, s);\nsize_t pos = s.find(\"abc\");\nif (pos != string::npos) s.replace(pos, 3, \"xyz\");\nint num = stoi(s.substr(0, 3));",
+      "vnRelevance": "Mọi bài xâu cơ bản.",
+      "references": []
+    },
+    {
+      "id": "b5-002",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "Character frequency",
+      "titleVi": "Đếm tần số ký tự + anagram",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "Mảng `int cnt[26]` cho a-z, hoặc `int cnt[128]` cho ASCII. Anagram: 2 xâu là anagram khi tần số ký tự bằng nhau (hoặc sort 2 xâu rồi so sánh).",
+      "codeExample": "int cnt[26] = {0};\nfor (char c : s) cnt[c - 'a']++;\nbool isAnagram(string a, string b) {\n    int c[26] = {0};\n    for (char x : a) c[x - 'a']++;\n    for (char x : b) c[x - 'a']--;\n    for (int i = 0; i < 26; i++) if (c[i]) return false;\n    return true;\n}",
+      "vnRelevance": "Quảng Nam 2021 — bài Xinchao là anagram.",
+      "references": []
+    },
+    {
+      "id": "b5-003",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "Palindrome check",
+      "titleVi": "Kiểm tra palindrome",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "Palindrome: s == reverse(s). Cách 1: `string r = s; reverse(r.begin(), r.end()); return s == r;`. Cách 2: 2 con trỏ hội tụ.",
+      "codeExample": "bool isPal(const string& s) {\n    for (int i = 0, j = s.size() - 1; i < j; i++, j--)\n        if (s[i] != s[j]) return false;\n    return true;\n}",
+      "vnRelevance": "Hay xuất hiện ở mức HSG cơ bản.",
+      "references": []
+    },
+    {
+      "id": "b5-004",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "Polynomial hash",
+      "titleVi": "Hash xâu polynomial + double hash",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "h(s) = (s[0]·B^(n-1) + ... + s[n-1]) mod M. Precompute prefix hash + powers, so sánh xâu con O(1). Double hash với 2 cặp B, M khác nhau để giảm collision.",
+      "codeExample": "const long long M1 = 1e9 + 7, B1 = 31;\nvector<long long> H(n + 1, 0), P(n + 1, 1);\nfor (int i = 0; i < n; i++) {\n    H[i + 1] = (H[i] * B1 + (s[i] - 'a' + 1)) % M1;\n    P[i + 1] = P[i] * B1 % M1;\n}\nauto hsub = [&](int l, int r){ return ((H[r + 1] - H[l] * P[r - l + 1]) % M1 + M1) % M1; };",
+      "vnRelevance": "Đề chuyên Tin có bài so xâu con.",
+      "references": [
+        {
+          "label": "VNOI — string hash",
+          "url": "https://wiki.vnoi.info/algo/string/hashing"
+        }
+      ]
+    },
+    {
+      "id": "b5-005",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "KMP",
+      "titleVi": "KMP / Z-function",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "KMP precompute failure function pi[i] = độ dài prefix-suffix dài nhất, dùng để skip khi mismatch trong text matching O(N+M). Z-function tương đương: z[i] = LCP(s, s[i..]).",
+      "codeExample": "vector<int> kmp(const string& s) {\n    int n = s.size(); vector<int> pi(n, 0);\n    for (int i = 1; i < n; i++) {\n        int j = pi[i - 1];\n        while (j > 0 && s[j] != s[i]) j = pi[j - 1];\n        if (s[j] == s[i]) j++;\n        pi[i] = j;\n    }\n    return pi;\n}",
+      "vnRelevance": "Hiếm ở HSG TP, có ở chuyên Tin.",
+      "references": [
+        {
+          "label": "VNOI — KMP",
+          "url": "https://wiki.vnoi.info/algo/string/kmp"
+        }
+      ]
+    },
+    {
+      "id": "b5-006",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "Trie",
+      "titleVi": "Trie cơ bản",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Cây tiền tố lưu nhiều xâu. Mỗi node có ≤ 26 con (a-z). Insert/search O(L) với L độ dài xâu. Ứng dụng: gợi ý auto-complete, đếm prefix.",
+      "codeExample": "struct Trie { Trie* ch[26] = {nullptr}; int cnt = 0; };\nvoid ins(Trie* root, const string& s) {\n    Trie* cur = root;\n    for (char c : s) {\n        int i = c - 'a';\n        if (!cur->ch[i]) cur->ch[i] = new Trie();\n        cur = cur->ch[i]; cur->cnt++;\n    }\n}",
+      "vnRelevance": "Hiếm trong HSG TP.",
+      "references": [
+        {
+          "label": "VNOI — trie",
+          "url": "https://wiki.vnoi.info/algo/data-structures/trie"
+        }
+      ]
+    },
+    {
+      "id": "b5-007",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "Suffix Array / SAM",
+      "titleVi": "Suffix Array / Suffix Automaton",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Suffix Array (SA) = mảng chỉ số sort tất cả suffix theo từ điển. Xây O(N log²N) hoặc O(N log N) (DC3). LCP array để truy vấn LCP nhanh. SAM xử lý mọi truy vấn về substrings.",
+      "codeExample": "// Suffix array build O(N log^2 N) — chỉ ý tưởng\n// SA-IS O(N) cho contest, code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b5-008",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "Manacher",
+      "titleVi": "Manacher — palindrome dài nhất O(N)",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Xử lý mảng \"expanded\" với # giữa các ký tự để xử lý cả palindrome lẻ và chẵn. d[i] = bán kính palindrome tại i. Tận dụng đối xứng.",
+      "codeExample": "// p[i] = bán kính palindrome tâm i (sau expansion)\nvector<int> manacher(const string& s) {\n    string t = \"#\"; for (char c : s) { t += c; t += \"#\"; }\n    int n = t.size(); vector<int> p(n, 0); int c = 0, r = 0;\n    for (int i = 0; i < n; i++) {\n        if (i < r) p[i] = min(r - i, p[2*c - i]);\n        while (i - p[i] - 1 >= 0 && i + p[i] + 1 < n && t[i - p[i] - 1] == t[i + p[i] + 1]) p[i]++;\n        if (i + p[i] > r) { c = i; r = i + p[i]; }\n    }\n    return p;\n}",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b5-009",
+      "group": "B5",
+      "groupName": "Xâu",
+      "title": "string_view",
+      "titleVi": "string_view C++17",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "string_view = read-only view không copy. Truyền substring qua hàm: dùng `string_view` thay `string`. Khi gọi `find/substr` trên string_view chỉ trả view mới, không cấp phát.",
+      "codeExample": "void process(string_view sv) { /* read-only */ }\nstring_view sv(s);\nsv.remove_prefix(3);",
+      "vnRelevance": "C++17, hữu ích với xâu lớn.",
+      "references": []
+    },
+    {
+      "id": "b6-001",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Adjacency list",
+      "titleVi": "Biểu diễn đồ thị — adjacency list/matrix",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "List: `vector<vector<int>> adj(n+1)`, push_back cạnh. Matrix `bool g[N][N]` khi N nhỏ, dày. Edge list `vector<tuple<int,int,int>>` cho Kruskal.",
+      "codeExample": "vector<vector<int>> adj(n + 1);\nfor (int i = 0; i < m; i++) {\n    int u, v; cin >> u >> v;\n    adj[u].push_back(v);\n    adj[v].push_back(u); // vô hướng\n}",
+      "vnRelevance": "CTDL nền cho mọi bài đồ thị.",
+      "references": []
+    },
+    {
+      "id": "b6-002",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "BFS shortest path",
+      "titleVi": "BFS — đường ngắn nhất không trọng số",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S2"
+      ],
+      "description": "Queue FIFO. dist[start] = 0; xử lý từng đỉnh: nếu chưa thăm thì dist[v] = dist[u] + 1, push. O(V+E).",
+      "codeExample": "queue<int> q; q.push(s); dist[s] = 0;\nwhile (!q.empty()) {\n    int u = q.front(); q.pop();\n    for (int v : adj[u]) if (dist[v] == -1) {\n        dist[v] = dist[u] + 1;\n        q.push(v);\n    }\n}",
+      "vnRelevance": "Bài mê cung, tìm đường.",
+      "references": [
+        {
+          "label": "VNOI — BFS",
+          "url": "https://wiki.vnoi.info/algo/graph-theory/breadth-first-search"
+        }
+      ]
+    },
+    {
+      "id": "b6-003",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "DFS + components",
+      "titleVi": "DFS — thành phần liên thông + bipartite",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S4"
+      ],
+      "description": "DFS đệ quy. Đếm CC: cnt mỗi lần DFS từ đỉnh chưa thăm. Bipartite: gán màu xen kẽ, mâu thuẫn = không.",
+      "codeExample": "function<void(int,int)> dfs = [&](int u, int c){\n    color[u] = c;\n    for (int v : adj[u]) {\n        if (color[v] == -1) dfs(v, c ^ 1);\n        else if (color[v] == c) bipartite = false;\n    }\n};",
+      "vnRelevance": "CSES Building Teams, Counting Rooms.",
+      "references": []
+    },
+    {
+      "id": "b6-004",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "DSU",
+      "titleVi": "DSU — Union-Find",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Hai thao tác find(x) + union(a,b). Path compression: `par[x] = find(par[x])`. Union by rank: gắn cây thấp vào cây cao. O(α(N)) ≈ O(1).",
+      "codeExample": "vector<int> par(n + 1), rk(n + 1, 0);\niota(par.begin(), par.end(), 0);\nfunction<int(int)> find = [&](int x){ return par[x] == x ? x : par[x] = find(par[x]); };\nauto uni = [&](int a, int b){ a = find(a); b = find(b); if (a == b) return false; if (rk[a] < rk[b]) swap(a, b); par[b] = a; if (rk[a] == rk[b]) rk[a]++; return true; };",
+      "vnRelevance": "KCOLLECT, Kruskal MST.",
+      "references": [
+        {
+          "label": "VNOI — DSU",
+          "url": "https://wiki.vnoi.info/algo/data-structures/disjoint-set"
+        }
+      ]
+    },
+    {
+      "id": "b6-005",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Dijkstra",
+      "titleVi": "Dijkstra với priority_queue",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Đồ thị trọng số dương. Heap min, mỗi lần lấy đỉnh có dist nhỏ nhất, relax cạnh. Lazy deletion: bỏ qua entries out-of-date. O((V+E) log V).",
+      "codeExample": "priority_queue<pair<long long,int>, vector<pair<long long,int>>, greater<>> pq;\ndist[s] = 0; pq.push({0, s});\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (d > dist[u]) continue;\n    for (auto [v, w] : adj[u]) if (d + w < dist[v]) {\n        dist[v] = d + w;\n        pq.push({dist[v], v});\n    }\n}",
+      "vnRelevance": "CSES Shortest Routes I, đề chuyên Tin tỉnh.",
+      "references": []
+    },
+    {
+      "id": "b6-006",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Bellman-Ford",
+      "titleVi": "Bellman-Ford — xử lý cạnh âm",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Lặp V-1 lần, mỗi lần relax mọi cạnh. Lần thứ V mà còn relax được → có chu trình âm. O(V·E).",
+      "codeExample": "vector<long long> d(n + 1, LLONG_MAX); d[s] = 0;\nfor (int i = 1; i < n; i++) for (auto [u, v, w] : edges)\n    if (d[u] != LLONG_MAX && d[u] + w < d[v]) d[v] = d[u] + w;\nbool neg = false;\nfor (auto [u, v, w] : edges) if (d[u] != LLONG_MAX && d[u] + w < d[v]) neg = true;",
+      "vnRelevance": "CSES High Score, hiếm ở HSG TP.",
+      "references": []
+    },
+    {
+      "id": "b6-007",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Floyd-Warshall",
+      "titleVi": "Floyd-Warshall — mọi cặp ngắn nhất",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Lặp k = 1..N: cho mọi i, j: d[i][j] = min(d[i][j], d[i][k] + d[k][j]). O(N³). Khởi tạo d[i][i] = 0, các cặp khác = trọng số cạnh hoặc INF.",
+      "codeExample": "for (int k = 1; k <= n; k++)\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= n; j++)\n            if (d[i][k] < INF && d[k][j] < INF)\n                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);",
+      "vnRelevance": "N ≤ 500, mọi cặp.",
+      "references": []
+    },
+    {
+      "id": "b6-008",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Kruskal MST",
+      "titleVi": "Kruskal — sort + DSU",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Sort cạnh tăng theo trọng số. Duyệt, nếu 2 đỉnh chưa cùng tập DSU thì union + cộng trọng số. Kết thúc khi N-1 cạnh.",
+      "codeExample": "sort(edges.begin(), edges.end(), [](auto a, auto b){ return get<2>(a) < get<2>(b); });\nlong long cost = 0; int cnt = 0;\nfor (auto [u, v, w] : edges) if (uni(u, v)) { cost += w; if (++cnt == n - 1) break; }",
+      "vnRelevance": "Đề chuyên Tin có bài MST.",
+      "references": []
+    },
+    {
+      "id": "b6-009",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Topological sort",
+      "titleVi": "Topological sort — Kahn / DFS",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "DAG (đồ thị có hướng không chu trình). Kahn: queue các đỉnh in-degree 0, xử lý, giảm in-degree đỉnh kề. DFS: post-order reverse.",
+      "codeExample": "queue<int> q;\nfor (int i = 1; i <= n; i++) if (!indeg[i]) q.push(i);\nvector<int> order;\nwhile (!q.empty()) {\n    int u = q.front(); q.pop(); order.push_back(u);\n    for (int v : adj[u]) if (--indeg[v] == 0) q.push(v);\n}",
+      "vnRelevance": "Bài lên lịch học môn.",
+      "references": []
+    },
+    {
+      "id": "b6-010",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "0-1 BFS",
+      "titleVi": "0-1 BFS với deque",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "Đồ thị cạnh trọng số chỉ 0 hoặc 1. Dùng deque thay queue: cạnh trọng 0 push_front, cạnh trọng 1 push_back. O(V+E).",
+      "codeExample": "deque<int> dq; dq.push_front(s); dist[s] = 0;\nwhile (!dq.empty()) {\n    int u = dq.front(); dq.pop_front();\n    for (auto [v, w] : adj[u]) if (dist[u] + w < dist[v]) {\n        dist[v] = dist[u] + w;\n        if (w == 0) dq.push_front(v); else dq.push_back(v);\n    }\n}",
+      "vnRelevance": "Hiếm; có thể ra ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b6-011",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "SCC Tarjan",
+      "titleVi": "SCC — Tarjan/Kosaraju",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Tìm thành phần liên thông mạnh trong đồ thị có hướng. Kosaraju: 2 DFS (gốc + đảo). Tarjan: 1 DFS với low-link.",
+      "codeExample": "// Kosaraju 2 DFS — code rút gọn\nvector<int> order; vector<bool> vis(n + 1, false);\nfunction<void(int)> dfs1 = [&](int u){ vis[u] = true; for (int v : adj[u]) if (!vis[v]) dfs1(v); order.push_back(u); };\nfor (int i = 1; i <= n; i++) if (!vis[i]) dfs1(i);\n// DFS lần 2 trên đồ thị đảo theo thứ tự reverse(order)",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b6-012",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Bridges/Articulation",
+      "titleVi": "Cầu + khớp",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Tarjan trên đồ thị vô hướng. Cầu = cạnh u-v sao cho xoá nó tăng số CC. Khớp = đỉnh sao cho xoá nó tăng số CC.",
+      "codeExample": "// Cầu: low[v] > disc[u] sau khi DFS v\n// Khớp: low[v] >= disc[u] và u không phải root, hoặc u là root có ≥ 2 con",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b6-013",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Eulerian path",
+      "titleVi": "Đường/chu trình Euler — Hierholzer",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Đường Euler đi mỗi cạnh đúng 1 lần. Vô hướng tồn tại khi có 0 hoặc 2 đỉnh bậc lẻ. Hierholzer dùng stack DFS lặp.",
+      "codeExample": "// Hierholzer trên multigraph\nstack<int> st; st.push(start);\nvector<int> path;\nwhile (!st.empty()) {\n    int u = st.top();\n    if (!adj[u].empty()) { int v = adj[u].back(); adj[u].pop_back(); st.push(v); }\n    else { path.push_back(u); st.pop(); }\n}\nreverse(path.begin(), path.end());",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b6-014",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Max flow",
+      "titleVi": "Max flow — Dinic, Ford-Fulkerson",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "Dinic O(V²E). Tìm luồng cực đại trên mạng. Bipartite matching = max flow đặc biệt.",
+      "codeExample": "// Dinic: BFS level, DFS với current edge\n// Code dài; xem CPA",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b6-015",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "BFS multi-source",
+      "titleVi": "BFS đa nguồn",
+      "tier": "T2",
+      "skills": [
+        "S2",
+        "S3"
+      ],
+      "description": "BFS xuất phát từ nhiều nguồn cùng lúc bằng cách push hết vào queue ban đầu với dist = 0.",
+      "codeExample": "queue<int> q;\nfor (int s : sources) { dist[s] = 0; q.push(s); }\n// BFS bình thường",
+      "vnRelevance": "Bài \"khoảng cách gần nhất tới fire/zombie\".",
+      "references": []
+    },
+    {
+      "id": "b6-016",
+      "group": "B6",
+      "groupName": "Đồ thị",
+      "title": "Bridge-tree",
+      "titleVi": "Bridge tree / block-cut tree",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Cây \"cầu\" có 2-edge-connected component làm node, cầu làm cạnh. Truy vấn cầu chung của 2 đỉnh = path query trên cây.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b7-001",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "Tree DFS",
+      "titleVi": "DFS trên cây — depth, parent, subtree size",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Cây N đỉnh có N-1 cạnh, không chu trình. DFS từ root tính depth, parent, size subtree trong O(N).",
+      "codeExample": "function<void(int,int)> dfs = [&](int u, int p){ par[u] = p; sz[u] = 1; for (int v : adj[u]) if (v != p) { depth[v] = depth[u] + 1; dfs(v, u); sz[u] += sz[v]; } };",
+      "vnRelevance": "Đề chuyên có bài cây cơ bản.",
+      "references": []
+    },
+    {
+      "id": "b7-002",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "LCA Binary Lifting",
+      "titleVi": "LCA — Sparse Table / Binary lifting",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Precompute up[k][v] = tổ tiên 2^k của v. LCA(u,v): nhảy u lên cùng depth với v, sau đó binary lifting cả hai cho đến khi gặp nhau. O((N+Q) log N).",
+      "codeExample": "int LOG = ceil(log2(n));\nvector<vector<int>> up(LOG + 1, vector<int>(n + 1, 0));\n// dfs gán up[0][v] = par; sau đó up[k][v] = up[k-1][up[k-1][v]]",
+      "vnRelevance": "Đề chuyên Tin có bài cây.",
+      "references": []
+    },
+    {
+      "id": "b7-003",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "Tree diameter",
+      "titleVi": "Đường kính cây — 2 BFS hoặc DP",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "BFS từ đỉnh bất kỳ → tìm xa nhất u; BFS từ u → tìm xa nhất v; uv là đường kính. Hoặc DP: dp[u] = max depth con + 1; diam = max(dp[u] + dp[v] + 1 với u,v cùng cha).",
+      "codeExample": "// DP\nfunction<void(int,int)> dfs = [&](int u, int p){\n    for (int v : adj[u]) if (v != p) { dfs(v, u); diam = max(diam, dp[u] + dp[v] + 1); dp[u] = max(dp[u], dp[v] + 1); }\n};",
+      "vnRelevance": "CSES Tree Diameter, đề chuyên có.",
+      "references": []
+    },
+    {
+      "id": "b7-004",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "Tree DP",
+      "titleVi": "DP trên cây — subtree DP",
+      "tier": "T2",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "dp[u] tính từ con (post-order DFS). Bài: tổng subtree, đếm path qua u, max independent set trên cây.",
+      "codeExample": "function<void(int,int)> dfs = [&](int u, int p){\n    dp0[u] = 0; dp1[u] = w[u]; // dp0 = không chọn u, dp1 = chọn u\n    for (int v : adj[u]) if (v != p) { dfs(v, u); dp0[u] += max(dp0[v], dp1[v]); dp1[u] += dp0[v]; }\n};",
+      "vnRelevance": "Đề chuyên Tin nâng cao.",
+      "references": []
+    },
+    {
+      "id": "b7-005",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "Rerooting DP",
+      "titleVi": "Rerooting DP",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Tính dp[u] với mỗi root khác nhau trong O(N) tổng. 2 lần DFS: lần 1 dp dưới lên, lần 2 truyền từ cha xuống.",
+      "codeExample": "// Lần 1: dfs từ root tính dp subtree. Lần 2: dfs từ root truyền \"ngoài subtree\" của u → con.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b7-006",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "HLD",
+      "titleVi": "Heavy-Light Decomposition",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Chia cây thành các chuỗi \"nặng\" (cha → con có subtree lớn nhất). Path query thành ≤ log N đoạn liên tiếp trên euler tour.",
+      "codeExample": "// Code dài; xem VNOI HLD.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": [
+        {
+          "label": "VNOI — HLD",
+          "url": "https://wiki.vnoi.info/algo/graph-theory/hld"
+        }
+      ]
+    },
+    {
+      "id": "b7-007",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "Euler tour",
+      "titleVi": "Euler tour + subtree query",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "tin[u] = thời điểm DFS vào u, tout[u] = ra. Subtree u = đoạn [tin[u], tout[u]] trên mảng euler. Subtree query → range query trên Fenwick/segment tree.",
+      "codeExample": "int timer = 0;\nfunction<void(int,int)> dfs = [&](int u, int p){ tin[u] = ++timer; for (int v : adj[u]) if (v != p) dfs(v, u); tout[u] = timer; };",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b7-008",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "Centroid decomp",
+      "titleVi": "Centroid decomposition",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Chọn centroid (đỉnh sao cho mọi subtree con ≤ N/2), xoá nó, đệ quy. Cây phân rã có chiều cao log N. Áp dụng cho path queries.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b7-009",
+      "group": "B7",
+      "groupName": "Cây",
+      "title": "Small-to-large",
+      "titleVi": "Small-to-large (DSU on tree)",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Cho mỗi node, gộp thông tin từ con vào: con nặng nhất giữ nguyên, các con khác xoá rồi gộp lại. O(N log N) amortized.",
+      "codeExample": "// Mỗi node: dfs heavy con trước, không xoá; sau đó light, xoá; cuối gộp answer.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b8-001",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "DP 1D",
+      "titleVi": "DP 1D — Fibonacci, leo bậc, Kadane",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "State đơn — `dp[i]` phụ thuộc dp[i-1], dp[i-2], .... 4 bước: định nghĩa, transition, base, thứ tự. Kadane: `dp[i] = max(a[i], dp[i-1] + a[i])`.",
+      "codeExample": "// Kadane O(N)\nlong long best = LLONG_MIN, cur = 0;\nfor (int i = 0; i < n; i++) { cur = max((long long)a[i], cur + a[i]); best = max(best, cur); }",
+      "vnRelevance": "Bài DP 1D xuất hiện gần như mọi đề HSG.",
+      "references": []
+    },
+    {
+      "id": "b8-002",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Knapsack 0/1",
+      "titleVi": "Knapsack 0/1",
+      "tier": "T1",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "Mỗi vật dùng 0 hoặc 1 lần. dp[w] = max giá trị khi cân nặng = w. Loop i ngoài, w từ W → wi (ngược) để mỗi vật chỉ dùng 1 lần.",
+      "codeExample": "vector<long long> dp(W + 1, 0);\nfor (int i = 0; i < n; i++)\n    for (int w = W; w >= wt[i]; w--)\n        dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);",
+      "vnRelevance": "Quảng Nam 2019 — Mua quà.",
+      "references": []
+    },
+    {
+      "id": "b8-003",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Knapsack unbounded",
+      "titleVi": "Knapsack vô hạn",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "Mỗi vật dùng tuỳ ý. Loop w từ wi → W (xuôi). dp[w] = max(dp[w], dp[w - wi] + vi).",
+      "codeExample": "for (int i = 0; i < n; i++)\n    for (int w = wt[i]; w <= W; w++)\n        dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);",
+      "vnRelevance": "Coin Change vô hạn.",
+      "references": []
+    },
+    {
+      "id": "b8-004",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Coin counting",
+      "titleVi": "Knapsack đếm số cách",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "Đếm số cách đạt đúng W. dp[w] = số cách, cộng thay max. Phân biệt \"có thứ tự\" (loop w ngoài, coin trong) vs \"không thứ tự\" (loop coin ngoài, w trong).",
+      "codeExample": "vector<long long> dp(W + 1, 0); dp[0] = 1;\nfor (int c : coins) for (int w = c; w <= W; w++)\n    dp[w] = (dp[w] + dp[w - c]) % MOD;",
+      "vnRelevance": "CSES Coin Combinations I/II.",
+      "references": []
+    },
+    {
+      "id": "b8-005",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "LIS O(N log N)",
+      "titleVi": "LIS O(N log N) bằng patience sort",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "tails[len] = giá trị nhỏ nhất kết thúc dãy tăng độ dài len. Với mỗi x: lower_bound(tails, x), thay thế hoặc thêm. Kết quả = tails.size().",
+      "codeExample": "vector<int> tails;\nfor (int x : a) {\n    auto it = lower_bound(tails.begin(), tails.end(), x);\n    if (it == tails.end()) tails.push_back(x); else *it = x;\n}\ncout << tails.size();",
+      "vnRelevance": "Bài LIS có ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b8-006",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "LCS / Edit distance",
+      "titleVi": "LCS + Edit Distance O(NM)",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "LCS: dp[i][j] = dp[i-1][j-1] + 1 nếu khớp, else max(dp[i-1][j], dp[i][j-1]). Edit: thêm xoá thay.",
+      "codeExample": "for (int i = 1; i <= n; i++) for (int j = 1; j <= m; j++)\n    dp[i][j] = (a[i-1] == b[j-1]) ? dp[i-1][j-1] + 1 : max(dp[i-1][j], dp[i][j-1]);",
+      "vnRelevance": "Bài CSES Edit Distance.",
+      "references": []
+    },
+    {
+      "id": "b8-007",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Bitmask DP",
+      "titleVi": "Bitmask DP — TSP đếm hoán vị",
+      "tier": "T2",
+      "skills": [
+        "S4"
+      ],
+      "description": "State = (mask, last) cho biết tập đã thăm và đỉnh cuối. dp[mask][last] = min cost. Loop mask, last, next. O(2^N · N²).",
+      "codeExample": "// TSP\nvector<vector<long long>> dp(1 << n, vector<long long>(n, LLONG_MAX));\ndp[1][0] = 0;\nfor (int mask = 1; mask < (1 << n); mask++) for (int u = 0; u < n; u++) if (mask & (1 << u))\n    for (int v = 0; v < n; v++) if (!(mask & (1 << v)))\n        dp[mask | (1 << v)][v] = min(dp[mask | (1 << v)][v], dp[mask][u] + d[u][v]);",
+      "vnRelevance": "N ≤ 16-20.",
+      "references": []
+    },
+    {
+      "id": "b8-008",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Digit DP",
+      "titleVi": "Digit DP",
+      "tier": "T2",
+      "skills": [
+        "S4"
+      ],
+      "description": "Đếm số trong [L, R] thoả tính chất. State = (pos, tight, mảng các thông số). Tính F(R) - F(L-1).",
+      "codeExample": "// dp(pos, tight, ...) với memo\nfunction<long long(int,bool,...)> f = [&](int pos, bool tight, ...) -> long long { ... };",
+      "vnRelevance": "Hiếm; có ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b8-009",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "DP grid",
+      "titleVi": "DP trên lưới + obstacles",
+      "tier": "T1",
+      "skills": [
+        "S1"
+      ],
+      "description": "dp[i][j] = số đường đi từ (0,0) → (i,j) đi xuống/phải. Có chướng ngại: dp[i][j] = 0 nếu (i,j) bị block.",
+      "codeExample": "dp[0][0] = 1;\nfor (int i = 0; i <= n; i++) for (int j = 0; j <= m; j++) if (g[i][j] != '#') {\n    if (i) dp[i][j] = (dp[i][j] + dp[i-1][j]) % MOD;\n    if (j) dp[i][j] = (dp[i][j] + dp[i][j-1]) % MOD;\n}",
+      "vnRelevance": "CSES Grid Paths.",
+      "references": []
+    },
+    {
+      "id": "b8-010",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Interval DP",
+      "titleVi": "DP đoạn — matrix chain, burst balloons",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "dp[l][r] = đáp án cho đoạn [l..r]. Loop theo length tăng. Inner: chia điểm k.",
+      "codeExample": "for (int len = 2; len <= n; len++) for (int l = 0; l + len <= n; l++) {\n    int r = l + len; dp[l][r] = INT_MAX;\n    for (int k = l + 1; k < r; k++) dp[l][r] = min(dp[l][r], dp[l][k] + dp[k][r] + cost(l, k, r));\n}",
+      "vnRelevance": "Đề chuyên có bài DP đoạn.",
+      "references": []
+    },
+    {
+      "id": "b8-011",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Tree DP advanced",
+      "titleVi": "DP cây — knapsack trên cây",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Knapsack trên cây: dp[u][k] = max value khi chọn k phần tử trong subtree u. Merge con: O(N²) tổng (chứng minh chặt).",
+      "codeExample": "// dfs tree knapsack\nvoid dfs(int u, int p) { sz[u] = 1; dp[u][0] = 0; for (int v : adj[u]) if (v != p) { dfs(v, u); for (int i = min(sz[u], K); i >= 0; i--) for (int j = 0; j <= min(sz[v], K - i); j++) dp[u][i + j] = min(dp[u][i + j], dp[u][i] + dp[v][j]); sz[u] += sz[v]; } }",
+      "vnRelevance": "Đội tuyển nâng cao.",
+      "references": []
+    },
+    {
+      "id": "b8-012",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Convex Hull Trick",
+      "titleVi": "Convex Hull Trick (CHT)",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Tối ưu DP dạng `dp[i] = min(a[i] * x + b[i] + ...)` — duy trì envelope dưới của các đường thẳng. O(N log N) hoặc O(N) khi slope đơn điệu.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b8-013",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Divide & Conquer DP",
+      "titleVi": "Divide & Conquer DP optimization",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "DP `dp[i][j] = min(dp[i-1][k] + cost(k, j))` với cost thoả Knuth/Yao OPT inequality → giảm O(N²) xuống O(N log N).",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b8-014",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Subset sum bitset",
+      "titleVi": "Subset sum bitset",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Subset sum: dp[w] = có cách chọn tổng w không. Dùng bitset<N> shift để O(N · W / 64).",
+      "codeExample": "bitset<10001> dp; dp[0] = 1;\nfor (int w : a) dp |= dp << w;\ncout << dp.count();",
+      "vnRelevance": "Bài \"có thể đạt tổng W không\" N lớn.",
+      "references": []
+    },
+    {
+      "id": "b8-015",
+      "group": "B8",
+      "groupName": "Quy hoạch động (DP)",
+      "title": "Tree knapsack subtree",
+      "titleVi": "Tree knapsack O(N²)",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Knapsack với constraint \"phải chọn subtree liên thông\" → DFS gộp con vào cha, kích thước hiện tại và mới tích lại đúng O(N²).",
+      "codeExample": "// Đã trình bày ở B8 tree knapsack.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b9-001",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Fenwick Tree",
+      "titleVi": "Fenwick / BIT — point update, prefix query",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "BIT (Binary Indexed Tree) cho range sum + point update O(log N). Update: while(i ≤ N) bit[i] += x, i += i & -i. Query: while(i > 0) s += bit[i], i -= i & -i.",
+      "codeExample": "int bit[N + 1] = {0};\nvoid upd(int i, int x) { for (; i <= N; i += i & -i) bit[i] += x; }\nint qry(int i) { int s = 0; for (; i > 0; i -= i & -i) s += bit[i]; return s; }",
+      "vnRelevance": "Hiếm ở HSG TP, có ở chuyên Tin.",
+      "references": [
+        {
+          "label": "VNOI — Fenwick",
+          "url": "https://wiki.vnoi.info/algo/data-structures/fenwick"
+        }
+      ]
+    },
+    {
+      "id": "b9-002",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Segment Tree",
+      "titleVi": "Segment Tree — point update, range query",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Cây phân đoạn O(log N) cho mọi range query (sum, min, max, gcd, ...). Build O(N), update/query O(log N). Lazy propagation cho range update.",
+      "codeExample": "int seg[4 * N];\nvoid upd(int v, int tl, int tr, int p, int x) { if (tl == tr) seg[v] = x; else { int tm = (tl+tr)/2; if (p <= tm) upd(2*v, tl, tm, p, x); else upd(2*v+1, tm+1, tr, p, x); seg[v] = seg[2*v] + seg[2*v+1]; } }",
+      "vnRelevance": "Đề chuyên Tin nâng cao.",
+      "references": [
+        {
+          "label": "VNOI — Segment Tree",
+          "url": "https://wiki.vnoi.info/algo/data-structures/segment-tree-extend"
+        }
+      ]
+    },
+    {
+      "id": "b9-003",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Segtree lazy",
+      "titleVi": "Segment Tree với lazy propagation",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Range update + range query. Mỗi node giữ \"lazy\" — phép cần truyền xuống con khi visit con.",
+      "codeExample": "// Code lazy add + range sum\nstruct Seg { vector<long long> t, lz; int n; void push(int v, int l, int r) { if (lz[v]) { t[v] += lz[v] * (r - l + 1); if (l != r) { lz[2*v] += lz[v]; lz[2*v+1] += lz[v]; } lz[v] = 0; } } /* ... */ };",
+      "vnRelevance": "Đề chuyên cấp tỉnh.",
+      "references": []
+    },
+    {
+      "id": "b9-004",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Sparse Table",
+      "titleVi": "Sparse Table — RMQ tĩnh O(1)",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Precompute sparse[k][i] = min(a[i..i+2^k-1]) trong O(N log N). Query [l, r]: k = log2(r-l+1), min(sparse[k][l], sparse[k][r-2^k+1]).",
+      "codeExample": "int LOG = log2(n);\nvector<vector<int>> sp(LOG + 1, vector<int>(n));\nsp[0] = a;\nfor (int k = 1; k <= LOG; k++) for (int i = 0; i + (1 << k) <= n; i++)\n    sp[k][i] = min(sp[k-1][i], sp[k-1][i + (1 << (k-1))]);",
+      "vnRelevance": "Hữu ích cho RMQ + LCA.",
+      "references": []
+    },
+    {
+      "id": "b9-005",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Merge sort tree",
+      "titleVi": "Merge sort tree — count smaller in range",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Mỗi node segtree chứa mảng đã sắp các phần tử trong đoạn. Query \"đếm phần tử ≤ k trong [l,r]\" → binary search mỗi node.",
+      "codeExample": "// Code dài; O(N log² N) build và query.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b9-006",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Persistent Segtree",
+      "titleVi": "Persistent Segment Tree",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Phiên bản segtree giữ lịch sử. Mỗi update tạo O(log N) node mới, share node còn lại với version cũ.",
+      "codeExample": "// Code dài; xem CPA.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b9-007",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Treap/Splay",
+      "titleVi": "Balanced BST — Treap/Splay",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Treap = BST + heap random priority. Insert/delete/split/merge O(log N) amortized. Implicit treap cho mảng order maintain.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b9-008",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Sqrt decomposition",
+      "titleVi": "Sqrt decomposition + Mo algorithm",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Chia mảng thành √N block. Range query xử lý 3 phần: block trái, block giữa nguyên, block phải. O(√N) mỗi op.",
+      "codeExample": "// Code dài; xem VNOI.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b9-009",
+      "group": "B9",
+      "groupName": "Data Structures nâng cao",
+      "title": "Order statistic tree",
+      "titleVi": "Order statistic tree (PBDS GCC)",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Policy tree GCC `__gnu_pbds::tree` cung cấp `find_by_order(k)` và `order_of_key(x)` trong O(log N).",
+      "codeExample": "#include <bits/extc++.h>\nusing namespace __gnu_pbds;\ntemplate<class T> using ost = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\nost<int> s; s.insert(5); int k = s.order_of_key(3);",
+      "vnRelevance": "Đếm inversions, k-th smallest.",
+      "references": []
+    },
+    {
+      "id": "b10-001",
+      "group": "B10",
+      "groupName": "Tham lam nâng cao",
+      "title": "Huffman",
+      "titleVi": "Huffman coding — priority queue",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Mã hoá tối ưu các ký tự theo tần số. Min-heap, lặp pop 2 phần tử nhỏ nhất, gộp thành 1, push lại; cây Huffman có cost = ΣΣ(freq × depth).",
+      "codeExample": "priority_queue<long long, vector<long long>, greater<>> pq;\nfor (auto x : freq) pq.push(x);\nlong long total = 0;\nwhile (pq.size() > 1) { long long a = pq.top(); pq.pop(); long long b = pq.top(); pq.pop(); total += a + b; pq.push(a + b); }",
+      "vnRelevance": "Bài \"ghép que\" hay xuất hiện.",
+      "references": []
+    },
+    {
+      "id": "b10-002",
+      "group": "B10",
+      "groupName": "Tham lam nâng cao",
+      "title": "Scheduling",
+      "titleVi": "Scheduling tham lam — Tasks and Deadlines",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Job có deadline + duration: sort theo deadline tăng, dùng max-heap, nếu quá deadline thì pop job lớn nhất.",
+      "codeExample": "// CSES Tasks and Deadlines\nsort(jobs.begin(), jobs.end(), [](auto& a, auto& b){ return a.deadline < b.deadline; });\nlong long t = 0, profit = 0;\nfor (auto& [d, dur, p] : jobs) { t += dur; profit += p - max(0LL, t - d); }",
+      "vnRelevance": "Bài lên lịch quen thuộc.",
+      "references": []
+    },
+    {
+      "id": "b10-003",
+      "group": "B10",
+      "groupName": "Tham lam nâng cao",
+      "title": "Exchange argument",
+      "titleVi": "Sort by exchange argument",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Sort theo \"đổi 2 phần tử có lợi không\". Ví dụ minimize Σa_i · prefix(b): sort theo b/a (hoặc tỷ lệ).",
+      "codeExample": "// 2 jobs (a_i, b_i): job i trước j có lợi khi a_i / b_i < a_j / b_j\nsort(jobs.begin(), jobs.end(), [](auto& x, auto& y){ return (long long)x.a * y.b < (long long)y.a * x.b; });",
+      "vnRelevance": "Hiếm; có ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b10-004",
+      "group": "B10",
+      "groupName": "Tham lam nâng cao",
+      "title": "Interval scheduling",
+      "titleVi": "Interval scheduling — max non-overlapping",
+      "tier": "T1",
+      "skills": [
+        "S3"
+      ],
+      "description": "Sort theo finish time tăng. Chọn job kết thúc sớm nhất, bỏ qua các job overlap.",
+      "codeExample": "sort(it.begin(), it.end(), [](auto a, auto b){ return a.second < b.second; });\nint last = INT_MIN, cnt = 0;\nfor (auto [s, e] : it) if (s >= last) { cnt++; last = e; }",
+      "vnRelevance": "CSES Movie Festival.",
+      "references": []
+    },
+    {
+      "id": "b11-001",
+      "group": "B11",
+      "groupName": "Tìm kiếm nâng cao",
+      "title": "Binary search on answer",
+      "titleVi": "Binary search theo đáp án (parametric)",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Đáp án nằm trong [lo, hi]. Hàm `check(mid)` xác định mid có thoả không (monotonic). Lặp `while (lo < hi)` để hội tụ. Khi monotonic theo \"không thoả → thoả\" thì tìm lo nhỏ nhất thoả.",
+      "codeExample": "long long lo = 0, hi = 1e18;\nwhile (lo < hi) {\n    long long mid = lo + (hi - lo) / 2;\n    if (check(mid)) hi = mid; else lo = mid + 1;\n}\ncout << lo;",
+      "vnRelevance": "CSES Factory Machines, Array Division.",
+      "references": [
+        {
+          "label": "VNOI — parametric search",
+          "url": "https://wiki.vnoi.info/algo/basic/binary-search-on-real-numbers"
+        }
+      ]
+    },
+    {
+      "id": "b11-002",
+      "group": "B11",
+      "groupName": "Tìm kiếm nâng cao",
+      "title": "Ternary search",
+      "titleVi": "Ternary search trên hàm unimodal",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Hàm 1 cực trị: chia [l, r] thành 3 phần bởi m1, m2 = (2l+r)/3, (l+2r)/3, so sánh f(m1) vs f(m2) để bỏ 1/3.",
+      "codeExample": "while (hi - lo > 1e-7) {\n    double m1 = lo + (hi - lo) / 3, m2 = hi - (hi - lo) / 3;\n    if (f(m1) < f(m2)) lo = m1; else hi = m2;\n}",
+      "vnRelevance": "Hiếm; có ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b11-003",
+      "group": "B11",
+      "groupName": "Tìm kiếm nâng cao",
+      "title": "Binary search real",
+      "titleVi": "Binary search trên số thực",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Số thực: dùng eps (10⁻⁶ - 10⁻⁹) hoặc lặp số vòng cố định (100 lần ~ 30 chữ số binary).",
+      "codeExample": "for (int i = 0; i < 100; i++) {\n    double m = (lo + hi) / 2;\n    if (check(m)) hi = m; else lo = m;\n}",
+      "vnRelevance": "Hiếm.",
+      "references": []
+    },
+    {
+      "id": "b11-004",
+      "group": "B11",
+      "groupName": "Tìm kiếm nâng cao",
+      "title": "Aggressive cows",
+      "titleVi": "Aggressive cows pattern",
+      "tier": "T2",
+      "skills": [
+        "S3"
+      ],
+      "description": "Đặt K vật vào N vị trí sort tăng sao cho min khoảng cách giữa 2 vật là lớn nhất. Binary search trên khoảng cách d.",
+      "codeExample": "// check(d): greedy đặt vật đầu tiên ở pos[0], các vật tiếp theo cách ít nhất d.\nauto check = [&](long long d){ int cnt = 1; long long last = pos[0]; for (int i = 1; i < n; i++) if (pos[i] - last >= d) { cnt++; last = pos[i]; } return cnt >= K; };",
+      "vnRelevance": "Bài \"kê bao gạo\" hay xuất hiện.",
+      "references": []
+    },
+    {
+      "id": "b11-005",
+      "group": "B11",
+      "groupName": "Tìm kiếm nâng cao",
+      "title": "Binary search advanced",
+      "titleVi": "Binary search trên cây",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Binary lifting trên cây: nhảy log N để tìm tổ tiên thoả tính chất. Tương tự binary search trên đường đi.",
+      "codeExample": "// up[k][v] với check: tìm tổ tiên xa nhất thoả check\nfor (int k = LOG; k >= 0; k--) if (up[k][v] != 0 && check(up[k][v])) v = up[k][v];",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b11-006",
+      "group": "B11",
+      "groupName": "Tìm kiếm nâng cao",
+      "title": "CDQ Divide Conquer",
+      "titleVi": "CDQ Divide & Conquer cho offline",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Sắp xếp truy vấn theo time, dùng D&C để chia truy vấn ra 2 nửa và xử lý \"ảnh hưởng nửa trái → nửa phải\".",
+      "codeExample": "// Code rất dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b12-001",
+      "group": "B12",
+      "groupName": "Toán nâng cao",
+      "title": "Matrix exponentiation",
+      "titleVi": "Lũy thừa ma trận — Fibonacci O(log N)",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Recurrence tuyến tính: f(n) = a₁f(n-1) + ... + a_k f(n-k) ⟺ vector × matrix. Lũy thừa ma trận M^N bằng chia đôi O(K³ log N).",
+      "codeExample": "struct M { long long a[2][2]; };\nM mul(M x, M y) { M z = {{{0}}}; for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++) for (int k = 0; k < 2; k++) z.a[i][j] = (z.a[i][j] + x.a[i][k] * y.a[k][j]) % MOD; return z; }",
+      "vnRelevance": "Hiếm; có ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b12-002",
+      "group": "B12",
+      "groupName": "Toán nâng cao",
+      "title": "FFT/NTT",
+      "titleVi": "FFT/NTT — Multiplying polynomials",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "Nhân 2 đa thức bậc N trong O(N log N). FFT dùng số phức, NTT dùng mod prime.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "IOI level.",
+      "references": [
+        {
+          "label": "CPA — FFT",
+          "url": "https://cp-algorithms.com/algebra/fft.html"
+        }
+      ]
+    },
+    {
+      "id": "b12-003",
+      "group": "B12",
+      "groupName": "Toán nâng cao",
+      "title": "Linear sieve",
+      "titleVi": "Linear sieve + Mobius/Euler totient",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Sàng O(N) tính prime + SPF + Mobius μ + Euler φ đồng thời.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b12-004",
+      "group": "B12",
+      "groupName": "Toán nâng cao",
+      "title": "Game theory",
+      "titleVi": "Nim + Sprague-Grundy",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Nim XOR: thua khi XOR đống = 0. Mở rộng: g(state) = mex({g(next)}) với mex = số nhỏ nhất không có.",
+      "codeExample": "long long xorSum = 0; for (auto x : pile) xorSum ^= x; cout << (xorSum ? \"WIN\" : \"LOSE\");",
+      "vnRelevance": "Hiếm; bài game.",
+      "references": []
+    },
+    {
+      "id": "b12-005",
+      "group": "B12",
+      "groupName": "Toán nâng cao",
+      "title": "Mod inverse table",
+      "titleVi": "Bảng modular inverse O(N)",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "inv[1] = 1; inv[i] = -(MOD/i) * inv[MOD%i] mod MOD.",
+      "codeExample": "inv[1] = 1;\nfor (int i = 2; i <= N; i++) inv[i] = (MOD - (MOD / i) * inv[MOD % i] % MOD) % MOD;",
+      "vnRelevance": "Cho bài đếm tổ hợp mod.",
+      "references": []
+    },
+    {
+      "id": "b12-006",
+      "group": "B12",
+      "groupName": "Toán nâng cao",
+      "title": "Lucas theorem",
+      "titleVi": "Lucas theorem cho C(n,k) mod p",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "C(n,k) mod p = ΠC(n_i, k_i) mod p với n, k viết dạng p-ary. Hữu ích khi p nhỏ, n cực lớn.",
+      "codeExample": "// Code Lucas.",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b13-001",
+      "group": "B13",
+      "groupName": "Hình học",
+      "title": "Vector geometry",
+      "titleVi": "Vector — cross/dot product, orientation",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "cross(a, b) = ax·by - ay·bx. Dấu cho biết a, b cùng chiều CCW hay CW. orient(O, A, B) = cross(A-O, B-O).",
+      "codeExample": "long long cross(long long ax, long long ay, long long bx, long long by){ return ax*by - ay*bx; }\nint orient(Pt o, Pt a, Pt b){ long long c = cross(a.x-o.x, a.y-o.y, b.x-o.x, b.y-o.y); return (c > 0) - (c < 0); }",
+      "vnRelevance": "Hiếm; có ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b13-002",
+      "group": "B13",
+      "groupName": "Hình học",
+      "title": "Convex hull",
+      "titleVi": "Convex hull — Andrew monotone chain",
+      "tier": "T3",
+      "skills": [
+        "S1",
+        "S3"
+      ],
+      "description": "Sort point theo (x, y). Build upper + lower hull bằng monotonic stack. O(N log N).",
+      "codeExample": "// Andrew monotone chain — pseudo:\n// sort by (x, y); build hull bằng stack giữ CCW turns.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": [
+        {
+          "label": "CPA — convex hull",
+          "url": "https://cp-algorithms.com/geometry/convex-hull.html"
+        }
+      ]
+    },
+    {
+      "id": "b13-003",
+      "group": "B13",
+      "groupName": "Hình học",
+      "title": "Line intersection",
+      "titleVi": "Giao 2 đường thẳng/đoạn",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "Đoạn AB × CD cắt nhau khi orient(A,B,C) × orient(A,B,D) ≤ 0 VÀ orient(C,D,A) × orient(C,D,B) ≤ 0 (+ xử lý collinear).",
+      "codeExample": "// Pseudo: check 4 orientations.",
+      "vnRelevance": "Hiếm.",
+      "references": []
+    },
+    {
+      "id": "b13-004",
+      "group": "B13",
+      "groupName": "Hình học",
+      "title": "Point in polygon",
+      "titleVi": "Point in polygon — ray casting",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Bắn tia từ điểm đi vô cực, đếm số lần cắt cạnh polygon: lẻ → trong, chẵn → ngoài.",
+      "codeExample": "// Pseudo: loop cạnh, check intersect với tia.",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b13-005",
+      "group": "B13",
+      "groupName": "Hình học",
+      "title": "Sweep line",
+      "titleVi": "Sweep line — closest pair, intersection",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Sort theo x, duy trì set sort theo y, di chuyển sweep line. Closest pair O(N log N).",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b14-001",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Bitset DP",
+      "titleVi": "Bitset DP — tăng tốc 64x",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "bitset<N> hỗ trợ AND/OR/XOR/SHIFT O(N/64). DP đếm tập con với bitset: dp |= dp << w. Subset sum N=10⁴.",
+      "codeExample": "bitset<10001> dp; dp[0] = 1;\nfor (int w : weights) dp |= dp << w;",
+      "vnRelevance": "Hiếm; có ở chuyên Tin.",
+      "references": []
+    },
+    {
+      "id": "b14-002",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "SOS DP",
+      "titleVi": "Sum over Subsets DP",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Tính f(S) = Σ_{T ⊆ S} g(T) trong O(2^N · N). Lặp i = 0..N-1, mỗi mask có bit i bật thì dp[mask] += dp[mask ^ (1 << i)].",
+      "codeExample": "for (int i = 0; i < N; i++)\n    for (int mask = 0; mask < (1 << N); mask++) if (mask & (1 << i))\n        dp[mask] += dp[mask ^ (1 << i)];",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b14-003",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Offline + sort query",
+      "titleVi": "Offline + sort queries",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Đọc hết truy vấn rồi sort theo tham số nào đó (l, r, time). Áp dụng cho Mo, persistent, offline DSU.",
+      "codeExample": "// Pattern: vector<Query> qs; sort qs theo r; xử lý từng query.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b14-004",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Mo algorithm",
+      "titleVi": "Mo algorithm",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Sort query (l, r) theo (l/√N, r). Di chuyển 2 con trỏ amortized O((N+Q) √N).",
+      "codeExample": "// Code Mo cụ thể.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b14-005",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Heavy path / light edge",
+      "titleVi": "Heavy path + light edge decomposition",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Trên cây, edge \"nặng\" là edge đến con có subtree lớn nhất. Path bất kỳ qua ≤ log N \"light edges\".",
+      "codeExample": "// Đã có ở HLD.",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b14-006",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Link/cut tree",
+      "titleVi": "Link/cut tree",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "CTDL duy trì forest, hỗ trợ link, cut, find root, path query O(log N) amortized.",
+      "codeExample": "// Code rất dài.",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b14-007",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Persistent BIT",
+      "titleVi": "Persistent Fenwick + 2D",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "Phiên bản BIT giữ lịch sử, query trên version cũ.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b14-008",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Sqrt buckets dynamic",
+      "titleVi": "Sqrt buckets — dynamic rebuild",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Chia mảng thành √N block, rebuild block khi nó thay đổi nhiều. O(√N) ops.",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b14-009",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Aho-Corasick",
+      "titleVi": "Aho-Corasick — multi-pattern matching",
+      "tier": "T4",
+      "skills": [
+        "S1"
+      ],
+      "description": "Trie + fail link như KMP. Match nhiều pattern trên text trong O(N + sum |patterns| + matches).",
+      "codeExample": "// Code dài.",
+      "vnRelevance": "IOI level.",
+      "references": []
+    },
+    {
+      "id": "b14-010",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Z-algorithm",
+      "titleVi": "Z-algorithm",
+      "tier": "T2",
+      "skills": [
+        "S1"
+      ],
+      "description": "z[i] = LCP(s, s[i..]) tính O(N). Cùng power với KMP, code ngắn hơn.",
+      "codeExample": "vector<int> z(n, 0);\nfor (int i = 1, l = 0, r = 0; i < n; i++) {\n    if (i < r) z[i] = min(r - i, z[i - l]);\n    while (i + z[i] < n && s[z[i]] == s[i + z[i]]) z[i]++;\n    if (i + z[i] > r) { l = i; r = i + z[i]; }\n}",
+      "vnRelevance": "Hiếm.",
+      "references": [
+        {
+          "label": "VNOI — Z function",
+          "url": "https://wiki.vnoi.info/algo/string/z-function"
+        }
+      ]
+    },
+    {
+      "id": "b14-011",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "DSU on tree",
+      "titleVi": "DSU on tree (small-to-large)",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Trên cây với mỗi node, gom thông tin con: keep info của heavy child, xoá rồi merge light child.",
+      "codeExample": "// Code small-to-large.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b14-012",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Squaring DP",
+      "titleVi": "Squaring DP — repeated doubling",
+      "tier": "T3",
+      "skills": [
+        "S3"
+      ],
+      "description": "Khi dp[i] phụ thuộc dp[i/2] hoặc dp[2i], dùng doubling từng bước.",
+      "codeExample": "// Pattern: function rec(n) = combine(rec(n/2), rec(n/2)).",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    },
+    {
+      "id": "b14-013",
+      "group": "B14",
+      "groupName": "Kỹ thuật kết hợp & IOI",
+      "title": "Range update segtree",
+      "titleVi": "Iterative segtree (non-recursive)",
+      "tier": "T3",
+      "skills": [
+        "S1"
+      ],
+      "description": "Segtree iterative O(N) memory, tốc độ cache-friendly nhanh hơn recursive.",
+      "codeExample": "// Atcoder library style.",
+      "vnRelevance": "Đội tuyển QG.",
+      "references": []
+    }
+  ],
+  "groups": [
+    {
+      "id": "B1",
+      "name": "C++ I/O + Cú pháp"
+    },
+    {
+      "id": "B2",
+      "name": "Thuật toán + CTDL nền móng"
+    },
+    {
+      "id": "B3",
+      "name": "Số học cơ bản"
+    },
+    {
+      "id": "B4",
+      "name": "Đệ quy + Duyệt + Backtracking"
+    },
+    {
+      "id": "B5",
+      "name": "Xâu"
+    },
+    {
+      "id": "B6",
+      "name": "Đồ thị"
+    },
+    {
+      "id": "B7",
+      "name": "Cây"
+    },
+    {
+      "id": "B8",
+      "name": "Quy hoạch động (DP)"
+    },
+    {
+      "id": "B9",
+      "name": "Data Structures nâng cao"
+    },
+    {
+      "id": "B10",
+      "name": "Tham lam nâng cao"
+    },
+    {
+      "id": "B11",
+      "name": "Tìm kiếm nâng cao"
+    },
+    {
+      "id": "B12",
+      "name": "Toán nâng cao"
+    },
+    {
+      "id": "B13",
+      "name": "Hình học"
+    },
+    {
+      "id": "B14",
+      "name": "Kỹ thuật kết hợp & IOI"
+    }
+  ]
+}

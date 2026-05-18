@@ -1,0 +1,213 @@
+{
+  "slug": "lcs-basic",
+  "title": "LCS hai chuỗi",
+  "titleEn": "LCS two strings",
+  "module": "roadmap",
+  "topicId": "dp-lis-lcs",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S3"
+  ],
+  "difficulty": 5,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "lcs"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho 2 chuỗi A, B. Tìm độ dài chuỗi con chung dài nhất (không nhất thiết liên tiếp). dp[i][j] = LCS A[1..i], B[1..j]; nếu A[i]=B[j] dp[i][j]=dp[i-1][j-1]+1, ngược lại max(dp[i-1][j], dp[i][j-1]).",
+  "vnPattern": "LCS — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "BASIC.INP",
+    "outputFile": "BASIC.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "|A|, |B| ≤ 100"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "|A|, |B| ≤ 500"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "|A|, |B| ≤ 1500"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "zjynpqieqvzmpqudzgorzdjcubipqrpaxlrzkr\nufhjustcguvmygtjsxkvkwhftczegfgw\n",
+      "output": "7\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "wahoukihswvedkqqkwuzdzgaqpzhzxyhnobjjzegrisqzftfgguhruiqsjc\nyqijwkigjncnxqrcjuspjwwolrphplvpixgfmbjkigxqbolztvwkjuo\n",
+      "output": "16\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "zjynpqieqvzmpqudzgorzdjcubipqrpaxlrzkr\nufhjustcguvmygtjsxkvkwhftczegfgw\n",
+      "output": "7\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "wahoukihswvedkqqkwuzdzgaqpzhzxyhnobjjzegrisqzftfgguhruiqsjc\nyqijwkigjncnxqrcjuspjwwolrphplvpixgfmbjkigxqbolztvwkjuo\n",
+      "output": "16\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "lyqcgioqiwneodtukrxieuyysmxveuubzku\nbaxginrtxmzcryuhsuusaotxrcvaggrqukbdcjmflbzqvzdsxwuqlmjkshyujtbwkkrvcmsfchebte\n",
+      "output": "14\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "upapmppnruvpcptvbczzdafidlmfuewbxbxbvudevcrwuthgpkovwiyjpfhtinyuifduoytikshdme\nekdbolpbbrdvnnogktkivgsymlcelmyyjbcodlcjnraqifuumjwknoqdsvdzicscapg\n",
+      "output": "20\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "zrhhxptctvj\nknbafavuzbfoftfwgpectewmsuolawvmmglpyxubujqqqoiewwcgvsofjhgmrvfyyikcxmufneuje\n",
+      "output": "6\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "xnyaqkypecbapijvbtcbvzwge\nxmlqpzgoiuyyvhpcbzpqgmrmmyrvtnalaotuaf\n",
+      "output": "9\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "bbhonifktzibcpm\nxxhoigvbtljgfcuapbrwjyjbjfrofmwqnadwnonktrmunbletxcbmrnvibesnqq\n",
+      "output": "9\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "zjynpqieqvzmpqudzgorzdjcubipqrpaxlrzkrufhjustcguvmygtjsxkvkwhftczegfgwoovvuadjsoblqmzuoufnyiurcipyvkasgriuoggkqtuduumcycdfflfmtauumezodosndkxglhmwtblyllwtrkvxizpcbxkqtkzdgtstgnenyqxqqxotfzyikvuhwxqphzncxtzqzwbmylfizglpoqbuwycbghedoxhoqaawsc\npcidjkvwcyltyyjyjnlzeffkscykjahcyifsojffcparrjtuhaidwaayeybezhrqouzcaihlcpsqmcidodnbbyiaqidprzdowqpkwfkypedhnajkczhrdhvxfvokqhhznqcaxemklpzkowscuzxyqjtpaykgenyitgwbkekxhudgqhfwiiyrlhiuofrpfmtcxmscwwvmhsllgzvfpkkna\n",
+      "output": "67\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "wahoukihswvedkqqkwuzdzgaqpzhzxyhnobjjzegrisqzftfgguhruiqsjcyqijwkigjncnxqrcjuspjwwolrphplvpixgfmbjkigxqbolztvwkjuosbhlsymsvtvhsbbaxuvgnxgwesaoceknkqfoptlwnrfyvifvscpurxsjmwmxhtgyldwzishkwifcutbnmdkzwqnkvhhdatgziyqsftjxmhittyebjznymrlkdxvwnppxikusrvercritbikpxlmzkuxjugmergdbrwutzcxvsueopcwvxarcxrsyuorrvojijaiergvcqatiskgeyksbx\nqgaxvbgklhdvwotsatercssrazwscowerbyiychbqjtxzovtrtnvcjmdudvcyxhfdwrskzokelnxofjzqralawknpsqgkyknkvzglnrzjicghoydnfhfzoflnikxfdrpyjdfigcclmwnzsbjxmosubnxmmhnsakezmddizffgmxztoflhclnyqvhquiprpwmkgbbsmowzsezdjklqaickbgmrjlcooykqvuijwfudnybjuvvwhrozxuyureperssslpfnaozycohxexzfbcfwcilngyefpyvhsrvxzgqsxxercrtwdreayx\n",
+      "output": "103\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "lyqcgioqiwneodtukrxieuyysmxveuubzkubaxginrtxmzcryuhsuusaotxrcvaggrqukbdcjmflbzqvzdsxwuqlmjkshyujtbwkkrvcmsfchebtenrhpnlgvfydlymffdrrjvnttncttfmzlejpnjcwxxejgocrbbywfildopidtrvgebwwnhdozpsvoikjqhvkyhekhdzofqklbrrtemwrapvibohqfe\njgayttyynqvtvhrdmiocwzwwjcbelhvdddajilcqkxnmstbvzpflcqeocnacggkjmxeifptzlsrepcqpdrigdvzkfnybxekukaxwkapgubufawgzmqujruutpkgdtkmyulqzxcysnfgphgzzfokysswyuvoekrkdjvxmdkpvgqulwwgyuqtganrujokgatapzaqrrtrkriyphdyddqgdbgsuhrtdltrmopaqlremqlbkhajqftutwcrwgmiaphczooaqaxylhefrocjltpnuczazrkosrbidpcpyhnpvfrkohiymvewvtdbnjkfomkntcmdpmgxzjsperzcoazystxtjwixzufblnncwmfllhbuetaiuzbldhstoikaqdvyransnjuajdxqsmcjewilvocrxk\n",
+      "output": "97\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "upapmppnruvpcptvbczzdafidlmfuewbxbxbvudevcrwuthgpkovwiyjpfhtinyuifduoytikshdmeekdbolpbbrdvnnogktkivgsymlcelmyyjbcodlcjnraqifuumjwknoqdsvdzicscapglcpgugculxllkbwopronfxspofogxfmhydqpmhwjxpwccmdbtqtvskfpmaraxtrsayhibdxshjeqejybfoierjldtfzrmkceaejizyhbpiqtyygrbekqilvchlpsdatshbodbptvdctjgrfiklrlvweaynrrtqxwehvrhsbgydubxlagsukvhtfdtimsjevznnlgguhduuwliewwinncksinkbeajlhhcvxlkeolmrhvxxdzcozfcyfzwpyjjsdrskcl\ngqbokvjnjpgekhfriyeypjobwemlhkykaltxlbnjuzpvkefzpjopgdbrpaqztrnzwyngdwzkskzskdkttkohexcypjbpqozxruscyyqrzjzfndsseauvuzsoodivvzmeobbxwrcjmpltkblvgpqnakwetwquapkqndqovqgphthzlfosieilyfxxpavrkkgwnmbjcjhnyybbyczfrsvbfnyrqtvdjrjexxuwtrwvmvxfgxsttoxmniqbxlhmxtgsomdkeaztwrkretextbgjiolardklpopqubnpaavfdfrsmxcessuioawfqqwhcexdkdeihelunjhyxgyzzvskagvrxtwyuhildbyqjxegnph\n",
+      "output": "116\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "zrhhxptctvjknbafavuzbfoftfwgpectewmsuolawvmmglpyxubujqqqoiewwcgvsofjhgmrvfyyikcxmufneujeqohedmrusnfgqpzzqwsqqitqbmrnzfefpaaxlw\nllrltqjhmnzjlctmozbejshzfzewfwxihwdwmziougrfbsskoshilrjlramrfhxzpelpzzzuixfkyszibnlyrxyawwpvzgceejzcmbmkxgjrhiupgsxowttzxflquavbigbhxynmrlckjkwvyqpwjmhcumptxyvsxempziqypzjdudnqolspwuxiavrtrixhkabedfvjajwoempbkqwjadybcjduisbuvlzzvvteehaljczqlivtfoyogzsamiudgjqdlaudpfnoegtmeyzzzextphhudaevzwislryxobimmdhywscycbnmxwnskpazkeqnsdmdaotdiqjqekqcmjnfpojkrbukgpjsoiayareascyomsswkchvttcklrjjeagrhhgrumzpkyubdnw\n",
+      "output": "66\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "xnyaqkypecbapijvbtcbvzwgexmlqpzgoiuyyvhpcbzpqgmrmmyrvtnalaotuafkzwmwjmialkmycpzyitnngmxmdptlsykrnhjfzokgovzwrsdtjckdzpskvnwgbmuxucnjmgxjnabgqmuxlxmrslldrsqgtqtstwrtbwevzxiribjigkrgpdviyu\nvwkxvprgkmhnochhfjoqltdljdbdfmdkphdbsoagqvwjaejpycguoybktlghgkuqqbpyqsbtmmujdcsmgwwcbqbmgxfdrhlwtrcebugjbxutzuuztaimxdloqcfyipgacaeglzhbhjzxrnxgstuewqesfsdkaaairdegbazjwpqxpgrfdybdkwpczhkysyoxcbhwdgnljcmyqngdultelatcdqazecfkcuykfgqzjxuyge\n",
+      "output": "63\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "bbhonifktzibcpmxxhoigvbtljgfcuapbrwjyjbjfrofmwqnadwnonktrmunbletxcbmrnvibesnqqxqulrkoxulmpspxhiuwlovpnqtpmttnvbticwabzyfmmhxlnskzwyoaqpbrqmayucpm\nkkifbtdoqpvxoltjwgikuqnignejnmhmozavnoydgqcwuxalvwdodmcjborayiaaxewxrqbqthlqmusunecrdlbbimyumiuigblvdrktnpkbwhhkzrskmkynlpicarvgdrfbywuwmhhoxcsbpgcjlfbsfdjifjckzljxjcaquwwygdbbzmjggydkzyicjujpgmtfnrqoblehzingtrvmgotbjjoxfeafjpalpnmzigtsppsldkagrjlwzfrhbtbmbivjtdabhnjfapjdlelqdqzeivuxnkcmakcouayhfinujzxvqrfwadysacveqffstyaictkjblwedahnqpgfco\n",
+      "output": "65\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "zjynpqieqvzmpqudzgorzdjcubipqrpaxlrzkrufhjustcguvmygtjsxkvkwhftczegfgwoovvuadjsoblqmzuoufnyiurcipyvkasgriuoggkqtuduumcycdfflfmtauumezodosndkxglhmwtblyllwtrkvxizpcbxkqtkzdgtstgnenyqxqqxotfzyikvuhwxqphzncxtzqzwbmylfizglpoqbuwycbghedoxhoqaawscpcidjkvwcyltyyjyjnlzeffkscykjahcyifsojffcparrjtuhaidwaayeybezhrqouzcaihlcpsqmcidodnbbyiaqidprzdowqpkwfkypedhnajkczhrdhvxfvokqhhznqcaxemklpzkowscuzxyqjtpaykgenyitgwbkekxhudgqhfwiiyrlhiuofrpfmtcxmscwwvmhsllgzvfpkknajcgupaxxxzabasalvszdllalchwxgwmpdvjltmcpicehuyrhafostekugwtyspaadfikkovsqaakgeaqagkkurfkunjoepdeghewtsquddzuwzbiuqbkljflcsticgwiypxfodasltvdxjqiqkiutxiyyjoufmkgivuvavwzqhiwawbrseijonfeywtubqgqupadrhazobkddnjccrvggghvslwvmgosjlhviuewvkfquaegafeeiybbqdtoodwkvnjcchxdljeoofwteqlpdfsyqegbutmianusvlqlqwsggztlolldafwqlmsafxhwulrfockpkikmazttgupdxlnrzcgqddbvfzijbbluagqlxbkosplljqbdsyltdnoystitchqbzyhiw\ngbuzsipjhnvnqckinfoocccjuowbpbwgxrrjacklacgofbcmlpffcsutkncackbqlmduexxkobvqdgbtwfnqmuojmkqzgusozariueyrfbuzqqbeizlnyoqfxgwakzurlcxadnkgvsgrvpjiplfflqjwkorruzxibtwwgzlnwfacoryatglitlrxhvimaasjcfsxrfhhwwshrcdzytijcecgpcrslkjbcnmysfanvrfhrtysvnqapkstctwluqmvfsgmskqamwbyjlqerhprudpylspxpaxcvdowganwrhvtgebkbeyunzamyiairtgwvjpcfjcdsuqpbvezwkvptfbextzzqatbgamcllfsnllsfebhevjbwowsjpzqbnhiwilfkflljdhpkdavkjkomrzhdjebgjhavdhukkiufwcwiiyifgfgeiqrdafecxvwtuxlclhrjubkinboxaazkgztgvbqlaubgdsgqffpihsrjfhzfkfjphmzvoqixpxipezpjyqzffkxsqmieldevrvzqwquhvssxfwsiwsjgfgdlhoujcmiffdnnachpigfqbojkxukzjuikavvlziveqhotjjltmlnhzhyzswojihsiwefaraaqsugrzxgjrofwitizucvihxmzmzykbxxkvndrisygxwuknlygaglgtpdlgwiquzwlnmtdmndnxyzzibgvjqjuzryykklzxahyubncjavsueqzpmuxbxeawmgtzrhewookwzxwcwkjzavzetzihevvgdfzmg\n",
+      "output": "260\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "wahoukihswvedkqqkwuzdzgaqpzhzxyhnobjjzegrisqzftfgguhruiqsjcyqijwkigjncnxqrcjuspjwwolrphplvpixgfmbjkigxqbolztvwkjuosbhlsymsvtvhsbbaxuvgnxgwesaoceknkqfoptlwnrfyvifvscpurxsjmwmxhtgyldwzishkwifcutbnmdkzwqnkvhhdatgziyqsftjxmhittyebjznymrlkdxvwnppxikusrvercritbikpxlmzkuxjugmergdbrwutzcxvsueopcwvxarcxrsyuorrvojijaiergvcqatiskgeyksbxqgaxvbgklhdvwotsatercssrazwscowerbyiychbqjtxzovtrtnvcjmdudvcyxhfdwrskzokelnxofjzqralawknpsqgkyknkvzglnrzjicghoydnfhfzoflnikxfdrpyjdfigcclmwnzsbjxmosubnxmmhnsakezmddizffgmxztoflhclnyqvhquiprpwmkgbbsmowzsezdjklqaickbgmrjlcooykqvuijwfudnybjuvvwhrozxuyureperssslpfnaozycohxexzfbcfwcilngyefpyvhsrvxzgqsxxercrtwdreayxokfjeymfeopntrbohdrgqlyskaaodoixezqkxmeobjqrjhxskhpmnasqakczutlujmeuhxjlmfrxwtdlkqivqyqekchamybekxrjaeveamzcujcrtnwcszqmiajuwhachspkorpumkldfxiqniiaawrtvslbdrnkdumezsbcfmtaxeodksczrzkndaipxdqtyebatqixsodayuzehpfiiwxbkcrfchgxvgcptlhmsycuvxtxenynrajmzhzlayfylpcagcdqpwohaliwmiiivpqqwtqmszocxdifbnnciqykwcfpgaixwetiawcekuqcxltoahgktysujqwxgxijhbcjhhhjhlcbyfmgqibgfchnlxvlglgqpzpkchpcshkuffkzdtzmosqydvpjezqaxfzmgokmpigbyajmqtvkqejcd\nmuyoyfczplmtxpuscqrurugkjgmauxrwyczoiiiuwsowwymnsabongyxrcrqornefqlqexfptoqvbxxzqgijwtdpjkyjwjrrswpddnqmeiensgfpyvahbqjvrqpleqmtzvictaidzddqamdsbsksloydotkuszpxawsoqhgzgleezihabfmdzmsbwremniwaxssuojttrimqzdkeeiaxfvadhxtmajbnxeuvcdltjqthokhmgygpolwinyayyobgyfjeqvslwrpawcdaobgpkvpayhtbyzedyobrvcidvwigkppexafccsgncmwhmgczsrqqcfbuepmcqweckctrhgybcmwgaoohoxseszpcfayjgkfchnsbzuomjmnrhuijgdxmgxbiwuvwmucndrghohprgrwkootqoldjzyyumiiyzdmqjvoaiqbgtmxggjtzsoefviqpkigprisaxespkodmemcfewmmuojlqidvgyrwrxlmqtwxflkcqonqiitpymtsafksvmkbbijeurpaulmwnjjplwarnuiahkjxmshtwhpalpzqaleejhdrfdsrspcckybfyamzfosubysjfmxfdtzxjcdyctzlchphudqfthbcfdhzscmimprjladcuabmsbtcwyhetqklewizpmtglmodkrkbymhgsblvrgvcxtknrttrqcnjpgpqeezhqkhuayjqvmmeffwxsmkqqfnvwjwtvekwojidbvnytexcabeiystftgojfazbesbyrladnmufrdykhnuqaxzsysxwmisnjsbexmiewhhzysqyxliuqsqnxetdczffgjjjegtmmvuioecrvjmcesfjfnwwkataqjuekjawffuulsunnyvlpcpnqqvmsrpbsgghyjymiiuvyasbxqnywomkqzvvjfmralijylngrsizetzshhuywdgsupldfqyhlrpqbpvzerawczknyqdvuznjhlxbzkwknephztwhqkijbzqtzmkbnmtqjlayakiqrjlxioah\n",
+      "output": "338\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "lyqcgioqiwneodtukrxieuyysmxveuubzkubaxginrtxmzcryuhsuusaotxrcvaggrqukbdcjmflbzqvzdsxwuqlmjkshyujtbwkkrvcmsfchebtenrhpnlgvfydlymffdrrjvnttncttfmzlejpnjcwxxejgocrbbywfildopidtrvgebwwnhdozpsvoikjqhvkyhekhdzofqklbrrtemwrapvibohqfejgayttyynqvtvhrdmiocwzwwjcbelhvdddajilcqkxnmstbvzpflcqeocnacggkjmxeifptzlsrepcqpdrigdvzkfnybxekukaxwkapgubufawgzmqujruutpkgdtkmyulqzxcysnfgphgzzfokysswyuvoekrkdjvxmdkpvgqulwwgyuqtganrujokgatapzaqrrtrkriyphdyddqgdbgsuhrtdltrmopaqlremqlbkhajqftutwcrwgmiaphczooaqaxylhefrocjltpnuczazrkosrbidpcpyhnpvfrkohiymvewvtdbnjkfomkntcmdpmgxzjsperzcoazystxtjwixzufblnncwmfllhbuetaiuzbldhstoikaqdvyransnjuajdxqsmcjewilvocrxkpjzgfwrhtewvregelqmxukzddjuczbbaxzirzmxpqiyqctqubkhzestofsnubwwbtdmfdokjpkvqgxgozlefbsmuniuevsnutcdoagyrhggzruiagyarewwclewghmhgkgdlwmxmdzjbgbyxiaarrkcrcniqybfsbgccndgljljkjogobfym\npcdtuhbdgocmpjwnpcdwnferpontjdkmrskasitjuasfocphvbebzvquzknmlkcbdwejcfmcnvzdfkyqzuegwmqomkfbjjzspbnalhppndeefladrqsuaajncrvnzivyegdeilijmdmiqsumipuwraddndziouatlclzrzqvmozprasiukqqtgqatwihemtghhdltrhahusorxeapwacabsxcscwabxqmbqhjlmmehnyfexvmovmxgcuzshffnmrgbfkatfaoeeztywwuteovdnozcslojdosjpwubhpcprewpcibqhjscufynadczdgqcnsbnfwauuajirogibzjymievhytfflulnfzkyhjovaopekuvgkcuapcytletrxtwslcncekpmipifpyavybjatgpezhrdbdaxrugtahrbzydmlmmpxrjsfwewjotklnhjmcpwktkoqveyehinycsvwrdmxcgbfqzvolrgkbhrfovjadbzpewvniupfcwnpzydrykdksvtfnvqrdoiqonbwgqqrymeryhuqqxmiribyzjmwosqdzscykelowopnklrsvucoyazktfpdbeaixvovwktbhqyybvqexysoppwduiuedxptrnhacqnnkepkqlqtqghyvzunknjywckezsdvncozwyudesnpbfhvthwakipmkaalhnxjxopjhhltpobvdhiokympshexqwdyeprgzismfpgkccqhyoncnllhautcmjpgnhqfbtcalychoozvglwnatdgzscvydjoclnzdylnoeuhzgszixhlflcxeqjtudwbmhcixgikzcwuniowdnsbgltseizrbeowexvpynzomvzyiaybrqiokgiagluytrhtlgqqupdsvozrzwklvckmafvkhiehlzekndnkiauriigcqpzvcokaflnrsfemtlhqnhfauqqbbthfqavgcyxgychwpspudwyljmiqsynszgxyvtxfzfamqniwvevuiticokbuxbnwoqhxkcjxeepzyplnjssmofnugpouqxsysfhbbdyvzjqhdklrsbzbwdhxdwfkinaacstgalqqhvjjmvcojrsqczfpqnicqxdqpgharvsixxjwmaoyjeqylzcesyccvqzndefdizdkbfyptalfmgcsionkmpfnllxamxzgzefxsiqgfksbcbxhaqnaocaupfwytyseucowlukjqfaputtkwoknokjttlgylsmbjsupybglfcftfcjfqiorngt\n",
+      "output": "323\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "upapmppnruvpcptvbczzdafidlmfuewbxbxbvudevcrwuthgpkovwiyjpfhtinyuifduoytikshdmeekdbolpbbrdvnnogktkivgsymlcelmyyjbcodlcjnraqifuumjwknoqdsvdzicscapglcpgugculxllkbwopronfxspofogxfmhydqpmhwjxpwccmdbtqtvskfpmaraxtrsayhibdxshjeqejybfoierjldtfzrmkceaejizyhbpiqtyygrbekqilvchlpsdatshbodbptvdctjgrfiklrlvweaynrrtqxwehvrhsbgydubxlagsukvhtfdtimsjevznnlgguhduuwliewwinncksinkbeajlhhcvxlkeolmrhvxxdzcozfcyfzwpyjjsdrskclgqbokvjnjpgekhfriyeypjobwemlhkykaltxlbnjuzpvkefzpjopgdbrpaqztrnzwyngdwzkskzskdkttkohexcypjbpqozxruscyyqrzjzfndsseauvuzsoodivvzmeobbxwrcjmpltkblvgpqnakwetwquapkqndqovqgphthzlfosieilyfxxpavrkkgwnmbjcjhnyybbyczfrsvbfnyrqtvdjrjexxuwtrwvmvxfgxsttoxmniqbxlhmxtgsomdkeaztwrkretextbgjiolardklpopqubnpaavfdfrsmxcessuioawfqqwhcexdkdeihelunjhyxgyzzvskagvrxtwyuhildbyqjxegnphrqnhwfwsuhkhbkbhqptrobgkdzblkpduvngcauqdfrzpdfrjvyqusdryqfuqjmkcsecrnbsixfkhvnabszvwvfqqypnowffzrqrplootvfarkqoltzacftdxfdfmsdwlvajynsqcylfzansmwtdryppcgwvnqxdpfkycbwsgqzdtkxrmqjvgqbmwdbuvksngvcpjpjwqqaipipkrjvjzzchbjlicphjzbqhrqepciqwkqznutglrkycqtipjtijibnadtpyqwnzhpfpjcicvjuyxjrtsuliqrkptzpnljewmvlaustrbljxjhlepzahyfaepizuzvsbdbepsvbzbymdkcpsoefvfgjiufqruxkhqyeofgdpnvdxmuqzrswhkovshpxuyrxfkoomlnuzfjdsuzbenqcauxktavzkmdquijeulrroxpxekfqpinbvrrbmmwbjpwpydktlzabqnpwoidgpjhvkkijakggfescskuwy\nfzixpsfwkqrhuvsrpempvblbxgbpgeztzvrfcyijerjcyfbuhgbnjzwysemrqeqdwvdfhqujhftwmalazssuckprulfuyieeansbjsgzqybtvrqvxmngeqsskkbqyjnfbxpxzreqpitofkmrtzlmuprmxjngkqqmclicjxdtrkmsktltqiyslplfputxwkjwrtpjpltsiiizjnqllzrextiksldnskbqwborkrrdafkowcqpqkmwboheikwxyjcailrvvsnalividivmcibdbxenmwyssluvfzuryvnygcpyigzzatipoehxgjxkatbdyftbajbzkxvrivuolerwalxigxnscxwbckvrkzoalrctkspevacmwfmvuecaplgfgabkimdnmxrcobezmsovzwfadxtdxbfhnnzvbamymrefnpowomwctdkrpibmjxqvgthtayethqyejojwzkszwyzwuohajxafzodzkqaydvpqjkoucctirmdpeicolrwtfuoxllvmysyopvvgixmktkylwmdwlkuwumhnxbymdamumpwdqggjuasgitbnuhhjbphobuvmannsmvywzqxjpapyrnazgkgogewwpcfpolkhcljralritcobrjjudxlgifvvpjzwyikzlrdeumvavkwfkskmxhyruwqbpixjfvtvzmbfvhpygzzvfbegclwvfgtpkymsouotjfmdhxiipuvcykgmfmlhwhafipysvelmifxrowvzijoloeqnyzuoyiuzyckhamqofzukusjxjsiwlkfbdrwdmhsqvuvjoauzghwhrczapjsgsingnzcdnkhmlahbmrpsorhynavdgvklkmrxivowkeblkucfdflftpdflhsxdqwdvdhazbfhckylozhztsppmhgnxrllgzbkrkftqupxankdmxgtavxpbiofdcpurdmenwpjfhlvzqtgqvwqaadalhiftejhrnxtujmxiicbgptizoqzdfdujwkvvcdlazjcgukhocyzvxpcftzizuhnounmxujtiszsdpobplzcqkzhkpgaravftdzesgchozclrrqhhlkkmcubecqakncvnpkotrpazsmefberchzhecfontzcujmmsqbbhvushjulxtkgwdfzabor\n",
+      "output": "398\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "zrhhxptctvjknbafavuzbfoftfwgpectewmsuolawvmmglpyxubujqqqoiewwcgvsofjhgmrvfyyikcxmufneujeqohedmrusnfgqpzzqwsqqitqbmrnzfefpaaxlwllrltqjhmnzjlctmozbejshzfzewfwxihwdwmziougrfbsskoshilrjlramrfhxzpelpzzzuixfkyszibnlyrxyawwpvzgceejzcmbmkxgjrhiupgsxowttzxflquavbigbhxynmrlckjkwvyqpwjmhcumptxyvsxempziqypzjdudnqolspwuxiavrtrixhkabedfvjajwoempbkqwjadybcjduisbuvlzzvvteehaljczqlivtfoyogzsamiudgjqdlaudpfnoegtmeyzzzextphhudaevzwislryxobimmdhywscycbnmxwnskpazkeqnsdmdaotdiqjqekqcmjnfpojkrbukgpjsoiayareascyomsswkchvttcklrjjeagrhhgrumzpkyubdnwidaxgghzunvufwldffttjbgaiwnzmmwkirwf\npmgwuokjttgjjfgwgzsotxhkvfbojdzmfhgvkhkpambzhrugzzlsrspbwoesveyasrlhrozysakhgawlpbckfkjnzjrdukpaskpxhekjkurwcffbzzumynwclaqqvmdbempadbneazqlneqikqlqbybdhdexmwehuooboimohuywhttpuwmefrnconsjqddcyuafgjpzuhlyytwkigfqzizhkpqhpnovtfhcycavpggjpfewxvzczjtldwhjlscziuyeraozhbwoopdsqttfehcrivodsglhsmzxtgdiqwnvvsyimkozdkyjpjnguefqyxkhxmwmahadbgvvvrmcddqbslzzzqtmhuogunfjwsboenkrxajdkczmirikmwwpmrbrzuuzjiingntjjnamqbgbvqjvogfdhxhinkxgczhklcotushckdupntczgzrurbrbciugtratssbldwjevgynundvvtztfnbryuvgnbpvzcdcevynlsudngnsvkijgdaovuvoqncuykkutacaewxqeowqwnkmxpptdfbrmitaaducgnpslcstvdrxamdjxuvlzphpvjevkqtvvnpbznmseypabipnxmfpjuatdyixawedqhtjvtgcwahnabipyausecdfjwtflpatebvjaocjevpmrhcymmgevrycoklgclfasoxvrxkfzqvolmdpfvnheelzjvenaqwxzwuzvkuzlizslosvgmqbimluizugoozczysvkkizksyuxjbfreeqozfdnxvmjylwvkajnuvalpxvmqccrljagnoyxfomxjcjljxgoyzvxdofnnieeneddxymbvbnuwjbaposzsauqgcbhxfppjyqhvjfatzvwrkcepwcfqcjljxvpeoyrnktnhwbcsbrnyhzhddakfseancqdtnmxahubolbfznomkzqgzspwspsqsjtgujpsiotejoispofusomazckpvdmbxnjccgfdjlvkpbeyxvoeomvrnxcbvhuzfvvkuscldowsygpuisgbrbonkwwjyndkwuqdylojhmrwvihsihgkrrihcxmoiqiltaowfqwnigdvamnnmbszgopfqudmrizysfgejixeypdaxlunknbmwapwxyarkwqxmlfompbvecisndneozszpjufpikgktjaskaakowejeqczbixduekawglhgwzcfofnekxslsqciaeigbrtwtwgczieyoxajammmbkysauuowcwfp\n",
+      "output": "265\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "xnyaqkypecbapijvbtcbvzwgexmlqpzgoiuyyvhpcbzpqgmrmmyrvtnalaotuafkzwmwjmialkmycpzyitnngmxmdptlsykrnhjfzokgovzwrsdtjckdzpskvnwgbmuxucnjmgxjnabgqmuxlxmrslldrsqgtqtstwrtbwevzxiribjigkrgpdviyuvwkxvprgkmhnochhfjoqltdljdbdfmdkphdbsoagqvwjaejpycguoybktlghgkuqqbpyqsbtmmujdcsmgwwcbqbmgxfdrhlwtrcebugjbxutzuuztaimxdloqcfyipgacaeglzhbhjzxrnxgstuewqesfsdkaaairdegbazjwpqxpgrfdybdkwpczhkysyoxcbhwdgnljcmyqngdultelatcdqazecfkcuykfgqzjxuygesvwnaahkgjguhjxzfsbqtfsbdcvuitlvkwhnqjmromnsaufvhljitmromuqfkryhzkaymuvpwnneoivstuyinrtgzxaioiamdgpfrmijqxbprwzsdprwxaqhxpouvbcyssonztenkhbdjhxquapcpsxidqudpypnnjwtwkrzgaarsuqrkvbsvhknonvroterwrutamctuayquskigcovemtoikmbrldhskkhbjotmndeixshinexkfrbarqgugcuwrqdtidhlpryzjahmftyooacfoopmnvhtlmt\nippmrkowzaexotqmlqayuhkiuhhapdatnljcpinkvusjonfggcqaqpibkprknwggldudpbhggrnbkrtviaosaxxzwwyspesdbkauupelkfzsckyjoerkgndksulkamfkspcfsgmkwiembznjbebomyrogpdftwsnykaufoythuyftauvscilokaddplgrtklwdtucodipznidfjhlwffaxzkqyrkipibzxhdrapttkqbroiysfvqlvrmsrvvexphmprtqfgyqtpvzyfugsohaukfopqocqgcqaobjqgawntpodcpdqmomvymitflinjjanieaveeyhexcdjspvegvzaumeliopqpivjmwkqdzotlyzagkplvegfhnjgwbwzndcchcpkchvhmqyetkmcguxybcseabexpsmuktukjjrtwwsiahzpfblijrgargzicadpgsbjikqiwqctsiifonzagvahdqkngrwvwayttygoncucfcncfdijjkdlqfhdqulwwqaixxkmxyjgadmoslphjejtkjshfiiaurimkcdhhglpnnlzmzhpbmbqqswgwbgxuoapfdzcfrioswhdvgsgfchxuhphypsvtunwlurkpfnuxganuermonqlumejlybqjwoykwsqomarjccnlnkcltcjxzporgwbklngmfzkruopfjuzpbokwhhmpvhdmgeszfnxauwqwanmspgqviiaqecxiifaprllbksjiwriksdubphorsrjnnwnwudfihzyuqpiuhxivykosnbrnpvepikogankntjzvjqnsuwzfbxkiswtvbuutmdcicvhqsruefrdvafjxdo\n",
+      "output": "245\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "bbhonifktzibcpmxxhoigvbtljgfcuapbrwjyjbjfrofmwqnadwnonktrmunbletxcbmrnvibesnqqxqulrkoxulmpspxhiuwlovpnqtpmttnvbticwabzyfmmhxlnskzwyoaqpbrqmayucpmkkifbtdoqpvxoltjwgikuqnignejnmhmozavnoydgqcwuxalvwdodmcjborayiaaxewxrqbqthlqmusunecrdlbbimyumiuigblvdrktnpkbwhhkzrskmkynlpicarvgdrfbywuwmhhoxcsbpgcjlfbsfdjifjckzljxjcaquwwygdbbzmjggydkzyicjujpgmtfnrqoblehzingtrvmgotbjjoxfeafjpalpnmzigtsppsldkagrjlwzfrhbtbmbivjtdabhnjfapjdlelqdqzeivuxnkcmakcouayhfinujzxvqrfwadysacveqffstyaictkjblwedahnqpgfcoxmdnxkmujqmhszrtsbjyvzdnatmibqezcecqrfliyivfykbbdvtgglkissnzgcrvttbdwcvzakngrqqclcoqfnwkguvekwahhhpdrjgkgchojmnxbjdshgbaxyznlbl\nhwwgohszjgvasmdgoegvkxcqoqfijjgmeqetczwrmujgkgzqnkpgqrktebahuenfjgsgbevwpdrdoubkwnsxwdyeknqqxdfslykraahegupfymcnczfkbdlbroqbkddsiupclqlopdazfeimggfuatxbeksbeksxqjwgdftxcuavsqwmucbhurbsaswudqnklbswbicylcwrmanpkpvfttwvziozlycjqoxscpbknrnlvzbtcesujdyyepamyzakakvolloronkccewewhqqbgfdaezrtrxcixirlsvbniwmhnpadkugutqsrlpgbunjcrjtcampfoyynjaqgokscwmeifauwjdhsvxpflfwgbdljvtfnpuxynzodnhennecedixujfldimarzcbussndjnmbuebnkqefmxlgmuxdqosgkuqrdistlxcryswsgqzzdkaznywomuejipfxblvyfkvlivybsipdxqeupwulsxnczjqxhmgoovbogcdxrtdoizrbxfonvyzvnbjhosvmfjebtstorthczkatgjqkqwfjaknxjmlfynvkzyjldlibazthkotewkhksxhganwyatmeifacxnmrkikduwmjyrhstwzfzfiimivxuideagwmvesgdjrnahkxpnlijgghcqaczaaalxbpqlyzishoipdvakvwkkfehlbukoqpfpgfquasysfjsumkhufprsccpcjngwyrdhhkqrmqtmxfnrygsxyamahpdeknmgytvhtkvqefymjhpwiabzheunzdnoobmutrjqgpbkcormcjqfawysqwgynfgkxrkprigbaevqrjcdrfwjlckrfjsiqfozcubcmpucxgdajsroxfdbdtvzelvpsuzomevxdbvxdvovamlvkqfxqqavtwkpkfmmlxccgplbabwvqmcqsxptqhsdekkqbfkwsjbjkhxkltgaiagamohppdvbgbaqdtfkqykqsurycxvzcjfnkzyvxnxzyhjzcxbjmqppluslujrbotmfpusvyhezlfctbblmqtimdsswcsikqyhdzdmkujysebyvpixmgsnkpmdmizomjwoikwkalgyzby\n",
+      "output": "258\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "dp[i][j] = LCS A[1..i], B[1..j].",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "A[i] = B[j] → dp = dp[i-1][j-1] + 1; ngược lại max.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "O(NM).",
+      "starCost": 1
+    }
+  ],
+  "editorial": "LCS DP O(NM).",
+  "solutionSketch": "for i in 1..n: for j in 1..m: if A[i]==B[j]: dp[i][j] = dp[i-1][j-1] + 1; else dp[i][j] = max(dp[i-1][j], dp[i][j-1]);",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

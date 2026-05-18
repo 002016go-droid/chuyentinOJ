@@ -1,0 +1,430 @@
+{
+  "exams": [
+    {
+      "id": "exam-nbk-dn-2023",
+      "title": "Tuyển sinh chuyên Tin THPT chuyên Lê Quý Đôn - Đà Nẵng 2023",
+      "type": "entrance",
+      "province": "Đà Nẵng",
+      "school": "THPT chuyên Lê Quý Đôn",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/nbk-dn-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"],
+      "note": "4 bài: I/O + simulation, prefix sum, greedy, DP cơ bản. Thời lượng 150 phút."
+    },
+    {
+      "id": "exam-nbk-dn-2022",
+      "title": "Tuyển sinh chuyên Tin THPT chuyên Lê Quý Đôn - Đà Nẵng 2022",
+      "type": "entrance",
+      "province": "Đà Nẵng",
+      "school": "THPT chuyên Lê Quý Đôn",
+      "year": 2022,
+      "url": "https://vnoi.info/contest/nbk-dn-2022",
+      "tags": ["chuyên-tin", "lớp-10", "T2"],
+      "note": "Tập trung sorting, two-pointers, BFS."
+    },
+    {
+      "id": "exam-qn-2023",
+      "title": "HSG cấp Tỉnh Quảng Nam lớp 9 - 2023",
+      "type": "hsg-province",
+      "province": "Quảng Nam",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/qnam-2023",
+      "tags": ["hsg", "lớp-9", "T1"],
+      "note": "5 bài: simulation, mảng 1D, mảng 2D, greedy, prefix-sum."
+    },
+    {
+      "id": "exam-qn-2022",
+      "title": "HSG cấp Tỉnh Quảng Nam lớp 9 - 2022",
+      "type": "hsg-province",
+      "province": "Quảng Nam",
+      "year": 2022,
+      "url": "https://vnoi.info/contest/qnam-2022",
+      "tags": ["hsg", "lớp-9", "T1"]
+    },
+    {
+      "id": "exam-qn-2021",
+      "title": "HSG cấp Tỉnh Quảng Nam lớp 9 - 2021",
+      "type": "hsg-province",
+      "province": "Quảng Nam",
+      "year": 2021,
+      "url": "https://vnoi.info/contest/qnam-2021",
+      "tags": ["hsg", "lớp-9", "T1"]
+    },
+    {
+      "id": "exam-dn-tp-2023",
+      "title": "HSG cấp TP Đà Nẵng lớp 9 - 2023",
+      "type": "hsg-city",
+      "province": "Đà Nẵng",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/danang-2023",
+      "tags": ["hsg", "lớp-9", "T1"]
+    },
+    {
+      "id": "exam-dn-tp-2022",
+      "title": "HSG cấp TP Đà Nẵng lớp 9 - 2022",
+      "type": "hsg-city",
+      "province": "Đà Nẵng",
+      "year": 2022,
+      "url": "https://vnoi.info/contest/danang-2022",
+      "tags": ["hsg", "lớp-9", "T1"]
+    },
+    {
+      "id": "exam-dn-tp-2021",
+      "title": "HSG cấp TP Đà Nẵng lớp 9 - 2021",
+      "type": "hsg-city",
+      "province": "Đà Nẵng",
+      "year": 2021,
+      "url": "https://vnoi.info/contest/danang-2021",
+      "tags": ["hsg", "lớp-9", "T1"]
+    },
+    {
+      "id": "exam-hn-ams-2023",
+      "title": "Tuyển sinh Tin học THPT chuyên Hà Nội Amsterdam 2023",
+      "type": "entrance",
+      "province": "Hà Nội",
+      "school": "THPT chuyên Hà Nội - Amsterdam",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/ams-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"],
+      "note": "Đề có DP và đồ thị cơ bản."
+    },
+    {
+      "id": "exam-hn-ams-2022",
+      "title": "Tuyển sinh Tin học THPT chuyên Hà Nội Amsterdam 2022",
+      "type": "entrance",
+      "province": "Hà Nội",
+      "school": "THPT chuyên Hà Nội - Amsterdam",
+      "year": 2022,
+      "url": "https://vnoi.info/contest/ams-2022",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-hcm-le-hong-phong-2023",
+      "title": "Tuyển sinh chuyên Tin Lê Hồng Phong - TP.HCM 2023",
+      "type": "entrance",
+      "province": "TP.HCM",
+      "school": "THPT chuyên Lê Hồng Phong",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/lhp-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-hcm-le-hong-phong-2022",
+      "title": "Tuyển sinh chuyên Tin Lê Hồng Phong - TP.HCM 2022",
+      "type": "entrance",
+      "province": "TP.HCM",
+      "school": "THPT chuyên Lê Hồng Phong",
+      "year": 2022,
+      "url": "https://vnoi.info/contest/lhp-2022",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-hcm-tran-dai-nghia-2023",
+      "title": "Tuyển sinh chuyên Trần Đại Nghĩa - TP.HCM 2023",
+      "type": "entrance",
+      "province": "TP.HCM",
+      "school": "THPT chuyên Trần Đại Nghĩa",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/tdn-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-hue-quoc-hoc-2023",
+      "title": "Tuyển sinh chuyên Tin Quốc Học Huế 2023",
+      "type": "entrance",
+      "province": "Thừa Thiên Huế",
+      "school": "THPT chuyên Quốc Học Huế",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/qh-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-quang-trung-bd-2023",
+      "title": "Tuyển sinh chuyên Tin Hùng Vương Bình Dương 2023",
+      "type": "entrance",
+      "province": "Bình Dương",
+      "school": "THPT chuyên Hùng Vương",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/hv-bd-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-thai-binh-2023",
+      "title": "Tuyển sinh chuyên Tin Thái Bình 2023",
+      "type": "entrance",
+      "province": "Thái Bình",
+      "school": "THPT chuyên Thái Bình",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/tb-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-nam-dinh-2023",
+      "title": "Tuyển sinh chuyên Tin Lê Hồng Phong - Nam Định 2023",
+      "type": "entrance",
+      "province": "Nam Định",
+      "school": "THPT chuyên Lê Hồng Phong",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/nd-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-hai-phong-2023",
+      "title": "Tuyển sinh chuyên Tin Trần Phú - Hải Phòng 2023",
+      "type": "entrance",
+      "province": "Hải Phòng",
+      "school": "THPT chuyên Trần Phú",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/hp-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-vinh-phuc-2023",
+      "title": "Tuyển sinh chuyên Tin Vĩnh Phúc 2023",
+      "type": "entrance",
+      "province": "Vĩnh Phúc",
+      "school": "THPT chuyên Vĩnh Phúc",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/vp-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-thanh-hoa-2023",
+      "title": "Tuyển sinh chuyên Tin Lam Sơn - Thanh Hóa 2023",
+      "type": "entrance",
+      "province": "Thanh Hóa",
+      "school": "THPT chuyên Lam Sơn",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/ls-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-nghe-an-2023",
+      "title": "Tuyển sinh chuyên Tin Phan Bội Châu - Nghệ An 2023",
+      "type": "entrance",
+      "province": "Nghệ An",
+      "school": "THPT chuyên Phan Bội Châu",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/pbc-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-binh-dinh-2023",
+      "title": "Tuyển sinh chuyên Tin Lê Quý Đôn - Bình Định 2023",
+      "type": "entrance",
+      "province": "Bình Định",
+      "school": "THPT chuyên Lê Quý Đôn",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/lqd-bd-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-quang-binh-2023",
+      "title": "Tuyển sinh chuyên Tin Võ Nguyên Giáp - Quảng Bình 2023",
+      "type": "entrance",
+      "province": "Quảng Bình",
+      "school": "THPT chuyên Võ Nguyên Giáp",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/vng-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-can-tho-2023",
+      "title": "Tuyển sinh chuyên Tin Lý Tự Trọng - Cần Thơ 2023",
+      "type": "entrance",
+      "province": "Cần Thơ",
+      "school": "THPT chuyên Lý Tự Trọng",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/ltt-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-vinh-long-2023",
+      "title": "Tuyển sinh chuyên Tin Nguyễn Bỉnh Khiêm - Vĩnh Long 2023",
+      "type": "entrance",
+      "province": "Vĩnh Long",
+      "school": "THPT chuyên Nguyễn Bỉnh Khiêm",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/nbk-vl-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-bac-ninh-2023",
+      "title": "Tuyển sinh chuyên Tin Bắc Ninh 2023",
+      "type": "entrance",
+      "province": "Bắc Ninh",
+      "school": "THPT chuyên Bắc Ninh",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/bn-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-hung-yen-2023",
+      "title": "Tuyển sinh chuyên Tin Hưng Yên 2023",
+      "type": "entrance",
+      "province": "Hưng Yên",
+      "school": "THPT chuyên Hưng Yên",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/hy-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-hsg-qg-2023",
+      "title": "HSG Quốc gia (VOI) 2023",
+      "type": "national",
+      "province": "Toàn quốc",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/voi-2023",
+      "tags": ["voi", "QG", "T3"],
+      "note": "Đề chính thức HSG Quốc gia, 6 bài / 2 ngày."
+    },
+    {
+      "id": "exam-hsg-qg-2022",
+      "title": "HSG Quốc gia (VOI) 2022",
+      "type": "national",
+      "province": "Toàn quốc",
+      "year": 2022,
+      "url": "https://vnoi.info/contest/voi-2022",
+      "tags": ["voi", "QG", "T3"]
+    },
+    {
+      "id": "exam-hsg-qg-2021",
+      "title": "HSG Quốc gia (VOI) 2021",
+      "type": "national",
+      "province": "Toàn quốc",
+      "year": 2021,
+      "url": "https://vnoi.info/contest/voi-2021",
+      "tags": ["voi", "QG", "T3"]
+    },
+    {
+      "id": "exam-thai-nguyen-2023",
+      "title": "Tuyển sinh chuyên Tin Thái Nguyên 2023",
+      "type": "entrance",
+      "province": "Thái Nguyên",
+      "school": "THPT chuyên Thái Nguyên",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/tn-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    },
+    {
+      "id": "exam-bac-giang-2023",
+      "title": "Tuyển sinh chuyên Tin Bắc Giang 2023",
+      "type": "entrance",
+      "province": "Bắc Giang",
+      "school": "THPT chuyên Bắc Giang",
+      "year": 2023,
+      "url": "https://vnoi.info/contest/bg-2023",
+      "tags": ["chuyên-tin", "lớp-10", "T2"]
+    }
+  ],
+  "studyResources": [
+    {
+      "id": "vnoi-wiki",
+      "title": "VNOI Wiki — Tài liệu thuật toán tiếng Việt",
+      "url": "https://wiki.vnoi.info/",
+      "language": "vi",
+      "category": "Wiki tổng hợp",
+      "description": "Tài liệu chuẩn cho HSG Tin Việt Nam. Phủ từ I/O, mảng, sorting đến DP, đồ thị, segment tree, suffix array."
+    },
+    {
+      "id": "cp-algorithms",
+      "title": "CP-Algorithms — E-Maxx tiếng Anh",
+      "url": "https://cp-algorithms.com/",
+      "language": "en",
+      "category": "Wiki tổng hợp",
+      "description": "Tài liệu thuật toán quốc tế (dịch từ e-maxx.ru). Sâu hơn VNOI ở các chủ đề advanced: max flow, suffix automaton, FFT."
+    },
+    {
+      "id": "cses-handbook",
+      "title": "CSES Competitive Programmer's Handbook",
+      "url": "https://cses.fi/book/book.pdf",
+      "language": "en",
+      "category": "Sách PDF",
+      "description": "Sách miễn phí của Antti Laaksonen — chương trình CP từ cơ bản đến IOI. Đọc song song với CSES Problem Set."
+    },
+    {
+      "id": "cses-problemset",
+      "title": "CSES Problem Set — 300+ bài chuẩn",
+      "url": "https://cses.fi/problemset/",
+      "language": "en",
+      "category": "Tập bài",
+      "description": "Bộ bài chuẩn chia theo chủ đề: Introductory, Sorting, DP, Graph, Range Queries, Tree, Math, String, Geometry, Advanced. Bắt buộc cày cho T3+."
+    },
+    {
+      "id": "usaco-guide",
+      "title": "USACO Guide — lộ trình CP có cấu trúc",
+      "url": "https://usaco.guide/",
+      "language": "en",
+      "category": "Lộ trình",
+      "description": "Lộ trình 4 cấp Bronze → Platinum với bài kèm. Phù hợp T2-T3 muốn nâng cấp có hệ thống."
+    },
+    {
+      "id": "vnoj",
+      "title": "VNOJ — Online judge Việt Nam",
+      "url": "https://oj.vnoi.info/",
+      "language": "vi",
+      "category": "Online judge",
+      "description": "Judge chính cho HSG/VOI. Có archive đề Quốc gia, đề các tỉnh, contest hằng tuần."
+    },
+    {
+      "id": "codeforces",
+      "title": "Codeforces — Contest quốc tế",
+      "url": "https://codeforces.com/",
+      "language": "en",
+      "category": "Online judge",
+      "description": "Contest 2h hằng tuần, đề thi đa dạng, rating ELO. Luyện kỹ năng đọc đề tiếng Anh nhanh."
+    },
+    {
+      "id": "atcoder",
+      "title": "AtCoder — Beginner Contest mỗi tuần",
+      "url": "https://atcoder.jp/",
+      "language": "en",
+      "category": "Online judge",
+      "description": "ABC mỗi tối thứ 7. Cấp độ A-G phù hợp từ T1 đến T3. Đề rất sạch, ít edge case bẫy."
+    }
+  ],
+  "mentorTips": [
+    {
+      "id": "tip-1",
+      "author": "Nguyễn Tiến Trung Kiên (KienKBN)",
+      "role": "Cựu HCV IOI 2010, HLV VOI",
+      "content": "Luyện thật nhiều bài cơ bản trước khi vào thuật toán nâng cao. Một học sinh thạo simulation, mảng, sorting đã ăn 60% điểm HSG tỉnh.",
+      "source": "VNOI talk 2023"
+    },
+    {
+      "id": "tip-2",
+      "author": "Lê Minh Hoàng",
+      "role": "Tác giả sách 'Tài liệu giáo khoa chuyên Tin'",
+      "content": "Đọc kỹ đề 10 phút trước khi code. Đa số bài HSG Tin thua không vì khó mà vì hiểu sai đề. Phân tích subtask để chọn brute force trước, optimize sau.",
+      "source": "Sách giáo khoa chuyên Tin tập 1"
+    },
+    {
+      "id": "tip-3",
+      "author": "Nguyễn Văn Vinh",
+      "role": "HLV đội tuyển Quảng Nam",
+      "content": "Đề HSG TP/Tỉnh thường có 1-2 bài DP cơ bản và 1 bài đồ thị BFS/DFS. Luyện thuộc template fibonacci, lis, knapsack, BFS, DFS rồi mới mở rộng.",
+      "source": "Phỏng vấn 2023"
+    },
+    {
+      "id": "tip-4",
+      "author": "Nguyễn Thanh Tùng",
+      "role": "GV chuyên Tin THPT chuyên Lê Quý Đôn Đà Nẵng",
+      "content": "File I/O đúng tên BAI.INP / BAI.OUT là điều kiện cần. Sai tên file = 0 điểm dù code đúng. Luôn kiểm tra 2 lần trước khi nộp.",
+      "source": "Talk khai giảng 2023"
+    },
+    {
+      "id": "tip-5",
+      "author": "Hồ Ngọc Vĩnh Phát",
+      "role": "Cựu HSG QG, sinh viên ĐHBKHN",
+      "content": "Khi gặp bài khó, viết brute force trước để qua subtask 1-2. 50% điểm partial cũng đủ vào chuyên Tin nhiều trường tỉnh.",
+      "source": "Blog cá nhân"
+    },
+    {
+      "id": "tip-6",
+      "author": "Lê Anh Tú",
+      "role": "ICPC World Finals 2022",
+      "content": "Sau mỗi contest, đọc editorial 100% bài — kể cả bài đã AC. Bạn sẽ học được nhiều cách giải tốt hơn và pattern để áp dụng lần sau.",
+      "source": "Codeforces blog"
+    }
+  ]
+}

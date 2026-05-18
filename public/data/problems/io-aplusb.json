@@ -1,0 +1,214 @@
+{
+  "slug": "io-aplusb",
+  "title": "Tổng hai số (A + B)",
+  "titleEn": "A + B",
+  "module": "roadmap",
+  "topicId": "io-complexity",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2"
+  ],
+  "difficulty": 1,
+  "maxStars": 2,
+  "tags": [
+    "io",
+    "cơ-bản",
+    "long-long"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Đây là bài tập đầu tiên trong lộ trình lớp 9 chuyên Tin: bạn Minh được giao bài tập \"Tổng hai số\" trong giờ Tin học để làm quen với việc đọc-ghi dữ liệu bằng C++. Cho hai số nguyên A và B. Hãy tính và in ra tổng A + B. Lưu ý: A và B có thể lên đến 10^9, do đó tổng có thể vượt giới hạn của kiểu int — bạn cần dùng `long long` để tránh tràn số. Đây cũng là cơ hội để luyện tập cú pháp đọc file qua `freopen(\"APLUSB.INP\", \"r\", stdin); freopen(\"APLUSB.OUT\", \"w\", stdout);` — chuẩn của hầu hết đề HSG Tin học cấp Tỉnh.",
+  "vnPattern": "Bài làm quen với cú pháp file I/O — chuẩn của đề HSG TP/Tỉnh.",
+  "fileIO": {
+    "inputFile": "APLUSB.INP",
+    "outputFile": "APLUSB.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "−10^3 ≤ A, B ≤ 10^3"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "−10^6 ≤ A, B ≤ 10^6"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "−10^9 ≤ A, B ≤ 10^9 (kết quả cần long long)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "180 -715\n",
+      "output": "-535\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "-832 -64\n",
+      "output": "-896\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "180 -715\n",
+      "output": "-535\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "-832 -64\n",
+      "output": "-896\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "-535 509\n",
+      "output": "-26\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "-209 104\n",
+      "output": "-105\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "-377 376\n",
+      "output": "-1\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "765 884\n",
+      "output": "1649\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "873 112\n",
+      "output": "985\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "179836 -714688\n",
+      "output": "-534852\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "-831521 -64021\n",
+      "output": "-895542\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "-534597 509071\n",
+      "output": "-25526\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "-208789 103812\n",
+      "output": "-104977\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "-376760 375627\n",
+      "output": "-1133\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "764903 883801\n",
+      "output": "1648704\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "873037 112407\n",
+      "output": "985444\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "179835886 -714687905\n",
+      "output": "-534852019\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "-831520963 -64020635\n",
+      "output": "-895541598\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "-534596602 509070676\n",
+      "output": "-25525926\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "-208789094 103812005\n",
+      "output": "-104977089\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "-376759858 375626839\n",
+      "output": "-1133019\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "764902162 883800418\n",
+      "output": "1648702580\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "873036311 112407418\n",
+      "output": "985443729\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "Đọc 2 số bằng `cin >> a >> b;` rồi in `a + b`.",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Tắt sync để tăng tốc I/O: `ios_base::sync_with_stdio(false); cin.tie(nullptr);`",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Dùng `long long` thay `int` — tổng 2 số cỡ 10^9 có thể vượt giới hạn `int` (~2·10^9).",
+      "starCost": 1,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "Bài giới thiệu I/O và `freopen`. Đọc a, b kiểu `long long`, in `a + b`. Luôn dùng `long long` khi không chắc chắn giá trị có vượt 10^9 hay không.",
+  "solutionSketch": "cin >> a >> b; cout << a + b;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

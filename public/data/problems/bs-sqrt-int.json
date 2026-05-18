@@ -1,0 +1,213 @@
+{
+  "slug": "bs-sqrt-int",
+  "title": "Căn bậc 2 nguyên",
+  "titleEn": "Integer square root",
+  "module": "roadmap",
+  "topicId": "binary-search",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S3"
+  ],
+  "difficulty": 3,
+  "maxStars": 3,
+  "tags": [
+    "binary-search",
+    "sqrt"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho số nguyên không âm N. Tìm ⌊√N⌋ — số nguyên không âm K lớn nhất sao cho K² ≤ N. Bài luyện binary search trên K. Không dùng sqrt() vì độ chính xác float (đặc biệt với N gần 10^{18}).",
+  "vnPattern": "Sqrt nguyên — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "INT.INP",
+    "outputFile": "INT.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "0 ≤ N ≤ 10^6"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "0 ≤ N ≤ 10^{12}"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "0 ≤ N ≤ 10^{18}"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "852379\n",
+      "output": "923\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "424748\n",
+      "output": "651\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "852379\n",
+      "output": "923\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "424748\n",
+      "output": "651\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "360920\n",
+      "output": "600\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "690982\n",
+      "output": "831\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "391275\n",
+      "output": "625\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "558987\n",
+      "output": "747\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "126913\n",
+      "output": "356\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "853781789\n",
+      "output": "29219\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "425178539\n",
+      "output": "20619\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "361481385\n",
+      "output": "19012\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "691673537\n",
+      "output": "26299\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "392587770\n",
+      "output": "19813\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "559610955\n",
+      "output": "23656\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "127963586\n",
+      "output": "11312\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "852378307781789686\n",
+      "output": "923243363\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "424747722178539641\n",
+      "output": "651726723\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "360919776481385406\n",
+      "output": "600765991\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "690981843673537343\n",
+      "output": "831253176\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "391275247587770260\n",
+      "output": "625519981\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "558987310610955841\n",
+      "output": "747654539\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "126912918963586268\n",
+      "output": "356248395\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Binary search K trong [0, 10^9].",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "check: K² ≤ N (dùng long long cho K · K).",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Tránh sqrt() vì sai số float; kết quả có thể lệch 1.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Binary search trên K, O(log N).",
+  "solutionSketch": "long long lo = 0, hi = 2000000000LL; while (lo < hi) { long long mid = (lo + hi + 1) / 2; if (mid * mid <= N) lo = mid; else hi = mid - 1; } cout << lo;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}
