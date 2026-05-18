@@ -616,7 +616,159 @@
           "url": "https://cp-algorithms.com/data_structures/sparse-table.html"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "arr2d-sumall",
+          "title": "Tổng các phần tử ma trận",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "sum"
+          ]
+        },
+        {
+          "slug": "arr2d-rowsum",
+          "title": "Tổng từng hàng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "sum"
+          ]
+        },
+        {
+          "slug": "arr2d-diagsum",
+          "title": "Tổng đường chéo chính + phụ",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "diagonal"
+          ]
+        },
+        {
+          "slug": "arr2d-transpose",
+          "title": "Chuyển vị ma trận",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "transpose"
+          ]
+        },
+        {
+          "slug": "arr2d-rotate90",
+          "title": "Xoay ma trận 90 độ",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "rotate"
+          ]
+        },
+        {
+          "slug": "arr2d-spiral",
+          "title": "In ma trận xoắn ốc",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "spiral"
+          ]
+        },
+        {
+          "slug": "arr2d-findpath",
+          "title": "Đường đi không bị chặn",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "bfs",
+            "grid"
+          ]
+        },
+        {
+          "slug": "arr2d-maxsubrect",
+          "title": "Đếm ô có giá trị lớn hơn ngưỡng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "count"
+          ]
+        },
+        {
+          "slug": "arr2d-saddle",
+          "title": "Điểm yên ngựa",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "minmax"
+          ]
+        },
+        {
+          "slug": "arr2d-subgrid-sum",
+          "title": "Tổng tam giác con (góc trên trái)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "array-2d",
+            "prefix-sum"
+          ]
+        }
+      ],
       "theory": "// Prefix sum 2D — truy vấn tổng vùng chữ nhật O(1)\nvector<vector<long long>> S(n + 1, vector<long long>(m + 1, 0));\nfor (int i = 1; i <= n; i++)\n    for (int j = 1; j <= m; j++)\n        S[i][j] = S[i-1][j] + S[i][j-1] - S[i-1][j-1] + a[i][j];\nauto query = [&](int r1, int c1, int r2, int c2) {\n    return S[r2][c2] - S[r1-1][c2] - S[r2][c1-1] + S[r1-1][c1-1];\n};",
       "theorySnippet": "// Prefix sum 2D — truy vấn tổng vùng chữ nhật O(1)\nvector<vector<long long>> S(n + 1, vector<long long>(m + 1, 0));\nfor (int i = 1; i <= n; i++)\n    for (int j = 1; j <= m; j++)\n        S[i][j] = S[i-1][j] + S[i][j-1] - S[i-1][j-1] + a[i][j];\nauto query = [&](int r1, int c1, int r2, int c2) {\n    return S[r2][c2] - S[r1-1][c2] - S[r2][c1-1] + S[r1-1][c1-1];\n};",
       "referenceProblem": [
