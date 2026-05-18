@@ -1,0 +1,44 @@
+{
+  "slug": "prefix-sum-range",
+  "title": "Truy vấn tổng đoạn (tiền tố)",
+  "module": "learning",
+  "difficulty": 2,
+  "maxStars": 5.0,
+  "tags": ["prefix-sum", "array", "queries"],
+  "source": "ChuyenTin",
+  "statement": "Cho mảng $a_1, a_2, \\ldots, a_n$. Có $Q$ truy vấn dạng $(l, r)$: in ra tổng $a_l + a_{l+1} + \\ldots + a_r$ (chỉ số tính từ 1).\n\n## Input\n- Dòng 1: hai số nguyên $n$, $Q$ ($1 \\le n, Q \\le 10^5$).\n- Dòng 2: $n$ số nguyên, $|a_i| \\le 10^9$.\n- $Q$ dòng tiếp theo, mỗi dòng hai số $l, r$ ($1 \\le l \\le r \\le n$).\n\n## Output\nIn $Q$ dòng, mỗi dòng là kết quả của một truy vấn.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$n, Q \\le 1000$",
+      "hint": { "id": "h1", "content": "Trâu: với mỗi truy vấn, duyệt từ $l$ tới $r$ cộng dồn. $O(N \\times Q)$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 70,
+      "constraint": "$n, Q \\le 10^5$",
+      "hint": { "id": "h2", "content": "Tiền xử lý: `pref[i] = a[1] + ... + a[i]`. Truy vấn: `pref[r] - pref[l-1]`. Lưu ý kiểu `long long`.", "starCost": 0.5 }
+    }
+  ],
+  "samples": [
+    { "input": "5 3\n1 2 3 4 5\n1 5\n2 4\n3 3\n", "output": "15\n9\n3\n", "explanation": "Tổng [1..5]=15, [2..4]=9, [3..3]=3." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "5 3\n1 2 3 4 5\n1 5\n2 4\n3 3\n", "output": "15\n9\n3\n" },
+    { "id": 2, "subtaskId": "st1", "input": "4 2\n-1 -2 -3 -4\n1 4\n2 3\n", "output": "-10\n-5\n" },
+    { "id": 3, "subtaskId": "st2", "input": "6 4\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\n1 6\n1 1\n3 5\n2 4\n", "output": "6000000000\n1000000000\n3000000000\n3000000000\n" },
+    { "id": 4, "subtaskId": "st2", "input": "1 1\n42\n1 1\n", "output": "42\n" }
+  ],
+  "expectedAlgorithm": "Mảng tiền tố (prefix sum)",
+  "expectedComplexity": "O(N + Q)",
+  "whyThisAlgorithm": "Truy vấn tổng đoạn nhiều lần → tiền xử lý 1 lần để mỗi truy vấn O(1).",
+  "bruteForceSubtask": "Subtask 1 — duyệt thẳng vẫn dưới $10^6$ phép.",
+  "optimizedSubtask": "Subtask 2 — bắt buộc dùng prefix sum.",
+  "editorial": "Khởi tạo `pref[0] = 0`, `pref[i] = pref[i-1] + a[i]`. Truy vấn $(l, r)$ trả về `pref[r] - pref[l-1]`. Dùng `long long`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int n, q; cin >> n >> q;\n    vector<long long> pref(n + 1, 0);\n    for (int i = 1; i <= n; i++) { long long x; cin >> x; pref[i] = pref[i-1] + x; }\n    while (q--) {\n        int l, r; cin >> l >> r;\n        cout << pref[r] - pref[l-1] << '\\n';\n    }\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 65536
+}

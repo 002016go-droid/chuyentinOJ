@@ -1,0 +1,46 @@
+{
+  "slug": "gcd-recursion",
+  "title": "Ước chung lớn nhất (đệ quy)",
+  "module": "learning",
+  "difficulty": 1,
+  "maxStars": 5.0,
+  "tags": ["recursion", "number-theory", "basic"],
+  "source": "ChuyenTin",
+  "statement": "Cho hai số nguyên dương $a, b$. Tính $\\gcd(a, b)$ bằng đệ quy Euclid.\n\n## Input\n- Dòng 1: hai số nguyên dương $a, b$ ($1 \\le a, b \\le 10^{18}$).\n\n## Output\nIn ra $\\gcd(a, b)$.\n\n## Lưu ý\nVới $a, b$ tới $10^{18}$, hãy dùng `unsigned long long` hoặc `long long`. Thuật toán Euclid chỉ chạy $O(\\log \\min(a,b))$ bước.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 40,
+      "constraint": "$a, b \\le 10^6$",
+      "hint": { "id": "h1", "content": "Công thức Euclid: $\\gcd(a, b) = \\gcd(b, a \\bmod b)$, với $\\gcd(a, 0) = a$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 60,
+      "constraint": "$a, b \\le 10^{18}$",
+      "hint": { "id": "h2", "content": "Dùng `long long` (hoặc `unsigned long long`) cho mọi biến để tránh tràn số.", "starCost": 0.4 }
+    }
+  ],
+  "samples": [
+    { "input": "12 18\n", "output": "6\n", "explanation": "gcd(12, 18) = 6" },
+    { "input": "1000000000000000000 999999999999999999\n", "output": "1\n", "explanation": "Hai số nguyên liên tiếp luôn có gcd = 1." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "12 18\n", "output": "6\n" },
+    { "id": 2, "subtaskId": "st1", "input": "100 25\n", "output": "25\n" },
+    { "id": 3, "subtaskId": "st1", "input": "17 13\n", "output": "1\n" },
+    { "id": 4, "subtaskId": "st2", "input": "1000000000000000000 500000000000000000\n", "output": "500000000000000000\n" },
+    { "id": 5, "subtaskId": "st2", "input": "1000000000000000000 999999999999999999\n", "output": "1\n" }
+  ],
+  "expectedAlgorithm": "Euclidean GCD",
+  "expectedComplexity": "O(log min(a, b))",
+  "whyThisAlgorithm": "Phép modulo giảm bài toán còn 1 cặp nhỏ hơn → đệ quy hội tụ rất nhanh.",
+  "bruteForceSubtask": "Subtask 1 — kể cả viết tay vòng for nhỏ vẫn qua.",
+  "optimizedSubtask": "Subtask 2 — phải dùng kiểu 64-bit.",
+  "editorial": "Hàm đệ quy: nếu $b = 0$ trả về $a$, ngược lại trả về $\\gcd(b, a \\bmod b)$. STL: `__gcd(a, b)` hoặc C++17 `std::gcd`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nlong long gcd(long long a, long long b){ return b == 0 ? a : gcd(b, a % b); }\nint main(){\n    long long a, b; cin >> a >> b;\n    cout << gcd(a, b) << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 65536
+}
