@@ -1,0 +1,44 @@
+{
+  "slug": "bitmask-tsp",
+  "title": "Người du lịch (bitmask TSP)",
+  "module": "learning",
+  "difficulty": 4,
+  "maxStars": 7.0,
+  "tags": ["dp", "bitmask", "tsp"],
+  "source": "ChuyenTin",
+  "statement": "Cho $N$ thành phố và ma trận chi phí $c_{i,j}$ ($0 \\le c_{i,j} \\le 10^6$). Bắt đầu tại thành phố $1$, đi qua mỗi thành phố đúng 1 lần rồi quay về $1$. Tìm tổng chi phí nhỏ nhất.\n\n## Input\n- Dòng 1: $N$ ($1 \\le N \\le 16$).\n- $N$ dòng tiếp theo, mỗi dòng $N$ số cách nhau bằng dấu cách (ma trận chi phí, không đảm bảo đối xứng, đường chéo bằng 0).\n\n## Output\nIn ra tổng chi phí tối thiểu.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$N \\le 8$",
+      "hint": { "id": "h1", "content": "Có thể duyệt mọi hoán vị $O(N!)$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 70,
+      "constraint": "$N \\le 16$",
+      "hint": { "id": "h2", "content": "DP `dp[mask][u]` = chi phí ít nhất khi đang ở $u$ và đã thăm tập $mask$.", "starCost": 0.6 }
+    }
+  ],
+  "samples": [
+    { "input": "4\n0 10 15 20\n10 0 35 25\n15 35 0 30\n20 25 30 0\n", "output": "80\n", "explanation": "Lộ trình 1 → 2 → 4 → 3 → 1: 10 + 25 + 30 + 15 = 80." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "4\n0 10 15 20\n10 0 35 25\n15 35 0 30\n20 25 30 0\n", "output": "80\n" },
+    { "id": 2, "subtaskId": "st1", "input": "1\n0\n", "output": "0\n" },
+    { "id": 3, "subtaskId": "st1", "input": "2\n0 5\n7 0\n", "output": "12\n" },
+    { "id": 4, "subtaskId": "st2", "input": "5\n0 1 2 3 4\n1 0 1 2 3\n2 1 0 1 2\n3 2 1 0 1\n4 3 2 1 0\n", "output": "8\n" }
+  ],
+  "expectedAlgorithm": "Bitmask DP (TSP)",
+  "expectedComplexity": "O(2^N · N^2)",
+  "whyThisAlgorithm": "Trạng thái cần nhớ là tập thành phố đã thăm + đỉnh hiện tại, dùng bitmask để biểu diễn tập.",
+  "bruteForceSubtask": "Subtask 1 — $N \\le 8$ thì $8! = 40320$ hoán vị OK.",
+  "optimizedSubtask": "Subtask 2 — phải DP bitmask, $2^{16} \\cdot 16^2 \\approx 1.7 \\cdot 10^7$.",
+  "editorial": "Khởi tạo `dp[1][0] = 0`. Với mỗi `mask` đã chứa 0, mỗi `u` trong `mask`, mỗi `v` không trong `mask`: `dp[mask | (1<<v)][v] = min(dp[mask | (1<<v)][v], dp[mask][u] + c[u][v])`. Đáp án = `min(dp[full][u] + c[u][0])`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    ios_base::sync_with_stdio(false); cin.tie(NULL);\n    int n; cin >> n;\n    vector<vector<int>> c(n, vector<int>(n));\n    for (auto &row : c) for (auto &x : row) cin >> x;\n    if (n == 1) { cout << 0 << '\\n'; return 0; }\n    const long long INF = LLONG_MAX / 4;\n    vector<vector<long long>> dp(1 << n, vector<long long>(n, INF));\n    dp[1][0] = 0;\n    for (int mask = 1; mask < (1 << n); mask++)\n        for (int u = 0; u < n; u++) if (mask & (1 << u) && dp[mask][u] < INF)\n            for (int v = 0; v < n; v++) if (!(mask & (1 << v)))\n                dp[mask | (1 << v)][v] = min(dp[mask | (1 << v)][v], dp[mask][u] + c[u][v]);\n    long long ans = INF;\n    int full = (1 << n) - 1;\n    for (int u = 1; u < n; u++) ans = min(ans, dp[full][u] + c[u][0]);\n    cout << ans << '\\n';\n}",
+  "timeLimitMs": 2000,
+  "memoryLimitKB": 262144
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "graph-degree",
+  "title": "Bậc của đỉnh",
+  "module": "learning",
+  "difficulty": 1,
+  "maxStars": 5.0,
+  "tags": ["graph", "basic"],
+  "source": "ChuyenTin",
+  "statement": "Cho đồ thị vô hướng $N$ đỉnh, $M$ cạnh. Với mỗi đỉnh từ $1$ đến $N$, in ra bậc (số cạnh kề) của nó.\n\n## Input\n- Dòng 1: hai số nguyên $N, M$ ($1 \\le N \\le 10^5$, $0 \\le M \\le 2 \\times 10^5$).\n- $M$ dòng tiếp theo, mỗi dòng hai số $u, v$ ($1 \\le u, v \\le N$, $u \\ne v$): có một cạnh nối $u, v$.\n\n## Output\nIn $N$ số trên một dòng, cách nhau bằng dấu cách: bậc của đỉnh $1, 2, \\ldots, N$.\n\n## Lưu ý\nKhông có cạnh trùng lặp. Khuyên dùng fast I/O.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 50,
+      "constraint": "$N, M \\le 1000$",
+      "hint": { "id": "h1", "content": "Mỗi cạnh $(u, v)$ tăng bậc của cả $u$ và $v$ lên 1.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 50,
+      "constraint": "$N \\le 10^5$, $M \\le 2 \\times 10^5$",
+      "hint": { "id": "h2", "content": "Dùng `vector<int> deg(N+1, 0)`; đọc cạnh và `deg[u]++; deg[v]++;`.", "starCost": 0.3 }
+    }
+  ],
+  "samples": [
+    { "input": "4 3\n1 2\n2 3\n3 4\n", "output": "1 2 2 1\n", "explanation": "1-2-3-4 là đường thẳng: hai đầu bậc 1, hai trong bậc 2." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "4 3\n1 2\n2 3\n3 4\n", "output": "1 2 2 1\n" },
+    { "id": 2, "subtaskId": "st1", "input": "5 0\n", "output": "0 0 0 0 0\n" },
+    { "id": 3, "subtaskId": "st1", "input": "3 3\n1 2\n2 3\n1 3\n", "output": "2 2 2\n" },
+    { "id": 4, "subtaskId": "st2", "input": "6 5\n1 2\n1 3\n1 4\n1 5\n1 6\n", "output": "5 1 1 1 1 1\n" }
+  ],
+  "expectedAlgorithm": "Đếm cạnh kề",
+  "expectedComplexity": "O(N + M)",
+  "whyThisAlgorithm": "Mỗi cạnh chỉ ảnh hưởng đến hai đỉnh — tăng đếm là đủ.",
+  "bruteForceSubtask": "Subtask 1 — chấp nhận ma trận kề.",
+  "optimizedSubtask": "Subtask 2 — chỉ cần mảng đếm bậc.",
+  "editorial": "Khởi tạo `deg[1..n] = 0`. Mỗi cạnh đọc vào tăng `deg[u]++` và `deg[v]++`. In `deg[1..n]`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int n, m; cin >> n >> m;\n    vector<int> deg(n + 1, 0);\n    for (int i = 0; i < m; i++) { int u, v; cin >> u >> v; deg[u]++; deg[v]++; }\n    for (int i = 1; i <= n; i++) cout << deg[i] << (i == n ? '\\n' : ' ');\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 65536
+}

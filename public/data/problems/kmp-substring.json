@@ -1,0 +1,46 @@
+{
+  "slug": "kmp-substring",
+  "title": "Tìm chuỗi con (KMP)",
+  "module": "learning",
+  "difficulty": 3,
+  "maxStars": 6.0,
+  "tags": ["string", "kmp"],
+  "source": "ChuyenTin",
+  "statement": "Cho chuỗi $S$ và chuỗi mẫu $P$. Đếm số lần $P$ xuất hiện trong $S$ (cho phép trùng vị trí kề nhau).\n\n## Input\n- Dòng 1: chuỗi $S$ ($1 \\le |S| \\le 10^6$, chỉ gồm chữ in thường).\n- Dòng 2: chuỗi $P$ ($1 \\le |P| \\le 10^5$, chỉ gồm chữ in thường).\n\n## Output\nIn ra một số nguyên — số lần $P$ xuất hiện trong $S$.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$|S| \\le 5000$, $|P| \\le 1000$",
+      "hint": { "id": "h1", "content": "Brute force: duyệt mọi vị trí bắt đầu trong $S$, so sánh từng ký tự. $O(|S| \\cdot |P|)$.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 70,
+      "constraint": "$|S| \\le 10^6$, $|P| \\le 10^5$",
+      "hint": { "id": "h2", "content": "Tính `pi[]` (hàm prefix) trên $P + \\#+ S$, rồi đếm vị trí có `pi[i] == |P|`.", "starCost": 0.5 }
+    }
+  ],
+  "samples": [
+    { "input": "ababab\nab\n", "output": "3\n", "explanation": "'ab' xuất hiện tại vị trí 0, 2, 4." },
+    { "input": "aaaa\naa\n", "output": "3\n", "explanation": "Xuất hiện 3 lần ở vị trí 0,1,2 (cho phép gối nhau)." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "ababab\nab\n", "output": "3\n" },
+    { "id": 2, "subtaskId": "st1", "input": "aaaa\naa\n", "output": "3\n" },
+    { "id": 3, "subtaskId": "st1", "input": "hello\nworld\n", "output": "0\n" },
+    { "id": 4, "subtaskId": "st2", "input": "abcabcabcabc\nabcabc\n", "output": "3\n" },
+    { "id": 5, "subtaskId": "st2", "input": "a\na\n", "output": "1\n" }
+  ],
+  "expectedAlgorithm": "KMP (prefix-function)",
+  "expectedComplexity": "O(|S| + |P|)",
+  "whyThisAlgorithm": "Khi không khớp ta nhảy theo `pi` thay vì lùi về đầu — tránh so trùng.",
+  "bruteForceSubtask": "Subtask 1 — $O(|S| \\cdot |P|)$ chạy được.",
+  "optimizedSubtask": "Subtask 2 — phải dùng KMP/Z-function.",
+  "editorial": "Xây `pi[]` cho chuỗi `P + '#' + S`. Đếm số vị trí $i > |P|$ thoả `pi[i] == |P|`.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    ios_base::sync_with_stdio(false); cin.tie(NULL);\n    string s, p; cin >> s >> p;\n    string t = p + '#' + s;\n    int n = (int)t.size();\n    vector<int> pi(n, 0);\n    for (int i = 1; i < n; i++) {\n        int j = pi[i-1];\n        while (j > 0 && t[i] != t[j]) j = pi[j-1];\n        if (t[i] == t[j]) j++;\n        pi[i] = j;\n    }\n    long long cnt = 0;\n    for (int i = (int)p.size() + 1; i < n; i++) if (pi[i] == (int)p.size()) cnt++;\n    cout << cnt << '\\n';\n}",
+  "timeLimitMs": 1500,
+  "memoryLimitKB": 131072
+}

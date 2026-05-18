@@ -1,0 +1,46 @@
+{
+  "slug": "tree-diameter",
+  "title": "Đường kính cây (Tree DP)",
+  "module": "learning",
+  "difficulty": 3,
+  "maxStars": 6.0,
+  "tags": ["tree", "dp", "dfs"],
+  "source": "ChuyenTin",
+  "statement": "Cho cây vô hướng $N$ đỉnh ($N-1$ cạnh). Tính độ dài đường đi dài nhất giữa hai đỉnh bất kỳ trên cây (số cạnh).\n\n## Input\n- Dòng 1: $N$ ($1 \\le N \\le 10^5$).\n- $N-1$ dòng tiếp theo, mỗi dòng hai số $u, v$.\n\n## Output\nIn ra đường kính (một số nguyên).",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$N \\le 2000$",
+      "hint": { "id": "h1", "content": "BFS từ mỗi đỉnh để tìm khoảng cách xa nhất, lấy max.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 70,
+      "constraint": "$N \\le 10^5$",
+      "hint": { "id": "h2", "content": "Hai DFS: từ đỉnh bất kỳ tìm $u$ xa nhất, từ $u$ tìm $v$ xa nhất → khoảng cách $u, v$ là đường kính.", "starCost": 0.5 }
+    }
+  ],
+  "samples": [
+    { "input": "5\n1 2\n2 3\n2 4\n4 5\n", "output": "3\n", "explanation": "Đường dài nhất: 3 → 2 → 4 → 5, dài 3 cạnh." },
+    { "input": "1\n", "output": "0\n", "explanation": "Cây 1 đỉnh, đường kính = 0." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "5\n1 2\n2 3\n2 4\n4 5\n", "output": "3\n" },
+    { "id": 2, "subtaskId": "st1", "input": "1\n", "output": "0\n" },
+    { "id": 3, "subtaskId": "st1", "input": "4\n1 2\n2 3\n3 4\n", "output": "3\n" },
+    { "id": 4, "subtaskId": "st2", "input": "6\n1 2\n1 3\n1 4\n4 5\n4 6\n", "output": "4\n" },
+    { "id": 5, "subtaskId": "st2", "input": "2\n1 2\n", "output": "1\n" }
+  ],
+  "expectedAlgorithm": "Two DFS / Tree DP",
+  "expectedComplexity": "O(N)",
+  "whyThisAlgorithm": "Đỉnh xa nhất từ một đỉnh bất kỳ luôn là một đầu của đường kính.",
+  "bruteForceSubtask": "Subtask 1 — BFS từ mỗi đỉnh.",
+  "optimizedSubtask": "Subtask 2 — đúng hai lần BFS/DFS.",
+  "editorial": "BFS từ đỉnh 1 tìm $u$ xa nhất. BFS từ $u$ tìm $v$ xa nhất. Khoảng cách $(u, v)$ là đường kính. Tránh đệ quy sâu khi cây hình xích — dùng BFS lặp.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    ios_base::sync_with_stdio(false); cin.tie(NULL);\n    int n; cin >> n;\n    vector<vector<int>> g(n + 1);\n    for (int i = 0; i < n - 1; i++) { int u, v; cin >> u >> v; g[u].push_back(v); g[v].push_back(u); }\n    auto bfs = [&](int s){\n        vector<int> d(n + 1, -1); d[s] = 0;\n        queue<int> q; q.push(s);\n        int far = s;\n        while (!q.empty()) { int u = q.front(); q.pop(); if (d[u] > d[far]) far = u; for (int v : g[u]) if (d[v] == -1) { d[v] = d[u] + 1; q.push(v); } }\n        return make_pair(far, d[far]);\n    };\n    auto [a, _] = bfs(1);\n    auto [b, dist] = bfs(a);\n    cout << dist << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 131072
+}

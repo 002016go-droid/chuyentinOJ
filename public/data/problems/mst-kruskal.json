@@ -1,0 +1,44 @@
+{
+  "slug": "mst-kruskal",
+  "title": "Cây khung nhỏ nhất (Kruskal)",
+  "module": "learning",
+  "difficulty": 3,
+  "maxStars": 6.0,
+  "tags": ["graph", "dsu", "mst", "kruskal"],
+  "source": "ChuyenTin",
+  "statement": "Cho đồ thị vô hướng có trọng số gồm $N$ đỉnh, $M$ cạnh, các đỉnh đánh số từ $1$. Hãy tính tổng trọng số của cây khung nhỏ nhất (MST). Bảo đảm đồ thị liên thông.\n\n## Input\n- Dòng 1: hai số nguyên $N, M$ ($2 \\le N \\le 10^5$, $N-1 \\le M \\le 2 \\times 10^5$).\n- $M$ dòng tiếp theo, mỗi dòng ba số $u, v, w$ ($1 \\le u, v \\le N$, $u \\ne v$, $1 \\le w \\le 10^9$).\n\n## Output\nIn ra một số nguyên duy nhất — tổng trọng số MST.",
+  "subtasks": [
+    {
+      "id": "st1",
+      "label": "Subtask 1",
+      "points": 30,
+      "constraint": "$N \\le 100$, $M \\le 1000$",
+      "hint": { "id": "h1", "content": "Sắp xếp cạnh theo trọng số tăng dần.", "starCost": 0.3 }
+    },
+    {
+      "id": "st2",
+      "label": "Subtask 2",
+      "points": 70,
+      "constraint": "$N \\le 10^5$, $M \\le 2 \\times 10^5$",
+      "hint": { "id": "h2", "content": "Dùng DSU (union-find) với path compression + union by rank để gộp tập sau mỗi cạnh chọn.", "starCost": 0.5 }
+    }
+  ],
+  "samples": [
+    { "input": "4 5\n1 2 1\n2 3 2\n3 4 3\n1 3 4\n2 4 5\n", "output": "6\n", "explanation": "Chọn cạnh (1,2)=1, (2,3)=2, (3,4)=3 → tổng = 6." }
+  ],
+  "testCases": [
+    { "id": 1, "subtaskId": "st1", "input": "4 5\n1 2 1\n2 3 2\n3 4 3\n1 3 4\n2 4 5\n", "output": "6\n" },
+    { "id": 2, "subtaskId": "st1", "input": "3 3\n1 2 10\n2 3 20\n1 3 5\n", "output": "15\n" },
+    { "id": 3, "subtaskId": "st2", "input": "5 6\n1 2 4\n1 3 3\n2 3 1\n2 4 5\n3 4 2\n4 5 7\n", "output": "13\n" },
+    { "id": 4, "subtaskId": "st2", "input": "2 1\n1 2 1000000000\n", "output": "1000000000\n" }
+  ],
+  "expectedAlgorithm": "Kruskal + DSU",
+  "expectedComplexity": "O(E log E)",
+  "whyThisAlgorithm": "Sắp xếp cạnh tăng dần rồi gộp tập — luôn cho cây khung tối thiểu (matroid).",
+  "bruteForceSubtask": "Subtask 1 — cho phép $O(E^2)$.",
+  "optimizedSubtask": "Subtask 2 — cần DSU chuẩn để gộp tập nhanh.",
+  "editorial": "Sắp xếp cạnh theo $w$ tăng dần. Duyệt từng cạnh; nếu hai đầu khác tập thì hợp tập và cộng $w$ vào kết quả. Dùng `long long` cho tổng.",
+  "referenceCpp": "#include <bits/stdc++.h>\nusing namespace std;\nstruct DSU { vector<int> par, rk; DSU(int n): par(n+1), rk(n+1, 0){ iota(par.begin(), par.end(), 0);} int find(int x){ return par[x]==x ? x : par[x]=find(par[x]); } bool uni(int a, int b){ a=find(a); b=find(b); if(a==b) return false; if(rk[a]<rk[b]) swap(a,b); par[b]=a; if(rk[a]==rk[b]) rk[a]++; return true; }};\nint main(){\n    ios_base::sync_with_stdio(false); cin.tie(NULL);\n    int n, m; cin >> n >> m;\n    vector<tuple<long long,int,int>> e(m);\n    for (auto &[w,u,v] : e) cin >> u >> v >> w;\n    sort(e.begin(), e.end());\n    DSU d(n); long long total = 0;\n    for (auto &[w,u,v] : e) if (d.uni(u, v)) total += w;\n    cout << total << '\\n';\n}",
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 65536
+}

@@ -17,5 +17,13 @@
   "dijkstra-classic",
   "dsu-friends",
   "segtree-range-sum",
-  "palindrome-check"
+  "palindrome-check",
+  "gcd-recursion",
+  "prefix-sum-range",
+  "graph-degree",
+  "mst-kruskal",
+  "bit-range-sum",
+  "kmp-substring",
+  "tree-diameter",
+  "bitmask-tsp"
 ]
