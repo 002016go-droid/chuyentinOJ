@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { getUsername, logout } from '../../lib/auth'
 import { classNames, deterministicAvatar } from '../../lib/utils'
 import { useJudgeStatus } from '../../hooks/useJudgeStatus'
+import { getJudge0Config, getJudgeMode } from '../../lib/judge0'
 
 interface NavItem {
   to: string
@@ -43,6 +44,28 @@ export function Navbar({
   const navigate = useNavigate()
   const [spin, setSpin] = useState(false)
   const judgeOnline = useJudgeStatus()
+  const judgeCfg = getJudge0Config()
+  const judgeMode = getJudgeMode(judgeCfg)
+  const judgeTooltip =
+    judgeOnline === null
+      ? 'Judge: đang kiểm tra…'
+      : judgeOnline
+        ? judgeMode === 'rapidapi'
+          ? 'Judge: RapidAPI online ✓'
+          : `Judge: Local online (${judgeCfg.url})`
+        : judgeMode === 'rapidapi'
+          ? judgeCfg.apiKey
+            ? 'Judge offline — key sai/hết quota, vào Cài đặt'
+            : 'Judge offline — chưa cấu hình API Key, vào Cài đặt'
+          : 'Judge offline — chạy `docker-compose up -d` hoặc đổi sang RapidAPI'
+  const judgeLabel =
+    judgeOnline === null
+      ? 'Judge…'
+      : judgeOnline
+        ? judgeMode === 'rapidapi'
+          ? 'Judge · RapidAPI'
+          : 'Judge · Local'
+        : 'Judge offline'
 
   useEffect(() => {
     if (!spin) return
@@ -133,15 +156,10 @@ export function Navbar({
           </kbd>
         </button>
 
-        <div
-          className="hidden md:flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--bg-surface)] px-2.5 py-1.5 text-xs"
-          title={
-            judgeOnline === null
-              ? 'Judge: đang kiểm tra...'
-              : judgeOnline
-                ? 'Judge online (localhost:2358)'
-                : 'Judge offline — chạy: docker-compose up -d'
-          }
+        <NavLink
+          to="/settings"
+          className="hidden md:flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--bg-surface)] px-2.5 py-1.5 text-xs hover:border-[var(--border-glow)]"
+          title={judgeTooltip}
         >
           <span
             className={classNames(
@@ -153,10 +171,8 @@ export function Navbar({
                   : 'offline',
             )}
           />
-          <span className="font-mono text-[var(--text-muted)]">
-            {judgeOnline === null ? 'Judge…' : judgeOnline ? 'Judge' : 'Judge offline'}
-          </span>
-        </div>
+          <span className="font-mono text-[var(--text-muted)]">{judgeLabel}</span>
+        </NavLink>
 
         <div className="flex items-center gap-2 border-l border-[var(--border)] pl-4">
           <img
