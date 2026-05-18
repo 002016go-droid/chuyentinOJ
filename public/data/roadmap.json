@@ -2661,7 +2661,74 @@
           "url": "https://cp-algorithms.com/data_structures/stack_queue_modification.html"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "mono-next-greater",
+          "title": "Phần tử lớn kế tiếp",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-largest-rect-hist",
+          "title": "Hình chữ nhật lớn nhất histogram",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-stock-span",
+          "title": "Stock span",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-trap-water",
+          "title": "Hứng nước mưa",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack"
+          ]
+        },
+        {
+          "slug": "mono-max-area-rect-binary",
+          "title": "Hình chữ nhật max trong ma trận 0/1",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-stack",
+            "dp"
+          ]
+        }
+      ],
       "theory": "// NGE — phần tử lớn hơn gần nhất bên phải\nstack<int> st;\nvector<int> nge(n, -1);\nfor (int i = n - 1; i >= 0; i--) {\n    while (!st.empty() && a[st.top()] <= a[i]) st.pop();\n    if (!st.empty()) nge[i] = st.top();\n    st.push(i);\n}",
       "theorySnippet": "// NGE — phần tử lớn hơn gần nhất bên phải\nstack<int> st;\nvector<int> nge(n, -1);\nfor (int i = n - 1; i >= 0; i--) {\n    while (!st.empty() && a[st.top()] <= a[i]) st.pop();\n    if (!st.empty()) nge[i] = st.top();\n    st.push(i);\n}",
       "referenceProblem": [
@@ -2704,7 +2771,76 @@
           "url": "https://cp-algorithms.com/data_structures/stack_queue_modification.html"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "mdq-window-max",
+          "title": "Max trong cửa sổ trượt",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque"
+          ]
+        },
+        {
+          "slug": "mdq-window-min",
+          "title": "Min trong cửa sổ trượt",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque"
+          ]
+        },
+        {
+          "slug": "mdq-shortest-subarray-sum",
+          "title": "Đoạn ngắn nhất tổng ≥ S",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque",
+            "prefix-sum"
+          ]
+        },
+        {
+          "slug": "mdq-dp-window",
+          "title": "DP với cửa sổ trượt",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque",
+            "dp"
+          ]
+        },
+        {
+          "slug": "mdq-max-sum-len-le-k",
+          "title": "Tổng đoạn lớn nhất độ dài ≤ K",
+          "tier": "T2",
+          "skills": [
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "monotonic-deque",
+            "prefix-sum"
+          ]
+        }
+      ],
       "theory": "// Sliding window max — cửa sổ K\ndeque<int> dq;\nfor (int r = 0; r < n; r++) {\n    while (!dq.empty() && a[dq.back()] <= a[r]) dq.pop_back();\n    dq.push_back(r);\n    if (dq.front() <= r - k) dq.pop_front();\n    if (r >= k - 1) cout << a[dq.front()] << \" \";\n}",
       "theorySnippet": "// Sliding window max — cửa sổ K\ndeque<int> dq;\nfor (int r = 0; r < n; r++) {\n    while (!dq.empty() && a[dq.back()] <= a[r]) dq.pop_back();\n    dq.push_back(r);\n    if (dq.front() <= r - k) dq.pop_front();\n    if (r >= k - 1) cout << a[dq.front()] << \" \";\n}",
       "referenceProblem": [
@@ -2745,7 +2881,82 @@
           "url": "https://wiki.vnoi.info/algo/data-structures/disjoint-set"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "dsu-basic",
+          "title": "DSU cơ bản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu"
+          ]
+        },
+        {
+          "slug": "dsu-component-count",
+          "title": "Đếm thành phần liên thông",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "graph"
+          ]
+        },
+        {
+          "slug": "dsu-mst-kruskal",
+          "title": "MST Kruskal",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "mst"
+          ]
+        },
+        {
+          "slug": "dsu-friend-circle",
+          "title": "Vòng tròn bạn bè",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "count"
+          ]
+        },
+        {
+          "slug": "dsu-size-largest",
+          "title": "Nhóm bạn lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S4"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dsu",
+            "size"
+          ]
+        }
+      ],
       "theory": "vector<int> par(n + 1), rk(n + 1, 0);\niota(par.begin(), par.end(), 0);\nfunction<int(int)> find = [&](int x){ return par[x] == x ? x : par[x] = find(par[x]); };\nauto uni = [&](int a, int b){\n    a = find(a); b = find(b);\n    if (a == b) return false;\n    if (rk[a] < rk[b]) swap(a, b);\n    par[b] = a;\n    if (rk[a] == rk[b]) rk[a]++;\n    return true;\n};",
       "theorySnippet": "vector<int> par(n + 1), rk(n + 1, 0);\niota(par.begin(), par.end(), 0);\nfunction<int(int)> find = [&](int x){ return par[x] == x ? x : par[x] = find(par[x]); };\nauto uni = [&](int a, int b){\n    a = find(a); b = find(b);\n    if (a == b) return false;\n    if (rk[a] < rk[b]) swap(a, b);\n    par[b] = a;\n    if (rk[a] == rk[b]) rk[a]++;\n    return true;\n};",
       "referenceProblem": [
