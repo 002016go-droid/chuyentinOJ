@@ -1,0 +1,214 @@
+{
+  "slug": "mock-n-queens",
+  "title": "N quân hậu",
+  "titleEn": "N queens",
+  "module": "roadmap",
+  "topicId": "mock-exam",
+  "tier": "T2",
+  "skills": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "difficulty": 6,
+  "maxStars": 3,
+  "tags": [
+    "mock",
+    "backtracking"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Đếm số cách đặt N quân hậu lên bàn cờ N × N sao cho không có 2 quân hậu nào tấn công lẫn nhau (đôi một khác hàng, cột, đường chéo). Backtracking theo từng hàng; dùng mảng đánh dấu cột, chéo chính, chéo phụ.",
+  "vnPattern": "N-queens — đề chuyên Tin lớp 11.",
+  "fileIO": {
+    "inputFile": "QUEENS.INP",
+    "outputFile": "QUEENS.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 6"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 8"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 10"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "5\n",
+      "output": "10\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "2\n",
+      "output": "0\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "5\n",
+      "output": "10\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "2\n",
+      "output": "0\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "3\n",
+      "output": "0\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "4\n",
+      "output": "2\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "5\n",
+      "output": "10\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "1\n",
+      "output": "1\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "2\n",
+      "output": "0\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "8\n",
+      "output": "92\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "5\n",
+      "output": "10\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "6\n",
+      "output": "4\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "7\n",
+      "output": "40\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "7\n",
+      "output": "40\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "5\n",
+      "output": "10\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "5\n",
+      "output": "10\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "10\n",
+      "output": "724\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "7\n",
+      "output": "40\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "8\n",
+      "output": "92\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "9\n",
+      "output": "352\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "9\n",
+      "output": "352\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "7\n",
+      "output": "40\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "7\n",
+      "output": "40\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Đặt theo hàng.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "3 mảng đánh dấu cột, chéo.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Backtrack.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Backtracking N-queens.",
+  "solutionSketch": "rec(row): if row==n: ++cnt; for c: nếu ok: đánh dấu; rec(row+1); bỏ dấu;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

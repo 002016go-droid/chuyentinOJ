@@ -4101,7 +4101,171 @@
         "greedy"
       ],
       "resources": [],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "mock-frog-jump",
+          "title": "Ếch nhảy bậc",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "dp"
+          ]
+        },
+        {
+          "slug": "mock-n-queens",
+          "title": "N quân hậu",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "backtracking"
+          ]
+        },
+        {
+          "slug": "mock-bracket-balance",
+          "title": "Dãy ngoặc cân đối",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "stack"
+          ]
+        },
+        {
+          "slug": "mock-xor-pair",
+          "title": "XOR cặp lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "xor",
+            "pair"
+          ]
+        },
+        {
+          "slug": "mock-unique-digits",
+          "title": "Số có chữ số phân biệt",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "counting"
+          ]
+        },
+        {
+          "slug": "mock-divisor-pair",
+          "title": "Cặp chia hết",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "number-theory"
+          ]
+        },
+        {
+          "slug": "mock-max-gcd-pair",
+          "title": "GCD cặp lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "gcd"
+          ]
+        },
+        {
+          "slug": "mock-streak",
+          "title": "Chuỗi 1 dài nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "streak"
+          ]
+        },
+        {
+          "slug": "mock-knapsack-choose",
+          "title": "Túi đa năng",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "knapsack",
+            "dp"
+          ]
+        },
+        {
+          "slug": "mock-sort-partial",
+          "title": "In K phần tử nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "difficulty": 6,
+          "maxStars": 3,
+          "tags": [
+            "mock",
+            "sort",
+            "topk"
+          ]
+        }
+      ],
       "theory": "// Bộ template cuối khoá\n#include <bits/stdc++.h>\nusing namespace std;\n#define FOR(i, a, b) for (int i = (a); i < (b); i++)\nint main() {\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    ios_base::sync_with_stdio(false); cin.tie(nullptr);\n    // ... logic\n    return 0;\n}",
       "theorySnippet": "// Bộ template cuối khoá\n#include <bits/stdc++.h>\nusing namespace std;\n#define FOR(i, a, b) for (int i = (a); i < (b); i++)\nint main() {\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    ios_base::sync_with_stdio(false); cin.tie(nullptr);\n    // ... logic\n    return 0;\n}",
       "referenceProblem": []
