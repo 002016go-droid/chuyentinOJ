@@ -3004,7 +3004,78 @@
           "url": "https://wiki.vnoi.info/algo/graph-theory/breadth-first-search"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "bfs-distance",
+          "title": "Khoảng cách BFS",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "graph"
+          ]
+        },
+        {
+          "slug": "bfs-grid",
+          "title": "BFS trên lưới",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "grid"
+          ]
+        },
+        {
+          "slug": "bfs-multi-source",
+          "title": "BFS đa nguồn (đám cháy)",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "multi-source"
+          ]
+        },
+        {
+          "slug": "bfs-knight",
+          "title": "Quân mã đến đích",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "knight"
+          ]
+        },
+        {
+          "slug": "bfs-shortest-path-print",
+          "title": "In đường đi BFS",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "path-reconstruction"
+          ]
+        }
+      ],
       "theory": "// BFS trên grid 4 hướng\nint dx[] = {0,0,-1,1}, dy[] = {1,-1,0,0};\nvector<vector<int>> dist(n, vector<int>(m, -1));\nqueue<pair<int,int>> q;\nq.push({sx, sy}); dist[sx][sy] = 0;\nwhile (!q.empty()) {\n    auto [x, y] = q.front(); q.pop();\n    for (int k = 0; k < 4; k++) {\n        int nx = x + dx[k], ny = y + dy[k];\n        if (nx>=0 && nx<n && ny>=0 && ny<m && dist[nx][ny] == -1 && g[nx][ny] != '#') {\n            dist[nx][ny] = dist[x][y] + 1;\n            q.push({nx, ny});\n        }\n    }\n}",
       "theorySnippet": "// BFS trên grid 4 hướng\nint dx[] = {0,0,-1,1}, dy[] = {1,-1,0,0};\nvector<vector<int>> dist(n, vector<int>(m, -1));\nqueue<pair<int,int>> q;\nq.push({sx, sy}); dist[sx][sy] = 0;\nwhile (!q.empty()) {\n    auto [x, y] = q.front(); q.pop();\n    for (int k = 0; k < 4; k++) {\n        int nx = x + dx[k], ny = y + dy[k];\n        if (nx>=0 && nx<n && ny>=0 && ny<m && dist[nx][ny] == -1 && g[nx][ny] != '#') {\n            dist[nx][ny] = dist[x][y] + 1;\n            q.push({nx, ny});\n        }\n    }\n}",
       "referenceProblem": [
@@ -3053,7 +3124,78 @@
           "url": "https://wiki.vnoi.info/algo/graph-theory/depth-first-search"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "dfs-count-components",
+          "title": "Đếm thành phần liên thông (DFS)",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "components"
+          ]
+        },
+        {
+          "slug": "dfs-cycle-detect",
+          "title": "Phát hiện chu trình",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "cycle"
+          ]
+        },
+        {
+          "slug": "dfs-bipartite",
+          "title": "Đồ thị 2 phía",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "bipartite"
+          ]
+        },
+        {
+          "slug": "dfs-toposort",
+          "title": "Sắp xếp tô-pô",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "topo"
+          ]
+        },
+        {
+          "slug": "dfs-largest-component",
+          "title": "Thành phần lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dfs",
+            "size"
+          ]
+        }
+      ],
       "theory": "// Đếm thành phần liên thông + bipartite check\nvector<int> color(n + 1, -1);\nbool ok = true;\nfunction<void(int, int)> dfs = [&](int u, int c) {\n    color[u] = c;\n    for (int v : adj[u]) {\n        if (color[v] == -1) dfs(v, c ^ 1);\n        else if (color[v] == c) ok = false;\n    }\n};",
       "theorySnippet": "// Đếm thành phần liên thông + bipartite check\nvector<int> color(n + 1, -1);\nbool ok = true;\nfunction<void(int, int)> dfs = [&](int u, int c) {\n    color[u] = c;\n    for (int v : adj[u]) {\n        if (color[v] == -1) dfs(v, c ^ 1);\n        else if (color[v] == c) ok = false;\n    }\n};",
       "referenceProblem": [
@@ -3101,7 +3243,83 @@
           "url": "https://cp-algorithms.com/graph/dijkstra.html"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "sp-dijkstra-basic",
+          "title": "Dijkstra cơ bản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dijkstra",
+            "shortest-path"
+          ]
+        },
+        {
+          "slug": "sp-dijkstra-all",
+          "title": "Đường đi ngắn nhất tới mọi đỉnh",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dijkstra",
+            "sssp"
+          ]
+        },
+        {
+          "slug": "sp-grid-weighted",
+          "title": "Đường đi nhỏ nhất trên lưới",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "dijkstra",
+            "grid"
+          ]
+        },
+        {
+          "slug": "sp-zero-one-bfs",
+          "title": "0-1 BFS",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "bfs",
+            "deque"
+          ]
+        },
+        {
+          "slug": "sp-floyd-warshall",
+          "title": "Đường đi ngắn nhất Floyd",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 5,
+          "maxStars": 3,
+          "tags": [
+            "floyd",
+            "apsp"
+          ]
+        }
+      ],
       "theory": "priority_queue<pair<long long,int>, vector<pair<long long,int>>, greater<>> pq;\nvector<long long> dist(n + 1, LLONG_MAX);\ndist[s] = 0; pq.push({0, s});\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (d > dist[u]) continue;\n    for (auto [v, w] : adj[u]) if (dist[u] + w < dist[v]) {\n        dist[v] = dist[u] + w;\n        pq.push({dist[v], v});\n    }\n}",
       "theorySnippet": "priority_queue<pair<long long,int>, vector<pair<long long,int>>, greater<>> pq;\nvector<long long> dist(n + 1, LLONG_MAX);\ndist[s] = 0; pq.push({0, s});\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (d > dist[u]) continue;\n    for (auto [v, w] : adj[u]) if (dist[u] + w < dist[v]) {\n        dist[v] = dist[u] + w;\n        pq.push({dist[v], v});\n    }\n}",
       "referenceProblem": [
