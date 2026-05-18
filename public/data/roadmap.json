@@ -3726,7 +3726,87 @@
         "dp-intro"
       ],
       "resources": [],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "grid-path-count",
+          "title": "Đếm đường đi lưới",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid"
+          ]
+        },
+        {
+          "slug": "grid-min-sum-path",
+          "title": "Đường đi tổng nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "min"
+          ]
+        },
+        {
+          "slug": "grid-max-sum-path",
+          "title": "Đường đi tổng lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "max"
+          ]
+        },
+        {
+          "slug": "grid-path-obstacle",
+          "title": "Đường đi tránh vật cản",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "obstacle"
+          ]
+        },
+        {
+          "slug": "grid-max-square",
+          "title": "Hình vuông toàn 1 lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1",
+            "S3"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "square"
+          ]
+        }
+      ],
       "theory": "// Grid path counting — đếm số đường đi (i,j) → (n,m)\nvector<vector<long long>> dp(n + 1, vector<long long>(m + 1, 0));\ndp[0][0] = 1;\nfor (int i = 0; i <= n; i++)\n    for (int j = 0; j <= m; j++)\n        if (g[i][j] != '#') {\n            if (i) dp[i][j] = (dp[i][j] + dp[i-1][j]) % MOD;\n            if (j) dp[i][j] = (dp[i][j] + dp[i][j-1]) % MOD;\n        }",
       "theorySnippet": "// Grid path counting — đếm số đường đi (i,j) → (n,m)\nvector<vector<long long>> dp(n + 1, vector<long long>(m + 1, 0));\ndp[0][0] = 1;\nfor (int i = 0; i <= n; i++)\n    for (int j = 0; j <= m; j++)\n        if (g[i][j] != '#') {\n            if (i) dp[i][j] = (dp[i][j] + dp[i-1][j]) % MOD;\n            if (j) dp[i][j] = (dp[i][j] + dp[i][j-1]) % MOD;\n        }",
       "referenceProblem": [
@@ -3768,7 +3848,78 @@
           "url": "https://wiki.vnoi.info/algo/math/cong_thuc_so_hoc"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "nt-gcd",
+          "title": "Ước chung lớn nhất",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "gcd"
+          ]
+        },
+        {
+          "slug": "nt-lcm",
+          "title": "Bội chung nhỏ nhất",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "lcm"
+          ]
+        },
+        {
+          "slug": "nt-pow-mod",
+          "title": "Lũy thừa modulo",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "pow-mod"
+          ]
+        },
+        {
+          "slug": "nt-is-prime",
+          "title": "Kiểm tra số nguyên tố",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "prime"
+          ]
+        },
+        {
+          "slug": "nt-divisors",
+          "title": "Liệt kê ước",
+          "tier": "T2",
+          "skills": [
+            "S1"
+          ],
+          "difficulty": 4,
+          "maxStars": 3,
+          "tags": [
+            "number-theory",
+            "divisors"
+          ]
+        }
+      ],
       "theory": "// fast power mod\nlong long pw(long long a, long long b, long long mod) {\n    long long res = 1;\n    a %= mod;\n    while (b) {\n        if (b & 1) res = res * a % mod;\n        a = a * a % mod;\n        b >>= 1;\n    }\n    return res;\n}",
       "theorySnippet": "// fast power mod\nlong long pw(long long a, long long b, long long mod) {\n    long long res = 1;\n    a %= mod;\n    while (b) {\n        if (b & 1) res = res * a % mod;\n        a = a * a % mod;\n        b >>= 1;\n    }\n    return res;\n}",
       "referenceProblem": [

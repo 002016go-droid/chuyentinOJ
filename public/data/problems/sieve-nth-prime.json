@@ -1,0 +1,212 @@
+{
+  "slug": "sieve-nth-prime",
+  "title": "Số nguyên tố thứ K",
+  "titleEn": "K-th prime",
+  "module": "roadmap",
+  "topicId": "sieve",
+  "tier": "T2",
+  "skills": [
+    "S1"
+  ],
+  "difficulty": 4,
+  "maxStars": 3,
+  "tags": [
+    "sieve",
+    "kth-prime"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho K. In số nguyên tố thứ K. Sàng đến giới hạn đủ lớn (~K*25 cho K ≤ 10^5) và đếm tới khi gặp số thứ K. Bài luyện kỹ năng ước lượng kích thước sàng.",
+  "vnPattern": "K-th prime — đề chuyên Tin lớp 10.",
+  "fileIO": {
+    "inputFile": "PRIME.INP",
+    "outputFile": "PRIME.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ K ≤ 100"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ K ≤ 1000"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ K ≤ 10000"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "10\n",
+      "output": "29\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "42\n",
+      "output": "181\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "10\n",
+      "output": "29\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "42\n",
+      "output": "181\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "80\n",
+      "output": "409\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "97\n",
+      "output": "509\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "15\n",
+      "output": "47\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "34\n",
+      "output": "139\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "56\n",
+      "output": "263\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "184\n",
+      "output": "1097\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "475\n",
+      "output": "3371\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "817\n",
+      "output": "6277\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "968\n",
+      "output": "7621\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "226\n",
+      "output": "1429\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "401\n",
+      "output": "2749\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "600\n",
+      "output": "4409\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "1846\n",
+      "output": "15817\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "4754\n",
+      "output": "45893\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "8168\n",
+      "output": "83701\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "9673\n",
+      "output": "100999\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "2261\n",
+      "output": "19993\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "4007\n",
+      "output": "37889\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "6000\n",
+      "output": "59359\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "Sàng tới ~K*25.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "Đếm primes tới K.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "In số thứ K.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Sieve + count tới K.",
+  "solutionSketch": "sieve(cap); cnt=0; for i=2..cap: if isP[i]: ++cnt; if cnt==K: ans=i; break;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

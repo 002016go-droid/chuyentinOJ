@@ -1,0 +1,212 @@
+{
+  "slug": "nt-is-prime",
+  "title": "Kiểm tra số nguyên tố",
+  "titleEn": "Primality test",
+  "module": "roadmap",
+  "topicId": "number-theory",
+  "tier": "T2",
+  "skills": [
+    "S1"
+  ],
+  "difficulty": 4,
+  "maxStars": 3,
+  "tags": [
+    "number-theory",
+    "prime"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho N. N có là số nguyên tố không? In YES/NO. Kiểm tra chia hết bằng i từ 2 đến sqrt(N). Đặc biệt: N < 2 → NO; N=2 → YES.",
+  "vnPattern": "Prime check — đề HSG lớp 9.",
+  "fileIO": {
+    "inputFile": "PRIME.INP",
+    "outputFile": "PRIME.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 1000"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^6"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 10^9"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "244\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "210\n",
+      "output": "NO\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "244\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "210\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "546\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "874\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "602\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "332\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "866\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "243062\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "209083\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "545437\n",
+      "output": "YES\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "873685\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "601675\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "331811\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "865134\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "243061531\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "209082987\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "545436088\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "873684997\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "601674930\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "331810039\n",
+      "output": "NO\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "865133734\n",
+      "output": "NO\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "subtaskId": "st1",
+      "content": "N < 2 → false.",
+      "starCost": 0
+    },
+    {
+      "id": "h2",
+      "subtaskId": "st2",
+      "content": "For i=2..sqrt(N): nếu N % i = 0 → false.",
+      "starCost": 1
+    },
+    {
+      "id": "h3",
+      "subtaskId": "st3",
+      "content": "Còn lại true.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Trial division, O(sqrt(N)).",
+  "solutionSketch": "if n < 2: false; for i=2; i*i <= n; ++i: if n%i == 0: false; return true;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}
