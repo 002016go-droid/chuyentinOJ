@@ -1,0 +1,215 @@
+{
+  "slug": "io-primes-lr",
+  "title": "Đếm số nguyên tố trong [L, R]",
+  "titleEn": "Count primes in range",
+  "module": "roadmap",
+  "topicId": "io-complexity",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2"
+  ],
+  "difficulty": 1,
+  "maxStars": 2,
+  "tags": [
+    "io",
+    "prime",
+    "sqrt",
+    "complexity"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho hai số nguyên L, R (1 ≤ L ≤ R ≤ 10^6). Hãy đếm số nguyên tố trong đoạn [L, R]. Bài tập luyện ý thức về độ phức tạp: kiểm tra một số có nguyên tố không bằng O(√x), tổng O((R−L+1)·√R). Với R = 10^6 và L = 1 thì 10^6 · 10^3 = 10^9 phép — vừa quá giới hạn 1 giây. Subtask cuối khuyến khích dùng sàng Eratosthenes (nhưng sàng sẽ được học chi tiết ở Day 26). Subtask đầu chấp nhận trial division đơn giản.",
+  "vnPattern": "Đếm nguyên tố — quen thuộc trong đề HSG TP. Cấp tỉnh hay yêu cầu R đến 10^7.",
+  "fileIO": {
+    "inputFile": "LR.INP",
+    "outputFile": "LR.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ L ≤ R ≤ 10^2"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ L ≤ R ≤ 10^4"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ L ≤ R ≤ 10^5 (chú ý độ phức tạp)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "24 44\n",
+      "output": "5\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "26 32\n",
+      "output": "2\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "24 44\n",
+      "output": "5\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "26 32\n",
+      "output": "2\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "16 62\n",
+      "output": "12\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "28 30\n",
+      "output": "1\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "11 23\n",
+      "output": "5\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "35 91\n",
+      "output": "13\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "29 79\n",
+      "output": "13\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "2398 4413\n",
+      "output": "244\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "2507 3138\n",
+      "output": "78\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "1544 6143\n",
+      "output": "558\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "2719 2939\n",
+      "output": "28\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "1027 2279\n",
+      "output": "166\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "3468 9029\n",
+      "output": "636\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "2868 7844\n",
+      "output": "575\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "23973 25298\n",
+      "output": "123\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "25063 25484\n",
+      "output": "43\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "15434 18153\n",
+      "output": "279\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "27189 27340\n",
+      "output": "14\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "10270 10967\n",
+      "output": "72\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "34673 38930\n",
+      "output": "399\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "28673 32162\n",
+      "output": "326\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "Kiểm tra `isPrime(x)` bằng vòng for i = 2..√x.",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Cẩn thận x = 1 không phải nguyên tố; x = 2 là nguyên tố chẵn duy nhất.",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Nếu đa truy vấn cùng đoạn lớn, dùng sàng Eratosthenes precompute (xem Day 26).",
+      "starCost": 2,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "Subtask đơn giản dùng trial division O(√x) cho mỗi x. Subtask 3 yêu cầu cẩn thận về thời gian — sàng tốt hơn nhưng không bắt buộc với R ≤ 10^5.",
+  "solutionSketch": "for x = L..R: if isPrime(x) cnt++; output cnt.",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

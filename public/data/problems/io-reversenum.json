@@ -1,0 +1,213 @@
+{
+  "slug": "io-reversenum",
+  "title": "Đảo ngược số",
+  "titleEn": "Reverse number",
+  "module": "roadmap",
+  "topicId": "io-complexity",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2"
+  ],
+  "difficulty": 1,
+  "maxStars": 2,
+  "tags": [
+    "io",
+    "digit"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Cho số nguyên dương N. Hãy đảo ngược thứ tự các chữ số của N và in kết quả (bỏ các số 0 ở đầu sau khi đảo). Ví dụ N = 12300 → đảo = 321. N có thể lên đến 10^18. Bài luyện thao tác phân rã chữ số kết hợp xây lại số mới — kỹ năng nền cho các bài về palindrome, các bài về tổng chữ số đặc biệt.",
+  "vnPattern": "Bài tập về chữ số — xuất hiện trong đề lớp 6-9.",
+  "fileIO": {
+    "inputFile": "REVERSEN.INP",
+    "outputFile": "REVERSEN.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^6"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 10^9"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 10^18 (cần long long)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "632548\n",
+      "output": "845236\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "955658\n",
+      "output": "856559\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "632548\n",
+      "output": "845236\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "955658\n",
+      "output": "856559\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "717468\n",
+      "output": "864717\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "876483\n",
+      "output": "384678\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "297645\n",
+      "output": "546792\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "675002\n",
+      "output": "200576\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "783570\n",
+      "output": "75387\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "632584450\n",
+      "output": "54485236\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "955661646\n",
+      "output": "646166559\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "717495257\n",
+      "output": "752594717\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "876495098\n",
+      "output": "890594678\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "297714532\n",
+      "output": "235417792\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "675033642\n",
+      "output": "246330576\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "783590737\n",
+      "output": "737095387\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "632548117007098\n",
+      "output": "890700711845236\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "955658190644234\n",
+      "output": "432446091856559\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "717468768682177\n",
+      "output": "771286867864717\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "876483792013183\n",
+      "output": "381310297384678\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "297645202145952\n",
+      "output": "259541202546792\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "675002253883651\n",
+      "output": "156388352200576\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "783570200845680\n",
+      "output": "86548002075387\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "`while (n) { r = r * 10 + n % 10; n /= 10; }`.",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Khai báo long long cho n và r.",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Đảo theo chuỗi: đọc s, reverse(s), trim leading 0, output. An toàn cho mọi cỡ.",
+      "starCost": 1,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "Đảo qua phân rã chữ số. Lưu ý các số 0 ở cuối N sẽ bị \"biến mất\" khi đảo do r * 10 + 0 = 0.",
+  "solutionSketch": "long long n, r = 0; cin >> n; while (n) { r = r * 10 + n % 10; n /= 10; } cout << r;",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

@@ -1,0 +1,214 @@
+{
+  "slug": "sim-card-shuffle",
+  "title": "Trộn bài",
+  "titleEn": "Card shuffle",
+  "module": "roadmap",
+  "topicId": "simulation",
+  "tier": "T1",
+  "skills": [
+    "S1",
+    "S2",
+    "S4"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "simulation",
+    "permutation"
+  ],
+  "source": "Bài tự build",
+  "isExternal": false,
+  "statement": "Bạn Khoa có N quân bài đánh số 1..N xếp theo thứ tự. Khoa thực hiện K lần trộn: mỗi lần trộn lấy nửa trên (⌈N/2⌉ quân đầu) ra, sau đó xen kẽ với nửa dưới — kết quả: vị trí 1 lấy nửa trên[0], vị trí 2 lấy nửa dưới[0], v.v. Hỏi sau K lần trộn, dãy có thứ tự thế nào? Bài luyện mô phỏng kết hợp tối ưu khi K lớn (chu kỳ trộn ≤ N).",
+  "vnPattern": "Mô phỏng + nhận diện chu kỳ.",
+  "fileIO": {
+    "inputFile": "SHUFFLE.INP",
+    "outputFile": "SHUFFLE.OUT"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "Subtask 1",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 20; 1 ≤ K ≤ 100"
+    },
+    {
+      "id": "st2",
+      "title": "Subtask 2",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 100; 1 ≤ K ≤ 10^6"
+    },
+    {
+      "id": "st3",
+      "title": "Subtask 3",
+      "points": 40,
+      "constraint": "1 ≤ N ≤ 1000; 1 ≤ K ≤ 10^18 (cần phát hiện chu kỳ)"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample-1",
+      "input": "19 83\n",
+      "output": "1 15 10 5 19 14 9 4 18 13 8 3 17 12 7 2 16 11 6\n"
+    },
+    {
+      "id": "sample-2",
+      "input": "15 14\n",
+      "output": "1 5 9 13 2 6 10 14 3 7 11 15 4 8 12\n"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc-1",
+      "subtaskId": "st1",
+      "input": "19 83\n",
+      "output": "1 15 10 5 19 14 9 4 18 13 8 3 17 12 7 2 16 11 6\n"
+    },
+    {
+      "id": "tc-2",
+      "subtaskId": "st1",
+      "input": "15 14\n",
+      "output": "1 5 9 13 2 6 10 14 3 7 11 15 4 8 12\n"
+    },
+    {
+      "id": "tc-3",
+      "subtaskId": "st1",
+      "input": "13 64\n",
+      "output": "1 10 6 2 11 7 3 12 8 4 13 9 5\n"
+    },
+    {
+      "id": "tc-4",
+      "subtaskId": "st1",
+      "input": "4 75\n",
+      "output": "1 3 2 4\n"
+    },
+    {
+      "id": "tc-5",
+      "subtaskId": "st1",
+      "input": "14 57\n",
+      "output": "1 9 4 12 7 2 10 5 13 8 3 11 6 14\n"
+    },
+    {
+      "id": "tc-6",
+      "subtaskId": "st1",
+      "input": "18 31\n",
+      "output": "1 3 5 7 9 11 13 15 17 2 4 6 8 10 12 14 16 18\n"
+    },
+    {
+      "id": "tc-7",
+      "subtaskId": "st1",
+      "input": "10 61\n",
+      "output": "1 6 2 7 3 8 4 9 5 10\n"
+    },
+    {
+      "id": "tc-8",
+      "subtaskId": "st2",
+      "input": "89 824254\n",
+      "output": "1 68 46 24 2 69 47 25 3 70 48 26 4 71 49 27 5 72 50 28 6 73 51 29 7 74 52 30 8 75 53 31 9 76 54 32 10 77 55 33 11 78 56 34 12 79 57 35 13 80 58 36 14 81 59 37 15 82 60 38 16 83 61 39 17 84 62 40 18 85 63 41 19 86 64 42 20 87 65 43 21 88 66 44 22 89 67 45 23\n"
+    },
+    {
+      "id": "tc-9",
+      "subtaskId": "st2",
+      "input": "69 137503\n",
+      "output": "1 27 53 10 36 62 19 45 2 28 54 11 37 63 20 46 3 29 55 12 38 64 21 47 4 30 56 13 39 65 22 48 5 31 57 14 40 66 23 49 6 32 58 15 41 67 24 50 7 33 59 16 42 68 25 51 8 34 60 17 43 69 26 52 9 35 61 18 44\n"
+    },
+    {
+      "id": "tc-10",
+      "subtaskId": "st2",
+      "input": "55 634498\n",
+      "output": "1 5 9 13 17 21 25 29 33 37 41 45 49 53 2 6 10 14 18 22 26 30 34 38 42 46 50 54 3 7 11 15 19 23 27 31 35 39 43 47 51 55 4 8 12 16 20 24 28 32 36 40 44 48 52\n"
+    },
+    {
+      "id": "tc-11",
+      "subtaskId": "st2",
+      "input": "7 748385\n",
+      "output": "1 3 5 7 2 4 6\n"
+    },
+    {
+      "id": "tc-12",
+      "subtaskId": "st2",
+      "input": "66 561656\n",
+      "output": "1 17 33 49 65 16 32 48 64 15 31 47 63 14 30 46 62 13 29 45 61 12 28 44 60 11 27 43 59 10 26 42 58 9 25 41 57 8 24 40 56 7 23 39 55 6 22 38 54 5 21 37 53 4 20 36 52 3 19 35 51 2 18 34 50 66\n"
+    },
+    {
+      "id": "tc-13",
+      "subtaskId": "st2",
+      "input": "88 307758\n",
+      "output": "1 14 27 40 53 66 79 5 18 31 44 57 70 83 9 22 35 48 61 74 87 13 26 39 52 65 78 4 17 30 43 56 69 82 8 21 34 47 60 73 86 12 25 38 51 64 77 3 16 29 42 55 68 81 7 20 33 46 59 72 85 11 24 37 50 63 76 2 15 28 41 54 67 80 6 19 32 45 58 71 84 10 23 36 49 62 75 88\n"
+    },
+    {
+      "id": "tc-14",
+      "subtaskId": "st2",
+      "input": "43 601120\n",
+      "output": "1 12 23 34 2 13 24 35 3 14 25 36 4 15 26 37 5 16 27 38 6 17 28 39 7 18 29 40 8 19 30 41 9 20 31 42 10 21 32 43 11 22 33\n"
+    },
+    {
+      "id": "tc-15",
+      "subtaskId": "st3",
+      "input": "45 83017758210\n",
+      "output": "1 20 39 13 32 6 25 44 18 37 11 30 4 23 42 16 35 9 28 2 21 40 14 33 7 26 45 19 38 12 31 5 24 43 17 36 10 29 3 22 41 15 34 8 27\n"
+    },
+    {
+      "id": "tc-16",
+      "subtaskId": "st3",
+      "input": "36 14564756183\n",
+      "output": "1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36\n"
+    },
+    {
+      "id": "tc-17",
+      "subtaskId": "st3",
+      "input": "29 64296564427\n",
+      "output": "1 22 14 6 27 19 11 3 24 16 8 29 21 13 5 26 18 10 2 23 15 7 28 20 12 4 25 17 9\n"
+    },
+    {
+      "id": "tc-18",
+      "subtaskId": "st3",
+      "input": "7 75294757934\n",
+      "output": "1 3 5 7 2 4 6\n"
+    },
+    {
+      "id": "tc-19",
+      "subtaskId": "st3",
+      "input": "34 57655841514\n",
+      "output": "1 32 30 28 26 24 22 20 18 16 14 12 10 8 6 4 2 33 31 29 27 25 23 21 19 17 15 13 11 9 7 5 3 34\n"
+    },
+    {
+      "id": "tc-20",
+      "subtaskId": "st3",
+      "input": "45 31474664889\n",
+      "output": "1 9 17 25 33 41 4 12 20 28 36 44 7 15 23 31 39 2 10 18 26 34 42 5 13 21 29 37 45 8 16 24 32 40 3 11 19 27 35 43 6 14 22 30 38\n"
+    },
+    {
+      "id": "tc-21",
+      "subtaskId": "st3",
+      "input": "24 61492907304\n",
+      "output": "1 14 4 17 7 20 10 23 13 3 16 6 19 9 22 12 2 15 5 18 8 21 11 24\n"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h1",
+      "content": "Mô phỏng từng bước cho subtask 1.",
+      "starCost": 0,
+      "subtaskId": "st1"
+    },
+    {
+      "id": "h2",
+      "content": "Phép trộn là hoán vị → tồn tại chu kỳ ≤ N!. Dùng hash trạng thái để phát hiện chu kỳ.",
+      "starCost": 1,
+      "subtaskId": "st2"
+    },
+    {
+      "id": "h3",
+      "content": "Sau khi tìm thấy chu kỳ length L tại bước t0, K còn lại = (K - t0) % L bước.",
+      "starCost": 2,
+      "subtaskId": "st3"
+    }
+  ],
+  "editorial": "Phép trộn deterministic → tồn tại chu kỳ ngắn (thường ≤ 2N). Tìm chu kỳ bằng map (state → step), nhảy phần lớn bước.",
+  "solutionSketch": "set<vector<int>> seen; while (k > 0) { if (seen có a) { tìm chu kỳ, k = k % cycle; } shuffle(a); k--; }",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-18"
+}

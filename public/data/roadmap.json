@@ -26,7 +26,137 @@
           "url": "https://usaco.guide/general/competitive-programming-resources"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "io-aplusb",
+          "title": "Tổng hai số (A + B)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "cơ-bản",
+            "long-long"
+          ]
+        },
+        {
+          "slug": "io-sum1ton",
+          "title": "Tổng từ 1 đến N",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "gauss",
+            "long-long",
+            "cơ-bản"
+          ]
+        },
+        {
+          "slug": "io-counteven",
+          "title": "Đếm số chẵn trong dãy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "array",
+            "count"
+          ]
+        },
+        {
+          "slug": "io-minmax",
+          "title": "Min và Max của dãy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "array",
+            "min-max"
+          ]
+        },
+        {
+          "slug": "io-primes-lr",
+          "title": "Đếm số nguyên tố trong [L, R]",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "prime",
+            "sqrt",
+            "complexity"
+          ]
+        },
+        {
+          "slug": "io-digitsum",
+          "title": "Tổng các chữ số",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "digit"
+          ]
+        },
+        {
+          "slug": "io-reversenum",
+          "title": "Đảo ngược số",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "digit"
+          ]
+        },
+        {
+          "slug": "io-fib-mod",
+          "title": "Số Fibonacci thứ N (mod 10^9 + 7)",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2"
+          ],
+          "difficulty": 1,
+          "maxStars": 2,
+          "tags": [
+            "io",
+            "dp",
+            "fibonacci",
+            "modular"
+          ]
+        }
+      ],
       "theory": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    long long n; cin >> n;\n    cout << n * (n + 1) / 2 << \"\\n\";\n    return 0;\n}",
       "theorySnippet": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    if (fopen(\"BAI.INP\", \"r\")) {\n        freopen(\"BAI.INP\", \"r\", stdin);\n        freopen(\"BAI.OUT\", \"w\", stdout);\n    }\n    long long n; cin >> n;\n    cout << n * (n + 1) / 2 << \"\\n\";\n    return 0;\n}",
       "referenceProblem": [
@@ -74,7 +204,169 @@
           "url": "https://wiki.vnoi.info/algo/basic/ad-hoc"
         }
       ],
-      "problems": [],
+      "problems": [
+        {
+          "slug": "sim-daylight",
+          "title": "Đèn đường Đà Nẵng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "array",
+            "sweep"
+          ]
+        },
+        {
+          "slug": "sim-conveyor",
+          "title": "Băng chuyền nhà máy",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "queue"
+          ]
+        },
+        {
+          "slug": "sim-trafficlight",
+          "title": "Đèn giao thông cầu Rồng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "modulo"
+          ]
+        },
+        {
+          "slug": "sim-elevator",
+          "title": "Thang máy chung cư",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "queue"
+          ]
+        },
+        {
+          "slug": "sim-bank",
+          "title": "Hàng đợi ngân hàng",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "queue"
+          ]
+        },
+        {
+          "slug": "sim-game-stone",
+          "title": "Trò chơi nhặt đá",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "game"
+          ]
+        },
+        {
+          "slug": "sim-card-shuffle",
+          "title": "Trộn bài",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "permutation"
+          ]
+        },
+        {
+          "slug": "sim-flood",
+          "title": "Mưa ngập đường",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "grid"
+          ]
+        },
+        {
+          "slug": "sim-clock",
+          "title": "Đồng hồ trường học",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "time"
+          ]
+        },
+        {
+          "slug": "sim-cricket",
+          "title": "Trận bóng đá học sinh",
+          "tier": "T1",
+          "skills": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "difficulty": 2,
+          "maxStars": 3,
+          "tags": [
+            "simulation",
+            "parsing"
+          ]
+        }
+      ],
       "theory": "// Mô phỏng robot đi trên lưới M x N\nint dx[] = {0, 0, -1, 1};\nint dy[] = {1, -1, 0, 0};\nint x = 0, y = 0;\nfor (char c : moves) {\n    int d = string(\"RLUD\").find(c);\n    int nx = x + dx[d], ny = y + dy[d];\n    if (nx >= 0 && nx < m && ny >= 0 && ny < n) {\n        x = nx; y = ny;\n    }\n}\ncout << x << \" \" << y << \"\\n\";",
       "theorySnippet": "// Mô phỏng robot đi trên lưới M x N\nint dx[] = {0, 0, -1, 1};\nint dy[] = {1, -1, 0, 0};\nint x = 0, y = 0;\nfor (char c : moves) {\n    int d = string(\"RLUD\").find(c);\n    int nx = x + dx[d], ny = y + dy[d];\n    if (nx >= 0 && nx < m && ny >= 0 && ny < n) {\n        x = nx; y = ny;\n    }\n}\ncout << x << \" \" << y << \"\\n\";",
       "referenceProblem": [
