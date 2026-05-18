@@ -1,4 +1,5 @@
 import type {
+  AdvancedTopic,
   AlgoTemplate,
   Contest,
   EntranceExam,
@@ -6,6 +7,8 @@ import type {
   LearningItem,
   Problem,
   RoadmapData,
+  SourcesData,
+  Technique,
 } from './types'
 import { asset } from './utils'
 
@@ -17,6 +20,9 @@ const cache: {
   learning?: Promise<LearningItem[]>
   templates?: Promise<AlgoTemplate[]>
   external?: Promise<ExternalPractice[]>
+  techniques?: Promise<Technique[]>
+  advancedTopics?: Promise<AdvancedTopic[]>
+  sources?: Promise<SourcesData>
   problems: Map<string, Promise<Problem>>
 } = { problems: new Map() }
 
@@ -61,6 +67,30 @@ export function loadTemplates(): Promise<AlgoTemplate[]> {
 
 export function loadExternalPractice(): Promise<ExternalPractice[]> {
   return (cache.external ??= fetchJSON<ExternalPractice[]>('data/external-practice.json'))
+}
+
+interface TechniquesFile {
+  techniques: Technique[]
+}
+
+interface AdvancedTopicsFile {
+  topics: AdvancedTopic[]
+}
+
+export function loadTechniques(): Promise<Technique[]> {
+  return (cache.techniques ??= fetchJSON<TechniquesFile>('data/techniques.json').then(
+    (d) => d.techniques,
+  ))
+}
+
+export function loadAdvancedTopics(): Promise<AdvancedTopic[]> {
+  return (cache.advancedTopics ??= fetchJSON<AdvancedTopicsFile>(
+    'data/advanced-topics.json',
+  ).then((d) => d.topics))
+}
+
+export function loadSources(): Promise<SourcesData> {
+  return (cache.sources ??= fetchJSON<SourcesData>('data/sources.json'))
 }
 
 export async function loadAllProblems(): Promise<Problem[]> {

@@ -17,6 +17,7 @@ const ITEMS: NavItem[] = [
   { to: '/contests', label: 'Đề thi HSG' },
   { to: '/entrance', label: 'Tuyển sinh' },
   { to: '/learning', label: '80% kiến thức' },
+  { to: '/techniques', label: 'Kỹ thuật' },
   { to: '/ranking', label: 'Đánh giá' },
   { to: '/profile', label: 'Hồ sơ' },
 ]
