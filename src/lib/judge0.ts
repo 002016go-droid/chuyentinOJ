@@ -1,7 +1,62 @@
 import type { Verdict } from './db'
 
-export const JUDGE0_URL = 'http://localhost:2358'
+const DEFAULT_JUDGE0_URL = 'http://localhost:2358'
+const STORAGE_KEY = 'chuyentin.judge0.config'
+
+export interface Judge0Config {
+  url: string
+  apiKey?: string
+  languageId?: number
+}
+
+export function getJudge0Config(): Judge0Config {
+  if (typeof localStorage === 'undefined') {
+    return { url: DEFAULT_JUDGE0_URL }
+  }
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return { url: DEFAULT_JUDGE0_URL }
+    const parsed = JSON.parse(raw) as Partial<Judge0Config>
+    return {
+      url: parsed.url ?? DEFAULT_JUDGE0_URL,
+      apiKey: parsed.apiKey,
+      languageId: parsed.languageId,
+    }
+  } catch {
+    return { url: DEFAULT_JUDGE0_URL }
+  }
+}
+
+export function setJudge0Config(cfg: Judge0Config) {
+  if (typeof localStorage === 'undefined') return
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(cfg))
+}
+
+export function resetJudge0Config() {
+  if (typeof localStorage === 'undefined') return
+  localStorage.removeItem(STORAGE_KEY)
+}
+
+export const JUDGE0_URL = DEFAULT_JUDGE0_URL
 export const CPP20_ID = 54 // GCC
+
+function getEffectiveUrl(): string {
+  return getJudge0Config().url || DEFAULT_JUDGE0_URL
+}
+
+function getEffectiveLanguageId(): number {
+  return getJudge0Config().languageId ?? CPP20_ID
+}
+
+function getHeaders(): Record<string, string> {
+  const h: Record<string, string> = { 'Content-Type': 'application/json' }
+  const cfg = getJudge0Config()
+  if (cfg.apiKey) {
+    h['X-Auth-Token'] = cfg.apiKey
+    h['X-RapidAPI-Key'] = cfg.apiKey
+  }
+  return h
+}
 
 export interface Judge0Result {
   token?: string
@@ -40,12 +95,13 @@ export function mapVerdict(statusId: number): Verdict {
 }
 
 async function postSubmission(opts: SubmitOptions): Promise<Judge0Result> {
-  const response = await fetch(`${JUDGE0_URL}/submissions?base64_encoded=false&wait=true`, {
+  const url = getEffectiveUrl()
+  const response = await fetch(`${url}/submissions?base64_encoded=false&wait=true`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: getHeaders(),
     body: JSON.stringify({
       source_code: opts.sourceCode,
-      language_id: CPP20_ID,
+      language_id: getEffectiveLanguageId(),
       stdin: opts.stdin,
       expected_output: opts.expectedOutput,
       cpu_time_limit: opts.timeLimit ?? 1.0,
@@ -59,11 +115,12 @@ async function postSubmission(opts: SubmitOptions): Promise<Judge0Result> {
   return response.json()
 }
 
-export async function judgePing(): Promise<boolean> {
+export async function judgePing(customUrl?: string): Promise<boolean> {
+  const url = customUrl ?? getEffectiveUrl()
   try {
     const ctl = new AbortController()
     const timer = setTimeout(() => ctl.abort(), 3000)
-    const r = await fetch(`${JUDGE0_URL}/about`, { signal: ctl.signal })
+    const r = await fetch(`${url}/about`, { signal: ctl.signal, headers: getHeaders() })
     clearTimeout(timer)
     return r.ok
   } catch {
