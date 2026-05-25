@@ -127,6 +127,13 @@ export interface RoadmapNode {
   theory: string // legacy — TopicPanel reads this
   theorySnippet?: string // v2 alias
   referenceProblem?: ExternalRef[]
+  // LQDOJ-style topic page fields (Phase 2)
+  objectives?: string[] // "Bạn sẽ học được gì?"
+  requirements?: string[] // "Yêu cầu"
+  studyMethod?: string[] // "Cách học"
+  theoryFull?: string // long-form theory (markdown)
+  codeExample?: string // representative C++ snippet
+  referenceProblems?: ExternalRef[] // expanded 15+ external refs
 }
 
 export interface RoadmapEdge {
