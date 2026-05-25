@@ -23,6 +23,7 @@ import { AdminPage } from './pages/AdminPage'
 import { LearningPage } from './pages/LearningPage'
 import { TemplatesPage } from './pages/TemplatesPage'
 import { TechniquesPage } from './pages/TechniquesPage'
+import { TopicPage } from './pages/TopicPage'
 import { SourcesPage } from './pages/SourcesPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { HiddenPage } from './pages/HiddenPage'
@@ -54,6 +55,14 @@ function AnimatedRoutes(props: ReturnType<typeof useEasterEggs>['api']) {
           element={
             <RequireAuth>
               <RoadmapPage onLevelComplete={props.triggerLevelComplete} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/topic/:topicId"
+          element={
+            <RequireAuth>
+              <TopicPage />
             </RequireAuth>
           }
         />

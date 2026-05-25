@@ -450,6 +450,86 @@ a:hover {
   color: var(--text-secondary);
 }
 
+/* Topic markdown content */
+.topic-markdown h2 {
+  font-family: 'Syne', 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin: 1.2rem 0 0.5rem;
+}
+.topic-markdown h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin: 1rem 0 0.4rem;
+}
+.topic-markdown p {
+  margin: 0.5rem 0;
+  color: var(--text-primary);
+}
+.topic-markdown ul,
+.topic-markdown ol {
+  padding-left: 1.4em;
+  margin: 0.4rem 0;
+}
+.topic-markdown li {
+  margin: 0.2em 0;
+  color: var(--text-primary);
+}
+.topic-markdown code {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+  color: var(--accent-primary);
+}
+.topic-markdown pre {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+.topic-markdown pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+}
+.topic-markdown a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+.topic-markdown a:hover {
+  text-decoration: underline;
+}
+.topic-markdown table {
+  border-collapse: collapse;
+  margin: 0.6rem 0;
+  font-size: 0.9em;
+}
+.topic-markdown th,
+.topic-markdown td {
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  text-align: left;
+}
+.topic-markdown th {
+  background: var(--bg-elevated);
+  font-weight: 600;
+}
+.topic-markdown blockquote {
+  border-left: 3px solid var(--accent-primary);
+  padding: 0.4rem 0.8rem;
+  margin: 0.6rem 0;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+}
+
 /* Compact tag chip */
 .tag-chip {
   display: inline-flex;
