@@ -1,0 +1,189 @@
+{
+  "slug": "sh-lcp-pair",
+  "title": "LCP của 2 hậu tố",
+  "titleEn": "LCP of Two Suffixes",
+  "module": "roadmap",
+  "topicId": "string-hash",
+  "tier": "T2",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 3,
+  "maxStars": 3,
+  "tags": [
+    "string-hash",
+    "binary-search"
+  ],
+  "source": "Bài tự build (Phase 2)",
+  "isExternal": false,
+  "statement": "Cho xâu S và Q truy vấn `(i, j)`. Tính độ dài tiền tố chung dài nhất (LCP) của hai hậu tố `S[i..]` và `S[j..]`.\n\n**Input**: dòng 1 = S; dòng 2 = Q; Q dòng (i, j) 1-indexed.\n\n**Output**: Q dòng, mỗi dòng 1 số nguyên.\n\n**Ràng buộc**: 1 ≤ |S| ≤ 5·10^3, 1 ≤ Q ≤ 150.",
+  "vnPattern": "Binary search LCP + hash O(1).",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "|S| ≤ 20, Q ≤ 6",
+      "points": 25,
+      "constraint": "1 ≤ |S| ≤ 20; Q ≤ 6"
+    },
+    {
+      "id": "st2",
+      "title": "|S| ≤ 500, Q ≤ 40",
+      "points": 35,
+      "constraint": "1 ≤ |S| ≤ 500; Q ≤ 40"
+    },
+    {
+      "id": "st3",
+      "title": "|S| ≤ 5·10^3, Q ≤ 150",
+      "points": 40,
+      "constraint": "1 ≤ |S| ≤ 5·10^3; Q ≤ 150"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "bababbbbaaaab\n5\n6 6\n6 9\n11 3\n6 9\n11 9\n",
+      "output": "8\n0\n0\n0\n2"
+    },
+    {
+      "id": "sample2",
+      "input": "abaabaaababbbb\n3\n3 9\n4 11\n13 6\n",
+      "output": "0\n0\n0"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "bababbbbaaaab\n5\n6 6\n6 9\n11 3\n6 9\n11 9\n",
+      "output": "8\n0\n0\n0\n2"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "abaabaaababbbb\n3\n3 9\n4 11\n13 6\n",
+      "output": "0\n0\n0"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "abaaabbbaaaab\n5\n9 4\n4 9\n3 11\n12 8\n1 3\n",
+      "output": "2\n2\n2\n0\n1"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "bbabaabaaaabbbbaaab\n2\n11 13\n3 9\n",
+      "output": "0\n1"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "abaabbabaaabbaaababa\n5\n14 5\n5 4\n10 20\n20 12\n4 19\n",
+      "output": "0\n0\n1\n0\n0"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st2",
+      "input": "cacaaaccbcbcbababbbcaacacbcbaaabaabccbaccbcbcaabcbbbbabacbcacbcbcbacbaaabbaaccababbbbccacbbcbcbbcbabbccabccbabbcbaccacccbbcabcbcbaaacbbaacbccaccaaacabbcba\n16\n141 10\n9 142\n74 99\n91 2\n43 15\n66 115\n55 80\n60 136\n62 102\n153 116\n92 59\n81 125\n53 96\n60 7\n81 33\n86 84\n",
+      "output": "1\n0\n0\n0\n0\n0\n2\n1\n0\n0\n1\n0\n1\n0\n1\n0"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "bacccbccacaabbcacaacbaaccbccaaccbaacaaababaccaaacacbaccabcbbccbaabccacaabaacbbcbaccbbbbaaaacacaacaaaabbbbbcbccccacbcbbbcccaababca\n22\n29 115\n14 97\n22 83\n57 72\n43 118\n18 5\n119 111\n18 99\n35 16\n85 44\n20 122\n61 79\n18 10\n41 40\n32 63\n126 97\n51 57\n11 19\n121 24\n114 24\n1 68\n12 72\n",
+      "output": "0\n0\n0\n0\n0\n0\n0\n2\n4\n0\n1\n1\n0\n0\n0\n0\n0\n1\n2\n1\n0\n2"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "baaaaaacbcbabacabbcccbaacaaccacaabbcbacabccbaabccbbbacbbaabcccbbbbacbbacaacccbacaaacbabbaaacbccaaaacbaccbccabbbcbaaccccabccaccccaaccaaabbcccbabbbcbaabcbacabcaccbacababbccacccaacacccbccabcabacbbaccacaabbaccbabcbacbcbab\n11\n57 25\n180 193\n15 194\n82 216\n162 30\n109 14\n9 30\n171 207\n118 73\n54 61\n139 39\n",
+      "output": "0\n0\n0\n1\n3\n0\n0\n1\n0\n1\n1"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "cbbcaacaaccaaabaaccabbaabacbbbbcaaaccbcbcacacbccabaabcbacabccbcbbbabcbaabcbabaaaccaccaaaaccccbabbbacaccbaabaababaccbcaabbabbbbcacbbccacbbaabacbacccacccaabbaacacbaa\n17\n56 93\n153 131\n41 80\n146 107\n46 100\n135 133\n14 50\n32 13\n117 8\n28 14\n115 61\n79 133\n37 107\n141 118\n138 138\n14 82\n107 156\n",
+      "output": "0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n3\n0\n0\n1\n26\n0\n0"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "ccbbbaccbcccabbbaabcabcbcbbcabaabcccbcbccababbabaabcbaaacbbaacbabaccabbaaccacaccccaacbbbbbbcaabcababacaaabbbabcabbabbaaaabbbbacbbababbcababcbacaabcbbcbaacccacbcbbccbcbcccaabbbbbacacbcaacbbaacab\n11\n108 104\n19 41\n52 2\n175 126\n28 93\n139 10\n152 184\n55 32\n52 117\n67 3\n38 16\n",
+      "output": "0\n0\n2\n0\n0\n0\n3\n1\n0\n0\n0"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "caacabcccaaacbaababaccaaccaaacabcacaabbbccaabbacabccaaacaaacccbbbcccabaacabbcbbacac\n35\n23 1\n69 51\n33 50\n74 40\n56 12\n73 74\n74 59\n68 58\n32 33\n33 67\n10 38\n6 63\n82 25\n44 61\n8 3\n3 16\n50 19\n10 40\n27 13\n49 25\n79 81\n77 6\n47 4\n57 51\n15 43\n72 64\n45 3\n71 47\n7 15\n77 45\n33 7\n71 72\n69 44\n52 29\n3 70\n",
+      "output": "0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n1\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n3\n0\n0\n1\n0\n0\n1\n1\n2\n0\n0"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st3",
+      "input": "cacbdaddacacaaaabdacbabbdbdcdaadddcadaadbadbcaaaadbdbdcacdddaacbadadaaaabadabdcaababdaddcbccbcadccbccdbacdcdadabdcaacbaddadaadaddacaaddcbdbdbcdacdbcaadadaadbabdacabbacbbcdcddccbdabbabaaadacdabdcbdbbddabcababdadbdcccabbdaadbdbbcdaabdbdbddccacdbccbababcacccddcaacabdcdaacdabdbbabdccaabbbcabdccaabddaaadccccdbaaaacadddbdddbdcccbadcbbbcbadacacddbbadbbcabcdcbccccabbccdcdcabacbdbbaadadacdbbcddaababacccdadcbbcdacaabccdcadadddaacadaacaaccadbbddbbdabbbacaadbacbccaccdcbdbbbadddcaabdbbbadbbbbbdddbaadddacadcddaadaadcddccabdaabbbbaaacbbdbccadbcbadbcccadbaababbbcadbbbdbbbacbccdabbbdabaadcdadcdcdcbadadddaccddbacbabbadbbbdbbacdcacabbadbcbccbcccaddccbdaaacdbaaccbadadcacbabdadabcbccadbdccbdddcbbacccabbaccdbdaccaaacacaabbbdaacacacddadbddbbbadddcbbdcbcbcbcdabcdcababcdbdccbaccbcccbdddbbaabcbadddbbbcaccdbdddddbcbcbadbdddcacbbbddadbbadacadcbdbdaadcacbcdadddcabcbaddcadccadbddaccbcbbaaccdaddcadbbcdbaabaccacbdacadbaddccbabacccccbcdacaaaddaccdbadbabaadaacdacbdaaaadaacdcdbcacbcdcdcabdcdcccbcdbbdbabbadcccbbddddddcacbdbaacadbbaabbacbdadcdaabababacabbaaccccacaacaddbaaaccbcbccbacddcaccdbdddbaacbcbaaaacccddcababddacaacabdcababcdaacaacbacabcbdbacaaccbdadbbaddbabbccdbddbabcaccbdcadbdbbcbbdccdaccccdaddbcddbcabaaacbcdccabdcbcaaadabcccacddabadbbdcdacaacabacddadcaabdbcdbcabacdcbccabdcccdbcabbcbcdacddcabdaccbbaccaacdacddacbbaabacccaaddbaacaaaabcbcddccbdcadbbbcacbaaaddcbdcdbbbaacbccadcdddaccbddabddabbdaaaacdabcdbadccacacdacbdbdacaddabaabbbccabcdaccaadbacdddccbabadbbdccdababcccbbaaadadcbcdaacadcaaadbacccdbadaaadbbadbdbbaaddcabbacdccdabcacbddbabbcbdcccccdbcbbacadbadabbbacbacdaacbabcdddbdabbcddcbccbccadcddbbccadabbdbcbbbababdacdbcbabcaaacabbdccacbaaadaccdbdcccbcddaadcaababdbabbddcdcacdcbabcdadcbcbababbbdddbdbabcbdbbccadcbbbabbcdcabcabbbcbabadcbcaaaaadbcddcbbadabadcbdadcaaabcbdababaaacdcbcbdadcbcdddaabbcbbddacbcbbccacaccbbbcadbabbbadbaddcbbdbcbdbabaddacbacddcacabaabdddacbbbbaddabbadbddbbcbbccccaddccacbbacaacbacacabbacdccdbaddadcbcbadcdadccabcbcdccbdcabaaccdddbbcddcadabbabcaccadacadcbbbaddbadccacacbadadcdaddccddcbbbdbabbadddbacbaddaabbbcdbcbdcdbaaccaaddcacddbddcabdbdabbbcdbdbcbbacbbbaacdaccddcddbccadcdcbbbdbddddbddaaaabaacbbcaccddadaddabccadddbcbbddadbdcbbcabcbcccbaccddcdcaddadaadcbdcbbbcddabaadddbdbbbcbadaddbccdcccbaccaaaacbbdaabbdccbaccdcdddcdcbcbdbdaaccbaccccaadbbdadbacbcbbacdcbddacbbdbdaadaaabdcdbaacbdcbaacbccddddbbbaacaaddbcdcdaabbdacacdadaaddcdaadcadacdccbabacaaabababadccaababcdcabadbdccbcdccacaccbdbbcaabcbacadacdbdbbdabacacdbbaadbcbddaacdcbcaabbcbccdadcddadbbccdaaababaadacabcccaacaacabadabdbdaadcbdabddccbabbaaaacbbdbacbbacbcbcccbaadbacaadbdddcadbaccabbcaddaaadaaaaddabdccbcbbcdbadcdcccbbbcccdcbcdabccbcbaabcddbadbdbdcbbabcccccdcdbbdabcdcdccbaacbdadadbdacabccbdcbcbaccdaddcdbaaccdbdcbbbcbddcdbddbbbcadcacdcbdddadcbadbdbdbaaaabaaadadbbaadcaabccacdddcbadabacacdbabbcadcadbccccbaaaccddbbbdacbaccbcdddabbdabccbcadddddbaacacadaddbdacacabbadabdccbccdaccdcdbddbbaacbcdadddddcaddccdbaacccdadabbdaabdbaabcbdbdcacdcbcbcdbcddabacacbccabacacdcadbabcaddbbcbddacbaadcdabbddaacbdbddaddddcbdbaddabcdbbbabadcbadddbcbbbaaaadadccbacabdcabaabaddacdacbccaddccaaadccabcdacaaadaddccccacbbccddccacbcaadaaddbacbbdadcdabdcccdddadadaacaaddacccbcbaaaabadcabadcccadacddddaddbdbaaabbdaacdbaaabbbbacbabcacddddcdabdbbdbbcbaabcaacbbdbaabcccbaabdbaddaabdbcccdccddaddbadabdaddabdcdccaabcdbdadacaacaadabdababbdbddbcbcdbbdddcdbbcadaabdaacbaabdadcdadbcccbdabbcbbbcabdabdadbcdaddadbdaaddbcdbacdddabdcdcbcdbadddddcdbccadbbdaacbcccddadbcadcbbbcbcdbbccccdacacdccbcabbbaadddacccabddabadacbcbbcbaacbbdabdcaaccaaccacabdbdaaddcabdbcdcbdacdacbadccddaaacddcdbadcbacadbdbccaaccadddcbcddadaccacbacdddbdababcdadcccdbaabddbdccdddcbcbcbbcabcbccdbddadabbdbdbabbccbdcdbbbccbaacdccbccababaccbcdabdcccccbdabcadbcacbabbacaaaabdadcaccacdacdbcddabbbbadacbdabdacbadbdcdccaaabaadaabacbadcdcbcadaddbcdaddacbdcaaabccabbbbdaddabbbaccaddcaadaccbacbbbbdcdbbacaccadacaddcddcbbcdaacdbccadcabaabbbdbcdcbbadcdabddbaaaaabbccbdcacaabababbdbaaddabddccbdbdbadabcbaccbdddbcbacabcaddbcbddbcdcdcdbccadccbbccbbabcabdabbbaaccbdadcabbbdabaaccadcccdddbccddbadabccbdcbbdbdaabdacddbbcbcbabbdbcdbaaddaddbcbadbaacbaccbadaddaccbcdaabcacbbdacadbdcaaabbbccdcbcbcadccddccbdbbcbdcddaabacbbabbcaabdccdcdbcabdbcdaaccdacbabccbbadababcddacdaadbdbdbdbacccabcaababcdadbdcdacdaaabdaadcbcbacdbacdbdddbdcddddcbbcabdadcaaacdcacaaacbcaaddbddbdcaaccaacdcccdcbbddacabdaddcccbcdbbbcbacadbdaccacdbbcbaddcacbdbcddccabaddaadcddcbbacabcddbcdddbbccdbaaacddcbdbadccbabddbbdacdbadaabadabacaadddddabbbadaadcdddbdcdaadcadadbddabcadbdcdbdabcdddbccccccdbbadccbacdacbaddccbbcddcbccdcbdbddbcbaabb\n111\n605 3047\n4178 3219\n3595 2877\n1858 2024\n3201 1816\n2201 4010\n4288 3323\n3768 3093\n1640 854\n1240 119\n2827 4395\n1805 3996\n1151 2099\n169 358\n744 568\n187 1730\n3540 2578\n4415 2564\n4165 434\n4108 4463\n1808 29\n3246 1237\n604 2531\n2201 2834\n2204 1120\n1942 4106\n1354 3763\n848 752\n262 2199\n3293 1833\n1048 1987\n1527 2051\n2809 1352\n518 2851\n1494 1554\n1245 3800\n3962 1420\n1742 3364\n3177 630\n4421 884\n2014 3850\n729 2607\n1316 2032\n710 3390\n2988 879\n2943 1719\n3044 534\n1313 1013\n1992 2841\n3880 2729\n881 3424\n1067 934\n3105 3107\n2947 498\n3227 3381\n4215 1727\n836 4364\n2267 2380\n2878 4211\n220 1773\n2472 4353\n3813 2480\n3307 2951\n1868 2773\n4319 1208\n3643 3978\n115 1132\n733 2436\n2804 1972\n1190 4212\n1887 2439\n2495 716\n2277 2055\n3530 464\n4168 1364\n1550 2464\n3669 3506\n3317 1526\n1653 2959\n4349 3567\n4223 4417\n1766 3067\n1787 4349\n3197 1398\n1717 1529\n3546 3782\n314 1603\n4366 1129\n2413 2473\n825 4342\n3923 3055\n10 1768\n708 2205\n3049 1172\n2938 2036\n3932 2897\n2688 364\n160 4236\n886 1384\n3208 2724\n3545 1373\n1563 3222\n1809 3292\n3721 1537\n4346 2921\n3183 1445\n2400 3621\n929 4011\n870 3843\n249 609\n1899 3198\n",
+      "output": "0\n0\n3\n1\n0\n1\n0\n0\n0\n2\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n0\n0\n2\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n4\n0\n2\n0\n0\n1\n1\n0\n0\n1\n1\n2\n1\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n2\n0\n0\n0\n1\n0\n1\n0\n0\n0\n1\n0\n2"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "dacacaacbdcbaababcbcdabbadcaaccdcbddbacbaccacaccbbacbcadacdbcbddbabccccddcdbdaabccdbcdbcadacbadcaacadccdbcbbbcbbacbcbddcaadbbcccbdddbccacabcbbacbdaaadcbcdaadbbacacdabbdadbccabdbaddddcaaadccdcbbabddcccaabdcbcbacbbabbadccccdcddddabdccdcacaaaacddbbaccccabababdbacdcdabcddbdddbcababadbdbcbdadcbccccadbcacddbaddacabbaacbdcbdbdaadbdbbdccadabcbbbcdbbaacdadddacabadaadbaadcabbbdaccbcacbcbcdacbcabbacabddbcbbaadbbcdcbaaccdadbabadbbbdbcdadbbbbddadcbcaaddbaaacabbbdbddbadabdcadabbcacdadacacaadbcabaaadbdcbbacdcbcbbabbacccbadcbbabccbdadbadacccadddbcbbbaccbdabdcbaabbaaaaacbddbccbbcbabbdccacdcdccdccdadabbcdcabbaddcaccccdaacbacadbdbbbbababdbdabadabacadbcbadcccdcdadccdbbdbddbbabdcbcdadcbccccbcbaaadacacbccadbbdacbdaababddbbabccdbbbdccaacaadadcddaabacdddbbcdadbaaacccdcaccabaaabbddaaaacbdbaaadcdabccdaabaddccaadcdaacddbaccbbbadacbaacabddabcddbabcaaadadcccdddddbbdbbbdcdabcaaacabbcbbcacdbbbcbdcdbacddadacdbdadddbaababccddddcdbaabccddbddadcabcbbadadaccbaaacbdbcabcbbadacabadacabdaddabbbbaadcdbdadbbbccbccbbdcabbbaadaadaadcacbcaaacbadddbacccacabdabcaddcdddccdacaaccbbbacabbbcdbddbabaccbcdcaaadddbddbcbcbabaabcadbabbddcbaaddbcccacabacddaddddccdcbcccbbccbdcaadddadcaabcabcbaacbddbdbdadbbaaddbabbdaccbbabbbbbdbdddcdaaadbcddaabcbabdcbabdcccbbccacdbdbaaddbdbcccbbcbbacbccaadcdcbbaddacdacbbadbbbbddcaabdbcddcbbabadaaaabcdabddcaabdcbacaccbacdacaddcccbbbdcadbdbdbacbabaacbadddbdcdcbaccdbdcdbcdcbcdbbcbbaacbcbddacddbdcaacdddccabdbccdbbccbabbdcccabbbbbdcbdcdbdbbbbcdccaddbacbbaaccabbbdcabcdcdbbcccadbcaaaabcacaccbadaadbcbabdcbdabdaadadbcadaadcaddbacbcaadbdcbaaaccbaddccbcbdabdbbcbcadbbddababddcccacddadadacdaaabcbdccddbbaaaaadacacddbbdbccaddaacbcdbbcabaadbaddbddbcddacdadcdccdcdaddbddcbaaadabccbbcabbdaadccccaddbcdacbdadadadbcbcdaaabdaadadaccaccdcaccbbabadbacbbdcdccaaccbaacbacadabdccdbcdcbdbdaddcbabccdbadbbaaabbdbbccadcabcccaabbcbbcbbacbadbbcdcabcbabbdddaddbbaaacacbdbccbccadbababadddaacbbccbddadbbcdcdacacbcdaccaacaadccdddbdaabbcddcdcdaaccbccbaddbbbabaaabcaadbbcdbdddbcbdaacdcbbabbcadccccabcddacaaddaadabcadcdabaaaddcbaaabcddcccacaabbacbdbbcccdccaaaadcdbacaabdccdbcadcabdbbadcdbaccdcabdacdcddcbaabbccbbbbacbabcadbbbbbacaabddccaadbbccbddacadbcbcccdcdcbbdcbacabaccadcacbacdaaaabadacdbdacbbaabccccaacabbbaacabaadacdddbbbbabaaddbbdbaccbabcbabaacbdcaabbcbcdaadcbddaacabddaabbdddcacbdbcdccacbbbbdbdaacddbacaacdcbacdaacbcbdcbdabdddcdbaccadadaabbddcabbdaddbbbdaddbaccdbbcddbbaabaacdcdccdaaabbcdacccbddbcccdabddacdbcdaaadccbddccccbcbcabbaaacacabdbacccbabdadcacabaaaadbcbcbdabbddadcbdddbacddcacdcdacaadcccdbcbacabaaccdcacacaabddccacdccdbccbbcbbabcbbcdbcdacdbcdcbdaccbbdcabccdbabcadbaccacabcdccabdacbbabacbddcaabbbcacaabdbaaabcbcbabdbcdbdcaaddcccabaaabccddcdaddbcbbbabdcacabacababcaabcbcbbdbdaddcbadcdddababbacbcadcccdbdbaadacddbbabcdcccacbbcddbdabccbabbddccddaaabadabbaaabadaaacacbbdaababadabbdcaaccdcadcbadccdbaacbcacddbbcacccccdbacadddcdddadbdccdaaaaccaabddaababcbacccaccaddadcadabddacdccacacbbddbbadaccdcdccaadacbdbbdcdbbbccbddcdaddbccccccccdcbacabaaddbcbbdbdcddbbcbbbccacbcbbccdcabaddcbdbccccaacdaddbdaacdcdccdcabcababdcadbcdabcbcbdacdccccdbcbcbbcadbabdbddbccbacaabdadcbbbcbbcdcdaacbadbabcacaadbbcabbbacddaabbbccccbcbcadcabcabaababbcdcabcdadadbddaddbdadddbbdbdddcdcaccccbcaaacbaabbbdcabdcdbddabbdacbbadadcabbabbaaccaaaddacadbaacdabbcdaaaabaabbbccbadbcbbcbbcbccaabbccbcaabaaddcdaacdddaacadcabbbddbabdbbcddbdbaddcbaabcabdbccacaccdcbabbbdcaccdabcccaadbbacddabadccbddadcadcabddcbbacddaddbacaacbdbdbdccabadabbabcbaacbbcddacacbacaacccbdccacdbccadcdbcadbbcdbdcccadbccbccbccbabcaaaaaccaadcaaabbabdaadacdacdbdccbdcccaaadbacddbaaaabcbcddbbcddcdacbbcbbacdabcbadddbaccabcdabaaaabddddaccbbddcabbaadbacdcbdaddbdcabaabddbbddcbcaccdacbbcddacdbddbddbbbddcddcadccbdacabcbcdddccacabbbcdbaabadcacaabadabcbcddaccbddbadaccbcccddbcabdbdabcaadbbdbababadbbdbccabbdbdbcbaadbddbabaadbbdbbdcacdb\n46\n2747 2885\n1235 838\n1938 2444\n626 622\n212 306\n1116 1082\n3074 1135\n1871 3155\n2439 1009\n2948 1523\n3060 755\n3637 2347\n3270 1795\n584 2429\n3142 1926\n675 2533\n1022 2041\n1281 906\n2910 511\n2228 1145\n1806 3539\n3568 2363\n1250 456\n1709 1386\n2839 1503\n1045 1163\n2439 683\n56 2064\n2454 2157\n3341 991\n3548 1627\n1140 1495\n3178 2201\n1811 1418\n985 3115\n2440 1637\n3171 778\n3249 3284\n3663 2749\n2157 904\n880 2542\n1236 2398\n2680 71\n774 2250\n323 3047\n2792 2431\n",
+      "output": "1\n1\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n0\n0\n2\n1\n1\n0\n0\n2\n1\n0\n0\n0"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "bbabddcbbaabadadabcbbddbcbadabaddcccdbadaddaabdacdbbaabacbdbddbcdcdacbdbaabcaddbcddadddddcaccacccababacbbdbdcbcacadcbddddbdabbacaaddcccbdbaaccaddadaddcbdabccbabdcbbcaadddbbcbbcccccccccabccdcdbdcabdbcbbbaaabbacbbcbdbabbcdaabbcbdbbbdccbbbcaaacabddbaadbbccbbbddcdacabaaadbbcbbdccdaddddcacdaaddaaddbabbacdbcbbabdbcccdcbdbcbbcaccddbcaddaacdddabdcccbacbdddaadaadbaaadaabcccbddbbcabdabaccbccadaabacdbcacccbaacdcbdcacdccbcbcbdabbcddbdbdddcccacbacbddabdbdddccbddabdadbcadccddbabdcabdbbcdcbddcddccadabbdababbcdbdabbccbddbaaddcbdadcccccdccadbdbbcdccadcbababbaabacbaadbbacaccddcadcaaaacaccbdbdacccccbccdddadbbccababaabcccbdbabbaccccdabddacabcdaabbaadbaaacccdadabcbcddaaabbccdadababbccbdadabdabcbcaadbccacbbbadcbbcbdcdadbbbacccbbdddaabccdbcbaccdcdbabdbdbdccbaddccacddccbddddccdcabdaccadcbadccdddadcbbbcaadbadabcdadcdddaabaaabcdddabbdccbbaadbcdabcacbbcbbbabbbcbabbbdcdacbccdcbaaadababdcaabcbddacbbcbdbcbcdcddcdababcaacabbbbddcbbabcacddbbcbbbaaaacddcacccdabbcddaccbbbaddccdcbaccbacbbbdcdadbabdabcdabdcbbccacbbdacdcbadddaaddddccadbdcbcdacccccdbdcccdbbcacacabbcbddadaaccbbcbbdacaddbcadddccbccdacdddbdaacdabadadcdddcbbccacdcabaaacdbdcddabcdcacdcabcabccbacccdbbbdcddababaddbbbbbdbbbcbadacdbdccdcbbabcadbcabcbccdbbabbccdabadacdabcccadcbaabdbbaacbccbddcdbcdcdbddbbbcbacbabdadaddcbbbcbbcbdabaddbccdadcabdabcbbcadbbbabddcbcbcccdccbbbbbaabdccdcabcdadabdcbdbbcbcdcaccaadbdacdddccbaaddbbbaadadcabcbaddadbbadcdcbddbcacaaacbcadbbbdabbbbaacbbdbbdcddbccabdbddcbcabacbabacbdaddcbaabcdcdbdcdbdcbbdcaccbddbbdcccdacdcbdaaabcbaccdaacbbcdbaaabdcdbabadbcdbdddbbdabcbcacccbbdacacbaaadcacbdcdcdadadccbbddadacccababcabcbdaaccadcccdbaaccbbddaddcdcaccbbbdbcbbdaaaaaabcdbccbdacacccabaaaabdacabbabdbccdbadbddbaabacdbccdcadbbbbabbadddcabaabbcdbaadacdaaaddaacabcddbacbbcccdbbbbaadbacccbabaccbdddbaacdacbaacabadccddbbcbbdabdacabbccacdcccababcdadaccacadabbbadbabcdadcbaaddcbdaacdbcabcbdaabaabbdadcacbdacbcabdddaabbddcaadcbbbdcadbcdcdaddddddcbcdcdcccccabdcdbbbaabaaddcabbbcbdccaaaddaaddababccdcbbbaadbadaadbcddbbbaccadbdddbcaddabaaacdadacccbabbbbddbbadadcadaabbdbbcccbcdcbdcaaacaddcabcdbbccdaadcbdbcccbcddccbcbcadaabcabddcabbdbcbacbcacabbabddcccdbbabbccbcdddaddbccadbbabcaccdccbabaddcdabadddcdcabbaadcccddaddcbbdbcddadbbbcacbdcdacadcddabbcadacccbcacbaddbddccdcbabacccbcbacbbbcacbcbadcbddbbcbdbabdabaccacaaddbadbbbacaabdbccbcdcacbddddbadbaccdcccdccdbdcbcbccaacbabcdabbcabbdccdccababcccabbddbbbddacabddbabdabaabcacabbddddbadcdccbaadcaabdcdcdbdcadaccacdcaadaadbdddabcddadbadababcadcdddcdaddabdabcdbcadbabadaadbddbbcdbcacdaaadcbcaadcaaacdacdddcdbccbabbdcabbccbadcbaacbaddcabbdddcbacadcaabcbcadcccbaabbbabaccbbcdaabdaadbcccbabbbdbbcdabaccaaabbcbabdccaabddacdbccabcbccbacacdadbaabbccdbbbdbdbbdccaabaaaccdabcdbadbaabdaccabbcdcdddcbdacbdaadcbdddcbbccbacdbbcdcbdddbabdbabacacbabcccabaddccadddadadbcaaabddbdacccbdccbcbacbbcbdbcabacddbdacabcdabcbbdbcbbbadddababbbaccbbaadddcbdbddbcaccaabdadcbcbcaabcaaccacbcaacbbdcccdbddababcbcbabbbaaabbdbbdbcbaccbdbadbadbcccabcabbcdcdcccacbadcaaabbbbcdaabdbbcdabbaacdcdbcdabdbcbabadadbcdcddaaabcbbddbcdcbddbbcbdccabbbbdaddcddbababdcbbcdbdcddbaddbdbdbdcdacbcabddbbbbdcaabacbaaccbbbbcbaccbdcacdcbcadbbaadacbbbbaadcbcdcabdcbbdbcdcdbbbdbdcccbbbabcbcdadbdacdacbcacddaa\n97\n1346 2095\n1308 1622\n1109 2067\n3074 2019\n1671 2675\n767 1358\n496 2176\n2716 2738\n756 2731\n699 663\n1062 2172\n1852 2581\n1291 2882\n369 2155\n154 258\n2149 2816\n1749 608\n2549 3087\n2146 2725\n62 611\n1305 1364\n2105 3105\n40 1615\n865 1856\n2650 2191\n398 455\n3011 983\n1707 2631\n2663 1818\n2319 1215\n815 80\n919 2501\n1457 2870\n314 1338\n2604 2061\n2054 3052\n1312 298\n282 2580\n1144 1123\n1541 823\n2417 790\n725 2657\n2555 2650\n1024 2923\n2042 475\n1800 1869\n1098 1488\n689 1378\n1723 1904\n2537 2446\n1132 2169\n2993 2482\n1044 2957\n2845 1774\n443 1294\n750 2053\n579 1745\n2149 3070\n870 2920\n2533 59\n2489 1757\n1406 10\n2183 2212\n1748 753\n2255 2282\n1568 2915\n502 1186\n1136 623\n2264 2453\n1285 1269\n323 2077\n2219 38\n526 813\n3061 1971\n402 697\n6 2413\n1776 2575\n2565 2328\n1704 1092\n427 438\n1239 1583\n2701 381\n1017 2046\n2020 2625\n417 3077\n2075 1817\n610 865\n2202 240\n2465 20\n1454 1050\n2303 3020\n284 35\n2644 312\n2417 2831\n1887 1617\n2267 2939\n1053 466\n",
+      "output": "0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n1\n1\n2\n0\n0\n0\n0\n0\n2\n0\n1\n0\n0\n1\n0\n0\n0\n0\n1\n0\n1\n0\n0\n0\n1\n2\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n4\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n2\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n2\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n2\n0"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "ccddbbdddbbccddcbbbdacdcaccdaaccaaddbdaccdcdbbdbbbdddbaabdbabbabcabadbbacdccdbbdcadbccdacdadccadcbabcaccddbbdabbbbbdacaadcccbccacadaacaabdacdaccbdaddacddccbdbabacddabaccaacbbcccdcbdcaccbdaabaccdabacbdbcadadabaaddcccdbbccdadadccacadddcdacabaccbbccccaddaacbdddbcdaacdbbdcbddbaabcbbcdbaaacdbdadadcbacdbdddcabcaababdcaaddcdabbcbbaddcdadadcacaaaacbbbbbbaacbaabbccabacbcbcacbdaaccaccbcbaabcbdcbcdbccdadabbccdaccdcaaccadabdcaaaadccacbacabddccacdbbbcaaacdbbdacdbbacacadccbaddbcddbdddcbbabccdbdbccdaacdcccbaabbdbbadbdadcaacaaaabdddbaccbbadbbcabbbddbacdbdaaccdcbbdcdaadadcbccdaacbbaabaadaaaaabdacbccdadddcadccdbbccbcadbadabccdcdbdbadcddccaaaddadbcdbdbacdadacbbbdccbdbdbdcddcbbccaadcbbaacbbdcdcddbaabdccddcacdcdabacdcdcadaacdcdcacbdcbadacdaaadbacdabcadaaddbcabaabbacbcadbbbdcaabccbacbccabbbccaccaaacbcadbdcaacaabdcdcdcdbcbdcbddbbdbcddbdabdabcbbbdbcdbbdabbdcccddcbadbaccbbcadcbabaadcccdabcacdacdacbdabdaaccaadcacddadcdbbcbbcbbcbbdbdbcdcbabdcbbcacdabcbbabbddbbddcbcbdbacaabbccdbdbaaddccdabdbbcacdbbabdbdcdccdbcccdbbcbcdbacaadaaabccaacabcddaaababdcdcacadacbcaddcbadcacbcaacbdddcacadaaacbcbdcabbdacacbddcaadcbcccbdacadcbdadcaadbbcdbaabcbcacbccbbabbcccdbcdacabbccbbcdcdbdcdccddbcdaacdabacbdcddcadadbcdbabbbacbcadadcbbcadcbbadabbabbacdcdbabbdaacacbccccbacacdabbdbddcaddccdddddacbaaddcbcabbcbddccaacabbdbcdcccabddcdbcbbcdbcbbabbaabdcadaaddbcdccdcabddbbbabbcccddccdbdcaadccaadbadcdccacabbcdbabadcbbbbdacdbcacbbaacbbacdccbbcaaddccddbdcacbabdcacdaabacaaaadddacbcdbdcddbbcccbbccdbccdcdcbddcccdcccbbdbdbbacdcdccccbdcbdbdbcbadabaddaadcdcadbcaccbdacdccbdcccdbdacadcbcbcaacbbdccdadcdabbdbaccccbddbaccccdbbcbbddcaabaaadbacbaaddabccbacabbabbaccabbdaacadcbacaabbddbcdbaaaabbcacaacdcccbdbbdadbcdcbdbbadcbacdcdabddcbcaacbadabcddbbbaabddbbababdadbbdadbbdabbbabbadddcdcdacbddadbcbdcbcaabccaadadacccccabcbdabcbbddcccaccbcbaadbadaaacbdacdacadbcddaaaabdddabbbbdcacadbcdccdaadcddbbadddbabcccadbabaccccaddcddbdabaccdabdddaccddaccaaadaacbdbccddacdcdbccbbccdaaabdabbcacbcaccaaacbdadadaacdabddabdadaacdcabbbdbdaccbbacdbccaddbbdbbbbbabadaabbaabcdacdbcbcadbabbdbdcdbdadaddabbcdadddccccbbcaddcbdacdbacbbccbcdcbbbdaccaababcdccacabdbdcdbdaccadcddbbbcadacdcccdbadaabbaccacdbcdbaaabbacdaccbaacdcddbbaacdacaaadbcaaadacdbadadddaadcbddddccbaccacdabcbcbabaaddcdbaa\n116\n330 282\n1558 868\n1427 1491\n1322 1719\n2194 1589\n647 1414\n1486 1834\n405 2007\n483 706\n1506 1646\n1649 1418\n950 1702\n824 976\n1930 919\n1814 1118\n1238 717\n1832 260\n73 2154\n618 779\n1872 1395\n1529 163\n2203 1703\n1469 63\n1789 120\n1601 1456\n1252 1470\n1177 524\n725 1947\n2007 328\n1893 496\n1198 139\n1553 335\n1180 2078\n792 745\n955 1014\n869 621\n2021 161\n930 1627\n904 2042\n1979 867\n1568 130\n119 397\n1120 1464\n920 397\n320 435\n683 1648\n1083 856\n652 1356\n347 531\n1153 90\n198 2082\n1877 561\n2155 574\n1577 670\n1225 1224\n85 533\n1460 1608\n1395 1410\n973 1571\n847 1568\n1898 1234\n1952 150\n1501 1532\n1282 2067\n211 1354\n378 1581\n990 730\n1118 408\n1246 313\n1389 308\n1125 2052\n1487 195\n1933 318\n242 858\n909 949\n1619 799\n781 1731\n853 600\n305 587\n1162 77\n1193 1542\n262 737\n1128 475\n2018 1624\n650 930\n669 9\n812 1406\n181 987\n965 964\n33 507\n279 467\n127 1497\n734 2203\n637 2132\n166 1614\n1895 364\n1554 1918\n980 2063\n725 1529\n1546 426\n570 1786\n735 1843\n1789 733\n1640 1144\n667 1749\n1473 405\n1528 1601\n1956 2051\n2156 2138\n1385 368\n105 623\n1194 891\n1025 395\n126 1517\n564 2014\n655 84\n",
+      "output": "0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n2\n1\n3\n3\n2\n2\n0\n0\n1\n1\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n2\n0\n0\n0\n1\n0\n0\n0\n1\n0\n0\n0\n1\n0\n0\n2\n1\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n2\n0\n0\n0\n0\n1\n4\n0\n0\n0\n0\n2\n0\n0\n1\n0\n0\n2\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n1\n0\n0\n0\n1\n1\n0\n0\n0\n0\n1\n0\n0\n1\n0\n1"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "bbbddcbdcccdccaaacdacbadadcbabbacdadbbbbabadddaabaadbcdbcdabbcccacddcddcacddbcbccdaaddacccddbacaabdbdbabdaccccabdacbcabcbacaadcacddaddddaadadbccdaacbdaacdbadaccbbbcdcbddcbccaadcbcacdacabcabcddaabbdddabcbcbdcddbdbccabbddaaabbdcddbbadbbadddcddaabcbadcbdaabadddbdaaabcbdbdcccaddcbdabcdcbdddddaabaadcbbdaaaabadbdbabbaadcbadadddccbdadcdbcbbbdacaadbcdcccacbdbdbbdaacddbbabacdadddcbddbdcabadcddbcaaacadbddcbcccdcdbacabdacabbddcbcccdaaddbcadacbacbbabbdddddbbabddbcddcdbbdbaccdcbacddcddbababdcccdcccdbabcabcddbacbcdbdcbcbdbdcbaccdcdcdadcdcabdcdcadbbcadcdbbaababbbcdcacdbccccddacaadcdcadaccdacbcbdccdcdbaabaaaccccdcbcacbaaabbbbdbcabbaddbdabbacdadddbacacbccbbaaddbdaddacaaabcddaadcdbbabaddbcbcabdbcccbdbadbccddcabadcdcacacbcdacccdccbaabdbaaaabdaabbadabcdabadbbbdddaabacdcbadbdbaccccbcabadcaabdbcacccabdadbddabbcbbcdaadaadcccadccddbdbdbccadacdaadddadcabcabdadbdcdcdaaadacdbbadbacdcdccccacdccbbadabcdbcacdaadccaddcdcdbcdacdbcadadabcbbbadadbaddbbdbbbddcbdaadbcaccdabcddaaadbacddbdbbcbdcbcbbaacbaacbadcdaacadccbddddbdcdadacbcbaacddaabdacaaaccbdbbdbdccbdbdbbbacddbdabcdcdccdddbccdabacaacdbacbccddaccdcabcdbaddbadacdddddbdcddccbbadddcdaaddcbbbcdacccddadaacbdaacbadbacbabcdacdbcaddcdcbdccdadaacbdcbcdcdadbddcdaabcdbcaaabdcdccaadbbdcbaccabcabbdacbcbacabddcbdbbcadabdcacbaccdbdadbbadabdbbacaaaacdccabdcddadcbabacbcddbbbdbbacdbcabccbcabdaacccacacdbbdaacaccbcacddcdccaabbcbacaadcacadadaabdbccbbbdacccdbbdddbbcacdacdbcaadaaddbccdabbacbcbdcbcdbdcbacacbdbdacbbdcabbacccadbdccbcddcbbaaadcabbacbbbdcabaccabdbdbbcbcbcdabccccdacbcdcdaaccdcdabddcbbabdbdcccaabdbbaaaaaadccbbdcbcaddacadcdabadaccacbbabcaadbdcbdbadadadbdadbbbddddbaaacadacacbdccccbbdaaadaaddddbbcbbcaccdabbbdabaadcacbcdddbabbcdaacdaadaadbcbccbabadcdbbccadabbdddcdcadcdacbaadcdbaccacbadccdabdaabdbbdabbdbbdbcddacabbacdcdcadacaacddbcbbbaccdacabcccadbccabbabcdccbbbcbbdbdcccbbaabbdaaaddddcdaaacbcbdcdaccaacbacadbaaabbdaacdddaabbcbbdbddccbaddbdcdcbccababcacdadbaccabdbcabbddccbcccddbdacccbccadadcddacaccbdcccbadddbbbcdcdcaddabacadaabcddcbdabaccccdbabcaddcabcdbcaadbadbdcddbaccbaccacbdaabbddbdabbcbacbaaaddddccbabdddbacabdacccbdabbdadbbcdcbbcaaccadaddaabbccabaadccdbdacbccbabdddbdcbdcbdbcbbcabdacdaaaaaacaccacbbcdcadbbbcaadaaccacddddadbddcacddbbbddbaddcccbcdabddbcdcdaaaacaccaabaadbcaddbcdddcbbaddcbaccbcacbabdcbdabdbbabbddbbabbcccbaadccbcacdddbcbaddadadcccbbbcbcbacadbcadaaaacaabdccbabdaabdbddbabccdbadcddcaabccaadacbbcbcbaccbcdbadbbcdcbadbbdadcabaabdbbabaddcaddacabdcbadcdaabbdddcbbadaccdcdacbcbaaccadddcdacddbbdbcabaacddcacadcddaabccabcabdbccd\n118\n880 215\n2365 808\n1690 573\n1522 1247\n1310 119\n2458 1654\n778 26\n913 1593\n1361 678\n2310 824\n1499 2159\n1176 907\n1301 1098\n88 302\n2048 889\n2110 2028\n2466 1524\n2205 726\n1583 1685\n1028 2212\n1453 1611\n2438 1142\n1585 2350\n872 1259\n364 670\n769 1479\n1810 2166\n814 625\n2031 1776\n1683 677\n1239 1628\n1847 61\n2227 1423\n453 1034\n1511 1580\n325 1673\n2470 1971\n1607 1032\n307 1482\n2296 1406\n2247 627\n805 1361\n234 637\n25 2044\n718 1452\n2418 226\n261 2098\n2203 405\n2020 76\n1249 931\n1888 1731\n1350 1430\n1734 894\n2390 332\n1467 186\n1001 1787\n165 518\n395 219\n269 887\n651 2141\n891 2378\n264 2338\n2433 1546\n653 1182\n1557 991\n664 1284\n943 2412\n1534 1044\n884 437\n1715 1684\n2103 647\n1126 1352\n596 1793\n1842 36\n483 245\n265 729\n2071 354\n662 2186\n2380 1342\n2059 1646\n1000 282\n67 2396\n1160 2343\n1423 1817\n21 1364\n844 560\n1105 1971\n114 551\n1994 1733\n1312 648\n1390 19\n2150 979\n582 2195\n641 657\n1615 438\n243 1517\n411 149\n884 1876\n1112 2424\n157 1170\n678 1554\n70 2048\n2400 1704\n1235 185\n841 2095\n2440 2412\n1714 1869\n499 1646\n2413 2303\n2295 105\n1790 236\n134 1930\n1045 1099\n626 2135\n1601 2004\n2069 1079\n227 538\n1614 1774\n",
+      "output": "0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n3\n1\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n2\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n0\n2\n0\n0\n0\n0\n0\n1\n1\n0\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n3\n0\n0\n0\n0\n0\n3\n0\n0\n0\n1\n0\n0\n0\n0\n1\n1\n1\n1\n0\n1\n0\n0\n0\n1\n0\n1\n0"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "abcccbbadccddabacdadccdabdccbbbdbdcaacdcadbcbcddbaddadcbcbbaccddbcccdabdcabbaabbcdaadcaacccbbbbaacbaaccadbbccccabcdbdbdcaacbaadcaaabdabadbddcdbbbbbdcccaadddabdbdacadddbdabbbccbdccbcacdbbdbcacdaabddacdbabcbdaadddbabdccacbddbabdddcdadaccdbcaacbccaaacabbdabccbadcdbdcdccdadaacbcbbadcaddcbadaccdcdacdcddccdadacaccaccadcdbaddbcbdadbcaadacdbbabbacbcaddbbbaacbcdcdbbacbadccbdbddaccaabaacbcddabadccaaabddbaaabddabbdacacaccbadabddabcbddbbabcaddbdcdbbbbbccaaccbdbdadbdadacadaacadbdadababddadabaaaacddccddaccddaaddabdcbbbaadacccaddcaabbcdcdabcacbcaadaddadcdcdcbbbbcbbbccbaacddabbdadbcbcddbbabacdddddadacdccdabdbabaccaacdcdbbdabbadbbadbdcacddbdabccbaacbbbdaacabacdccbccaccbbcaddccdbacddaccbacadcabbaacbdbacbdcdddccaddaccaabddabbadabbcbdcddddbdabcdcaaddbbbcacdcdcbccbcdadbcddcadbaababacdcccdabddaaaaaabcbacccbbccbdacdadcacabacbbabcabdaabdbdaaccdbaddcaaccdadcdbbdbdaacaacddabbbccaddadcbbabaccabcaaacdcacbbacdccabadddabcaababbaccdadaabdabcaacbbdbbddaaaccddcadaababbdbccbbbbcbcdadacbddacccaddaddabacdbbdbbadacaabababbaccadcabbaaccaddadcabbcdcbccbbdcbdcddadadaddbcbbadaadcaaaadacbcbcddcbdbaccadaacccbbddcdaaabdbccdcbcdbabaabcbbcbbbacababbbddbabbddcbcbccdaddadcbcacbdabdbaacabddaccccaacabdbabdbbdaadaadbbcacbddbcdbcbdbbdbacbabbadbcacccbabdabbdadcddddcccadcbdabcdbabaabdbddabbbdcaccddddabcdccdcbcbdbaaacaddccbbcdbbdcbdbcdbcbacbcdbddbbabdbcaabbcabccabcbbdbcbdbcccddaadcbccdbcaacbbcccacdabadcdbbdaddbbbcdcacabbdaaadaabbadbaaaabbbcacddcbdccbbbcbcabaccdbabcdddbdabaadcbadabdbcaaaaadcabbdacbdaacdbaacbbacdbbccdaaaacdddcbaacaaaddadddbaabbadbccbacaacdaaddabcbcccbacabdccbbadbdbdbdaacbbbcaddcddaadbddbcbbbcbcddacabacaabacdbbcacadaccbdcacddadbcbacbdccaadaabcdbacddbddddbadbbbcdcdbdadcddaacbaabbcaacadabdaabbacccdbbcddbdbbdbbdbdaacbdbabddaccbbccdcbacdaacdcacabdddcbddddabbbdadcddaaabbaccbccddbdcbbdddaccbdccddbdbaacdbbcaabdbbaaccdabcddccddcadabcacbcbdadbcaabcddacbbddddaddcddbacdbabbaadbddbdbcbbccacbaabccbbadddadbbdbacadbdacdabbadababbbabaabcbcdacdbdadaaabcacacaabacacbaccddadadaaddcdadbcbaddcbcdabcbcdabcbbbcbdbdbacbcbcbcdaccdacbcbcaaacacdabdacbcabcdcccdbdcbbacdacbabcbcacdcacbaadcadadcdacaccbacddbbcaddbbdaccaaaaddddbadacbdcadcdbbdddcaabddaabadccdaacccdabaccbcdbacbacbddcdddbdbdbdacbcacaaabcbbbcdddbacbcbaaaddbdbadbabdddccaadcadcaddcabcddabbabcbaadcdcaaabacdbdcdcacbadaaadbbbaacacddcbcdbcdacabcdadccbddadcabaadddbccbbbcdcbaaabaaadcccdbbbdaaaddbbddabdbdbcdccddaccbdadbbbcaaadacdaadcbaabddbccdbcdcdbabbcccbd\n88\n1264 1231\n2074 1611\n2120 221\n1795 1730\n562 12\n302 47\n625 1404\n209 428\n1895 890\n329 1476\n1338 1619\n1670 1801\n441 1838\n443 401\n1918 1224\n387 1535\n73 878\n1231 1495\n318 2303\n1507 2277\n1204 2187\n2019 1182\n35 244\n1019 564\n1017 140\n2132 2031\n176 1152\n255 2171\n1021 1656\n714 1856\n2221 316\n1664 2149\n1202 752\n634 565\n2072 1364\n149 33\n792 2320\n1705 1875\n2133 1322\n1778 1199\n1196 1199\n1092 1671\n774 2256\n1566 528\n305 1213\n805 578\n2158 315\n1212 1623\n2230 481\n2150 2285\n1168 641\n1739 2174\n174 1385\n2017 1277\n566 736\n1823 495\n1096 100\n894 1738\n1542 1864\n1032 2131\n999 445\n1122 1680\n1283 222\n1725 859\n1634 358\n1203 1481\n1626 2116\n1174 770\n427 416\n1401 1140\n504 583\n1933 839\n399 522\n2124 157\n14 618\n502 1453\n61 449\n52 835\n909 1999\n864 1947\n515 2037\n365 2165\n1209 1096\n1125 340\n401 1120\n1970 1589\n2083 400\n954 2311\n",
+      "output": "2\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n3\n0\n2\n0\n1\n0\n3\n1\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n2\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n2\n0\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n3\n0\n1\n0\n2\n1\n0\n0\n1\n1\n0\n0\n1\n0\n1\n0"
+    }
+  ],
+  "hints": [
+    {
+      "id": "sh-lcp-pair-st1",
+      "subtaskId": "st1",
+      "content": "So sánh ký tự từng vị trí.",
+      "starCost": 0
+    },
+    {
+      "id": "sh-lcp-pair-st2",
+      "subtaskId": "st2",
+      "content": "O(Q·|S|) đủ với |S| ≤ 500.",
+      "starCost": 1
+    },
+    {
+      "id": "sh-lcp-pair-st3",
+      "subtaskId": "st3",
+      "content": "Binary search độ dài L + hash 2 đoạn để check bằng nhau → O(log |S|) mỗi query.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Binary search L = LCP. Với L cố định check hash(S[i..i+L-1]) == hash(S[j..j+L-1]).",
+  "solutionSketch": "// BS on length L; check hash equality at length L",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-25"
+}

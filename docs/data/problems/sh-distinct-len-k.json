@@ -1,0 +1,189 @@
+{
+  "slug": "sh-distinct-len-k",
+  "title": "Số xâu con khác nhau độ dài K",
+  "titleEn": "Distinct Substrings of Length K",
+  "module": "roadmap",
+  "topicId": "string-hash",
+  "tier": "T2",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "string-hash",
+    "set"
+  ],
+  "source": "Bài tự build (Phase 2)",
+  "isExternal": false,
+  "statement": "Cho xâu S và số K. Đếm số xâu con **khác nhau** có độ dài đúng K.\n\n**Input**: dòng 1 = S; dòng 2 = K.\n\n**Output**: 1 số nguyên.\n\n**Ràng buộc**: 1 ≤ K ≤ |S| ≤ 3·10^3.",
+  "vnPattern": "Hash từng cửa sổ rồi đếm distinct.",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "|S| ≤ 20",
+      "points": 25,
+      "constraint": "1 ≤ |S| ≤ 20"
+    },
+    {
+      "id": "st2",
+      "title": "|S| ≤ 500",
+      "points": 35,
+      "constraint": "1 ≤ |S| ≤ 500"
+    },
+    {
+      "id": "st3",
+      "title": "|S| ≤ 3·10^3",
+      "points": 40,
+      "constraint": "1 ≤ |S| ≤ 3·10^3"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "baababbbbaabba\n3\n",
+      "output": "7"
+    },
+    {
+      "id": "sample2",
+      "input": "baaaaaabaabaaba\n3\n",
+      "output": "4"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "baababbbbaabba\n3\n",
+      "output": "7"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "baaaaaabaabaaba\n3\n",
+      "output": "4"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "abbaaa\n4\n",
+      "output": "3"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "abababbabb\n2\n",
+      "output": "3"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "abababaaabaaaaaaab\n3\n",
+      "output": "5"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st2",
+      "input": "aabaabbaacbbbacbbacbbacbccabbbccccbabbbcaaabbccbbabbaccbcbca\n11\n",
+      "output": "50"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "bbbbbbaaabcabacbaacabbcbbccabccbbcbccaacbaabbbaaabbbba\n13\n",
+      "output": "42"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "bccaacbccabcbabcacbcaaaaaaacbbaabbbabbbababacacaabaabbacbcabccbbabaccbcbaaabcbbaaaccbbbaaacbbbbbbaacbccbabbbbacaabbcccbaccbbacbcbbaccaaaacaccbcbbbccbbbbbaabccabccbbacbcaababbbcbaaabcccccbbbacacbcbcbaabcccbcbacbbbbcccbcbcccaabbabbbbabcbccaabbbbbccacaababaabacbacbcbaccabccbbccbbaaccabbaabbaccbcabbabcbbbacbaabcacbcbacbcbcabbacbccabaccbcabbbcbcbcbbcaaaccbbbbaaabaaacbbcaaaaaccacabacbaaaaabbbaacbacbbaaccccccaaccbcbbaababcbbbaaaccabbbaaabcaccbbacbacbacbcabbbcababacacacccabaacbbbcbcaccb\n11\n",
+      "output": "473"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "baaabababbcbbbacaacacbababbacbaaccaaccabcabccccbaabbabcabcbccaaacbbaacabbabcbabaaaccccabbabaacbbaaabaccbbbaabbbc\n13\n",
+      "output": "100"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "acabcbacabbccbccccaccabbbaacbaaaccccbbacccccbccbabcbacbbbccccabbcbbbcbacacbbccacacaaabbbaaaabccbcacaccbccacaacbccbacbbccbbacbabcabbbcabbccbcbbbaaaccacaacccbcbbaaaaacccabbbbcabbabcacabbaccacacaccbacacbacaccbbcabaaaaabcbbbbaccccbbbacaacccabcacaaccbbacaccbbbaaccacbbcacacbcaacbbaaaccbaabaabccccbcabacaabacbbbaacaaaacbbababbbcabbacacbcacbbccaccaabbbcababbaacbcaccbccbacaaabaaabcccacacacacacbbbaacbcababbccbabcbabbaccabacbbcbabbcacbccbacaaaaaabaab\n2\n",
+      "output": "9"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "aabcccabbbabaccabcbbacaabcbbbcbcbabcaacaacbbccacbccbacacbaaaacacbaabacbabbbbacacabcccccbaaacbaccabcbcabcabacbabacbbbaacbbaccbcabcabaaaabcbcaaababccababccbacabbaabacbcacacacaacabcabbccbabbbcabbabccacaccaacacaccacaccbcacbbbabcbacbcbcbcacabbacbaaacbaaacaccacbcabbaaacbcbaabbaccbacacbbccbccaacacacabccacbbcabaabcccbbbacaacbccccaacbbbbcbaacabcaaaacacacabbccccbaccabbcccaaaabcbcaacabaccbcbacbaaaababacabacccacaccbbcaccbaacacbaaacabcaccbbbaaccaccaabbabaabbacaacbaacabaaacbbcabaccacac\n13\n",
+      "output": "464"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st3",
+      "input": "cacbcacdaacadbacaacacccdaadbbdcdabccdddcdbbadddcdbbbbbcbcbbccadcccbdbaaaddcaacaabcbaddacadacdaabcddacccabacbccdcbcccdadabcbbacaccccabbdddbddbddbaccccdddddaaabdbacdbdaadddddaadbadbcaabddacbacdccdbaaacddcbccddaaddabdddbcccccaacabdbbdbbdbdadcbbccdbaacaacdcabbdcbadcbabddadbacccabdbbaddcccbbdddacbbdadadbabacaccaacbaabddcbdbcbcacdbadbbbacdbbcaacbadbcbccbabbadbaddccacbccabcaaaacbbccbbdcbbbddcadacbdcbccbdbbcadadcbbaaacacaacdabacdcdcdacabbcdadddadcbdcbabdabcdabbaadcbcbbbcbacbcddadddaccbdabaccdababcbbcdcabccadcaadccbccbcdccccbaaacaadbcdaabbcdadadddddbaacdcbbddcacacbddaabccdcabccdcbcaaaabcbabaccdbaadccccdcbbcbbaccadcddcbaaabcdbbadadddcaabdacccccdbcdcccbadbcaddddacccacdddbcbaccdadbababbdbbddacdaccbbcbbabcddaaacccbadccdbddacbcaddcbdaaaadbbbbaacbcccacabcccccccccaaaacdbbbbbdacaacdcbbbbcbdddccacbddcddccdaadcdaacccabcbabdcdbbccddbcacaacddcadaddadccbbccbbbcbcbcbddacbbaaabacbdccbbdbcacccacbcaacddbcddccbbdccadcbcadababccdaddccbcaccdddbbcdacbadcadccaacddbabddbbdcdbaacacbdbabcacdabddadaccdcdbbaacaacbbaddcacacddcdcddbddcbbadcddbabdadcadcbbabbcadaacbababaaccdbbdccbdbdabddbbcbcdbbdaadbdbadcdbcccccaccbcdddcaccdacacbbbcbadbbbdabcaccbddadabccbbbbdcbdabccdaccacdaaabbcccbbccbccadadbdbdaabadddaddddcbbabcddcdbbdbdacdcabdbadbddbbbcdaabcdbdcdacacabaccccaacaabccaadbccacdbddcbddbbaddbadbccbdbbcadaccdacaabcaadbbdcdabccadbcdadacbccdbccbbadabdbdddcddaacacbddadacbabddabdcdaccaaaccbadbaaacabdcadbccdabdbaccbcbcabbddcaaaabcaddbaacddbdddadbadcdadbbbbdcdaddaaabdbacdcdacaaabbcaadccaaabcbdbadccbcbadcddbdabcaddcddcaccddacaaacacacbdabbdaadbabbbdbaacacbadaaaddadadcdcbccbcccdaabbbcbdbcdccbabbbabdcbaacbbddabadadaadacdbbbbdaacdcbccbbadabbbdbbdbdbdbabdbccdddcddcccbcacbccabcdabcabdadcabaaaababbddbcdccddbabcbaccdbababdbacbdbbbbabcacddcbabaccabbabacdbadcdacaaaddccacddcbadccbcadbaadadabdbbbbdbaacdacbbddddabaddddcdddddbbbadccbaabbdaabbbbdcdbdaabadbacacbdadbaccdbdadbcccacbdadaccdcdaadbcddbcdcccbaddccacbbbdadcddbdacabbcabaccdabacadbaaabccbadaabaabdbdbdaabdcbaaacddaadabcaabddababbadbdaccbacdabdcaccdbdcbaccbabcaadacccacbdaddaccbdbdbcbaaaddcdccadbdadbcaadabbbababdadaddadaddbbaaaddcddbddcabdabbbcadabddbaacbccddabbddbadaabdcbbbcdcbbcddcbcaacbcbccdbdaabccbbcdabcccaddcdbccdabcbcdcccdcacbcddcaacabccddcccaacadbadddbabbcbddadccbdcaabdddbbcdddadddaadcdbdbccacacbdbcbccbcdccdcabcbdcbaaabaaddabacacbadabaabbcbcbcabdbadabdacdbaaaadccddcdccbbddcabdcdbdbadcaddbaaddcdacaaccdcbdbdacdccabbcabbabdbdbbccabacccbbdcdcdacacbdcaccbcdbdddcabccdadacdabaccbccdcbbabbbababbbadddadcbcdcbbbddcaddbbbbdaabbdaadacbbdaaadcbbcbddcacbbadbddabadaddaabaccdacbcbbcddbcbccddaaddbadcbabcaadcaabbdcaccacbbadcabdbacbcbbdddccdaaabcbcacacccbcddabbdcddcabddbcaaacabbcbaaadbdacbababacbbcadaadabbacbcddbcbbbcbcbddcdccbdbcdacbcbbacbdbcccdbcacacddcdbbdbdcdabcccddbbcbcabaddaacddbbbbbcdaacdbbabdbdaadbdddccbcdadbcadccbbaddcabdbbaaaaacaabdcacddcdcccbcdbcccdbaaabbcadbcddabccadcdccbdbbccdcbbddaabccdababda\n34\n",
+      "output": "2800"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "abaacabddadcccdcbbacdabdacbbcdcaddbaadacdcddcdadabddaddbdabbaabaacdabdaabdbbabcabaaccccdbadbcbacaabaadddadddabbcdbaddcbbabdccaaddabbaadcbbcccdcdabbddaacbabdbacdcdcacdcaadbcabbdcbbbbdbcaddcaaccdbcbbcdcbabccbcbdbcbacbbcccdbadadcbacdbcabcdbbcbaccbaccbbdcacabbcdcabdabbcbcdaabbadadcaacdacbaacccdcddcabacabcccdcbcaaaaabadacdbdcbadbdddadaacdaddabaccbaccbccbbabdcddddbccacdccbacdbcdddabaadbcddbcacddddadcaadcddbbacccddcdaadaadbbcdcaadadbdbaacbadccabbabdccbdcaadabcdbbdacdaabccaccaacadcadccccccccadbcbdcacacabcdcacbaaaddbddbbcdaadbdbadaccddbddaabcaabbbcbacdabccacabcaccdddbbbacccadcddddcdadccdcdbbacdddaadbdbdbbbbdabaadcdbabccbcabacbcccabbbdbccbabdacbadbadadbaacbddaabcccacbcdaddcaaadaaabbaddacbbcabdabacadaddcdcbcaccbbadcccccdaccaaadbdccdaaabdcddaddaaabccbddbdadadccdddacadaccccbddcbccdbdddcdadbcabbbdabcbdabcdcbdabaabacbbbadcbdaadaaabcdcbaabcadacabccbbcbcddbbacbccaacdbcbacbbcabadadacbbaddadadddcacaaaddabdacddabccaabaacdaabddcaccdcaabcbbdaaabbbbcaccdcabbcadadddaabdbdcbcdcadbdaadbacbdaababcbbdaccbdadacdcadabdbccbdababcadccbbbdaccbaaaacbacdccddbadcbdaaacccdababdaacbbddbabaccaacbbbabbdcbcbacabbbdcbbccabbccdcaababadaadbacbbdaaadbdbbbadbcdddbbcccdbbcdbbccaabbdabdacbbabadddbbdcbdcabbdbccabddddcdbbabcdddaddabbadcdabacdbbadbaaaddcdcbbcaadccadbbcdaabddbaacaabadddbcccadacddaabcdbbacbdaaccdabbadbdbcabbbabcdbadbbdbbcbcdadcdadcdaaddcbbabbaabdadaddccbcdadcdabdaaacdaadbdacaabadbdcdadabcdbbaddcbcbcdabbadbbcaddbdaaadadbdbddaadcabcbdbcbbddaabaaaccaddbdadbaccbccadddaaababbcacdaddcccadccbdcbaabaaaaaddcbdaccbdaababbddbdacaddcbaabcaabaddcdbbadacdcbbddabaccdaaccbaaabdaadacdaaaccaaadabcddcadabbaddbbbcbbcbcbbacaddbbdbcdadaadcacdaaadddbdab\n19\n",
+      "output": "1604"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "bbccddbddaacadacabbccddbbaccaaccbccbdaddbaabcdbdadbdccccdbcaaacabdaabbacaadbccdabdabcdcddddbaacbccbbaacbccaacbdccccdbabbcdbddcacadcacbaaacbaaadadbddacabbbbbacdadcbdcbabdbbddcdaabcbabdbbbaadccbacdccbcacbbdabcbbadaddbabbdacaacdddaacadbdbcaaababcbbdabcdacbbcbdddccacadddbcbcbdcaaacacdabccbbacbccabdcaaabadbaaaacbbdcaabcdaadacdaabacadcbacaadbaadacbbabbaaacacadbacddbdadbbdcbcbacbbdaddccddddbdabdbbbdbcddaadaacddcabdacacbdacccabdaabbcaccaababddbdadaacacbdcaabbababdddaadddaaaaaccbdabddcccabacbcabcbccacccdbacdcaabdcccbbcaabdcbbbcbdbaadbdabdabcabbaaaddacddcdcabbdcdcaacaabcaacdacdcbababbadbaacbabcdbbbadadddadcbdddbadccaadcacacdbcdadadcaccbbcabbccbcadabcbcddcccdbcdbdadadbcdbabccdccdbbdcddbacbbadbcdaababdbcadabaddcadbcbddccabcdbcaadacbbdcbcabaabdbaabdbbbaddbadbbaadcabbbdbcccdbdbdcbaccdabbdcddcdbcacbdcacaddabbcbccbdcbabacccbabdadadaddaaadabccadabcdcbbddcdcaddabaabdacacccdcdcdbbbdddccadbcdacdcdcbbbbadadcccaabcdcdcdccacdbdbdcaabacdabbcddbcdbdbbaddbcbababddbcbcddaaccdccbacdcccaaadabbbccccbabaacbcbaacaddbaccbbabdcacbdaacdbcccbadddddbbbdcbcdcdacadabccccdcbddaddccbddbaaadccbdaaddbbabacddcacccabbaddbccdbccabcadcddbcbacbbacbabccdbdabcddbbdbacadcccadbbbdaddcdcacdaaddaaccbabcabadcbbcbaccbadaccabaacdcdadaababbaaddbddbbbadababcbdcbabbddadcbddcaabcccdcbbddbaabdaabdcccacacbacdacddbdcacacdaccbbacabcacbbabbcdabcbbaaaddaababcabacdcbbbccadadaaabdbddaaddcdcabbcdbbbcdddcdacaaaaaacdcccdddcbdcdadbccbadacbbcddbdbadccbacaaabbbdaaacbaacbcbbababdddddbaadababdadcadcdbadccbacddbdbddbbbcbcbbcbcccbaddbaacbacdbbcbdbddddbcadccccdaaddddcbadabdccbcdbacbadcdcacdddadccdcbcbdacccdadcbdbccccccbddcabccccddccdbcdacbcabbabbacdbabacbacbdbcdbacddbcccbdaddadcdacbabddcabbccbdcbcbbbaddadddacccbaccccbcdaacacbaadbbabcbcbbaadaaabcddddcdcaadcdbadbbaacddbcddacaacbbadcdaddcaadddadbcddddbbadaabacbacbbaccbacbbdcacadbbababadbbbadbcccdadcdcdabaabdcddabddccabbccbdcdaccddcbdbcccbcddbdcacccaabcbcbcbcdbbbdadddcbcdababbcdadaacbacacbdcddbacdbbbabbabddcbbdbbadcdbadcabbbbcccbcdcdbcbdcbbdbacdaabbdbaacddbbaabbdccdccdbabbaddccbbcaadadbbdaccabbdacadddaabbaddcdabaacdbbbccdddbbbccbbcdacccbdcbbaadbcdbbbcdddbccddcdccbbaccccdcabacbdccdbaccaccdaaddacbabcaacbccababbdacbddbcaddcadaadacbcccdbdabcdbdddbccccbbbcbccabdcaacdccddabbdaaacdbbadddddaacddbcabaabbbbcdccddabccaaaacbbdcbcbaddadcccbdacbdddccdcadadcbcabbcccabacdaccccaadcaccbbabdaccdacbddbbaddcaabbaddcdcccaabdbabdadbaababcccacbdcaadacabcbdcbaaddcccbbccabbabbbcdba\n13\n",
+      "output": "2353"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "cabdcaabcddcaaaaababccdaacacbbbbdaaccbcbddbddbcdabdddbdddbabbccdbadbbbbacbabcaabaddccbcdbdbcbbdaabccdcabcbbdbdabaccbacddaabcdadbcbdcaccbcdabaadcbdddbadcdddabdcbdbadcbcadccdacdcdadabbdddcdbbcccacddacdbcbddbbdbabdccabcbbbbbbbcccbabacccabacabccdcdbdbbccdbaacbcdbcddbccabdbbbddbcdbdcddccaddbdaddcdbcbcccddadadaabbdacbcbbccbdaacdbbbdbddbddbcdcdddcadadcbbddbabacadbaccdbdbabdbaacdddbcdaacddbbadbbaadbbdcaaacdabacccdcabcbaadbdaddaccdcabcacdcaaddbbbacbcdaaaddabcbabbcbbbcaadabddaaadadadaddaaccdacdaccddaacdaddcddbbdbcadbcbbccbcbccddbcbbdaaabbaddacbdbbaacdaadacbcbddadbacdabbccdcaabbbacbcadcbadcdcadcdccdbbbbcadddbaaadbbabcacbabaccacaadbabbaaddcacacddccdcaacaadababcadbadaaaddcdbdccdcbbaadcdcbacbadaddaadbccacbcbdbddcdcabbadbbcdabaabacbbdaabaabbcabaacddacaadccddcdaccacdcabcbbadcbdaabbbccdbcaadacaddadcaacadddddddabbbacdaddbcbdddabcccdacabdcccaaadadddcbdcbdbcbdcccbbbcdcbbaabccbadcacaaddaaddabccccbaccddbbacbccdbbaaddabdadbddcddcddcadbaadcbacacbcddaadcdaccbadaabaabccbbddcbaccbddcddbcbbcaabcbbadacbcddbbcdadbdadcdbdddbcdcdbdddabbcbdadbaacabddcaaccacdcbcacccacbbaddddabcbabcaddcdbcddccacdaacddbbbcdbadddcddacbccacacccbabaaadcdacddbadbdcabadabacddcdbaddbbbcbacadccaadaaccdccaaddbcdbcadbabdabdadbdbacacbcdbdcdccbbabacccbbcbaadaddddbbaccbaabbdbbacdaccdddbcaaadcbbbacdaaaaddcabadccbaadabbddcadadacaaabcdddaacbdbdaabcbcadacccdbbbbdccaddbccddbccccbbbbcbbcbaaaabbcdddbcbcadccbdbcbaadcccadbacdabcbbacbdbababcbcdcddccdcbbdcdddddbabddbbcbdddccacbdadbdaaaaacccadcbcbddabdddbdcdadcaacadcbbdadbaaabbadaaacdabaccadbbdbcabddbbbadabbdabbbabccbabccbaccbcddcabcaacdcdbdcaddbadcdbabdadccdcdcabdadbbcdbddcaccbcbdbbbdadcaaaabaddbaacddbddcdccbcbdaabddccbdddbcacacababaccdbadacddbbbccabadacddddbdddaaddbcddcdbdccdbcdbadcaabbddacbcdccaabdbdbdaabbbcccbabbdbbbabcaaacadcbbbacdddadbbdbdcccbcdbaccbbcacbbddacabbbddbbabddaacaabadadaddccbccdaddcccaccbadcbacbcaccbbacbdaabdbbabcacdbabaccbabdbaaddadcadbacadccdcdadcbdbabdbadbbdadbdcddbbdbcadbbdbabaccdbaaadbbddcbcccaaaddcdadbdadbbdcbccbdbbbccacbaccbcbcabcbacbbcadaacdccbcdabdadacabbcccbbabdbabdbabbbccaacdcdaabbcacdbcbcbdcababcccdcdbbcbdaddccabcddcdbbddcdccddccaadbcdbaccdbcdadaadaaddcdcbbacccaadbadddadacbacddccdadccabddbbdaadcacbdbcaddcbbaddbabdcbbaaabcadaccaabbbadbcdbdbdbaccdabacbddadbbcaaadaabdaadcbccacadccabacababdcbbcbcbdaabbbaacdadcddbddaadaadbdaaababbcbbaaccccbacccbbbacbadcdbbbddddbadaddacbbdccacacdcacbccdacacdddbcaacdacacdbaaadbcdbbadcdadbadbdcabaabacbccbaddddbbbdcbaadabadbddcddbddabcacaccdcccaabcccbdddabcaadcadadcbcbadbcaadaaadacdcddacabcbdaaaccbbadadbddddbbdaabdcaaacbcbdcbdbbcbccbbbcabbbbabcdcddabcbcaaabacbddcbcacbcacdadabadbbcdccabacaaddccddbcaccabacbcadbaaddbcabbabcbcbbbaabddacdbadbbabbddcdaccbcdddbbbacccdcbcdbbcbbdcbbcbdddbccbdbcddcbbcbaabdbccddadabdbabddbabdaccbdcddacbcdbbcddadaabbdabcbaaccbbbdcabcdabaacdabddddadcbcbdaccddcbcddabaadbdbbabdccccbadcdccccadccbcdacbcccababdaacbcacbbdadbddcdbdccdcddbbcdcaabcdaabdcdcddaacaacbbdcaadaabdadbbaabbaaabbacdbcabaccaadbbaaadccdbbcdcadccacccaaaccdaccbadcabcbaccbcdabbbacdddbaaaaddbdcacdcdad\n19\n",
+      "output": "2945"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "aacacdbdbdbcdcbdcabaccddcdbaadcdbbbacbaabbccdbbdcabbacaddbbccacadbccccbacdcadbbcacacdccddcdaadbcdbbbabbbaaaccbddddccabcdbddbacccccdcaccabbaccabdcbdbdcbabbcdaaccdabbbadcbbaddbcddaaaaaabcbcdbdccccdadbcaadddacaddcdbadacbacbdbdcaabbcaccdacacbbcadddcbadbcbaadbbcbbbdddccbbcdabcdbcdcbacbbcbdccbdbdcbdbdaaddbcaccacbadcdccdadcdbdcbacbbdcacadcacdadcacacdaaccdddcccdaddabacccbdcbabbcbdcabadaddacdbbcacdbadbccdbccaacddbcbabccadcadabbcddacbadcdbbbbddcbbacaababdabdbabcbadacddbdcdaaccdbbdcdabddabddbbccbadbddcdcacbaacdcbaccbadbddacadccddcadcadbcababcacadabbccbacbacbbacbabdbbdccbabccdcacdaccdabcdbccabdaadbabaaddabbccccaddcabacdbbadaabacbbdccdbcdbabdcddbacbdcddacbaabdacbbbdcbccacddbbdbbdcbbccdacdddbbbcabacacaacddbbdcdcbcddddbabbcdcaabbbbdadbccbabaddbaadcbbcaadcacadddaaacaaabcbcddcccbabcabbbdadcaccaabbacbcacacaddaaabcadaacabcabbabbddbcddabdddddaaddabcacdbadcdacadadbadaccabdaddcabaababdaccbdccaaadadbcabbbcdcbcdbdccbdcaddcabbacbbdaaababdaddbcbaccbabbabaddbdbbdbcdbcbcbddadbadbdadccaccabcbcdbdbdcabbcdbcaaacdaaabcddbdbdcbdadadadcbcbbbdaadbaaccdacdccacddbabcdadcdccabdadcabbbdbcbccadbbdcdddbaaddddbdbaccbccaadbbadddcdcccdddcbdcbbbcdacbabacbacbbdbbaccacbcbbdbcdcbcbdbdadcddaccadcccabaadabddbadbcacbabaadbcadddabdccdaabcaddaaacbddcaaacaccbacacdabbdbaacdbcbdacccdabbdbaddaabddbdcbbddacdaaaadbaacbadbbadcccddcbadbccdbccbaabbcdaabccbadbaccdbdaabbbaadccddcddaccaabaadbcdddbaddaaddbdbbcdbbcaddcacacdbdddcddcbbadcaaadcdccbbbaccbaabaacddbcbadabcbabdbbdbccacdcdcacacacccbbcbcacbdbcdccccaadbadabbbbdabbdadcbdacaaacbcabbddadcbacaddcacddaaabbdbbacddcccccbababcbcaabdcbaccbaba\n27\n",
+      "output": "1524"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "ccbdddbbadacdcdcdbbadbcadcbabadcbddbadaabadcadaabcbbdbdcbdbbabbdbcadbdbbcababdadabddcdcadadbdbabcdcabdbaaccdacbabacadcdbbbbdcacbbdddbadddbcdbbddcacadccbaddcbbdbcbcbdbddddcbddadcdaaacadacdcaaabaadbddbdacdbabadbdacabbadbdacdccbbadbcbdbadacababaacadbaacddabadcadddbbbcdabdaaaadbdadbababcbbbbcabdccadddaccacacccdbcdadadcacbdbdcbdaababcdacbcccacadbaacdbcadbaddabbcddbababacbcccbadbccbababbccaadcdaaaadabdbbadbbdbaacdcbdcbdabadccacacadddcdbddacbcbcbcbbcaaccadbadaabcadddcaddbdbacdcacacddaabbbaaaacddbbdabaabcbcbadbcbbabbaaacabaadddaccbcacddbdddbacdaccdadccbddacacbdbccbcbbaacadacbaaaddadbccddbbdcbaccacadddbdddacaabbbadcdadbddcccaaadccabbbbaaabddacdabbdcabdcdcdcddaadaddcbaadbdacbbbaabadbacdbbccacdbbdbadcaadbbddccbbbdaabbdabababacabccabadccabbddaadacacdcbddcadcacabbdddccabbcdcdcccacbdcccaaddacaabbabbddaabbacdbacaaadcccbcbadabcddbdcddbbcacbcbcbcdbdabaabddcdbcbaaccbdaccdacabcbcbcdccabdddbbaacdcccdadcbdabdacaccddadbacacabaccaddddaabcddabdddbcdbbaccbcdcbdbabcdccaacdabcacbcdabdacbaacccbccdddcbcddcacbdbaaccaaaaccdbbdaacdcaabdcbdacbacddbbbddccddbcacbccaabdcaaddbcccdabbadbcdbddababccccbdbbcdcbcdcacdaadbcdccddbbbbcbdbbbccabaaaaddbbacaabbdbaccdabacddaccdacaddcacabbdacccbadadcaaacccbadddbaadaccdcbadcadcacbbccacadbaddddbbdccbcaabcaccbbcbcbdcdbdcaadbcdabacbccbbddaaddcddccdbcaaddbbdbddcdabcbacaabbacbbcdbcabdcacdabbddcbbcdbabcbcbdbbcbbcbbddadaddddcbdabadabcdcbacaacbbbacccbccdacddbaddbdddcdcdaddcaaaaccadadcdbccabadaababcccddadcaabbbcddaccbbbadbbbddcbbbcddcbcaddbdddbabbacbbbbbbbbdbbdbabccadcbbdaddaaadacddacdbdbcabdbccdcbddacdccdbcbdbacddcabaaacabddcddbddbdbccdcaaadaddcbaaabcdacababdccdbacdaaacdcbccbccbababdabbacdcacccbabcdaddbdaaadbbcccbdcbbccaabdabacbadbdddaccdadaddbdaacdbdcababbacbbbbdadbdadabcbacbbddcabbcadaaddabccccddccbddcdaaccbddbcabcbdbdabdbadbacdcbccdcdbabcdcdcddcabdacdcdbcababadbcbacabadadbaaacaabbccdddacddaaacdbbbbdaaacddbdcccbccaabbcabbccccdaacbbcdcdcccadbddbadabbcbbdcbddbdbdcacccbbbbcccdbdcbadccbccbacadbcabdccccccccdacbbacbbcbcddbdcdcdbcdccdcbacbcaaaabaabdabdbcbdabcdcacbccbdbadaaaddabdbaadcdbbbaabcaacbaaabbcabccdacacbcbbdadbbdbcaabdaaddccadcdaacaabdcbddadadcddbdcadcdbdaadbbaddcabaddcdddaccaddacccdadbbcacbcadccdcbdbdccaadccaacbbdbcbbbbbbdcdadcbaabddabddcaacacbdbdbddacaacddbcbbbcabbaaabaaaaaadcdadddddbcddbaabdcccdbaabbccaacbcbbcaabdbcaadbddabadaaaacdcdbcbcccdbccccabadccbbabbacddbdcdacccbadcbadddbcaaddacbbcbcbdcaabdcbbadcaadbabcbccadadcaacacdddcaababcbbcbbdbcbabcbccbddbccadcdadbdcddbbcddcdddbabcaaabcbddbbcbbaadbddcdbcaadacbaaaaaabbcbddbbaccdcaabdabcacadcacccdbccbdbcabcacadbcbdccbacbadbbdccabcdacddabdcccaabddbbaacabaadcaacaaccabcaccdbbbcdcabaabcdbddcdbadddbabbcbcabbddcbbddbacbcababdcaaaabacadaccbbdbdadbdbabcddadabaabbbccbbdcadcdbcdbccacbbcbbcaadadcbddbacdbbbbbbccababccadbdbdbaacaacdcdbcdbccdabccdddaaabdbbccbadabcdadbdcbdadadabcaadabdbcbcaacbbdcdadcdddbbbaddcaccdccdaabcdaaddadbccbaabcdabcdbbbdaabccbccabdaddcbcbdcddaabdbdacbbdaabbaccbcccdcabaddbddbbadbbacdcadaadbccacbaabbdbbcdbccbabbcbdacbba\n35\n",
+      "output": "2884"
+    }
+  ],
+  "hints": [
+    {
+      "id": "sh-distinct-len-k-st1",
+      "subtaskId": "st1",
+      "content": "Đưa mọi substring vào set<string>.",
+      "starCost": 0
+    },
+    {
+      "id": "sh-distinct-len-k-st2",
+      "subtaskId": "st2",
+      "content": "Vẫn dùng set<string> với N ≤ 500.",
+      "starCost": 1
+    },
+    {
+      "id": "sh-distinct-len-k-st3",
+      "subtaskId": "st3",
+      "content": "Hash đa thức O(N) rồi cho từng hash vào unordered_set<long long>.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Tính hash O(N) cho mọi window độ dài K, đưa vào hash set, in size.",
+  "solutionSketch": "// rolling hash window of length K -> unordered_set<ull>",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-25"
+}

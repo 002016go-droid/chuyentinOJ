@@ -1,0 +1,207 @@
+{
+  "slug": "sf-prime-table",
+  "title": "Đếm số nguyên tố trong [L, R]",
+  "titleEn": "Count Primes in Range",
+  "module": "roadmap",
+  "topicId": "sieve-factorization",
+  "tier": "T2",
+  "skills": [
+    "S4-Cài đặt",
+    "S2-Phân tích"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "sieve",
+    "number-theory"
+  ],
+  "source": "Bài tự build (Phase 2)",
+  "isExternal": false,
+  "statement": "Cho Q truy vấn, mỗi truy vấn là một cặp `(L, R)`. Với mỗi truy vấn, hãy đếm số số nguyên tố trong đoạn `[L, R]`.\n\n**Input**: dòng 1 chứa Q; Q dòng tiếp theo, mỗi dòng 2 số L, R.\n\n**Output**: Q dòng, mỗi dòng 1 số nguyên là đáp án.\n\n**Ràng buộc**: 1 ≤ L ≤ R ≤ 2·10^5, 1 ≤ Q ≤ 10.",
+  "vnPattern": "Sàng Eratosthenes + prefix sum.",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "1 ≤ R ≤ 100, Q ≤ 5",
+      "points": 30,
+      "constraint": "1 ≤ L ≤ R ≤ 100; Q ≤ 5"
+    },
+    {
+      "id": "st2",
+      "title": "1 ≤ R ≤ 5000, Q ≤ 10",
+      "points": 30,
+      "constraint": "1 ≤ L ≤ R ≤ 5000; Q ≤ 10"
+    },
+    {
+      "id": "st3",
+      "title": "1 ≤ R ≤ 2·10^5, Q ≤ 10 (cần sàng)",
+      "points": 40,
+      "constraint": "1 ≤ L ≤ R ≤ 2·10^5; Q ≤ 10"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "2\n38 82\n45 79\n",
+      "output": "10\n8"
+    },
+    {
+      "id": "sample2",
+      "input": "3\n33 69\n22 26\n11 12\n",
+      "output": "8\n1\n1"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "2\n38 82\n45 79\n",
+      "output": "10\n8"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "3\n33 69\n22 26\n11 12\n",
+      "output": "8\n1\n1"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "4\n29 79\n13 36\n35 80\n35 67\n",
+      "output": "13\n6\n11\n8"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "1\n39 55\n",
+      "output": "4"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "5\n32 56\n37 68\n19 62\n30 34\n31 79\n",
+      "output": "5\n8\n11\n1\n12"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st1",
+      "input": "3\n3 42\n19 51\n46 83\n",
+      "output": "12\n8\n9"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "7\n1083 1369\n2593 3304\n956 2123\n3304 3780\n502 2428\n3262 4931\n2257 2807\n",
+      "output": "39\n87\n157\n62\n265\n197\n74"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "8\n2905 4594\n294 1833\n3561 4422\n1910 2401\n827 1644\n3067 3926\n3394 4525\n3700 4726\n",
+      "output": "201\n220\n102\n65\n116\n106\n137\n121"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "7\n3691 4454\n1557 2095\n1911 3634\n2350 3377\n1215 1623\n829 2186\n1390 2965\n",
+      "output": "91\n71\n216\n128\n59\n183\n206"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "2\n3554 4573\n3370 4912\n",
+      "output": "122\n182"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "2\n458 2095\n278 1318\n",
+      "output": "228\n155"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st2",
+      "input": "5\n3652 3900\n3871 4679\n2475 2656\n3897 4221\n2747 3235\n",
+      "output": "29\n97\n17\n39\n57"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "2\n156562 156647\n62991 63100\n",
+      "output": "8\n7"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "5\n182671 182698\n152843 152974\n96805 96988\n51288 51319\n140960 141148\n",
+      "output": "2\n12\n14\n1\n13"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "2\n141274 141435\n69307 69388\n",
+      "output": "12\n7"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "5\n131085 131096\n74124 74258\n96166 96173\n150727 150783\n133673 133714\n",
+      "output": "0\n15\n1\n4\n5"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "4\n91332 91489\n107532 107718\n42594 42728\n187099 187218\n",
+      "output": "14\n14\n14\n15"
+    },
+    {
+      "id": "tc18",
+      "subtaskId": "st3",
+      "input": "3\n140755 140863\n79882 79976\n167282 167386\n",
+      "output": "11\n8\n7"
+    },
+    {
+      "id": "tc19",
+      "subtaskId": "st3",
+      "input": "1\n48257 48285\n",
+      "output": "3"
+    },
+    {
+      "id": "tc20",
+      "subtaskId": "st3",
+      "input": "4\n125795 125916\n141043 141172\n153444 153546\n9595 9603\n",
+      "output": "7\n10\n11\n1"
+    }
+  ],
+  "hints": [
+    {
+      "id": "sf-prime-table-st1",
+      "subtaskId": "st1",
+      "content": "Trial division O(√n) cho mỗi n trong [L, R].",
+      "starCost": 0
+    },
+    {
+      "id": "sf-prime-table-st2",
+      "subtaskId": "st2",
+      "content": "Sàng Eratosthenes lên 5000, sau đó count với prefix sum.",
+      "starCost": 1
+    },
+    {
+      "id": "sf-prime-table-st3",
+      "subtaskId": "st3",
+      "content": "Sàng tới 2·10^5 + prefix `isPrime[]` → mỗi query O(1).",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Tiền xử lý sàng `isPrime[]` rồi prefix `cnt[i] = số nguyên tố ≤ i`. Mỗi query trả `cnt[r] - cnt[l-1]`. O((MAX + Q) log log MAX).",
+  "solutionSketch": "// Sieve + prefix; answer = cnt[r] - cnt[l-1]",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-25"
+}
