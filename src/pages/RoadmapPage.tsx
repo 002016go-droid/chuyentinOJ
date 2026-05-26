@@ -45,17 +45,29 @@ function AlgoNode({ data }: NodeProps) {
     locked: boolean
   }
   const color = TIER_COLOR[difficulty]
-  const brightness =
-    status === 'completed' ? 1 : locked ? 0.4 : status === 'in_progress' ? 0.9 : 0.7
-  const pulse = difficulty === 'ioi' ? 'pulse-ring' : ''
+  const opacity = locked ? 0.5 : 1
+  const ring =
+    status === 'completed'
+      ? `0 0 0 2px ${color}, 0 1px 2px rgba(15,23,42,0.06)`
+      : status === 'in_progress'
+        ? `0 0 0 1px ${color}, 0 1px 6px ${color}33`
+        : `0 0 0 1px ${color}55, 0 1px 2px rgba(15,23,42,0.04)`
+  const bg =
+    status === 'completed'
+      ? `${color}14`
+      : status === 'in_progress'
+        ? `${color}0a`
+        : 'var(--bg-surface)'
+  const pulse = difficulty === 'ioi' && status === 'in_progress' ? 'pulse-ring' : ''
 
   return (
     <div
-      className={`relative w-[170px] rounded-xl border bg-[var(--bg-surface)] px-3 py-2 ${pulse}`}
+      className={`relative w-[170px] rounded-lg border px-3 py-2 ${pulse}`}
       style={{
         borderColor: color,
-        boxShadow: `0 0 0 1px ${color}33, 0 0 16px ${color}33`,
-        filter: `brightness(${brightness})`,
+        background: bg,
+        boxShadow: ring,
+        opacity,
         pointerEvents: locked ? 'none' : 'auto',
       }}
     >
@@ -259,13 +271,19 @@ export function RoadmapPage({ onLevelComplete }: Props) {
             minZoom={0.3}
             maxZoom={1.5}
           >
-            <Background color="#1e2d45" gap={24} />
+            <Background color="#d8dde5" gap={24} />
             <MiniMap
-              maskColor="rgba(5,8,16,0.7)"
+              maskColor="rgba(15,23,42,0.08)"
               nodeColor={(n) =>
                 TIER_COLOR[((n.data as any).difficulty as RoadmapNode['difficulty']) ?? 'basic']
               }
-              style={{ background: 'var(--bg-void)' }}
+              nodeStrokeColor={() => 'transparent'}
+              pannable
+              zoomable
+              style={{
+                background: 'var(--bg-elevated)',
+                border: '1px solid var(--border)',
+              }}
             />
             <Controls
               style={{

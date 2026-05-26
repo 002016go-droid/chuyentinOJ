@@ -61,7 +61,7 @@ export function CodeEditor({ problemSlug, value, onChange, height = '60vh' }: Pr
       height={height}
       defaultLanguage="cpp"
       language="cpp"
-      theme="vs-dark"
+      theme="vs"
       value={value}
       onChange={handleChange}
       options={{
@@ -77,20 +77,22 @@ export function CodeEditor({ problemSlug, value, onChange, height = '60vh' }: Pr
         renderLineHighlight: 'gutter',
       }}
       beforeMount={(monaco) => {
-        monaco.editor.defineTheme('chuyentin-dark', {
-          base: 'vs-dark',
+        monaco.editor.defineTheme('chuyentin-light', {
+          base: 'vs',
           inherit: true,
           rules: [],
           colors: {
-            'editor.background': '#050810',
-            'editor.lineHighlightBackground': '#0d1424',
-            'editorGutter.background': '#050810',
-            'editor.selectionBackground': '#1e2d45',
+            'editor.background': '#ffffff',
+            'editor.lineHighlightBackground': '#f3f5f8',
+            'editorGutter.background': '#f6f7f9',
+            'editor.selectionBackground': '#cfe2ff',
+            'editorLineNumber.foreground': '#8a95a3',
+            'editorLineNumber.activeForeground': '#15212e',
           },
         })
       }}
       onMount={(_editor, monaco) => {
-        monaco.editor.setTheme('chuyentin-dark')
+        monaco.editor.setTheme('chuyentin-light')
       }}
     />
   )

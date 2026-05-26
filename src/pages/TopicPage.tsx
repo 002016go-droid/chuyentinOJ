@@ -31,24 +31,24 @@ function refTone(ref: ExternalRef): 'green' | 'blue' | 'amber' | 'red' | 'purple
   return 'muted'
 }
 
-function ReferenceRow({ ref }: { ref: ExternalRef }) {
+function ReferenceRow({ item }: { item: ExternalRef }) {
   return (
     <li className="flex flex-wrap items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] px-3 py-2 text-sm transition hover:bg-[var(--bg-hover)]">
       <a
-        href={ref.url}
+        href={item.url}
         target="_blank"
         rel="noopener noreferrer"
         className="flex flex-1 items-center gap-2 text-[var(--text-primary)] hover:text-[var(--accent-primary)]"
       >
         <ExternalLink size={14} className="text-[var(--text-muted)]" />
-        <span>{ref.label}</span>
+        <span>{item.label}</span>
       </a>
-      {ref.source && (
+      {item.source && (
         <span className="rounded bg-[var(--bg-elevated)] px-1.5 py-[1px] text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
-          {ref.source}
+          {item.source}
         </span>
       )}
-      {ref.difficulty && <Badge tone={refTone(ref)}>{ref.difficulty}</Badge>}
+      {item.difficulty && <Badge tone={refTone(item)}>{item.difficulty}</Badge>}
     </li>
   )
 }
@@ -248,7 +248,7 @@ export function TopicPage() {
               >
                 <ul className="space-y-2">
                   {node.referenceProblems.map((r, i) => (
-                    <ReferenceRow key={`${r.url}-${i}`} ref={r} />
+                    <ReferenceRow key={`${r.url}-${i}`} item={r} />
                   ))}
                 </ul>
               </Section>
