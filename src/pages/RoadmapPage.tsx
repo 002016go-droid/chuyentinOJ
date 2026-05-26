@@ -401,6 +401,13 @@ export function RoadmapPage({ onLevelComplete }: Props) {
                 </div>
               )}
               <div className="mt-4 flex flex-wrap gap-2">
+                <Link
+                  to={`/topic/${selected.id}`}
+                  className="btn btn-primary"
+                  style={{ textDecoration: 'none' }}
+                >
+                  📖 Mở trang lý thuyết
+                </Link>
                 <Button variant="ghost" onClick={() => setStatus(selected, 'in_progress')}>
                   Đánh dấu đang học
                 </Button>

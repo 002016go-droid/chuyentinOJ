@@ -10,3 +10,5 @@ dev-dist
 vite.config.d.ts
 vite.config.js
 .devin/
+__pycache__/
+*.pyc
