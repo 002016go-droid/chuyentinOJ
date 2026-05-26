@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { ArrowLeft, BookOpen, Target, ListChecks, ExternalLink, Code2 } from 'lucide-react'
+import { ArrowLeft, BookOpen, Target, ListChecks, ExternalLink, Code2, type LucideIcon } from 'lucide-react'
 import { PageTransition } from '../components/layout/PageTransition'
 import { Badge } from '../components/ui/Badge'
 import { loadProblem, loadRoadmap } from '../lib/problemLoader'
@@ -58,7 +58,7 @@ function Section({
   title,
   children,
 }: {
-  icon: React.ComponentType<{ size?: number; className?: string }>
+  icon: LucideIcon
   title: string
   children: React.ReactNode
 }) {
