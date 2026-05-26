@@ -113,26 +113,125 @@ export function mapVerdict(statusId: number): Verdict {
   return map[statusId] ?? 'RE'
 }
 
+function submissionBody(opts: SubmitOptions) {
+  return {
+    source_code: opts.sourceCode,
+    language_id: getEffectiveLanguageId(),
+    stdin: opts.stdin,
+    expected_output: opts.expectedOutput,
+    cpu_time_limit: opts.timeLimit ?? 1.0,
+    memory_limit: opts.memoryLimit ?? 262144,
+    compiler_options: '-O2 -std=c++20',
+  }
+}
+
+async function fetchJudge(
+  url: string,
+  init: RequestInit,
+  retries = 2,
+): Promise<Response> {
+  let lastErr: unknown
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const r = await fetch(url, init)
+      // RapidAPI free tier sometimes returns 429 (rate-limited) — back off and retry.
+      if (r.status === 429 && attempt < retries) {
+        await new Promise((res) => setTimeout(res, 500 * (attempt + 1)))
+        continue
+      }
+      return r
+    } catch (e) {
+      lastErr = e
+      if (attempt === retries) throw e
+      await new Promise((res) => setTimeout(res, 300 * (attempt + 1)))
+    }
+  }
+  throw lastErr ?? new Error('Judge0: network error')
+}
+
+async function pollSubmission(
+  cfg: Judge0Config,
+  url: string,
+  token: string,
+): Promise<Judge0Result> {
+  // ~24s max wait (40 * 600ms). Judge0 free tier usually finishes in <5s.
+  for (let i = 0; i < 40; i++) {
+    await new Promise((res) => setTimeout(res, 600))
+    const r = await fetchJudge(
+      `${url}/submissions/${token}?base64_encoded=false`,
+      { headers: effectiveHeaders(cfg) },
+    )
+    if (!r.ok) continue
+    const data = (await r.json()) as Judge0Result
+    const sid = data?.status?.id
+    // Judge0 status: 1=In Queue, 2=Processing, 3+=terminal.
+    if (typeof sid === 'number' && sid >= 3) return data
+  }
+  throw new Error('Judge0: poll timeout (kết quả không về sau 24s)')
+}
+
 async function postSubmission(opts: SubmitOptions): Promise<Judge0Result> {
   const cfg = getJudge0Config()
   const url = effectiveUrl(cfg)
-  const response = await fetch(`${url}/submissions?base64_encoded=false&wait=true`, {
-    method: 'POST',
-    headers: effectiveHeaders(cfg),
-    body: JSON.stringify({
-      source_code: opts.sourceCode,
-      language_id: getEffectiveLanguageId(),
-      stdin: opts.stdin,
-      expected_output: opts.expectedOutput,
-      cpu_time_limit: opts.timeLimit ?? 1.0,
-      memory_limit: opts.memoryLimit ?? 262144,
-      compiler_options: '-O2 -std=c++20',
-    }),
-  })
-  if (!response.ok) {
-    throw new Error(`Judge0 error: HTTP ${response.status}`)
+  const body = submissionBody(opts)
+
+  // 1) Fast path: POST with wait=true (works on self-hosted + paid RapidAPI tiers).
+  try {
+    const response = await fetchJudge(
+      `${url}/submissions?base64_encoded=false&wait=true`,
+      {
+        method: 'POST',
+        headers: effectiveHeaders(cfg),
+        body: JSON.stringify(body),
+      },
+    )
+    if (response.ok) {
+      const data = (await response.json()) as Judge0Result
+      // Some RapidAPI plans silently drop ?wait=true and return only { token }.
+      // Detect that and fall through to the poll path.
+      const sid = data?.status?.id
+      if (typeof sid === 'number' && sid >= 3) return data
+      if (data?.token) return await pollSubmission(cfg, url, data.token)
+    } else if (response.status !== 400 && response.status !== 422) {
+      // 400/422 = malformed body, do not fall back. Otherwise try wait=false path.
+      // Surface a small slice of body for debugging.
+      const text = await response.text().catch(() => '')
+      if (response.status === 401 || response.status === 403) {
+        throw new Error(
+          `Judge0 ${response.status} (sai/expired API key) — vào Settings cập nhật khoá RapidAPI.`,
+        )
+      }
+      console.warn(`[judge0] wait=true HTTP ${response.status}; falling back. ${text.slice(0, 120)}`)
+    } else {
+      const text = await response.text().catch(() => '')
+      throw new Error(`Judge0 HTTP ${response.status}: ${text.slice(0, 200)}`)
+    }
+  } catch (e) {
+    // Network-level error from wait=true — try the poll path below before giving up.
+    console.warn('[judge0] wait=true failed, trying poll fallback:', e)
   }
-  return response.json()
+
+  // 2) Fallback: POST with wait=false then poll the token (free-tier RapidAPI).
+  const submit = await fetchJudge(
+    `${url}/submissions?base64_encoded=false&wait=false`,
+    {
+      method: 'POST',
+      headers: effectiveHeaders(cfg),
+      body: JSON.stringify(body),
+    },
+  )
+  if (!submit.ok) {
+    const text = await submit.text().catch(() => '')
+    if (submit.status === 401 || submit.status === 403) {
+      throw new Error(
+        `Judge0 ${submit.status} (sai/expired API key) — vào Settings cập nhật khoá RapidAPI.`,
+      )
+    }
+    throw new Error(`Judge0 submit HTTP ${submit.status}: ${text.slice(0, 200)}`)
+  }
+  const json = (await submit.json()) as { token?: string }
+  if (!json.token) throw new Error('Judge0: thiếu submission token trong response')
+  return await pollSubmission(cfg, url, json.token)
 }
 
 /**
@@ -202,12 +301,17 @@ export async function runBatch(
           })
           onProgress(t.id, r)
         } catch (e) {
+          // Surface the actual error so the user can tell judge-side issues
+          // (network, expired API key, rate limit) apart from real RE in their
+          // own program. We still report verdict='RE' for verdict-counting, but
+          // the stderr/compileOutput strings carry the real message.
+          const msg = e instanceof Error ? e.message : String(e)
           onProgress(t.id, {
             verdict: 'RE',
             time: 0,
             memory: 0,
             stdout: '',
-            stderr: String(e),
+            stderr: `[Lỗi judge — không phải lỗi code của bạn]\n${msg}`,
             compileOutput: '',
           })
         }

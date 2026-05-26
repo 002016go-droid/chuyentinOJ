@@ -39,6 +39,7 @@ interface CellState {
   subtaskId?: string
   stdout?: string
   expected?: string
+  stderr?: string
 }
 
 export function ProblemPage({ onThreeWA }: Props) {
@@ -214,6 +215,7 @@ export function ProblemPage({ onThreeWA }: Props) {
             time: r.time,
             memory: r.memory,
             subtaskId: tests.find((t) => t.id === testId)?.subtaskId,
+            stderr: r.stderr,
           }
           if (r.memory > maxMem) maxMem = r.memory
           totalTime += r.time
@@ -221,6 +223,27 @@ export function ProblemPage({ onThreeWA }: Props) {
         },
         6,
       )
+
+      // Detect judge-side failure (every test returned RE with 0 time/memory and a
+      // judge-error stderr). In that case we surface the underlying judge error
+      // instead of pretending the user's code is broken.
+      const allJudgeErr = tests.every((t) => {
+        const r = collected[t.id]
+        if (!r) return true
+        const isErr = r.verdict === 'RE' && !r.time && !r.memory && r.stderr?.startsWith('[Lỗi judge')
+        return Boolean(isErr)
+      })
+      if (allJudgeErr && tests.length > 0) {
+        const sampleErr =
+          collected[tests[0].id]?.stderr?.replace('[Lỗi judge — không phải lỗi code của bạn]\n', '') ??
+          'không xác định'
+        toast.error(`Judge0 chưa trả kết quả: ${sampleErr.slice(0, 160)}`)
+        setBusy(false)
+        setRunning(null)
+        setCurrentSummary(null)
+        setResults({})
+        return
+      }
 
       // Compute per-subtask score
       let totalScore = 0
