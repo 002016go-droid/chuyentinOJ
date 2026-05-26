@@ -6165,6 +6165,65 @@
             "dp",
             "coin-change"
           ]
+        },
+        {
+          "slug": "dp-min-jumps",
+          "title": "Số bước nhảy tối thiểu",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp"
+          ]
+        },
+        {
+          "slug": "dp-decode-ways",
+          "title": "Đếm số cách giải mã (A-Z)",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "counting"
+          ]
+        },
+        {
+          "slug": "dp-paint-fence",
+          "title": "Sơn hàng rào K màu",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "counting"
+          ]
+        },
+        {
+          "slug": "dp-max-prod-subarr",
+          "title": "Tích lớn nhất của dãy con liên tiếp",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "kadane"
+          ]
         }
       ],
       "theory": "// Leo cầu thang — 1, 2, hoặc 3 nấc mỗi bước, mod 1e9+7\nconst int MOD = 1e9 + 7;\nvector<long long> dp(n + 1, 0);\ndp[0] = 1;\nfor (int i = 1; i <= n; i++) {\n    for (int k = 1; k <= 3 && i - k >= 0; k++)\n        dp[i] = (dp[i] + dp[i - k]) % MOD;\n}",
@@ -6424,6 +6483,67 @@
           "tags": [
             "dp",
             "partition"
+          ]
+        },
+        {
+          "slug": "dp-rod-cut",
+          "title": "Cắt thanh sắt tối ưu",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "knapsack"
+          ]
+        },
+        {
+          "slug": "dp-egg-drop",
+          "title": "Bài toán thả trứng",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "minimax"
+          ]
+        },
+        {
+          "slug": "dp-knap-bounded",
+          "title": "Túi có giới hạn số bản sao",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "knapsack"
+          ]
+        },
+        {
+          "slug": "dp-target-sum",
+          "title": "Đặt dấu +/− đạt tổng đích",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "knapsack",
+            "counting"
           ]
         }
       ],
@@ -6694,6 +6814,68 @@
             "lis",
             "counting"
           ]
+        },
+        {
+          "slug": "dp-lps",
+          "title": "Dãy con palindrome dài nhất",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "interval-dp",
+            "palindrome"
+          ]
+        },
+        {
+          "slug": "dp-lps-substring",
+          "title": "Xâu con palindrome dài nhất",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "palindrome",
+            "string"
+          ]
+        },
+        {
+          "slug": "dp-lcs-print",
+          "title": "LCS — in dãy con chung",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lcs"
+          ]
+        },
+        {
+          "slug": "dp-russian-doll",
+          "title": "Lồng phong bì (Russian Doll)",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "lis"
+          ]
         }
       ],
       "theory": "// LIS O(N log N)\nvector<int> tails;\nfor (int x : a) {\n    auto it = lower_bound(tails.begin(), tails.end(), x);\n    if (it == tails.end()) tails.push_back(x);\n    else *it = x;\n}\ncout << tails.size() << \"\\n\";",
@@ -6946,6 +7128,67 @@
             "dp",
             "grid",
             "square"
+          ]
+        },
+        {
+          "slug": "dp-tile-2xn",
+          "title": "Lát domino bảng 2×N",
+          "tier": "T1",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "tiling"
+          ]
+        },
+        {
+          "slug": "dp-tile-3xn",
+          "title": "Lát domino bảng 3×N",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "tiling"
+          ]
+        },
+        {
+          "slug": "dp-cherry-pickup",
+          "title": "2 robot hái anh đào",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid"
+          ]
+        },
+        {
+          "slug": "dp-paths-king",
+          "title": "Đếm đường đi quân vua",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "dp",
+            "grid",
+            "counting"
           ]
         }
       ],
@@ -7780,7 +8023,65 @@
         "tdp-subtree-sum",
         "tdp-tree-diameter",
         "tdp-max-indep-set",
-        "tdp-subordinates"
+        "tdp-subordinates",
+        {
+          "slug": "tdp-knapsack",
+          "title": "Cây khoá học — Tree Knapsack",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "tree-dp",
+            "knapsack"
+          ]
+        },
+        {
+          "slug": "tdp-min-vcover",
+          "title": "Tập phủ đỉnh nhỏ nhất trên cây",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "tree-dp"
+          ]
+        },
+        {
+          "slug": "tdp-paths-sum",
+          "title": "Tổng khoảng cách mọi cặp đỉnh",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "tree-dp"
+          ]
+        },
+        {
+          "slug": "tdp-color-tree",
+          "title": "Đếm cách tô màu cây",
+          "tier": "T2",
+          "skills": [
+            "S2-Phân tích",
+            "S4-Cài đặt"
+          ],
+          "difficulty": "intermediate",
+          "maxStars": 3,
+          "tags": [
+            "tree-dp",
+            "counting"
+          ]
+        }
       ],
       "theory": "// Đường kính cây bằng DP O(N)\nvector<int> dp(n + 1, 0);\nint diam = 0;\nfunction<void(int, int)> dfs = [&](int u, int par) {\n    for (int v : adj[u]) if (v != par) {\n        dfs(v, u);\n        diam = max(diam, dp[u] + dp[v] + 1);\n        dp[u] = max(dp[u], dp[v] + 1);\n    }\n};",
       "theorySnippet": "// Đường kính cây bằng DP O(N)\nvector<int> dp(n + 1, 0);\nint diam = 0;\nfunction<void(int, int)> dfs = [&](int u, int par) {\n    for (int v : adj[u]) if (v != par) {\n        dfs(v, u);\n        diam = max(diam, dp[u] + dp[v] + 1);\n        dp[u] = max(dp[u], dp[v] + 1);\n    }\n};",
