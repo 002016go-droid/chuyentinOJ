@@ -1,0 +1,208 @@
+{
+  "slug": "dp-lcs-print",
+  "title": "LCS — In ra dãy con chung dài nhất",
+  "titleEn": "Print Longest Common Subsequence",
+  "module": "roadmap",
+  "topicId": "dp-lis-lcs",
+  "tier": "T2",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "lcs",
+    "reconstruction"
+  ],
+  "source": "Bài tự build (DP classics)",
+  "isExternal": false,
+  "statement": "Cho 2 xâu `A`, `B`. Hãy in **độ dài** rồi **một dãy con chung dài nhất** (LCS) của 2 xâu. Nếu LCS rỗng, in `-`. (Nếu có nhiều LCS hợp lệ, in một dãy bất kỳ; chấm theo cách truy vết chuẩn ưu tiên match, sau đó ưu tiên đi lên.)\n\n**Input**: 2 dòng, mỗi dòng 1 xâu.\n\n**Output**: dòng 1 là độ dài; dòng 2 là LCS.",
+  "vnPattern": "DP LCS + truy vết.",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "|A|,|B| ≤ 8",
+      "points": 25,
+      "constraint": "1 ≤ |A|, |B| ≤ 8"
+    },
+    {
+      "id": "st2",
+      "title": "|A|,|B| ≤ 60",
+      "points": 35,
+      "constraint": "1 ≤ |A|, |B| ≤ 60"
+    },
+    {
+      "id": "st3",
+      "title": "|A|,|B| ≤ 500",
+      "points": 40,
+      "constraint": "1 ≤ |A|, |B| ≤ 500"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "aaaac\nabbbabca\n",
+      "output": "3\naaa"
+    },
+    {
+      "id": "sample2",
+      "input": "abbaabcb\nba\n",
+      "output": "2\nba"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "aaaac\nabbbabca\n",
+      "output": "3\naaa"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "abbaabcb\nba\n",
+      "output": "2\nba"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "babbaa\ncbc\n",
+      "output": "1\nb"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "cb\nbbc\n",
+      "output": "1\nc"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "cbbbbbaa\naabaca\n",
+      "output": "3\nbaa"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st1",
+      "input": "cbacbcca\ncbcac\n",
+      "output": "4\ncbac"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "ddbaaabdacadcaddaacccacdcbdabbcccbdbcbacaabbabdccadbbaccdabc\nbbadcdccacdccbcabbccccbaabadadcadcdcbbdccddcbcddccbbacdbcdcd\n",
+      "output": "37\nbbadcdccacdcbabbcccbdcacbbbdccbbaccdc"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "bdabddccabccbadabaaabbbaacdabcdcbdac\nacbadcaddbdccbddbdcaadadcdaacbddddcad\n",
+      "output": "21\nbdaddbccbdbaaaaacddcd"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "baabacadbacaccabaadcbddabbcbacbaabcddbcadabbac\ndbbdcabcdbaacaaabcbdbdbacdbdddac\n",
+      "output": "25\nbabcdbaacaaacbddbacbdddac"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "bcdaadbaadbcbdbcabadccabadadcddcdadcbccabadbbadadabc\naaaabaabbddababbbdbabdabddaaababbdacabccbdadaaabdbbaba\n",
+      "output": "32\nbaadbabbdbabadabadacabccbadaadab"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "cabcbabcbcabdaabbaacbdbcccccccaadd\nabdbbbcacbadabdbadacbdbacdaadaddabccacdcdbbddbcdccacadbcdacc\n",
+      "output": "29\nabbbbcabdabbaacbdbcccccccaadd"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st2",
+      "input": "adbbcaadbbddabbbbbadcbbdaacccccdccbbdabbca\nbcbbaddbcadcbacdacabdacdbccdbbbddacdaacabdbbccaa\n",
+      "output": "26\nadbbcaabddbbbbacdaacbdbbca"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "dbdaceadbbebedcadbadcdeaecaacdaacebcccdbdebdedcbadbcbcacaecccaccadededaabdabdacbacadcbedecaaecedebaaacbccebbcddcaeebadddbeadbacbdddbbececdaaaabebaceaebeebddedbeeadbcaaadbbaeaeabeebcbbebecadbcddcedaebaccdbdbdccdeceadceaaeacacdeccddbcbbedadecbebacabacebaacaaeedeccbcecbebbabcaaecdcdadcaedbabcacbabccbbddecbeeccaabccacadebbbcbaaadadddacdbbbedadaeddbccdeceabbebdbcabebbceccdcdabaccbbcebccebcdacdecaebcddaaeebaeecabdedacebbacbbebcddadd\ncdbcceddebcecbdcecabeabadbbeddededdaeedbddaecbeacdbbcadbebdaddaebedecdaaaebbbcbecbacaecbbcdcdbeecbcadceebbeaecdebbecabeeccdaeacdebcedbeccaeaccaaecddbdaeadeaeacdababbcbeecdaccbdeeebcdcabbdcdeacdccbeacaaecbbbccacddbddcacbeaaeaadceebeddebadedecddaaecbdadccacabbedaeaaceadeaadcbebbadebdbecbeeaacedaaeccdcbddebbacdbeeaceeaccaebddddbecabadecbcadcddcaebdcdecdaeccaecacdecaacbdeddcdbbeeedeeebbdacaabcebabceedcecaaecccdacebbeddacdcdadbbaaaabeeeadebabbbbedeabdeddbabdbceedccaedecedaeddeaadcaadbad\n",
+      "output": "273\ndbdaeadbbeedadbddaecacdaebddebdedbbcbcacaecccccadeebbacbcabeecaaecedeaaccecddaeeaeadbabbbeecdabebcabbddedbeacaaecbbbcadbddceaeacddbddecdaaecadcccbbedadecbebacbeaacaaecccbebbabcaaeddddbabacbaccbddececcacacdecaadddcdbbedeeebbdcabebbceccaacccebedacdcabaaeebaeeabdedaceaceddadd"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "ecaeacabaccbeccdeedbedaaeceeeedcadbddedbedcccacbadbcdccccdebcedcbcbddccceecbcbcdbbbeccadddedadbeebadcbcbbdeddcdddcaedddedcdecbceebcbacbaedbadeceaeeedaecdbcdaceaddcbbdaaddbbdcabcedcadebccecbcdaeaceadddddbcdbbbddeaaadaeeecdaabeaececdbbccdcbedaccedaccdebacececaebecbdeedceaeeececbbbdedadeddabcededecbaddbaaadedcddaaebbeebbeaeeedcccccdddcaaccaede\naedddbbeedabdcacadeebdaeadaaaaceadadccbcbaabdebbabeecebdcadabcbaabcbcccdedccdceddcbdaacebedaedddcdbbadebbecabcbbbceacbedecdcabcacecaeaeacdddecbededecacecbdebdaaacbceeaeacccddddbbedbacbcccecbdddeecbebeacadaebeceebeeadcbbcaecbbbddeecebdaaeaccceacbcbcbdaeaaeaecbebcedeabbeedcacaaaeccbdbcdebcbedaebcadadabceacccdabbddcbdddedaaacaaebcaadeeecbecbdedbaeebbedccdbaaedbecebcbceddaadceddebcceaedbadcbaccdbcbcdbbddcbbccbeedcccccedcebdaaabceadacbccccdde\n",
+      "output": "227\naebabccdeededaacedcabdebedcacbabcccccdcedcbcbddceecbcbbbbeccadddeddeaccbdedccaedddedcecbeebbacaebeceeeedaecdbdaceacbbdaaaeaebebcdaeacedbcdbbedaecdaabeaccdbbdcbedaccadeeecbecbdeedcaeececbddadeddbceddcbaddbddcbbbeedcccccddcaaccde"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "bcabaadddbbcbdeecbbcedebaabedaaedebabacdcdceedabedabbadbadbcebddbcebbdbddbbdecdcbadcbddeabacccdbaddcceeddbedeccdbaedeabebaceaeabbdcccbdeaadacceaeababdddeeabdbddaaecdbeeecddedbdebbbbbacabebbebcebcecaadeabebbbeaadadcaaeedccbbbcbbdedcaebbedebdaceeeaaeabebcabcbddecceaebedaaedbceaadeecaacdbecececddeeacbaced\neecdebeabdebcbdbaacaccccbabdcccebddeceeedbceecebcdedcacaaaaecdcacddabecdebceebccbaaecdbbecedebdbbbeacddaedbdbdeabddcddaaebccbdaeaeceecadaecebebbaadcaccdacbbbcaedcdcddeacddceeabeaccbdcdcadcbeabdeadcdcddbbbbbaccaebebbdddcedabdcbbabcdedddccbdacbddcbddebabcdbbbdaebdbaebadebadbecbbcdacdabbddebeadadbcbadaebeaaeacdaacdbcadeaeeaaaaaaeddaedcdeaccdbbbcbedbedbaccdebacedcaeddaeddaeeaabdebdadbddbebddeabacecceaeecaccdececcceeaabeedbeaddbaadebebbabbcdbeaeeddaecccbabacacabdacaedcadbcbbabebbdddaeecbccaecccddd\n",
+      "output": "225\nbcaaabbcbdeebceebedaaaacdcddabedbbadbbcebdbcebbdbddbbdeccadcbeaacccdbaddcddedceeabebaceaeadccddacceebbdddeabdbddacdbecddedbdebbbbacabebebcebecaadeaeeaaaaaeedccbbbcbbedcebededaeeeaaeabebcacdecceaebedaaedbeaaecaacdecceddeecbacd"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "cdaceeeabcbdabebbbacdcdccccceedbaddbbabecdbaeadcadaecebeddbbcecadbbbbdaccbcebeabbdcabddbccebcdbdececebcceccacdababcebddabddebceebcdadadeebceecdacadedaaecccededbdeabcccdaecddabaacaccececadbdadadabbebededeaeaddbcadbaaebddddaacebeccdabdbabbebeaaedbaeeddccedaabeaaaaebcbdbacdecaebddbbbbddaecceeeecdbdceaadaddbbedaeadaddedebaebcadcadaebbaeeccbdbdaeceecddceadedaeabaabbcaabbcdcbededeebeaebcbddedeabbcbcaedbbabdcdeddacbbacdd\ndcabcbbabbdbabdccbacaaeedccceacedeececeedcaeddddbcaacddeaadbecbcaecdbacdaecbdbbeadbabcecbaccbabccaccedcacbaacabeebabbcacbbeedadaecedeccecedddcaaacededcadabaaeeeeebbdcdebdeebdeaacdebdcebbbbbaeeabccbbdbcedbaedbbcdbabaedcbcdcabbdeddacccbbebbcbdaeaceadeaacbbadebdacbbdebbaabcbabcacdbaaaccbecdbddbdeedaeceeecedccdcaebcdddecadebdaeccbdeebbabeaa\n",
+      "output": "222\ndcabcbabbbbacdcccccceedbaddbbaecdbacdaecbdbbeadbbbaccbabcaccedccbacababcabbeedadadeecedcaaacededcadabaaeebddebeedeaacdebdcebbbbbeeaedbaedcdabaecbcdcaeddbbbbdaeceecbdedabbdeaababcadaabecbdbdaeceecddcaebcddedebaecbdeebbabeaa"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "cadceadbeccdaddccdcccaeedcdbabdeaacbdceadbdabeabcaaeecbeaeddccbdbecadccdddaadecaaeeedcbadecdccadcbceaaebabedbddcbbdcccddacacedddaabebdcceeadbceecccdecaaccbaabeacbeccecdbcecdebcdeabddadcdddbcabcaeaabbdabdabcaacddccaacaecaadadbacabeeadaebddaacbebaabdaecedbdaccdeeebdccbcbbeecebbdededeebcccedededeadbecaaacaeeceebadcecceddcabaacaeeedebbcaaabaeacdaaaddeddedcedebbcadcdabcdadedabdebcdceaabebbaeaaebbebd\nbdebccbecdcadbedbdebcdbdccaceaadcadcdbbaaccdbcedddabedaacceebbeccceeceebcddcdcccaccddcccebbbaccecaeaaacdcccadeeeccbbbdbbdcdeebaacadecdcebdabbdddedbeccabeaaddababccbdadccccbcbbadcbcdddcddddebdbdbdebebcccdcdbedebbdeeebbcccccdabcccbaddaedeccdeadaecdebbecbdedcdcdabbebecccaaeabccbaeccdbeddcdddccbbaebedbbddbcaecacbcaceddacbeabbacbcbaceacccccdbeddacbccadcecacabeecccdabbbdeebcedebcacccaedcedc\n",
+      "output": "225\ncadedbecddccdcadcdbbaacbceddabeacceebbeccceceedcdcccadccebbbcccaaaadccadeeeccbbbdbcecdecdebdaddddbcabeaadababccddccaccddcdebddbebbdcedbdeeebdcccbeecdededeebedddebecaaaccbaecceddcbaeedbbcaabaeacaaadeddcbcadcacaedabdebcdebaaeed"
+    },
+    {
+      "id": "tc18",
+      "subtaskId": "st3",
+      "input": "adcecbacbbdbaaeeadaccdbeedbdeaccbbbeadebbeebebccdcaabdcbadbaddbbabcebdbbceeddbbdaeadcedeeacceacdceadecacdeeadbabbecdeadcccdbbbccaeaaedbaadcccdeddebaaeedeedcdeaaccbbbaaaeadcacadecebabceccccbbdbdaceacdebbacdeaaecccebaeadcdebddbdedaadaaedccaaadbbdbdbdaacaaecccaedceccacecdcabebdbeeaeeccbebcabaecdaeaaccbecbbcbceebaadeeeddecaeeccecbcaeedbcddebecebbccbadcdcccceccbbdeecbbdceaeadbdcddedbbdeebacbeacdaeebebbeccebbbcccaeccadadee\nebceccedecbdaadeccdeeaedbcbdbabbbaaceccadebaaaaeecdadabddebeacaddddcedaaaeaaecbeaadcbcabeeabacdcccdceeddcdccdbbaeabbaadaddbbdcdcddaacdaebbcedcddaebcceebddedbbbabccdeadebacbdccbaabddabadbecbaabbcbabbdaadaccbdcebabdaebadaeceedccedaeecebeecaeacbdcababacabdcddaccabbeebadcdaaedbaeaeacdbbaebacebeceabbebdedadcacbbadceaddccceaaedddbcccaeedddbbbddbcdaae\n",
+      "output": "221\nceccbdaaeccdeedbdabbbeadebeecdadabddbacddddcedeeceadccaeeabacdedcccdbbaeabaadddbddcdaacbbedcaceebebbbaceadebacdccbaaddbdbeaadaadccbdbbdaaaecccedeecebeeaeccbbcabcdaccbbeebaaedeaecbaebcebecebbbadccbbdecceaedddbccaeebbbbcaae"
+    },
+    {
+      "id": "tc19",
+      "subtaskId": "st3",
+      "input": "bdacdbbdbcbacdccdbcebdaedddceddadecaeccacccaadcddbcaaaccdeadcbbddebdceccadbbbadaeddaceeadbddbccdadebaaececdeeedceebcaaccadcaaebbbbdcacccebccbadabacadccadcbdeceeeeeddacccddbdedeecbcabadbcecdbddbecdcdaacdeaaabaabdbbacbbbcbccccdacaacecbeebabcbdaedcddcecaaacedbdacdaebdeaacabaacdddceedcbdeeebcaaebbbaacaadcdaecdaabecbdedeedccceaaedadb\ndabbacdddbdaecbeaddbeecdcecbeccbcdeecdccbebedabebdbcebbdbadceaceeedeeebbcdeaaedcdacdcdeccebddeeeaadcbadcabbdecacdebddccabccdbbbaaabbeccddddedddaddcbacedcbeccaeeaceadbececeebbceeacbbdadddceedeeadacecdaaacdedcbbdaaaaeabcbdcaedbebecbaeeeeeddaebceedaeddeebdceeaddedccdeaabcdbddaececbecbbbdcaeeeaaeaebeebaebcbccdcabaddeecdbdcbccaeee\n",
+      "output": "194\ndabbacddbdaeceddeecccccbcdedcbbdebdcebbbadeaceedbbcdeaaeccdeeeeeaacadcabbdcacccbccbadabacdccadbeceeeeedadddedeeaacecddedcdaaaaabbdabbcbaeeeabcdaedddceaedcdeaabcdddceecbdeeeaaebbbccdcaaddeedcccee"
+    },
+    {
+      "id": "tc20",
+      "subtaskId": "st3",
+      "input": "bbebecdacbecdcbbeecdacdceebadceacbbdbcbabcbbbbaeceebdecdacbcdbcbedbbedabdddcdcdccdededbebaadcdaeddadaaccbbcecceebbcacddaedbecbbeccaeeeacbbdaabddcaddbdbedccdcbabadbccddcbcabcecbabaaecaedecabcdcaeabdabcbacbadcbcecebadaaeaebaeaddceeecedddbebdaedabcdabaebbadeedcaebacadbebdcaebcdaeaecccadeecacbcecdccdacbecbbbcabaedbdbebdbabdcdadaebbbcbbcdeaacbebdbcdcdddbeddaaeaebcebaeaccceeaebacaaaeddcdeaacbccaaeabddddebcdaaaceaabeeeeaddedecdeecccdabdccea\naababaecdbbeeeaabbddddcbeceecacaecabbcebaeabacedddaccebbbdcaccdddaddcdedbdebcbcbdcbcaebdabcbbbbcbccabccbecceceaacbaadcbdcaecdabaceccbcadebddcbabdacdbedbceaacddcbecadeacdeeebdebbadecebbdbaebaebeeaebbbcbdadecdedacadbebbaadaeabdbbcbababebbabdebddbecccadbeeebdebcceecceecbbcdcacbaedeecbedadddbbdacddabaeabeaecebcdbecdaccccbbeabcecddbbc\n",
+      "output": "227\nbbaecdbbeedcceeaceabbcbabaceddaccbbbdadddddcdedebbdcaedacbbcbccabcbecceeacbaabdcaecdabacccbcabcbabacedbceaacdcbeceadeebeadecebbdaebaebeeaebbbcbdaecdecadbebbaaebdbbbabaebbbdebdbccdbedebceecceebacaedecbeaddddcdaaeabeeededccccabdc"
+    }
+  ],
+  "hints": [
+    {
+      "id": "dp-lcs-print-h1",
+      "subtaskId": "st1",
+      "content": "Liệt kê dãy con A, check với B.",
+      "starCost": 0
+    },
+    {
+      "id": "dp-lcs-print-h2",
+      "subtaskId": "st2",
+      "content": "DP LCS chuẩn dp[i][j]; sau đó truy vết từ (n,m) về (0,0).",
+      "starCost": 1
+    },
+    {
+      "id": "dp-lcs-print-h3",
+      "subtaskId": "st3",
+      "content": "Truy vết: nếu A[i-1]=B[j-1] thì ghi vào kết quả, đi tới (i-1,j-1); ngược lại đi tới ô lớn hơn.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Tính bảng dp[i][j] = LCS độ dài giữa A[:i] và B[:j] như chuẩn (O(NM)). Truy vết từ (n,m): nếu A[i-1]=B[j-1] thì thêm ký tự vào ans và (i,j)→(i-1,j-1); ngược lại đi sang (i-1,j) nếu dp[i-1][j]≥dp[i][j-1], ngược lại (i,j-1). Reverse ans.",
+  "solutionSketch": "// dp + trace from (n,m) preferring match then up",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-26"
+}

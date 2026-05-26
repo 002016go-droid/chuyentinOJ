@@ -1,0 +1,209 @@
+{
+  "slug": "dp-lps",
+  "title": "Dãy con palindrome dài nhất (LPS)",
+  "titleEn": "Longest Palindromic Subsequence",
+  "module": "roadmap",
+  "topicId": "dp-lis-lcs",
+  "tier": "T2",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "lcs",
+    "palindrome",
+    "interval-dp"
+  ],
+  "source": "Bài tự build (DP classics)",
+  "isExternal": false,
+  "statement": "Cho xâu `S`. Hãy tìm **độ dài** dãy con palindrome dài nhất (LPS — Longest Palindromic Subsequence). Dãy con là chuỗi thu được từ S bằng cách xoá 0 hoặc nhiều ký tự, giữ thứ tự.\n\n**Input**: 1 dòng chứa xâu `S`.\n\n**Output**: 1 số nguyên.",
+  "vnPattern": "Interval DP trên đoạn xâu; trans tách 2 đầu.",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "|S| ≤ 8",
+      "points": 25,
+      "constraint": "1 ≤ |S| ≤ 8"
+    },
+    {
+      "id": "st2",
+      "title": "|S| ≤ 100",
+      "points": 35,
+      "constraint": "1 ≤ |S| ≤ 100"
+    },
+    {
+      "id": "st3",
+      "title": "|S| ≤ 600",
+      "points": 40,
+      "constraint": "1 ≤ |S| ≤ 600"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "baaacbab\n",
+      "output": "6"
+    },
+    {
+      "id": "sample2",
+      "input": "cabc\n",
+      "output": "3"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "baaacbab\n",
+      "output": "6"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "cabc\n",
+      "output": "3"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "b\n",
+      "output": "1"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "c\n",
+      "output": "1"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "cacbbb\n",
+      "output": "3"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st1",
+      "input": "bcbb\n",
+      "output": "3"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "dadaaaacdbcbaadbadccddcccdbddbbdabcacabcbddcadcdcaababbcccbcab\n",
+      "output": "38"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "abbadabdcaabbbbaacdcbacbdbdabdbccbadcdbbcdcbbcbcaaabdcddbbaa\n",
+      "output": "42"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "ddbdcaacadacacdacbbabbacacddcaddd\n",
+      "output": "25"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "dccbabcbbdabbbabdbabdcdbddcccbaccbacaba\n",
+      "output": "21"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "daacacbcbdcdcdbaddadddacabacacccabbbdcadbaddbcddaddb\n",
+      "output": "32"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st2",
+      "input": "bacaaccbabcddcaadacccccacbbabdccbcddaabbcbcbcadabacabcacccaaaddcdcadbcdcbbaddc\n",
+      "output": "52"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "dccaafeebdaefafaaaabeeecbdaaeabbbedfbfdedeccaffdabcdadfcaeffeafadcacbcbfcecabefbbdfeecfedcbfbbbeaaebaadbdfccedeacbeafafdcdfffefddabfddffdafcaaeebdacbbbfbfaffdcfbbdabadfdffeeaafaaffcafdafcedfcbdbbfdbacebcecdbcaffcdcfdcdbcbdfedbcccffddfffeeabafdedebbeaedbcceeccaffcdcbddadbefccdaefdadfebccbbdcacbeeeedfefbbcabddcbfdcedfbcdbddadecffbdeecaadebdddfcdcbecabcffafdfcbccbbbffafdeffcaafadbaafcfaeadddafffaebafbaefedfefbafeafdecdadfddfdfeffeabfaddcfedfdeedbdeebbffeacaecffddaeaeacccdebedcbfbceaeaaabdcfcacdffdeffcfadcebaebae\n",
+      "output": "289"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "afbaefdfadccffbdcdbeeacfdebdeabfaeffaaabbedadcbebceccebadceceabefebdcdbeabbbffeecafcabadaaaefcbcebebabaedeacedbcffdafadaefdcebbfefdbfbcebcefddbbdaaafeefaecebfaeffabcddfadedecdbbceafbcfceffdefffdbacaefbccffdacddeffabfdfbebcfbeefffcdcbdcfabdfcfdbafccbbdeccaafeaeeedfadafeceedbbedaffebfdefaabcfacacccbcdeedcefaeadedadaddecbceefcdaccaeadebfbadfebcffdaaacabfcecbdcbbfccdedaeacdfeaecbdcdafcdcbbddcbcfdffbbccdaabbdefbeccbccccbcaeabcefebaecdcfcdeacdeaccdaabcabccccdcafacbfaafeaeaecaedfbdcffdaafccaaddbbcffdcfcdccdcabfffbdcdaffbcbfdfdedddefeadefabcfbcc\n",
+      "output": "299"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "dbcfadffdfbdcebdfedacaebdfefffafeaadbfdecfbfaddfcbddadbfdacdddbeafbaedcfeabccfbfcaffcfaebbfafcfbfeabcdecfdabffaeafcfcaeabbebddcceadaabdccecbadbabbabbccecedfadeeaeeaeeeefeabebfaaccceaebabfacfdbadcfeeeadcffdcdedcdfcafbbfeadadcfcfcbdbdeeaaaddeecbfbeedcaeaabdfcbfcdebfdafeccdfddecfbfebdbbcbbcbcdbeadbbadcbbb\n",
+      "output": "168"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "cccbdccffcadebabcedfacebebfdcccedeaadfeaffcccfedfedeaddaadcabefbecbcfcbeaccbdacdfdacebaaaaeebccfedfbfafdacbfefefbcdadafaffcdfcdcedecaafbbbcffbebacfffecfdbceaabfcfeedecabbaecccadeddbadbeccafeaebaeceedcecacdeeeaaeafbaecfcaabeadacebdcdedadadcadfcfcbcacafbfdaaacffceabbcffeffbdacbedbbaebaceffabfbeaddeacfddcefcaddbbebabadfdfdbaabebceeabcccabdaadfbeebdafffbabcadedfddaaccdeabcdfeabfbfbbfabfacfcefadabbfffeededdedaaeecfbabdccbdcdfcfbdbafeebaedffcddbbbacedcbecacfebaaeeafaaaabcbbecdddecebcaeadecaebffbaebacaeacbdbfcebccfadbbcfddfbccecbceafbdfddeefffaeecfabefbbfddbbdadbbdebecbfefdbbf\n",
+      "output": "325"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "dcfbdffbcdcdaffefdbefbcfccacdfabbebdbccacdccfcacfbddcaebadaadecaaccfecabaaabecacdceccdfaabafadaafcfdbaeeecbeacdcfafdbfeafddaeabccdccfabcfebefddbfeaacecbceafbefeccfcabfeabcdabcacdeefbebbceffbedbbafddbfdaeaaeebfddebbffebbfabfddaceacdcfbcecbcacacddbdccbebffbaaffefbbccceeaebdafcefbdaaacaecdaacebafabdffeecbdebbfabafbecfbeabeeaeefbaccecbdabafbeaabdababdfdacfeabcfabedaafaddaaadaacefcaebadfbdbdacbfadffaffdeeafcbfefeccbceaaffbcfcaadddbfffeeacffbeffbaaacabacfecdacdedcfafdfbbebadfefdbfcadaffbcbaddfbbefebecedebcfeaaedccbefabdacbefeeafcadcedacc\n",
+      "output": "304"
+    },
+    {
+      "id": "tc18",
+      "subtaskId": "st3",
+      "input": "caafeabcbfdadecafbefbfeebcdfadbffccdabfbddecdffbbabcacbbfcadbebedefddcbadbaeebddacebeddcfbadeedafeaaceaddaebbeaafcdcebeabfbeebdceabffedaceccebdcfcbeeedfdacfffcecdabbbcdbabeddcabdccebebddacfdbbeecffcfadcdbdacdbcaefdeebfecfdeacbedebceeaaceeebbffcddcdedcdbdadfecaeabbcedbfeedcefacbccfcbceffcfceaeedcfbddccaebcdfaecafdfcdeeabcceaaeeddcbafdcfceffeeafabeccdcfdbdcafcccdffcfbbbbcfffaccfeaee\n",
+      "output": "211"
+    },
+    {
+      "id": "tc19",
+      "subtaskId": "st3",
+      "input": "acaddaeabcbcdddcdacfecfbdadfafbffcaafcedbbcacabeaaeaeadcdfdadcdfbfaebdbbfbffadedecadbcdcabaefcabcfdbbeadbdecccfedfaedcfddaafaaceebdfbfbacefdecddcbfabcefbaacdadbddcccacfccfacbafdffbdccdeacbbbdfcdbefcddcefacbbccecbceedefdcdfcccbccebffaecddebdfbafabdccfadaccbbbedecdddedfadcdababecceddaefcebcaadabacddefecebcdaeadbcabdccafedbdecbfbdadcdfcdbdacfeadbacdbdfcccfcbfceabbeaffdafddebbedfbafdaefeacfdfececffaeecdecfccbbededffbdeeffadedaebefebedfccdacefaffafdabacedbad\n",
+      "output": "269"
+    },
+    {
+      "id": "tc20",
+      "subtaskId": "st3",
+      "input": "acdcaeffbdaaceacbfbdcbdcbcaedaddfbaafececbedeeadeeeddecfbbffccabaadedfdbabfabbbedaabddccccdccefdcbfcadbdccbdfbfdbbcafedeacadffcaafffbcdfcdffbecfebdeafbdfaaebcefdeaffbbbdeceeffdacecfecdbbbafbaeeafaefccfdfbfebceadecbeedaaeabcffcfbaaaacebbceafeccabbbafdfbfcfbdbefcbcddefeecccccfedcdcefecccceaadbaefbfdefedeabbdcfcbcbcfaeccdabbeabafdddeaddfffbbddaeaccdfedeccaddcceecaadeaabffbfcbdceafacedbbbdccccbaffbefaafdfaffbceaffbcbfeedcd\n",
+      "output": "236"
+    }
+  ],
+  "hints": [
+    {
+      "id": "dp-lps-h1",
+      "subtaskId": "st1",
+      "content": "Vét cạn 2^|S| dãy con, check palindrome.",
+      "starCost": 0
+    },
+    {
+      "id": "dp-lps-h2",
+      "subtaskId": "st2",
+      "content": "LPS(S) = LCS(S, reverse(S)). Áp dụng DP LCS.",
+      "starCost": 1
+    },
+    {
+      "id": "dp-lps-h3",
+      "subtaskId": "st3",
+      "content": "DP interval: dp[i][j] = LPS trong S[i..j]. Trans dùng s[i]?=s[j].",
+      "starCost": 1
+    }
+  ],
+  "editorial": "dp[i][j] = LPS độ dài trong S[i..j]. Base: dp[i][i]=1. Trans: nếu S[i]=S[j] thì dp[i][j] = dp[i+1][j-1] + 2 (với L=2 → 2). Ngược lại dp[i][j] = max(dp[i+1][j], dp[i][j-1]). Lặp theo L=2..n. O(n²).",
+  "solutionSketch": "// dp[i][i]=1; for L=2..n: dp[i][j]=s[i]==s[j]?dp[i+1][j-1]+2:max(dp[i+1][j],dp[i][j-1])",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-26"
+}

@@ -1,0 +1,208 @@
+{
+  "slug": "dp-tile-3xn",
+  "title": "Đếm cách lát domino bảng 3×N",
+  "titleEn": "Domino Tiling 3xN",
+  "module": "roadmap",
+  "topicId": "dp-grid",
+  "tier": "T2",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "tiling",
+    "profile-dp"
+  ],
+  "source": "Bài tự build (DP classics)",
+  "isExternal": false,
+  "statement": "Đếm số cách lát bảng `3×N` bằng các miếng domino `1×2` (đặt ngang hoặc dọc). In modulo 10^9+7. (Khi N lẻ, kết quả = 0.)\n\n**Input**: 1 số `N`.\n\n**Output**: 1 số.",
+  "vnPattern": "Profile DP hoặc công thức truy hồi đẹp.",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "N ≤ 8",
+      "points": 25,
+      "constraint": "0 ≤ N ≤ 8"
+    },
+    {
+      "id": "st2",
+      "title": "N ≤ 80",
+      "points": 30,
+      "constraint": "0 ≤ N ≤ 80"
+    },
+    {
+      "id": "st3",
+      "title": "N ≤ 10^6",
+      "points": 45,
+      "constraint": "0 ≤ N ≤ 10^6"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "2\n",
+      "output": "3"
+    },
+    {
+      "id": "sample2",
+      "input": "5\n",
+      "output": "0"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "2\n",
+      "output": "3"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "5\n",
+      "output": "0"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "2\n",
+      "output": "3"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "1\n",
+      "output": "0"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "6\n",
+      "output": "41"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st1",
+      "input": "1\n",
+      "output": "0"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "57\n",
+      "output": "0"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "58\n",
+      "output": "549413031"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "35\n",
+      "output": "0"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "70\n",
+      "output": "537419741"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "8\n",
+      "output": "153"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st2",
+      "input": "56\n",
+      "output": "485646032"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "81803\n",
+      "output": "0"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "882201\n",
+      "output": "0"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "642888\n",
+      "output": "930344436"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "313709\n",
+      "output": "0"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "614386\n",
+      "output": "563456027"
+    },
+    {
+      "id": "tc18",
+      "subtaskId": "st3",
+      "input": "928515\n",
+      "output": "0"
+    },
+    {
+      "id": "tc19",
+      "subtaskId": "st3",
+      "input": "896000\n",
+      "output": "324197222"
+    },
+    {
+      "id": "tc20",
+      "subtaskId": "st3",
+      "input": "630730\n",
+      "output": "456130232"
+    }
+  ],
+  "hints": [
+    {
+      "id": "dp-tile-3xn-h1",
+      "subtaskId": "st1",
+      "content": "Liệt kê tay với N=2 (3 cách), N=4.",
+      "starCost": 0
+    },
+    {
+      "id": "dp-tile-3xn-h2",
+      "subtaskId": "st2",
+      "content": "DP theo profile cột (bitmask 3 bit). O(N · 2^3 · 2^3).",
+      "starCost": 1
+    },
+    {
+      "id": "dp-tile-3xn-h3",
+      "subtaskId": "st3",
+      "content": "Công thức truy hồi đẹp: f(2k)=4·f(2k-2)-f(2k-4), f(0)=1, f(2)=3, f(lẻ)=0.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Khi N lẻ: 0 (số ô = 3N lẻ → không lát được domino 1×2). Khi N=2k chẵn: công thức f(2k) = 4·f(2k-2) − f(2k-4) với f(0)=1, f(2)=3. Cộng dồn mod 10^9+7. O(N). Cách khác: profile DP với bitmask 3 bit, chuyển trạng thái giữa các cột.",
+  "solutionSketch": "// f(0)=1, f(2)=3, f(2k)=4*f(2k-2)-f(2k-4)",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-26"
+}

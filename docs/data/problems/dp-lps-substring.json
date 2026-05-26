@@ -1,0 +1,208 @@
+{
+  "slug": "dp-lps-substring",
+  "title": "Xâu con palindrome dài nhất (Substring)",
+  "titleEn": "Longest Palindromic Substring",
+  "module": "roadmap",
+  "topicId": "dp-lis-lcs",
+  "tier": "T2",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "palindrome",
+    "string"
+  ],
+  "source": "Bài tự build (DP classics)",
+  "isExternal": false,
+  "statement": "Cho xâu `S`. Tìm **độ dài xâu con liên tiếp** lớn nhất là palindrome.\n\n**Input**: 1 dòng chứa `S`.\n\n**Output**: 1 số nguyên.",
+  "vnPattern": "DP interval HOẶC expand-around-center.",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "|S| ≤ 10",
+      "points": 25,
+      "constraint": "1 ≤ |S| ≤ 10"
+    },
+    {
+      "id": "st2",
+      "title": "|S| ≤ 200",
+      "points": 30,
+      "constraint": "1 ≤ |S| ≤ 200"
+    },
+    {
+      "id": "st3",
+      "title": "|S| ≤ 3000",
+      "points": 45,
+      "constraint": "1 ≤ |S| ≤ 3000"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "b\n",
+      "output": "1"
+    },
+    {
+      "id": "sample2",
+      "input": "bbabbbbab\n",
+      "output": "8"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "b\n",
+      "output": "1"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "bbabbbbab\n",
+      "output": "8"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "babcccccc\n",
+      "output": "6"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "acbaabcbc\n",
+      "output": "6"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "bbaacba\n",
+      "output": "2"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st1",
+      "input": "bbccccacac\n",
+      "output": "5"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "aabadbdbbdcdcbbcacdacdacdddbccaacbbdcdcbbacdaadbddbbddcdcdacdacdabcaabcbbddcdddbaddddcabbcdababbabcdccdcbcbcdccabdbddcdbbacbddddddbadcaccdbcbbddddbbbdddcbcbdabbcdabadc\n",
+      "output": "11"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "dddabdbadaaaccddbdccbbcaddbadcdddbdddabacdaabbbbbbcadaabddbdbdabadaddbcccacdccdadccdbaddadccbcbadcdbbdccbbbabdcbadadabbb\n",
+      "output": "9"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "cacdbcbdcbbcbadbbadaabcbbbdcabaadbcdbcbdaaadcbacccccaaabcbbbdaabbcbdbbdccaccccaaabcacacbcccccadaadccdadabcbaadcacbdcabbbddbbbccdadcbccbdddbacacccddcadabbcadcbbdbdacaadadcacbaaddaaddcaaccdc\n",
+      "output": "8"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "dddcabbaabcbdddcbdadccacdddcbabcbcacaabbdaababdcaabcdacabbcddbccbbdddcbdc\n",
+      "output": "5"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "daacdddcbdddddcbddaabaababcbbbaadbbaccadddadadabdcbaadbddcbadcbabcddaccacbbcbacdbbbccbbaccccaddcaddccbbbabdabcdcbcaadacdaddabcdaacacddacbcddbdcddbbdabacc\n",
+      "output": "7"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st2",
+      "input": "caabcdbcaacabdddccbbcdaabbdcbaadaaacbccddaaaddaaacdadbdcaadccbcdbdcdaacddaaccaddadbacbacdccdbcdddbadbcbbdaddcddadb\n",
+      "output": "11"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "debaecaabcebacdecdebbddeaaaaeecbcbbdcaecbddecbaaaeaeeabaaedabdbabdacebdeedccbdabeaacecaacebeccadaceeebcaacdebadeaaedcbbbbcdebbcaeccededdecdbbedcbababbdaababeabceadcdcdcdacbdeacdecadebeaeadaaadacdbbbdeebbcacdecdcdebaecdceababbecbabcedbdadadddaeadabecdaedcaabdccdedeaabadaeeaaaeccbacbabebeadcbbccadeeedbcaeeaedaebcbcbbbaeceddebbdebbdeeaebbcdddaacaacdcdceebbcdebbbcdcddacaeddaccdbcdccbbcbbaddaeacdccddbcaccaedaadecacdaeddebbedeaaadcabccababdeabceaaddeaedceabdcbadbbbbbdacebaacdcdbadceeeacceebbaaacddddeabcbacadaabbecabeccaaedaaecdccceedbeccdbedbadadcaeecccebcceccaedbacaabebcceecacdeaaaecddbbecccbcceadbddabcaeeacbeceadeaceccedaebbdbdcdecbcddeceddaeaabcdebcdddaccccdcbebeeaceeacaabadceaaacdcaaaecebddcaacaaddedadcedadeecbcdaedcbbedabbebdcedadaccccdcedadedcdceebbeceeeedaddbabcacdedaabcdadeeaccebacebaccbcaceeabcceeabbcebbcbeaecbbbccdaeecbcbdaeccaecacaebedaaebedabeeeecabecbcdcabaceacacacacedadbccbadceacaaacbcedeabeeeccacdbddbdeabdcadddcbbeeecbdcbbedbdbaeaaddcceddabcdcbcebcadaaeaaacacbaccdccbacddaddebddddbcbdececbdabccccdecaddcdacaadcaedccbabdacabdbbcbdbaacadbcdebbbecaadeebeccdbcbdcedaabbaacbbabadcccdbacccecddedcecbbecbdaadbcbecacccdaebccadbeebbeadddcbdadbcbaaebcddecaabcacaceecbdcbbcebbcdebdaeabdcccbdcebcaadcceeddebaaaeabebcacededccdaaebcedddbdeaaeacdecbdcbbdaeedbbeaacccaadcbeeaacecbeabbedccccdedbdcadaccbbabaeddddadcaeceecebeedbacaeeacacddeeecdbdcddebcdcdccddcbacdcabdebbcdbbccdcedddeaebddcceaabdcaacacabdbedebbccebcceecbaecbebcbddcdeebaeabcbedebdedeceadeabbbaaecdcaaedcbcbaadbeeabdcceabceccbaadeddecaebaececbbcacbadcbacebcdcbadbaacccdaaacaecbedcdeceabbbdaaeeaebacebaaceaccbacecebcaeeeeebccdabdddbaaceaeacceaceccadbbcccdbebcbacaacdcdeeeeadacdaedbdebcbacccbaabbececbeeecdeedacbbaabccadaadceaacbcedeaeebaaacdaacbceebdddabadbedecadabbddbcdcadbecadadcbaaddeabcbebbaeacccadbccdbacbabdeeecbdeddadcecbadacdbdeebcbeaabceeabbddcdcdbabacaceadcdeeebdcaddecbaedbccbdaebbbbdaeedecaddbbddceecdabbddebdceaabeceaabebaadcaedebbccecabccddbeccabbeddaddccaaaecaddeadecdeebdaaccbddecddbcbececceadbcaaebabacb\n",
+      "output": "13"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "bcdecdebebaacbebbebebebbebdbeddbedcebaabdbedcdddcebbdbcdcaebcaedcccecbebaacccdacbaaccbbbcdadbdcbcbddeadaaccdacaecbbdbcceccdbabdadecdaeabdbebcbeadcadbdaedbbadcebdedbcbedbaebaadddedbececbdcdadbbecaabeaaacabbacdabcddabbccbebbdbdaddaacdcabcdbecddbceaeecbccbdeecbcbcadddeecdcdddeabddbdedaddcebeabecbbedbbccaabcabbdeedaeaaadaeecaedddbbbaebedcadccaabeccbebdceddaabeecabaeadcddbcdbbbacceddedadbdedbcabadebdccdedbbbadbdadbcaaddedaeecaceacdaacbacdedbecccccddbbcaacdaacecaacaaddebdcddecddccebedaccbdbaedcddaeeacbdadacdeeeeeacdbcaeabbcaecdecbcaaebbbcccbcaddadabedecbacdbeebceedabbebdcacdccaabdeabaebcccddadadacbddcbaadacabcdbddeebdebbdceeaecdcaaebadbbaedbdeddebbbdedbabeaacccccecbeadabacaecdbdcdcecadceabcdbeddebceccedcaadabedcccbdeebdbacdbdeedaedcaabebbdeebdcdaceabebaebecdcebdceaccddeeaacbeaaddbdacaeceddbabdedeedeceabcdcdaacadbbdddeeebbbddeaacacdaddcdeececcecdaeccccabdddedacbecbedbeddadbbdecadcebcdddeabbdeaaacbdbabadbcaeadebddbddddbbadcaaeaadaeaacccbacdcabeecaedcdecdbececabedadcaccccccbbddebedaedaacceddcadbbdbeadcbdbaaecddeddadbdcddbcecacbdcdcddbeeeaeaabcaebadacabaccebdcceadadaddbceeaecbbdacbdeddaadbacadabdcdbdecccbeddaabbcacbdbedddccbedececaadeacebbdcedaeabdaccdedcbadddedbabcadecccbeeddecbabeedeeedaceceddbbcdabacccbdcbeedabbaeacbbbbeedbbcabaabcedeacdcacbdcbcaedbbcedebdadcecacaeaddabcdebebccdddadddbedacaedecaddebbecccdeadbdddaabbdcbbaddaacdeaecdcdaabaddbaabedcbcacbeddabccedecadaedeedeabadccbbeeebcbebabbbddeceaadadacbceeccacbcdeadeddbcbdeadadeabaadceababbbdebddbabcabadddaedebcccbdaabcbcaecacdaaccddcacbdcccdbedcbdbbcdaaacceacabebeddecdeabdbddcbbddeceebeeeadbedcaeceecdbebcbbadcddbaabdecdbcedaebcdcaaadeecbbcdebdeeaadbeabeeeaaddacacadabaebebaebbdaaecadcaceaeadbdeaaebedbabdabebeeaacaccdbebdaadcbdbcceedbdbcddddbcacdedadadacaabecaedcedaedeadaadbaebbcdbddcebcedecdcccbbbebdcddadcbccbcecaababeabeebbdeeaceadbaaecadddabacebbbddaeedbddedcbdcbaaebcdaeedeecbdcedbaacecaeedececaabaecebbedbdbddeaccdbabddaaeaddbcebcebabcdcbcaacaaabaeadcceeacbebaacdccebdaabbabcccddebcadaddceaddcaacaecdcbcbbcdcaacabddaaeaaacadadeeceebdedddcdaaacddcdceecaebcaadaaaaddeabccedcaccbbdacdebaaeeeedbeebddbecbaeadcbcebbedcddeeeababadcceabcacecebbedabbdbcbccababbeaabcebdcabeeebebebbbdebacdbdbaabeacdbdaddebedeaacabbeecbaccceaeeaaeadcabcdeabacababceacdcbdcdabadecdabdeeebbdbbcacbdbbaaabebedaebaadcbdaaedabdcbdbbeebaaaebadacdbcaedacdededbbbcacabbdeaaeeecceedadcdceddcdabbbdecbdacbcbeadebedcaedcdbadedbeeadbceaeeeadbcbcebadabdadbeabebbebabcbbceabccbeeebacecdcbbecabcecbdbababaacaeacdecddebddadaebeccdcacdabccedaadddcdcbeddbaecedddbcaeadbbdecdcdccaaebecedceabaeaecdccaccbdbbceeaedebcedaeccabeae\n",
+      "output": "13"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "cecbccdaaaedccceaabcddaadbbaaacbeadeccdeddacaaeedbcdcddaedbeecbcaceddeaebdbadbbaecdadcdceebdeedbdbcdbcedabbbdacddebaececddeadeabccbabebacabdbcecbddaedcaaddcebccaccbcecdccdebacdaaddbdacbaeceaaadbcbcbecdeebecccebabbbaabdcbcdccebdbdbbbbcacdeceeeccbbaaabccdedbdcacbdabbbaeaceaabceabcdecddddceebcebeaaeccaabdddeeebaddecbdcbcdeeecddbabeaaccabbebacbabbaccbecbddcebebebbaddcdcbcacdabedbbdbbcdbcdbebddbadccaeeaadbbebdcdccdeacedbaeccdbbbbdbddadaaeacdbeebaaeceacbdccedddccbdbaddcbccacabebcbeddadadbcbbbebcdbeeaaaecaaeceeeacdceecadddddaddebaedebcbdababbeadabdeeacdaeadbddddabccbcdddeabdbebedecedabdccaabbeaaacedccaebbedaccbccacbbaabdddceedbdcbcadccddbbaecaececdcdbaddecceabecaacacedacdaeaeeddaaaddeebebbeebebecaaecbeabdaedacdbdbbbaaececaceabdaeccbbdeedcbbbbeacdeaeabebbbdcdbabececcbcabceeacedccbaceeebbeedbdeabbcbbecbccebabaaddebbebdebceabccdaaeebcecabddebadedcdcdbdaccaaaccbcbbcbdbaeceeedbcaecbacbedbdeacabddadaaadebcccddeabecdaedcceaeeaacdecebbabacceeebeaaecddebbeeaaeadccccedaebdcdceaadaeceedbacdcedadceedeabedaceecaeedcbadecceabdbacaabebcbceeccbeddcaebbeccbeccbaacbcccebacabeabcebcabaaceddeecbedceebaeebdeeaaeeccbadbbbecceaaecbcebbccceeebbbeaddbccdecabeeddbcddababcceededeeddbabeebabeececebceaaaaedaadecaaddbbedebaecbaebdbedcacdeaaedaeaaebbeeedaccadbacdabedbbdeeddeddaedbbccdceeebbeebededaadbedbececbedebcdcebdabdaaabbcabbbccacdedbdeebbeabeddedbedebabbddbadcaccedaecbcecacabdcabdcaecbebbdacbbecebeabbceeabcebbacbaadbeaaebdbccaeebbcdaebeebaccdcbbadcecdecdabbecaceeaabaeddecbbeeeeadeedacdbaedcceabbbbceadadbeaeaadacbaebbdccdebdcadbbdecccccadbeebeebbeaadededecccacdbcaedcbbbaacccddeacbbdcecabcbadeadbbaeeaabbdbbcecebcbedeabebeccbcabcdeedddddbccaaaaabbdbccbbdedeccecdebaaccacbaaabeacdeebbbeaadebcdacbdeadebcaaecdcaccdcacddedabdaeabcbcabcaebebcdddaaadecebeaddbcdddbceccdcaeceaaacecbbaacbcdaacecdaddadcbaeeeacbcbdaccccedaabacddbabcdbaadc\n",
+      "output": "11"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "aedcacbbeaebbecabccaaedbdaacbddbadcbaaeeacdceeedbbbcebcadddcbeccaebabaecdddeebbbecbbcdaeddbabdbcbbcdecceedabadaacbabaeadacabaaeeabbeeaebeedeababddbbabeabeaeeeadadedabeeeeaeeccbeccccaadadabcceeeedbdcddaabaabcbacebddedbceabacebccddeacbcbbbdcebeddcbccbabdaccbdcbbabbcbadcedadedceedecbdcdedbcdacaabdcceeabdadceccddeeccdeebcabdacbdcabebedccebebdaaadbecbccacbeccbaeacebdbabdedecbeedabdccdeacbbebabebcdcbaddcaedbecdbcaeddbcaaddebeaeebaabbadaeaadbbabcbdaccccebbeeaeceabeeaccbaeccdeaeebdeaccddecaabdadadbcaadbbbaaeccbbdbbecbebcdbdcdadeadacedbcaaecaedcbcbbadccabdedcbdabdcdeddacddbdcbecdedebbceadcdaabaceaeaeadcaccbcacbccccaddceacbccaaedbceddddeddebaaeeccbcbcaecacedaebaeaabcdcddccaedbdddaaabeeeebeaaddedbbbebdaecaebbaeaeaeebcdceabeaaeebccceeacdecdaaddbabdbaaabebcccdcdadacaabeeddeaeecdeaabbbdbabecaabacacecebebdcddecacdbbddeacaeebeaaebddceacdacdbebdbaabbabdcecdbdaacdedbddebadeeaadcdbbcccaeadddbebecdddcccddabedddeebceaeccbccddcddaeccdeadcadecedaceacbaecbedcbdedddcdbdbeebedcbbacecacedbddcaabbddcdeecbaaeceeacdadcbbecbaccacbccabeccdcebadbcecdabdddbedbeecaeeaaeddeadeccdebaababedddcbdcaedaebbdabdbabacccdcdbcbcddededaebaeddeecadbeaabbdbcbcbebcaddacbebcceedeaccbdbadabacacecceceadedcbdedbeabebdbecdcdcdcbdbedcebeddaaceabaecebbcbdbabbadceacdbeadeddceacebbeeaeaabdcdcacecbdbdbceaabcedbdaaeecbceeabdcddbdbadeecaceaecbbcaaeecdeacdbacbbacbdbcbdacecceddbdcabeededaeaaacabebcaabbbeddeacdcaacccbabacabdaecbeacbcaabacdeceeebbcacdedbdddaeeaacaeadbccbaccccdbeedbcdedcebedacebabeadcdebddcdeccaedcbeebebbbdadddeedbbacacaedcccceacbacbbbddebedddcbbeccbcedaaddbcaecbacdedebadaddbaaacdcdcaeeabbbecadbeecabccebebcdcbdcbbdbadeadcddeadbeeacacbacedcebeddecbbbddecedbdeaebdedcaebeccaebccabbcacbcdeeeecebdaecdddaaaebddabbbcdbcedaebbdbabddcaccdaabcdcddcdddebdeaeaddcebabcedcddebddbacbaadcddaeabeebbeddcdbcdbcdeddbdbeadcaeceedceaaaacbeeccabbaedadcabeceddbbaceabbbbaadadddeccdcadddebcdabbbabcdceaebbacebdccedaedacccddcaacadbccbaedeacdcbabeacdbaddcdbadaaeabcbedcaccbcacbdcbbecbdedcccaabadebddabcdcadaacccdceedbdaadccdedededacaeeaacbdcae\n",
+      "output": "14"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "eaaccedcdcddbabeeaaaeacaeecddecaebecdaacacaeaabbcadedcbcddcabbdeaccbeddaededabeeedbdebecddcbbaebdbebccddabbeaaedaacecaeabeddadbaecdaecceeedeaeabcdbebadebbdddbadadbbbebbeceaaceedbeacdeccaedcbcaccedcbdcdadbabcbaeddabacaacbedacabdacbacdabbccacceedaadbaacdedecacabbaeeebddebccdcbbbbeeaddadbebecdecbcabebddbbbdaeebadacdaeaacbcebebbeeaeaebabeececbddcedbabaeedcacdaedbccacbdccaebbedabcecaeaddeebbdecbccddebeadbaedeacbeebcaeccbbeebabaeadbeaaedeebaccaeebcaebcacbbbcdadaadbddeeceeacaecabbebbadaccddbbbbbddcbdecedaeaecaaeacdcdcdddbdcbaeacbadbeeddaddcddcbbacebbdbadcceecabaeabcecbbecacaaaedacbcccecbcebebcbadcacdabdeddccceedccebaeccebabceebbeaaeabaedbcadbbcdcaadebbdbdbeadcbabbebacdacbacddeaaecdebcedbaacdcccbbeeeeeabebdcdbeaecbdebedebbecaebdcdacadbebeabeedcdbedeebbbdeaedbcebaadabdebddbbebdaaacbacabcedabcdbeeabdbabedaabcbaadeaeaeaeadeabcdaaededbcbdcdbddecbaedddacbdbaadadcaaaddcdadcdbcdeaaccdbdbcbdaeddaadaaaabccbbcacccbccdccdbabcdaebecbbdeaacaebdbebdcdcbeeddbbcddecbbdcaeccdecacccbbcacacccaacaecbaceaececebabcacbdbeebbecdbdacccadbdbebddcbabccaebdcadbadadcbbbeaadcddbbeebdcdddcadbdaababccaeeeadaeaaebcdaebeeccdcdbcbeaeecdebaddaadbbdbccededbcebadcecbaedccbedecdcabbcceaabebbbcdaedcbeabcbeadbbeadaebccdbcbeacadceecaadbcbcecadbeecaedeeaeadddadaaadbabcceaeaedddccdbdcbaeddbaebdabeaddcbcedabbdabbdbbabccbacbbcddddbddcebbdbedeccbcedeaebcdadaebbbbabccbbaddbacdbcccdabeaaabdeaeeaadeddacedeedeaabbbeaeddaaeadeaadbaddbbdeedaccedceeaacaedecccbbabdceecbccbbdcbebaccdeccaeaacbbedaeabeeddcaddccceecdcdaeadaddbbceecbbaceddcbaecbbbabdcedacdbdeedaabeaaceadedbbdcdacbcabeeedccaaaacabccaeaedcdcccbddccaeececaaaecbcbcaaaadeeeababbcbcaaeaeeccebdadbeaeaebccadabadcbdcccdebaadcbebcdabeaacbbebceaddadbeaecddcacdecaecccbadddeeacacbacbadcddbbcadebeadccbbdedcdecdeeebaeddbdcdeacbebbaeedbaccadeacaabdcdaabddabbadaaddabebedcccecddaaaaeddeccdabdadbcbeddaacdccccedbebcebdcddcadecaeaaecbededbcaccccbabeaddbcbbebedaaebbabaddacabcabceeadacbaaababcaabeebabacbcacbedbcacbaabbddacbedebdbbbcedcdddcdacdccdaddbddacdcaddbdabccbcbaebbddadaaeaebebaabbcecbcbcbdbedddedabdaaaeabbacaeddddaaadcbbdebcadedceacdaccdcccaceaaeacdbaaacbedbeceacaceccaadebca\n",
+      "output": "13"
+    },
+    {
+      "id": "tc18",
+      "subtaskId": "st3",
+      "input": "dddaacbddcdddabbcbeacbbdecbbaccadddeeacceeebaaeebdceddeadcbbacdadcddbbcbebcaaccabeeeddaaebcbdeeeacedeeeaacbeeadeeecbbbdabcdbebeecabcedcdaebdabddcbaebdbaeaedeeddbeaadaaebbdacbabcdcebabdbbcaabddcdccccdcbedcbaeadcedcaeeebcdbecdaaadebdddeadcbdaacdaddabdcebdbbecaebaebdebebcdaeacbcbecdaeecbdcdeaadbdcdceadcbbaeeedceecaecdceacadcbeceecbaabebabccbdebaeceecebaeaedddaccdcaccccaceabbcaecacddcaaebdbdaacebebbddbbdaccdccabccbbcaebeceaaeecbecdaeebbdbbecdeaeedebbcbbcbbabaeacccbcceebabbcaaaaccddebcaccacbeccdacbabecabbccebdbaacadedceabbdcadedccadbbbcdebbbeeddaeacbecbbccdbcdddcbddcaadeaabbcdebaaaabbadabddacdaacdeaceebcdbcaaaadbbbbaccdadecceacdcaeabbddeaaaebebddcdaddebdecdebadbaeeecbbcddbacbdceaaaccadadabbeceeedbeeecadcedbbedabbbddddaeaeceabdcbcabecabeecddccdddebddcbdcbbaecaaabdcaecdccbababeeeeadacecdccecdeccebceaeeecaedabeaddbbddcadcdabdbcbadadabdacbddcebeeaadadcadcdaccdceadbcdbbbaaeabeaadaddabcadbbaacbdbccbdcbdabbebdebeeadbcbeccdeaacadcedadddadccebeaedaebbaeedeaecedabbedcdddbeedadbebcaeaacaebabbabebdedaabeaadacdecbeeeccbbbcbebabbadabddebccbdceababbbeebdbeabcecabbbdacccdbacecaccddebbbbabdbbabaecbcbdbccdbceebccbaccdaaeebbebdcacbbdecddaabbbacdeddadcbcddaaedcabccceabbcdaaeedabaeaadeeeacaecdebaebededeabcabcadedeabbcadebedeecebbbdbbcecceedeadeceebecbdadbadcddabcadaabaabccbebaaeadaddcddccbadbdbdeacbabcbcebbaaddecedbebcaddcaccacebcbabacbbcdcbebacdccceeebcbeacadaddbbcaebccccaccaebddbbbbadacaeeebdedbbbcecabdaedeebebdededbbceacbceeebbeccceaddbcbcabdbacedaedaaedbeeaecbaeabcbabbdbbdbcaaadcbbddeabaecbaaabacabccacaccdabccecdecadeceeabcadbacbcdcecdbdaceddacebccdbdceeadaadaeccccbdeeacaaebebdbbcedcbbbbcecbbbaacaabaaedccbedaabacbbcdccedaebabaadbbdecabbecbbdbcbabdcdddedbccdacaadddbcbecccebdbeceededeccdeabeebbcbbeeeadceaeccbceeeadcbaaeeeaaebeacbdcedbaeeddddccedbdaeaddbedaccdcbbdaecbeceecadaabebcedbcadbcbccdcedcbebaadaedecdecdedeaaaaacddcbeedeabeedabaabdaacddbedbceeededcceeedaaeeecdbaabdbebeadbbebbaedeebdaecaccbdbecdcacabdbaabaacbdcaeebadbceccaebdacbdccccdcadedbaebcecdcdbccaeaebbbeeeebdebceeaebbaabbbeaeaebccbbcddbbadddddbeaaabcdedcbcebdcdcabaccdecbcbdcccccccecbddbcddebdbebedaadbdacdcddeddcebbaecdedecaaadbccdeadcbeaaacdcababaaebbcebbddcaebdabddbedcbdddbdaedcddcdeaabedabaeadbadacebeccbbbdcdaeddccbebeecaccddabbcbdeebdaddcdabbdceabbecdbcdbaaadaeddbabbeebecceeeabcebbcbeeaeaaddbebacddddbbdabebadbbebedeccecbebeccaaedbdcbaedeaeabdcaedcbedcaecebcdbebabcbeeebcdbbbaaedebbeeecdcbbcdaeaeacecadbcceeeeaaaaabaecbbdcacbbccddeacbddbabdcdbbcdeadcaabecdceaaaeebcaacebaebbcbdbaadbbdddcceecdbcaaabddcddaccbeeaaaddccdacbabaeebebccccddeeacabdbebdecedbcebeeddbecdabbceaeddbadbebbdbeeecaaabbebbbcecdcdadadcabadacaededcbbcbedccbbaacdeecccccebecacdbcbccdcdddedbcddeeaeabceeabbdcdabacebeedeceddcdbcebaecadebebbdcbbcaeecaebbebcbcaccaebeddbacbedbdedeacacbdbbaecddceadecacbbbacdadadaedbceabbeababcecbeceaedbcbacabeabeccdeaecadbcbaccebdecbdbcedce\n",
+      "output": "11"
+    },
+    {
+      "id": "tc19",
+      "subtaskId": "st3",
+      "input": "acecdaaabadcdadceaabdcdbacadbcabecbdbbcedbaecaaedbcdbcbedbedbabaeacbaaddbcdabdbacacaccbbbcddbebcbbddddabaaaecabadaaebabbcdceeedaebcdcbabbdbadacbabbebbbadcabbbccaebdcbdabaddedacbabdabaabeaddcbeebecaddbbcaaecedccbecacbdbaeaeecebdddbaccdbadcaeadbbbccacebcdbebecdcbdadaddbcddabbcddeeebbbdadddeacecdabbeabeeccedcdecaeeecabdadeececcaaccabaaddbbabdaeeabeedbedcccdbbcdeeaaaeeaadddbdaddcbeaaaaceebadebbdbcdedceedcccaddbacedbaecbeaceadccebcdedbcaabccddbadbcabdaebbcdbabcecdedaedacccdaebcebadccebcecdbacabdccbecddaadbecadddeddceadeabcccdabecddecadcddbbadaacabeadadcedaacababeebcedbddaeebcddcbbbabcbcdceabbaeeadbbaeeeebecdebbebcbeeaecedccdbddcebccebbecbecdabdaaacadebbbacabcaabaaaddedbddbbccdcdacbabecabbadcdaccdcbcdbbbdccdcccccbaeadeabdaecccbdcdbbdccdecdeccbbbeadeedbdbbacdccbaecbcecacdbadbbbbcabcddaaabeccacabeadbcebaccadadacacbaabcbabceeeeecebbbceaececdecdebecbbcddbeeeaacdebccbbbbbdaabaddadcaabddeaabadaebdeabeaeeceaeedabcccabcdbcccbcbedabeacbadeacedaabceeeadcaeecddcadcaecddeecbbbaaeadbdcaecacbeededddbbbdcaacccdbadbedeadebabbceecebdadeadacaecbecbedcaebeecbddaeceecaebadeceaeaecacdcdcdddeebaceecddbddbdcecbcbeecddabddbdebdbdababcbceadadbbccbaaebdebeacdbecdeeaaabdbbddbdabecdabadedcaedbbcebaebdbbeeacdddabcabebdbcecbbbeeedbeeccbdbabaddbbbdacbbcbceccbbadebeaabdddceeacecdddedbbaebbbeaaddbbabeabdcaaddacabbddccadedeebedbaadeebdadaabbbdbccceecdccecdedebcbbebcebdcccbacbceeacdbdcacdbcbbaaecaebbdebbcabeabecabbadcebccedcecbebdacbbbdaedecccdbcaccaaaacbecdeabbdccadeaedcbbebebecadabeeaeeaeaeedcdbadaabeacdcbeaeececaebeccedabcececaacadbbaadebbbceaceeabdaabdeacceecbadddacccdbdbcccceccbbdcbacacebccbbabeabbabcdbdbbeadbdabcedacdccceadccccaaeabbadbbbcecbeebabbbcbabedecdbedbeadceecbbacbeeeebaadaaaeabbadccbaeebcababedeabcadbbcaecbdabccebeceabbcedcabbeecbeabceeccdebaedbacdaacbbbebabcedaeedeeaacecadbedebbbacbebadcecbeedacbbbdabbaadacebdcaabbcddcdccdeebdbdbdeeabeadddbadcaadbdeccdbecbeaccedbacadebeebeedbbebedbbcccaaeeccdedcaaecabdacdadccaeaedcaedddbdceceadcabacbaceacbeaeaddbbeaebeeaeaaebeeebbcadaddaeedabeecbbcabcecbdeacadbedceeddddbeabbdecdbdecaaccaddecdbcebebbbbdacddaeeaaebeeebbabcbeceacacdecbbbadaeddbaecdeeedbcebbcebacceeedaedcaedacadccdacdbecedbcadcbecdebabdeebdaeabdabadaabeaeebbcbdabbdcccdcaaaccdecdbaaedecbdcbaacaadacecbbdaaadbcceddeadaacbeaaabbddddaccaebcdeaacebbeddccaabcaebbeccbabbdbcdcaacadeccdbeecaacdceeaedd\n",
+      "output": "9"
+    },
+    {
+      "id": "tc20",
+      "subtaskId": "st3",
+      "input": "cbcdbdeabaedbebadacdedecbaadaddcbabecbabececebddbdaddcdaebcbeccbaacaebbedbcecacadeaaecebeadbdcbbabbccdbcdcddbcdeedacbdabebbeebdeaaeebababeeeaaecdbdccaebbeabbcabacedbadccdeebeebaacedebceadaecbdeadcceaacaedabbdebebbeeacebbceaaabbecabcabcbabaeeaccbccebeacbababadbbbecbecabadcaadcdcedababecdcdedaaeeeacacceededddbebcdcaadacddcebdbeacdecbddeebdabebabaabecdcaeabaaaabaebcedddadebeaecbddebedacddbddccbceeadbcdbaaadccadecadcaccdbbbcaccbaceacecccebbeeedecbaaaaccedbedbcddbebacddcebcaaebcbeaedbdebaebbbebdebacceebdcccdcdbbabdbacbecccceccdabdcccbccadddabecdedceecbcaaecbccdeddaadaacbbabdceebaadeeddebaababbeebecbaaecdcebcbbceabcccdaceeccdeacbdcababadaebcaebbedabbaccbbaceaadaaedbbdaeabdcbedaabccddbdbcdeaccaabecbbeeaeaabdeceaeddaddbbbbcbbcddecdbdaeacaaddbdabaddcaacbdeeacddcebeddbaaeeeecbebeacceceabdacdaaabcecbeeaebdecabceccacdbddbeaddbaeacbbadadabaacdcaececcacdebadebeedbbdabeecabcbacbbdbabaaccdaaccabaacaeadedacaddaecaaccdaaceeaebcddabdadececbaaddadadeaaeaabcbdddbdcccdccaaaddabdadacbeabaeaaedcdceeceebacaeacceedeaaababdacdaaaeacaedbcebeaecccaadcdbddcaedaceddbceeeeabbcaddacdadebcdabacadcebcbedeeeeadccecebbbacdbdeebacbbceddcebeeeeccadaecaecdabdbbdbbeeddebababbcabaaecdbbecccdeadbbeeabbbdeceecedabbceddcedcbabbbbdeaaeabddeeaaaccdecaceceeecdecdcaabdaedddbebaaadcaccbdeaecdecddecbabcecdbeabedeeacaadcdddabdaacabbcccacebabbecdeececcdbbacedcdbdabbcecbbceceeaedeebebcedcddcebebaeddbacdaccdedeaaecccabdbbbabaacadebbdabacbedbcadbeecbaadedbceaedaacbccebbaeccebdacacbaceebdacedbcceceadeddaccabddcbaaecbbcddcadaeedeaebcaabaeaeadaebeaeeebadcedccbecebcbdbbccdbeeebabcbbaedebeacbdbebeedcadcbbbeececabeedbdceedabebcebcddebceedceadcabdbedcdacceccbbacacbdaebacbeaeaaddaddaceaaebdccccaacdbcddcccbceacbcdcbdabccceddeddeddedabbcbadddbccdccdcebaceaeddcbacbdbeaccdbecddbebceeddedeedbbeeecbddbedebccdebbcabcbebbbbecaacdbcacaddaeeccaceebdaaecbbebddeccacbaacdbcdbaaceeadeaaccbccedcddedbcdceaacdeeeaeedbdbacdcaebeeeecbcdecdadeccedeccbacaaceeceecbdbbacacbceaccccaadbeaedcdacdbebeacabacecaaacadbabacbdeccddcedaeecddaebadeaebdcdadeebcedaaeadebcaccbcdaabdabecedbdebbadabecebecdbdcaddaacdeaaeceedeabcbadddbeaebedbbcebbdcbcdadabddebeebacbdacceabecacadebdacebdbbbdeeeebdaeecacdbdeececeaaddaabdbedaaaadddbdeeeaeecbdbbdadaecbeeceadbcddcabeaceebcbdacbeaadddcaaccddedbccbabedaceadeedaddabbecabadbeeaeeedeabdacacbaaedacdbdeadaecddcdecdcabdaececaeeedaccbbadbaddbecdeddbcbcceecaeeadbcdaaeabddebbbaaebeabcdeabdccdbeadbdaacbaddadecbbaacbddbadcbceabacedbbbdeedbddceacbdcaaceddbbbeddbcebdbdbbcaceeceaebbaecdaabcaccedeccbcdcececeaadbdeeabbbdadbeceaacbaedcaccdeeccaddbacdebdabcaabdcecceeecaacbbeaebbebddbceddddacadbadeccadbadccebcdcdadbeacbbdbdeedccaeaddceedadeccebbeaeebdadaabceceeacdeadbbcbeeccccbbdbbbbbbaeaacdbddceceebeabcebebbdcecceaccaccabecaecbebeaecccbbececcdbcdbbdedabdbdeebebdbaaedbabecbaeeaeedcedacedeaabcbdcaceccedbebcdd\n",
+      "output": "10"
+    }
+  ],
+  "hints": [
+    {
+      "id": "dp-lps-substring-h1",
+      "subtaskId": "st1",
+      "content": "Xét mọi đoạn O(N²) và check palindrome O(N) → O(N³).",
+      "starCost": 0
+    },
+    {
+      "id": "dp-lps-substring-h2",
+      "subtaskId": "st2",
+      "content": "DP isPal[i][j] = palindrome? Trans theo độ dài L. O(N²).",
+      "starCost": 1
+    },
+    {
+      "id": "dp-lps-substring-h3",
+      "subtaskId": "st3",
+      "content": "Mở rộng quanh tâm (2N-1 tâm), mỗi tâm O(N). Tổng O(N²).",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Hai cách: (a) DP isPal[i][j] = palindrome? trans isPal[i+1][j-1] && S[i]==S[j]. Lặp theo L. O(N²) thời gian + bộ nhớ. (b) Expand-around-center: với mỗi tâm (i,i) và (i,i+1) mở rộng đối xứng, O(N) mỗi tâm. Tổng O(N²) thời gian, O(1) bộ nhớ thêm.",
+  "solutionSketch": "// for each center i: expand (l=i,r=i) and (l=i,r=i+1) while s[l]==s[r]",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-26"
+}

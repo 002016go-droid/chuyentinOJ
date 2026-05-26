@@ -1,0 +1,208 @@
+{
+  "slug": "dp-tile-2xn",
+  "title": "Đếm cách lát domino bảng 2×N",
+  "titleEn": "Domino Tiling 2xN",
+  "module": "roadmap",
+  "topicId": "dp-grid",
+  "tier": "T1",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 1,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "tiling",
+    "fibonacci"
+  ],
+  "source": "Bài tự build (DP classics)",
+  "isExternal": false,
+  "statement": "Đếm số cách lát bảng `2×N` bằng các miếng domino `1×2` (đặt ngang hoặc dọc). In modulo 10^9+7.\n\n**Input**: 1 số `N`.\n\n**Output**: 1 số nguyên.",
+  "vnPattern": "Tiling cơ bản — quy về Fibonacci.",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "N ≤ 8",
+      "points": 25,
+      "constraint": "0 ≤ N ≤ 8"
+    },
+    {
+      "id": "st2",
+      "title": "N ≤ 50",
+      "points": 30,
+      "constraint": "0 ≤ N ≤ 50"
+    },
+    {
+      "id": "st3",
+      "title": "N ≤ 10^6",
+      "points": 45,
+      "constraint": "0 ≤ N ≤ 10^6"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "4\n",
+      "output": "5"
+    },
+    {
+      "id": "sample2",
+      "input": "2\n",
+      "output": "2"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "4\n",
+      "output": "5"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "2\n",
+      "output": "2"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "6\n",
+      "output": "13"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "7\n",
+      "output": "21"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "3\n",
+      "output": "3"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st1",
+      "input": "7\n",
+      "output": "21"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "28\n",
+      "output": "514229"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "47\n",
+      "output": "807526948"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "43\n",
+      "output": "701408733"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "23\n",
+      "output": "46368"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "25\n",
+      "output": "121393"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st2",
+      "input": "43\n",
+      "output": "701408733"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "668060\n",
+      "output": "363346999"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "931708\n",
+      "output": "112713308"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "318361\n",
+      "output": "150109139"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "489155\n",
+      "output": "395710039"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "528644\n",
+      "output": "659944827"
+    },
+    {
+      "id": "tc18",
+      "subtaskId": "st3",
+      "input": "936601\n",
+      "output": "907401333"
+    },
+    {
+      "id": "tc19",
+      "subtaskId": "st3",
+      "input": "153926\n",
+      "output": "27481207"
+    },
+    {
+      "id": "tc20",
+      "subtaskId": "st3",
+      "input": "79317\n",
+      "output": "67864790"
+    }
+  ],
+  "hints": [
+    {
+      "id": "dp-tile-2xn-h1",
+      "subtaskId": "st1",
+      "content": "Vẽ tay với N nhỏ và liệt kê.",
+      "starCost": 0
+    },
+    {
+      "id": "dp-tile-2xn-h2",
+      "subtaskId": "st2",
+      "content": "Tách theo cột cuối: 1 dọc → f(n-1); 2 ngang → f(n-2). f(n)=f(n-1)+f(n-2).",
+      "starCost": 1
+    },
+    {
+      "id": "dp-tile-2xn-h3",
+      "subtaskId": "st3",
+      "content": "Đây chính là Fibonacci. O(N) cộng dồn.",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Gọi f(n) là số cách lát 2×N. Xét cột cuối: nếu đặt 1 miếng dọc → còn 2×(N-1); nếu đặt 2 miếng ngang ở 2 hàng cuối → còn 2×(N-2). Suy ra f(n)=f(n-1)+f(n-2), f(0)=f(1)=1. Cộng dồn modulo. O(N).",
+  "solutionSketch": "// a,b=1,1; loop n: a,b=b,(a+b)%MOD",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-26"
+}
