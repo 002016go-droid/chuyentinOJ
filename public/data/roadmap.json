@@ -7387,7 +7387,13 @@
           "url": "https://wiki.vnoi.info/algo/math/sieve"
         }
       ],
-      "problems": [],
+      "problems": [
+        "sf-prime-table",
+        "sf-spf-factorize",
+        "sf-divisor-sum",
+        "sf-distinct-prime",
+        "sf-euler-phi"
+      ],
       "theory": "// Linear sieve + SPF\nvector<int> spf(N + 1, 0), primes;\nfor (int i = 2; i <= N; i++) {\n    if (!spf[i]) { spf[i] = i; primes.push_back(i); }\n    for (int p : primes) {\n        if (p > spf[i] || (long long)p * i > N) break;\n        spf[p * i] = p;\n    }\n}",
       "theorySnippet": "// Linear sieve + SPF\nvector<int> spf(N + 1, 0), primes;\nfor (int i = 2; i <= N; i++) {\n    if (!spf[i]) { spf[i] = i; primes.push_back(i); }\n    for (int p : primes) {\n        if (p > spf[i] || (long long)p * i > N) break;\n        spf[p * i] = p;\n    }\n}",
       "referenceProblem": [
@@ -7578,7 +7584,13 @@
           "url": "https://wiki.vnoi.info/algo/string/hashing"
         }
       ],
-      "problems": [],
+      "problems": [
+        "sh-pattern-count",
+        "sh-distinct-len-k",
+        "sh-substring-eq",
+        "sh-lcp-pair",
+        "sh-palindrome-q"
+      ],
       "theory": "const long long MOD = 1e9 + 7, B = 31;\nvector<long long> H(n + 1, 0), P(n + 1, 1);\nfor (int i = 0; i < n; i++) {\n    H[i + 1] = (H[i] * B + (s[i] - 'a' + 1)) % MOD;\n    P[i + 1] = (P[i] * B) % MOD;\n}\nauto hsub = [&](int l, int r) { // [l, r]\n    return ((H[r + 1] - H[l] * P[r - l + 1]) % MOD + MOD) % MOD;\n};",
       "theorySnippet": "const long long MOD = 1e9 + 7, B = 31;\nvector<long long> H(n + 1, 0), P(n + 1, 1);\nfor (int i = 0; i < n; i++) {\n    H[i + 1] = (H[i] * B + (s[i] - 'a' + 1)) % MOD;\n    P[i + 1] = (P[i] * B) % MOD;\n}\nauto hsub = [&](int l, int r) { // [l, r]\n    return ((H[r + 1] - H[l] * P[r - l + 1]) % MOD + MOD) % MOD;\n};",
       "referenceProblem": [
@@ -7763,7 +7775,13 @@
           "url": "https://wiki.vnoi.info/algo/graph-theory/topo-sort"
         }
       ],
-      "problems": [],
+      "problems": [
+        "tdp-subtree-size",
+        "tdp-subtree-sum",
+        "tdp-tree-diameter",
+        "tdp-max-indep-set",
+        "tdp-subordinates"
+      ],
       "theory": "// Đường kính cây bằng DP O(N)\nvector<int> dp(n + 1, 0);\nint diam = 0;\nfunction<void(int, int)> dfs = [&](int u, int par) {\n    for (int v : adj[u]) if (v != par) {\n        dfs(v, u);\n        diam = max(diam, dp[u] + dp[v] + 1);\n        dp[u] = max(dp[u], dp[v] + 1);\n    }\n};",
       "theorySnippet": "// Đường kính cây bằng DP O(N)\nvector<int> dp(n + 1, 0);\nint diam = 0;\nfunction<void(int, int)> dfs = [&](int u, int par) {\n    for (int v : adj[u]) if (v != par) {\n        dfs(v, u);\n        diam = max(diam, dp[u] + dp[v] + 1);\n        dp[u] = max(dp[u], dp[v] + 1);\n    }\n};",
       "referenceProblem": [
