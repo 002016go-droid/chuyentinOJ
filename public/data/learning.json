@@ -6,7 +6,9 @@
     "duration": "60 phút",
     "title": "I/O nhanh & kiểu dữ liệu cơ bản",
     "goal": "Nhập xuất hiệu quả, đọc nhiều test, phân biệt int / long long / double.",
-    "practiceProblems": ["sum-array"]
+    "practiceProblems": [
+      "sum-array"
+    ]
   },
   {
     "slug": "arrays-and-sorting",
@@ -15,7 +17,9 @@
     "duration": "90 phút",
     "title": "Mảng & sắp xếp",
     "goal": "Sort, lambda, sort theo nhiều khoá, ổn định/không ổn định.",
-    "practiceProblems": ["partial-sort-3"]
+    "practiceProblems": [
+      "partial-sort-3"
+    ]
   },
   {
     "slug": "two-pointers-prefix",
@@ -24,7 +28,10 @@
     "duration": "90 phút",
     "title": "Hai con trỏ + Tổng tiền tố",
     "goal": "Áp dụng cho bài tổng đoạn, đếm cặp, dãy thoả điều kiện.",
-    "practiceProblems": ["max-subarray-sum", "pair-sum-target"]
+    "practiceProblems": [
+      "max-subarray-sum",
+      "pair-sum-target"
+    ]
   },
   {
     "slug": "binary-search",
@@ -33,7 +40,9 @@
     "duration": "60 phút",
     "title": "Tìm kiếm nhị phân",
     "goal": "lower_bound / upper_bound, BS trên nghiệm.",
-    "practiceProblems": ["partial-sort-3"]
+    "practiceProblems": [
+      "partial-sort-3"
+    ]
   },
   {
     "slug": "greedy",
@@ -42,7 +51,10 @@
     "duration": "60 phút",
     "title": "Tham lam",
     "goal": "Activity selection, đổi tiền tham lam.",
-    "practiceProblems": ["activity-selection", "coin-change-greedy"]
+    "practiceProblems": [
+      "activity-selection",
+      "coin-change-greedy"
+    ]
   },
   {
     "slug": "dp-basic",
@@ -51,7 +63,11 @@
     "duration": "120 phút",
     "title": "DP 1D cơ bản & coin/knapsack",
     "goal": "Robber, Kadane, đổi tiền, knapsack 0/1.",
-    "practiceProblems": ["house-robber", "knapsack-01", "coin-change-ways"]
+    "practiceProblems": [
+      "house-robber",
+      "knapsack-01",
+      "coin-change-ways"
+    ]
   },
   {
     "slug": "bfs-dfs",
@@ -60,7 +76,10 @@
     "duration": "120 phút",
     "title": "BFS / DFS — đếm thành phần, đường đi ngắn",
     "goal": "Triển khai BFS/DFS, đếm component.",
-    "practiceProblems": ["count-components", "shortest-path-unweighted"]
+    "practiceProblems": [
+      "count-components",
+      "shortest-path-unweighted"
+    ]
   },
   {
     "slug": "review-and-templates",
@@ -69,6 +88,206 @@
     "duration": "90 phút",
     "title": "Ôn template — luyện đề thật",
     "goal": "Bấm tay template I/O, sort, BFS, DSU. Làm 1 đề tuyển sinh ngắn.",
-    "practiceProblems": ["valid-brackets", "lis-classic"]
+    "practiceProblems": [
+      "valid-brackets",
+      "lis-classic"
+    ]
+  },
+  {
+    "slug": "stack-queue-basics",
+    "day": 3,
+    "block": "sáng",
+    "duration": "90 phút",
+    "title": "Stack & Queue cơ bản",
+    "goal": "STL stack/queue, ngoặc cân bằng, mô phỏng lịch sử thao tác.",
+    "practiceProblems": [
+      "stl-stack-reverse-stk",
+      "valid-brackets",
+      "mock-bracket-balance"
+    ]
+  },
+  {
+    "slug": "deque-monoqueue",
+    "day": 3,
+    "block": "sáng",
+    "duration": "60 phút",
+    "title": "Deque & cửa sổ trượt",
+    "goal": "Sliding window max/min với deque, áp dụng cho streaming.",
+    "practiceProblems": [
+      "mdq-window-max",
+      "mdq-window-min",
+      "stl-deque-rolling-avg"
+    ]
+  },
+  {
+    "slug": "simulation-day3",
+    "day": 3,
+    "block": "chiều",
+    "duration": "90 phút",
+    "title": "Mô phỏng & truy vết",
+    "goal": "Đọc đề kỹ, dựng mô phỏng đúng từng bước; bug giảm 80% nhờ trace.",
+    "practiceProblems": [
+      "sim-bank",
+      "sim-elevator",
+      "sim-clock",
+      "sim-trafficlight"
+    ]
+  },
+  {
+    "slug": "stl-set-map",
+    "day": 4,
+    "block": "sáng",
+    "duration": "90 phút",
+    "title": "set / map / multiset",
+    "goal": "lower_bound/upper_bound trên set, đếm phần tử, median trượt.",
+    "practiceProblems": [
+      "stl-set-distinct",
+      "stl-map-freq",
+      "stl-multiset-median"
+    ]
+  },
+  {
+    "slug": "stl-priority-queue",
+    "day": 4,
+    "block": "chiều",
+    "duration": "90 phút",
+    "title": "priority_queue & heap thủ công",
+    "goal": "Top-K, gộp K dãy, lập lịch theo độ ưu tiên.",
+    "practiceProblems": [
+      "stl-priority-task",
+      "stl-pq-merge"
+    ]
+  },
+  {
+    "slug": "stl-pair-vector",
+    "day": 4,
+    "block": "tối",
+    "duration": "60 phút",
+    "title": "pair + vector + tuple thuần",
+    "goal": "Sort theo nhiều khoá, lưu cấu trúc gọn, tránh struct dư thừa.",
+    "practiceProblems": [
+      "stl-pair-sort",
+      "stl-vector-rotate",
+      "sort-pairs-mate"
+    ]
+  },
+  {
+    "slug": "number-theory-basics",
+    "day": 5,
+    "block": "sáng",
+    "duration": "90 phút",
+    "title": "Số học cơ bản: gcd, sàng, modular",
+    "goal": "Sàng Eratosthenes, phân tích thừa số bằng SPF, mũ nhanh modulo.",
+    "practiceProblems": [
+      "sieve-count-primes",
+      "sieve-list-primes",
+      "sieve-range-count",
+      "gcd-recursion"
+    ]
+  },
+  {
+    "slug": "modular-arithmetic",
+    "day": 5,
+    "block": "chiều",
+    "duration": "60 phút",
+    "title": "Modulo & nghịch đảo Fermat",
+    "goal": "Fib mod, tổ hợp mod, tránh tràn số.",
+    "practiceProblems": [
+      "dp-fib-mod",
+      "io-fib-mod"
+    ]
+  },
+  {
+    "slug": "bitmask-intro",
+    "day": 5,
+    "block": "tối",
+    "duration": "60 phút",
+    "title": "Bitmask nhập môn",
+    "goal": "Dùng bit để biểu diễn tập con, popcount, lưu trạng thái DP.",
+    "practiceProblems": [
+      "bitmask-tsp",
+      "subset-sum-exist",
+      "subset-count-ways"
+    ]
+  },
+  {
+    "slug": "graph-traversal",
+    "day": 6,
+    "block": "sáng",
+    "duration": "90 phút",
+    "title": "Duyệt đồ thị: BFS / DFS",
+    "goal": "Đếm thành phần, kiểm chu trình, BFS đa nguồn, lưới trở thành đồ thị.",
+    "practiceProblems": [
+      "bfs-distance",
+      "dfs-toposort",
+      "dfs-count-components",
+      "bfs-multi-source"
+    ]
+  },
+  {
+    "slug": "shortest-path",
+    "day": 6,
+    "block": "chiều",
+    "duration": "90 phút",
+    "title": "Đường đi ngắn nhất",
+    "goal": "Dijkstra (cạnh dương), 0-1 BFS, Floyd cho đồ thị nhỏ.",
+    "practiceProblems": [
+      "sp-dijkstra-basic",
+      "sp-zero-one-bfs",
+      "sp-floyd-warshall"
+    ]
+  },
+  {
+    "slug": "dsu-mst",
+    "day": 6,
+    "block": "tối",
+    "duration": "60 phút",
+    "title": "DSU & cây khung nhỏ nhất",
+    "goal": "Union-Find với rank + path compression, Kruskal.",
+    "practiceProblems": [
+      "dsu-friends",
+      "dsu-mst-kruskal",
+      "dsu-size-largest"
+    ]
+  },
+  {
+    "slug": "knapsack-family",
+    "day": 7,
+    "block": "sáng",
+    "duration": "90 phút",
+    "title": "Knapsack 0/1 & unbounded",
+    "goal": "Khử chiều, mẹo tối ưu O(N*W), ý nghĩa dp[i][w].",
+    "practiceProblems": [
+      "knapsack-01",
+      "knap-01",
+      "knap-unbounded"
+    ]
+  },
+  {
+    "slug": "lis-lcs",
+    "day": 7,
+    "block": "chiều",
+    "duration": "90 phút",
+    "title": "LIS & LCS",
+    "goal": "LIS O(N log N) bằng patience, LCS DP + truy ngược.",
+    "practiceProblems": [
+      "lis-classic",
+      "lis-fast",
+      "lcs-classic",
+      "edit-distance"
+    ]
+  },
+  {
+    "slug": "tree-dp",
+    "day": 7,
+    "block": "tối",
+    "duration": "60 phút",
+    "title": "DP trên cây",
+    "goal": "Kích thước cây con, đường kính, tập độc lập cực đại.",
+    "practiceProblems": [
+      "tdp-subtree-size",
+      "tdp-tree-diameter",
+      "tdp-max-indep-set"
+    ]
   }
 ]

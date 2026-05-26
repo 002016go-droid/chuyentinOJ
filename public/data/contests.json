@@ -1,104 +1,194 @@
 [
   {
-    "id": "danang-hsg-2024-12",
-    "title": "HSG Tin học Đà Nẵng 2024 — Lớp 12",
+    "id": "danang-hsg9-2024",
+    "title": "HSG Tin học Đà Nẵng 2024 — Lớp 9",
     "province": "Đà Nẵng",
     "flag": "🏙",
     "year": 2024,
-    "grade": 12,
+    "grade": 9,
     "type": "hsg-city",
-    "problems": ["sum-array", "max-subarray-sum", "shortest-path-unweighted", "knapsack-01"],
-    "duration": 180
-  },
-  {
-    "id": "danang-hsg-2023-12",
-    "title": "HSG Tin học Đà Nẵng 2023 — Lớp 12",
-    "province": "Đà Nẵng",
-    "flag": "🏙",
-    "year": 2023,
-    "grade": 12,
-    "type": "hsg-city",
-    "problems": ["partial-sort-3", "lis-classic", "count-components", "coin-change-ways"],
-    "duration": 180
-  },
-  {
-    "id": "danang-hsg-2024-11",
-    "title": "HSG Tin học Đà Nẵng 2024 — Lớp 11",
-    "province": "Đà Nẵng",
-    "flag": "🏙",
-    "year": 2024,
-    "grade": 11,
-    "type": "hsg-city",
-    "problems": ["valid-brackets", "pair-sum-target", "activity-selection", "house-robber"],
+    "problems": [
+      "io-sum1ton",
+      "sort-find-kth",
+      "tp-pair-sum",
+      "bfs-grid"
+    ],
     "duration": 150
   },
   {
-    "id": "danang-hsg-2023-11",
-    "title": "HSG Tin học Đà Nẵng 2023 — Lớp 11",
+    "id": "danang-hsg9-2023",
+    "title": "HSG Tin học Đà Nẵng 2023 — Lớp 9",
     "province": "Đà Nẵng",
     "flag": "🏙",
     "year": 2023,
-    "grade": 11,
+    "grade": 9,
     "type": "hsg-city",
-    "problems": ["permutations", "lcs-classic", "dsu-friends"],
+    "problems": [
+      "io-counteven",
+      "arr1d-maxsubarr",
+      "greedy-min-platforms",
+      "dfs-largest-component"
+    ],
     "duration": 150
   },
   {
-    "id": "danang-hsg-2024-10",
-    "title": "HSG Tin học Đà Nẵng 2024 — Lớp 10",
+    "id": "danang-hsg9-2022",
+    "title": "HSG Tin học Đà Nẵng 2022 — Lớp 9",
     "province": "Đà Nẵng",
     "flag": "🏙",
-    "year": 2024,
-    "grade": 10,
+    "year": 2022,
+    "grade": 9,
     "type": "hsg-city",
-    "problems": ["sum-array", "pair-sum-target", "valid-brackets"],
-    "duration": 120
-  },
-  {
-    "id": "quangnam-hsg-2024-12",
-    "title": "HSG Tin học Quảng Nam 2024 — Lớp 12",
-    "province": "Quảng Nam",
-    "flag": "🏞",
-    "year": 2024,
-    "grade": 12,
-    "type": "hsg-province",
-    "problems": ["max-subarray-sum", "dijkstra-classic", "segtree-range-sum", "palindrome-check"],
-    "duration": 180
-  },
-  {
-    "id": "quangnam-hsg-2023-11",
-    "title": "HSG Tin học Quảng Nam 2023 — Lớp 11",
-    "province": "Quảng Nam",
-    "flag": "🏞",
-    "year": 2023,
-    "grade": 11,
-    "type": "hsg-province",
-    "problems": ["activity-selection", "lis-classic", "dsu-friends"],
+    "problems": [
+      "io-digitsum",
+      "sort-stable-pair",
+      "bs-find-x",
+      "dp-climb-stairs"
+    ],
     "duration": 150
   },
   {
-    "id": "quangnam-hsg-2024-10",
-    "title": "HSG Tin học Quảng Nam 2024 — Lớp 10",
+    "id": "quangnam-hsg9-2024",
+    "title": "HSG Tin học Quảng Nam 2024 — Lớp 9",
     "province": "Quảng Nam",
-    "flag": "🏞",
+    "flag": "🏯",
     "year": 2024,
-    "grade": 10,
-    "type": "hsg-province",
-    "problems": ["sum-array", "partial-sort-3", "pair-sum-target"],
-    "duration": 120
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "io-aplusb",
+      "hash-pair-sum",
+      "greedy-activity",
+      "bfs-distance"
+    ],
+    "duration": 150
   },
   {
-    "id": "gym-fortifications",
-    "title": "Codeforces Gym — Algorithm Practice",
-    "province": "External",
-    "flag": "🌐",
+    "id": "quangnam-hsg9-2023",
+    "title": "HSG Tin học Quảng Nam 2023 — Lớp 9",
+    "province": "Quảng Nam",
+    "flag": "🏯",
+    "year": 2023,
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "io-fib-mod",
+      "arr2d-spiral",
+      "tp-window-min-len",
+      "dp-coin-min"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "hanoi-hsg9-2024",
+    "title": "HSG Tin học Hà Nội 2024 — Lớp 9",
+    "province": "Hà Nội",
+    "flag": "🇻🇳",
     "year": 2024,
-    "type": "gym",
-    "problems": [],
-    "duration": 0,
-    "external": {
-      "url": "https://codeforces.com/gyms",
-      "platform": "Codeforces"
-    }
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "io-primes-lr",
+      "sort-distinct-count",
+      "greedy-coin",
+      "bfs-multi-source"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "hanoi-hsg9-2023",
+    "title": "HSG Tin học Hà Nội 2023 — Lớp 9",
+    "province": "Hà Nội",
+    "flag": "🇻🇳",
+    "year": 2023,
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "io-reversenum",
+      "arr1d-inversions-easy",
+      "bs-lower-bound",
+      "dp-house-robber"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "hcmc-hsg9-2024",
+    "title": "HSG Tin học TP.HCM 2024 — Lớp 9",
+    "province": "TP.HCM",
+    "flag": "🌆",
+    "year": 2024,
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "io-minmax",
+      "hash-freq",
+      "greedy-min-water",
+      "dfs-cycle-detect"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "hcmc-hsg9-2023",
+    "title": "HSG Tin học TP.HCM 2023 — Lớp 9",
+    "province": "TP.HCM",
+    "flag": "🌆",
+    "year": 2023,
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "arr1d-sum",
+      "arr1d-kth-smallest",
+      "tp-zero-sum-segments",
+      "dp-max-subarray"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "haiphong-hsg9-2024",
+    "title": "HSG Tin học Hải Phòng 2024 — Lớp 9",
+    "province": "Hải Phòng",
+    "flag": "⚓",
+    "year": 2024,
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "arr1d-rangesum",
+      "sort-bytwo-keys",
+      "tp-3sum-zero",
+      "bfs-knight"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "nghean-hsg9-2024",
+    "title": "HSG Tin học Nghệ An 2024 — Lớp 9",
+    "province": "Nghệ An",
+    "flag": "🌅",
+    "year": 2024,
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "arr2d-rowsum",
+      "hash-count-distinct",
+      "greedy-fuel-station",
+      "dfs-bipartite"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "thanhhoa-hsg9-2024",
+    "title": "HSG Tin học Thanh Hoá 2024 — Lớp 9",
+    "province": "Thanh Hoá",
+    "flag": "🌾",
+    "year": 2024,
+    "grade": 9,
+    "type": "hsg-city",
+    "problems": [
+      "str-palindrome",
+      "sort-pairs-mate",
+      "bs-rotated",
+      "lis-basic"
+    ],
+    "duration": 150
   }
 ]
