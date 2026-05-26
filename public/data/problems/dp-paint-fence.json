@@ -1,0 +1,208 @@
+{
+  "slug": "dp-paint-fence",
+  "title": "Sơn hàng rào K màu (không 3 thanh liền cùng màu)",
+  "titleEn": "Paint Fence",
+  "module": "roadmap",
+  "topicId": "dp-intro",
+  "tier": "T2",
+  "skills": [
+    "S2-Phân tích",
+    "S4-Cài đặt"
+  ],
+  "difficulty": 2,
+  "maxStars": 3,
+  "tags": [
+    "dp",
+    "dp-intro",
+    "counting"
+  ],
+  "source": "Bài tự build (DP classics)",
+  "isExternal": false,
+  "statement": "Sơn `N` thanh hàng rào với `K` màu. Ràng buộc: **không** được có 3 thanh liên tiếp cùng màu. Đếm số cách sơn, in modulo 10^9+7.\n\n**Input**: 1 dòng chứa 2 số `N`, `K`.\n\n**Output**: số cách.",
+  "vnPattern": "DP đếm cách; trạng thái = (cùng màu 2 cuối / khác màu 2 cuối).",
+  "fileIO": {
+    "inputFile": "stdin",
+    "outputFile": "stdout"
+  },
+  "subtasks": [
+    {
+      "id": "st1",
+      "title": "N ≤ 6, K ≤ 4",
+      "points": 25,
+      "constraint": "1 ≤ N ≤ 6; 1 ≤ K ≤ 4"
+    },
+    {
+      "id": "st2",
+      "title": "N ≤ 100, K ≤ 50",
+      "points": 30,
+      "constraint": "1 ≤ N ≤ 100; 1 ≤ K ≤ 50"
+    },
+    {
+      "id": "st3",
+      "title": "N ≤ 10^6, K ≤ 1000",
+      "points": 45,
+      "constraint": "1 ≤ N ≤ 10^6; 1 ≤ K ≤ 1000"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sample1",
+      "input": "4 1\n",
+      "output": "0"
+    },
+    {
+      "id": "sample2",
+      "input": "4 2\n",
+      "output": "10"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "tc01",
+      "subtaskId": "st1",
+      "input": "4 1\n",
+      "output": "0"
+    },
+    {
+      "id": "tc02",
+      "subtaskId": "st1",
+      "input": "4 2\n",
+      "output": "10"
+    },
+    {
+      "id": "tc03",
+      "subtaskId": "st1",
+      "input": "1 4\n",
+      "output": "4"
+    },
+    {
+      "id": "tc04",
+      "subtaskId": "st1",
+      "input": "5 2\n",
+      "output": "16"
+    },
+    {
+      "id": "tc05",
+      "subtaskId": "st1",
+      "input": "6 1\n",
+      "output": "0"
+    },
+    {
+      "id": "tc06",
+      "subtaskId": "st1",
+      "input": "5 1\n",
+      "output": "0"
+    },
+    {
+      "id": "tc07",
+      "subtaskId": "st2",
+      "input": "59 34\n",
+      "output": "164864584"
+    },
+    {
+      "id": "tc08",
+      "subtaskId": "st2",
+      "input": "61 2\n",
+      "output": "479019027"
+    },
+    {
+      "id": "tc09",
+      "subtaskId": "st2",
+      "input": "67 15\n",
+      "output": "424323321"
+    },
+    {
+      "id": "tc10",
+      "subtaskId": "st2",
+      "input": "32 13\n",
+      "output": "756371199"
+    },
+    {
+      "id": "tc11",
+      "subtaskId": "st2",
+      "input": "49 47\n",
+      "output": "253761165"
+    },
+    {
+      "id": "tc12",
+      "subtaskId": "st2",
+      "input": "7 1\n",
+      "output": "0"
+    },
+    {
+      "id": "tc13",
+      "subtaskId": "st3",
+      "input": "585519 727\n",
+      "output": "94109717"
+    },
+    {
+      "id": "tc14",
+      "subtaskId": "st3",
+      "input": "854638 661\n",
+      "output": "31058992"
+    },
+    {
+      "id": "tc15",
+      "subtaskId": "st3",
+      "input": "878391 945\n",
+      "output": "536080642"
+    },
+    {
+      "id": "tc16",
+      "subtaskId": "st3",
+      "input": "678337 30\n",
+      "output": "579100200"
+    },
+    {
+      "id": "tc17",
+      "subtaskId": "st3",
+      "input": "731875 244\n",
+      "output": "113338698"
+    },
+    {
+      "id": "tc18",
+      "subtaskId": "st3",
+      "input": "775296 248\n",
+      "output": "368894592"
+    },
+    {
+      "id": "tc19",
+      "subtaskId": "st3",
+      "input": "876524 685\n",
+      "output": "755413856"
+    },
+    {
+      "id": "tc20",
+      "subtaskId": "st3",
+      "input": "217696 256\n",
+      "output": "6883895"
+    }
+  ],
+  "hints": [
+    {
+      "id": "dp-paint-fence-h1",
+      "subtaskId": "st1",
+      "content": "Liệt kê tất cả K^N cách rồi loại.",
+      "starCost": 0
+    },
+    {
+      "id": "dp-paint-fence-h2",
+      "subtaskId": "st2",
+      "content": "same[i]/diff[i] = cách sơn i thanh kết thúc bằng 2 thanh cùng / khác màu.",
+      "starCost": 1
+    },
+    {
+      "id": "dp-paint-fence-h3",
+      "subtaskId": "st3",
+      "content": "Công thức: total[i]=same+diff; same'=diff; diff'=total*(K-1). O(N).",
+      "starCost": 1
+    }
+  ],
+  "editorial": "Gọi `same` là số cách N thanh kết thúc bằng 2 thanh cùng màu, `diff` là số cách kết thúc khác màu. Khởi tạo (N=2): same=K, diff=K(K-1). Chuyển: new_same=diff (thanh mới giống thanh trước), new_diff=(same+diff)(K-1). Đáp án same+diff. O(N).",
+  "solutionSketch": "// same,diff loops; new_same=diff; new_diff=(same+diff)*(k-1)",
+  "timeLimit": 1,
+  "memoryLimit": 256,
+  "timeLimitMs": 1000,
+  "memoryLimitKB": 262144,
+  "createdAt": "2026-05-26"
+}
