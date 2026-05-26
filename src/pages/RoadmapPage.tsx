@@ -15,7 +15,7 @@ import ReactFlow, {
   MarkerType,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
-import { CheckCircle2, Lock, Zap, X } from 'lucide-react'
+import { CheckCircle2, Lock, Zap, X, BookOpen } from 'lucide-react'
 import { PageTransition } from '../components/layout/PageTransition'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
@@ -340,6 +340,39 @@ export function RoadmapPage({ onLevelComplete }: Props) {
               <p className="mt-3 whitespace-pre-line text-sm text-[var(--text-primary)]">
                 {selected.description}
               </p>
+
+              {/* Prominent CTA: open full topic theory page */}
+              <Link
+                to={`/topic/${selected.id}`}
+                className="mt-4 flex items-center justify-between gap-3 rounded-lg border px-4 py-3 transition hover:shadow-md"
+                style={{
+                  background: 'var(--accent-glow)',
+                  borderColor: 'var(--accent-primary)',
+                  textDecoration: 'none',
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className="grid h-9 w-9 place-items-center rounded-lg"
+                    style={{
+                      background: 'var(--accent-primary)',
+                      color: '#fff',
+                    }}
+                  >
+                    <BookOpen size={18} />
+                  </span>
+                  <div className="leading-tight">
+                    <div className="text-sm font-semibold text-[var(--text-primary)]">
+                      Vào trang lý thuyết →
+                    </div>
+                    <div className="text-[11px] text-[var(--text-muted)]">
+                      Lý thuyết đầy đủ + code mẫu + 15+ bài tham khảo
+                    </div>
+                  </div>
+                </div>
+                <span className="text-lg text-[var(--accent-primary)]">›</span>
+              </Link>
+
               <div className="mt-3">
                 <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
                   Code mẫu
@@ -419,13 +452,6 @@ export function RoadmapPage({ onLevelComplete }: Props) {
                 </div>
               )}
               <div className="mt-4 flex flex-wrap gap-2">
-                <Link
-                  to={`/topic/${selected.id}`}
-                  className="btn btn-primary"
-                  style={{ textDecoration: 'none' }}
-                >
-                  📖 Mở trang lý thuyết
-                </Link>
                 <Button variant="ghost" onClick={() => setStatus(selected, 'in_progress')}>
                   Đánh dấu đang học
                 </Button>
