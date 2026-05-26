@@ -27,6 +27,7 @@ import { TopicPage } from './pages/TopicPage'
 import { SourcesPage } from './pages/SourcesPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { HiddenPage } from './pages/HiddenPage'
+import { HowToPage } from './pages/HowToPage'
 
 function AnimatedRoutes(props: ReturnType<typeof useEasterEggs>['api']) {
   const location = useLocation()
@@ -151,6 +152,14 @@ function AnimatedRoutes(props: ReturnType<typeof useEasterEggs>['api']) {
           element={
             <RequireAuth>
               <SourcesPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/huong-dan"
+          element={
+            <RequireAuth>
+              <HowToPage />
             </RequireAuth>
           }
         />

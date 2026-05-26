@@ -14,6 +14,7 @@ interface NavItem {
 
 const ITEMS: NavItem[] = [
   { to: '/', label: 'Dashboard' },
+  { to: '/huong-dan', label: 'Hướng dẫn' },
   { to: '/roadmap', label: 'Lộ trình' },
   { to: '/contests', label: 'Đề thi HSG' },
   { to: '/entrance', label: 'Tuyển sinh' },

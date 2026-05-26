@@ -1,57 +1,255 @@
 [
   {
     "id": "nbk-2024",
-    "title": "Tuyển sinh 10 Chuyên Tin — NBK 2024",
-    "school": "Chuyên Nguyễn Bỉnh Khiêm",
+    "title": "Tuyển sinh 10 Chuyên Tin — NBK Đà Nẵng 2024",
     "province": "Đà Nẵng",
+    "school": "Lê Quý Đôn (NBK)",
     "year": 2024,
-    "type": "primary-target",
-    "problems": ["sum-array", "max-subarray-sum", "activity-selection", "count-components"],
-    "duration": 150,
-    "difficultyLabel": "Khó"
+    "type": "entrance",
+    "problems": [
+      "io-sum1ton",
+      "partial-sort-3",
+      "max-subarray-sum",
+      "shortest-path-unweighted"
+    ],
+    "duration": 150
   },
   {
     "id": "nbk-2023",
-    "title": "Tuyển sinh 10 Chuyên Tin — NBK 2023",
-    "school": "Chuyên Nguyễn Bỉnh Khiêm",
+    "title": "Tuyển sinh 10 Chuyên Tin — NBK Đà Nẵng 2023",
     "province": "Đà Nẵng",
+    "school": "Lê Quý Đôn (NBK)",
     "year": 2023,
-    "type": "primary-target",
-    "problems": ["pair-sum-target", "partial-sort-3", "valid-brackets", "house-robber"],
-    "duration": 150,
-    "difficultyLabel": "Vừa-Khó"
+    "type": "entrance",
+    "problems": [
+      "io-counteven",
+      "sort-find-kth",
+      "tp-pair-sum",
+      "dp-house-robber"
+    ],
+    "duration": 150
   },
   {
     "id": "nbk-2022",
-    "title": "Tuyển sinh 10 Chuyên Tin — NBK 2022",
-    "school": "Chuyên Nguyễn Bỉnh Khiêm",
+    "title": "Tuyển sinh 10 Chuyên Tin — NBK Đà Nẵng 2022",
     "province": "Đà Nẵng",
+    "school": "Lê Quý Đôn (NBK)",
     "year": 2022,
-    "type": "primary-target",
-    "problems": ["sum-array", "permutations", "shortest-path-unweighted"],
-    "duration": 150,
-    "difficultyLabel": "Vừa"
+    "type": "entrance",
+    "problems": [
+      "io-aplusb",
+      "hash-mode",
+      "bs-find-x"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "nbk-2021",
+    "title": "Tuyển sinh 10 Chuyên Tin — NBK Đà Nẵng 2021",
+    "province": "Đà Nẵng",
+    "school": "Lê Quý Đôn (NBK)",
+    "year": 2021,
+    "type": "entrance",
+    "problems": [
+      "io-digitsum",
+      "arr1d-inversions-easy",
+      "greedy-activity",
+      "dp-max-subarray"
+    ],
+    "duration": 150
   },
   {
     "id": "quangnam-2024",
     "title": "Tuyển sinh 10 Chuyên Tin — Quảng Nam 2024",
-    "school": "Chuyên Quảng Nam",
     "province": "Quảng Nam",
+    "school": "Nguyễn Bỉnh Khiêm",
     "year": 2024,
-    "type": "secondary-target",
-    "problems": ["sum-array", "pair-sum-target", "max-subarray-sum", "lis-classic"],
-    "duration": 150,
-    "difficultyLabel": "Vừa-Khó"
+    "type": "entrance",
+    "problems": [
+      "io-fib-mod",
+      "sort-stable-pair",
+      "bs-lower-bound",
+      "bfs-distance"
+    ],
+    "duration": 150
   },
   {
     "id": "quangnam-2023",
     "title": "Tuyển sinh 10 Chuyên Tin — Quảng Nam 2023",
-    "school": "Chuyên Quảng Nam",
     "province": "Quảng Nam",
+    "school": "Nguyễn Bỉnh Khiêm",
     "year": 2023,
-    "type": "secondary-target",
-    "problems": ["valid-brackets", "partial-sort-3", "knapsack-01"],
-    "duration": 150,
-    "difficultyLabel": "Vừa"
+    "type": "entrance",
+    "problems": [
+      "arr1d-rangesum",
+      "tp-window-min-len",
+      "dp-coin-min"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "quangnam-2022",
+    "title": "Tuyển sinh 10 Chuyên Tin — Quảng Nam 2022",
+    "province": "Quảng Nam",
+    "school": "Nguyễn Bỉnh Khiêm",
+    "year": 2022,
+    "type": "entrance",
+    "problems": [
+      "io-primes-lr",
+      "hash-freq",
+      "bs-rope-cut",
+      "dfs-largest-component"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "ptnk-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — PTNK 2024",
+    "province": "TP.HCM",
+    "school": "Phổ Thông Năng Khiếu",
+    "year": 2024,
+    "type": "entrance",
+    "problems": [
+      "io-reversenum",
+      "sort-distinct-count",
+      "greedy-min-platforms",
+      "dijkstra-classic"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "ptnk-2023",
+    "title": "Tuyển sinh 10 Chuyên Tin — PTNK 2023",
+    "province": "TP.HCM",
+    "school": "Phổ Thông Năng Khiếu",
+    "year": 2023,
+    "type": "entrance",
+    "problems": [
+      "arr1d-maxsubarr",
+      "hash-subarray-sum",
+      "bs-painters-partition",
+      "dp-climb-stairs"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "lhp-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — Lê Hồng Phong 2024",
+    "province": "TP.HCM",
+    "school": "Lê Hồng Phong",
+    "year": 2024,
+    "type": "entrance",
+    "problems": [
+      "io-minmax",
+      "sort-bytwo-keys",
+      "tp-3sum-zero",
+      "bfs-multi-source"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "lhp-2023",
+    "title": "Tuyển sinh 10 Chuyên Tin — Lê Hồng Phong 2023",
+    "province": "TP.HCM",
+    "school": "Lê Hồng Phong",
+    "year": 2023,
+    "type": "entrance",
+    "problems": [
+      "str-anagram",
+      "arr2d-maxsubrect",
+      "greedy-coin",
+      "lis-basic"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "hsgs-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — HSGS Hà Nội 2024",
+    "province": "Hà Nội",
+    "school": "KHTN (HSGS)",
+    "year": 2024,
+    "type": "entrance",
+    "problems": [
+      "io-counteven",
+      "hash-pair-sum",
+      "bs-split-array-min-max",
+      "dp-house-robber"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "hsgs-2023",
+    "title": "Tuyển sinh 10 Chuyên Tin — HSGS Hà Nội 2023",
+    "province": "Hà Nội",
+    "school": "KHTN (HSGS)",
+    "year": 2023,
+    "type": "entrance",
+    "problems": [
+      "arr1d-rotate",
+      "sort-median",
+      "tp-distinct-window",
+      "knap-01"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "ams-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — Amsterdam 2024",
+    "province": "Hà Nội",
+    "school": "Hà Nội — Amsterdam",
+    "year": 2024,
+    "type": "entrance",
+    "problems": [
+      "io-aplusb",
+      "arr1d-freq",
+      "greedy-min-water",
+      "bfs-grid"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "ams-2023",
+    "title": "Tuyển sinh 10 Chuyên Tin — Amsterdam 2023",
+    "province": "Hà Nội",
+    "school": "Hà Nội — Amsterdam",
+    "year": 2023,
+    "type": "entrance",
+    "problems": [
+      "str-vowel-count",
+      "arr1d-kth-smallest",
+      "tp-pair-sum",
+      "lcs-basic"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "pbc-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — Phan Bội Châu 2024",
+    "province": "Nghệ An",
+    "school": "Phan Bội Châu",
+    "year": 2024,
+    "type": "entrance",
+    "problems": [
+      "io-fib-mod",
+      "hash-mode",
+      "bs-koko-bananas",
+      "dp-fib-mod"
+    ],
+    "duration": 150
+  },
+  {
+    "id": "lqd-bd-2024",
+    "title": "Tuyển sinh 10 Chuyên Tin — LQĐ Bình Định 2024",
+    "province": "Bình Định",
+    "school": "Lê Quý Đôn",
+    "year": 2024,
+    "type": "entrance",
+    "problems": [
+      "arr2d-rowsum",
+      "sort-mergetwo",
+      "greedy-fractional-knapsack",
+      "dfs-bipartite"
+    ],
+    "duration": 150
   }
 ]

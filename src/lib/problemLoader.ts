@@ -12,6 +12,8 @@ import type {
   SourcesData,
   Subtask,
   Technique,
+  TheoryDeep,
+  TheoryDeepIndex,
 } from './types'
 import { asset } from './utils'
 
@@ -27,7 +29,9 @@ const cache: {
   advancedTopics?: Promise<AdvancedTopic[]>
   sources?: Promise<SourcesData>
   problems: Map<string, Promise<Problem>>
-} = { problems: new Map() }
+  theoryDeep: Map<string, Promise<TheoryDeep | null>>
+  theoryDeepIndex?: Promise<TheoryDeepIndex>
+} = { problems: new Map(), theoryDeep: new Map() }
 
 async function fetchJSON<T>(path: string): Promise<T> {
   const res = await fetch(asset(path))
@@ -150,6 +154,21 @@ export function loadAdvancedTopics(): Promise<AdvancedTopic[]> {
 
 export function loadSources(): Promise<SourcesData> {
   return (cache.sources ??= fetchJSON<SourcesData>('data/sources.json'))
+}
+
+export function loadTheoryDeepIndex(): Promise<TheoryDeepIndex> {
+  return (cache.theoryDeepIndex ??= fetchJSON<TheoryDeepIndex>('data/theory-deep/index.json').catch(
+    () => ({ topics: [] }),
+  ))
+}
+
+export function loadTheoryDeep(topicId: string): Promise<TheoryDeep | null> {
+  let p = cache.theoryDeep.get(topicId)
+  if (!p) {
+    p = fetchJSON<TheoryDeep>(`data/theory-deep/${topicId}.json`).catch(() => null)
+    cache.theoryDeep.set(topicId, p)
+  }
+  return p
 }
 
 export async function loadAllProblems(): Promise<Problem[]> {
