@@ -251,3 +251,25 @@ export interface SourcesData {
   studyResources: StudyResource[]
   mentorTips: MentorTip[]
 }
+
+export interface TheoryDeepSource {
+  source: string
+  url: string
+  title: string
+  license: string
+  markdown: string
+}
+
+export interface TheoryDeep {
+  topic: string
+  sources: TheoryDeepSource[]
+}
+
+export interface TheoryDeepIndexEntry {
+  topic: string
+  sources: string[]
+}
+
+export interface TheoryDeepIndex {
+  topics: TheoryDeepIndexEntry[]
+}

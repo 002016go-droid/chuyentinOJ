@@ -1,0 +1,178 @@
+{
+  "topics": [
+    {
+      "topic": "io-complexity",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "array-1d",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "array-2d",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "string-basic",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "sort",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "greedy",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "two-pointers",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "prefix-sum",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "binary-search",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "parametric-search",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "recursion-backtracking",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "meet-in-middle",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "stl-overview",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "monotonic-stack",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "monotonic-deque",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "dsu",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "graph-bfs",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "graph-dfs",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "shortest-path",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "dp-intro",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "dp-knapsack",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "dp-lis-lcs",
+      "sources": [
+        "CP-Algorithms",
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "dp-grid",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    },
+    {
+      "topic": "number-theory",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "sieve-factorization",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "string-hash",
+      "sources": [
+        "VNOI Wiki",
+        "CP-Algorithms"
+      ]
+    },
+    {
+      "topic": "tree-dp-intro",
+      "sources": [
+        "VNOI Wiki"
+      ]
+    }
+  ]
+}
