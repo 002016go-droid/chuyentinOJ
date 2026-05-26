@@ -3,12 +3,24 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { ArrowLeft, BookOpen, Target, ListChecks, ExternalLink, Code2, type LucideIcon } from 'lucide-react'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import {
+  ArrowLeft,
+  BookOpen,
+  Target,
+  ListChecks,
+  ExternalLink,
+  Code2,
+  Library,
+  ChevronDown,
+  type LucideIcon,
+} from 'lucide-react'
 import { PageTransition } from '../components/layout/PageTransition'
 import { Badge } from '../components/ui/Badge'
-import { loadProblem, loadRoadmap } from '../lib/problemLoader'
+import { loadProblem, loadRoadmap, loadTheoryDeep } from '../lib/problemLoader'
 import { db, type Verdict } from '../lib/db'
-import type { ExternalRef, Problem, RoadmapData, RoadmapNode } from '../lib/types'
+import type { ExternalRef, Problem, RoadmapData, RoadmapNode, TheoryDeep } from '../lib/types'
 
 const TIER_TONE: Record<RoadmapNode['difficulty'], 'green' | 'blue' | 'amber' | 'red' | 'purple'> = {
   basic: 'green',
@@ -78,11 +90,20 @@ export function TopicPage() {
   const navigate = useNavigate()
   const [data, setData] = useState<RoadmapData | null>(null)
   const [problemMeta, setProblemMeta] = useState<Record<string, Problem>>({})
+  const [theoryDeep, setTheoryDeep] = useState<TheoryDeep | null>(null)
   const submissions = useLiveQuery(() => db.submissions.toArray(), []) ?? []
 
   useEffect(() => {
     loadRoadmap().then(setData).catch(() => {})
   }, [])
+
+  useEffect(() => {
+    if (!params.topicId) return
+    setTheoryDeep(null)
+    loadTheoryDeep(params.topicId)
+      .then((td) => setTheoryDeep(td))
+      .catch(() => setTheoryDeep(null))
+  }, [params.topicId])
 
   const node = useMemo<RoadmapNode | null>(() => {
     if (!data || !params.topicId) return null
@@ -227,6 +248,66 @@ export function TopicPage() {
               <Section icon={BookOpen} title="Lý thuyết">
                 <div className="topic-markdown text-sm leading-relaxed text-[var(--text-primary)]">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>{node.theoryFull}</ReactMarkdown>
+                </div>
+              </Section>
+            )}
+
+            {/* Deep theory crawled from VNOI Wiki / CP-Algorithms */}
+            {theoryDeep && theoryDeep.sources.length > 0 && (
+              <Section icon={Library} title="Tài liệu chuyên sâu (đã tổng hợp)">
+                <p className="mb-3 text-xs text-[var(--text-muted)]">
+                  Nội dung được tổng hợp lại từ các nguồn mở (CC-BY-SA). Mở rộng để đọc, kèm hình minh
+                  hoạ và code gốc. Mỗi mục có link tới bài gốc để bạn xem định dạng đầy đủ.
+                </p>
+                <div className="space-y-2">
+                  {theoryDeep.sources.map((src) => (
+                    <details
+                      key={src.url}
+                      className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)]"
+                    >
+                      <summary className="flex cursor-pointer flex-wrap items-center justify-between gap-2 rounded-md px-3 py-2 text-sm transition hover:bg-[var(--bg-hover)]">
+                        <span className="flex flex-wrap items-center gap-2">
+                          <ChevronDown size={14} className="text-[var(--text-muted)]" />
+                          <span className="font-semibold text-[var(--text-primary)]">{src.title}</span>
+                          <span className="rounded bg-[var(--bg-elevated)] px-1.5 py-[1px] text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
+                            {src.source}
+                          </span>
+                        </span>
+                        <a
+                          href={src.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center gap-1 text-xs text-[var(--accent-primary)] hover:underline"
+                        >
+                          <ExternalLink size={12} /> bài gốc
+                        </a>
+                      </summary>
+                      <div className="border-t border-[var(--border)] px-4 py-3">
+                        <div className="topic-markdown text-sm leading-relaxed text-[var(--text-primary)]">
+                          <ReactMarkdown
+                            remarkPlugins={[remarkGfm, remarkMath]}
+                            rehypePlugins={[rehypeKatex]}
+                          >
+                            {src.markdown}
+                          </ReactMarkdown>
+                        </div>
+                        {src.license && (
+                          <p className="mt-3 border-t border-dashed border-[var(--border)] pt-2 text-[11px] text-[var(--text-muted)]">
+                            Nguồn: <a
+                              href={src.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[var(--accent-primary)] hover:underline"
+                            >
+                              {src.title}
+                            </a>{' '}
+                            · Giấy phép: {src.license}
+                          </p>
+                        )}
+                      </div>
+                    </details>
+                  ))}
                 </div>
               </Section>
             )}
